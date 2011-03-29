@@ -1,1 +1,1 @@
-Welcome to the SFML wiki!
+< coming soon ... >

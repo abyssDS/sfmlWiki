@@ -20,7 +20,7 @@ When you edit content, please leave a comment in the dedicated text field at the
 
 If you have requests, suggestions or questions about this wiki, feel free to create a new discussion on the [Wiki section](http://www.sfml-dev.org/forum/viewforum.php?f=11) of the forum. You should also use this forum to report any bug encountered while using the wiki.
 
-## Local links
+## Pages names and local links
 
 When you create a link to a new page, you must separate the label of the link (for example *A class for animated sprites*) and the address of the page (for example *animated_sprite*). This allows to use descriptive link labels while keeping the name of pages simple.
 
@@ -28,9 +28,14 @@ The example above would translate the following wiki syntax:
 
 ```[A class for animated sprites](animated_sprite)```
 
-Always use relative links inside the wiki, so that pages are properly organized (ie. tutorials are under "wiki/tutorial/", etc.).
+Please use capitals to separate words in pages names. Avoid slashes, underscores and spaces.
 
-Please use capitals to separate words in pages names. Avoid slashes, underscores and spaces. Example: ```wiki/Sources/CollisionDetection```.
+This wiki is "flat": you can't create sections/directories, all pages have to be under the "wiki/" root. To keep them organized, please follow this pattern to name them: "wiki/CategoryPageName". Categories are the main categories listed on the home page: Tutorial, Source, Project (Faq should have no child page).
+
+Examples:
+
+* ```wiki/SourceLightManager```
+* ```wiki/TutorialCollisionDetection```
 
 ## Media (images)
 

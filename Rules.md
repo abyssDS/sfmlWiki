@@ -40,3 +40,7 @@ Examples:
 ## Media (images)
 
 There's no option to upload images or other types of files directly to the wiki, you must instead find an external storage for them. If you do so, please make sure that the file will always be available, and not be automatically deleted from the website where you host it after a certain amount of days.
+
+Well, in fact there's a way to upload files directly to the wiki, but it's kind of unusable: you must clone the wiki's repository, commit your file and push it. That's far from convenient.
+
+If you upload files directly here, please limit yourself to images of acceptable sizes.

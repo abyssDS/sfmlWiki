@@ -6,16 +6,16 @@ You are encouraged to come and share all kind of personal contributions: new pag
 
 ## Main categories
 
-* [Tutorials](Tutorials)
+* [Tutorials](wiki/Tutorials)
 
-* [Source codes](Sources)
+* [Source codes](wiki/Sources)
 
-* [Projects](Projects)
+* [Projects](wiki/Projects)
 
-* [FAQ](Faq)
+* [FAQ](wiki/Faq)
 
 ## Rules
 
-If you want to edit the wiki, you should first have a look at the [rules](Rules) page containing the few guidelines to follow.
+If you want to edit the wiki, you should first have a look at the [rules](wiki/Rules) page containing the few guidelines to follow.
 
 Have a nice reading, and thank you for your contribution!

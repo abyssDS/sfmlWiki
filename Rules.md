@@ -1,4 +1,4 @@
-This page describes general guidelines for editing the wiki.
+# General guidelines for editing the wiki
 
 ## Main rules
 

@@ -44,7 +44,6 @@ A minimal code is a source which everyone can easily compile after a simple copy
 Easy :
 
 * Create a new main with all the code
-
 * Delete each line, line by line, and compile to see if the bug is always present or not (By the way, this can help you to found the bug !)
 
 ### I want to propose a new feature!
@@ -84,15 +83,10 @@ First, make sure that you have followed the installation instructions in the off
 Have you:
 
 * Provided the path to the SFML headers to your compiler?
-
 * Provided your text editor with the path to the SFML library?
-
 * Included the headers for the packages you're using? (“SFML/[capitalized name of module].hpp”)
-
 * Linked with the packages you're using? (See the dependencies section of this document)
-
 * On Windows, have you copied the libsndfile-1.dll and openal32.dll files (you can find them in the complete SDK) into the folder for executable, along with the DLLs for the packages you're using (and all of their dependencies)?
-
 * On Linux, have your installed the libraryes (sudo make install in the SFML folder)?
 
 If you've checked all of those, and SFML still refuses to work, see “I found a bug!”
@@ -135,7 +129,6 @@ If you use the dynamic versions of the SFML libraries, you must also define the 
 In Windows, if you compile your project, you will have a console that attaches itself behind your window. To avoid this, you must create a Console project, and then:
 
 * In Code::Blocks, go to the project options (Project ⇒ Properties) and in the Build targets tab, selection the GUI Application type.
-
 * In Visual Studio, go to the project options (Project ⇒ Properties) In the tree on the left, go to the “Configuration properties/Linker/System” and, in SubSystem field, select “Windows (/SUBSYSTEM:WINDOWS)”.
 
 To maintain a portable entry point (main), you link your program with the sfml-main.lib library. If not, you'll need to define the entry point, which is not int main(void) or int main(int argc, char** argv), but int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszArgument, int nCmdShow).
@@ -151,17 +144,13 @@ When your image is move from one memory place to another you have to update your
 Make sure that you're linking against the correct version of the libraries for your project. If you're compiling in Debug mode, you must link with the Debug versions of SFML, and vice-versa for Release mode. To recall, the naming conventions for SFML are:
 
 * sfml-[module].lib for the Release DLL
-
 * sfml-[module]-d.lib for the Debug DLL
-
 * sfml-[module]-s.lib for the static Release DLL
-
 * sfml-[module]-s-d.lib for the static Debug DLL.
 
 If you link with the DLL versions, you must copy the required DLLs beside your executable:
 
 * sfml-[module].dll for the Release DLL
-
 * sfml-[module]-d.dll for the Debug DLL
 
 ### [Debian Linux Debian] I can't compile the source code.
@@ -169,23 +158,14 @@ If you link with the DLL versions, you must copy the required DLLs beside your e
 Before anything else, make sure that the following packages are installed:
 
 * libgl1-mesa-dev
-
 * libglu1-mesa-dev
-
 * libopenal-dev
-
 * libopenal1-dbg
-
 * libsndfile1-dev
-
 * libx11-dev
-
 * libx11-6-dbg
-
 * libfreetype6-dev
-
 * libxrandr-dev
-
 * libxrandr2-dbg
 
 If you're compiling version 1.3, you must add

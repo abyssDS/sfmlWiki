@@ -8,7 +8,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 
 ### Events
 
-* [C++] Manage dynamic key binding
+* [C++] [Manage dynamic key binding](TutorialManageDynamicKeyBinding)
 
 ### Game Engines
 

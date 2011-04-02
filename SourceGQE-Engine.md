@@ -1,8 +1,21 @@
+<a name="top" />
 # Basic Game Engine
 
 The following is the start of a basic game engine intended for beginners and experienced developers to start from.  As time permits, I will add important features to this game engine and mention their uses in the [[Basic Game Engine|TutorialGQE-Engine]] tutorial wiki.  Below is the full source code for the Game Engine.  Credit would be appreciated but not required.  Please send me an email to my nick GatorQue in the forums if you have questions or recommendations.  I would also appreciate some help translating this and the tutorial into french to reach maximum exposure for the tutorial and source code.  Thanks and please don't hesitate to suggest improvements.
 
-## main.cpp
+Quick Links | | | | 
+|-------------|-------------|-------------|-------------|-------------
+[main.cpp](#1) | [StatManager.cpp](#7) | [StateManager.hpp](#13) | [ConfigAsset.cpp](#19) | [MusicAsset.cpp](#25)
+[App.hpp](#2) | [IState.hpp](#8) | [StateManager.cpp](#14) | [FontAsset.hpp](#20) | [SoundAsset.hpp](#26)
+[App.hpp](#2) | [IState.hpp](#8) | [StateManager.cpp](#14) | [FontAsset.cpp](#21) | [SoundAsset.cpp](#27)
+[App.cpp](#3) | [SplashState.hpp](#9) | [AssetManager.hpp](#15) | [FontAsset.cpp](#21) | [GQE.hpp](#28)
+[ConfigReader.hpp](#4) | [SplashState.cpp](#10) | [AssetManager.cpp](#16) | [ImageAsset.hpp](#22) | [GQE_types.hpp](#29)
+[ConfigReader.cpp](#5) | [MenuState.hpp](#11) | [TAsset.hpp](#17) | [ImageAsset.cpp](#23) | [stdint.h](#30)
+[StatManager.hpp](#6) | [MenuState.cpp](#12) | [ConfigAsset.hpp](#18) | [MusicAsset.hpp](#24) | [Comments](#comments)
+
+
+
+## <a name="1" />main.cpp [ [Top] ](#top)
 ```cpp
 /**
  * This is the starting point for all new projects.  This file's purpose is
@@ -48,7 +61,7 @@ int main(int argc, char* argv[])
 }
 ```
 
-## App.hpp
+## <a name="2" />App.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the App class in the GQE namespace which is responsible for
@@ -213,7 +226,7 @@ namespace GQE
 #endif // APP_HPP_INCLUDED
 ```
 
-## App.cpp
+## <a name="3" />App.cpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the App class in the GQE namespace which is responsible for
@@ -498,7 +511,7 @@ namespace GQE
 }; // namespace GQE
 ```
 
-## ConfigReader.hpp
+## <a name="4" />ConfigReader.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the ConfigReader class in the GQE namespace which is responsible
@@ -688,7 +701,7 @@ namespace GQE
 #endif // CONFIG_READER_HPP_INCLUDED
 ```
 
-## ConfigReader.cpp
+## <a name="5" />ConfigReader.cpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the ConfigReader class in the GQE namespace which is responsible
@@ -1221,7 +1234,7 @@ namespace GQE
 }; // namespace GQE
 ```
 
-## StatManager.hpp
+## <a name="6" />StatManager.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the StatManager class in the GQE namespace which is responsible
@@ -1356,7 +1369,7 @@ namespace GQE
 #endif // STAT_MANAGER_HPP_INCLUDED
 ```
 
-## StatManager.cpp
+## <a name="7" />StatManager.cpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the StatManager class in the GQE namespace which is responsible
@@ -1513,7 +1526,7 @@ namespace GQE
 }; // namespace GQE
 ```
 
-## IState.hpp
+## <a name="8" />IState.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the State class in the GQE namespace which is responsible for
@@ -1799,7 +1812,7 @@ namespace GQE
 #endif // ISTATE_HPP_INCLUDED
 ```
 
-## SplashState.hpp
+## <a name="9" />SplashState.hpp [ [Top] ](#top)
 This is provided as an example of what a State would look like.  This Splash State loads the Splash.png image file and displays it to the screen for 10 seconds before asking the StateManager class to drop itself and move on to the next state which is the MenuState.
 
 ```cpp
@@ -1886,7 +1899,7 @@ namespace GQE
 #endif // SPLASH_STATE_HPP_INCLUDED
 ```
 
-## SplashState.cpp
+## <a name="10" />SplashState.cpp [ [Top] ](#top)
 The implementation file for the SplashState
 ```cpp
 /**
@@ -1978,7 +1991,7 @@ namespace GQE
 }; // namespace GQE
 ```
 
-## MenuState.hpp
+## <a name="11" />MenuState.hpp [ [Top] ](#top)
 This is provided as an example of what a Menu State would look like.  This Menu State loads the MenuBackground.png image file and displays it to the screen along with two Text menu options of "Start Game" and "Exit".  It accepts the "Escape" key as a signal to ask the StateManager class to drop itself and cause the Game Engine to exit since there will be no other Game States to switch to.
 
 ```cpp
@@ -2066,7 +2079,7 @@ namespace GQE
 #endif // MENU_STATE_HPP_INCLUDED
 ```
 
-## MenuState.cpp
+## <a name="12" />MenuState.cpp [ [Top] ](#top)
 The implementation file for the MenuState
 ```cpp
 /**
@@ -2191,7 +2204,7 @@ namespace GQE
 }; // namespace GQE
 ```
 
-## StateManager.hpp
+## <a name="13" />StateManager.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the StateManager class in the GQE namespace which is responsible
@@ -2339,7 +2352,7 @@ namespace GQE
 #endif // STATE_MANAGER_HPP_INCLUDED
 ```
 
-## StateManager.cpp
+## <a name="14" />StateManager.cpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the StateManager class in the GQE namespace which is responsible
@@ -2807,7 +2820,7 @@ namespace GQE
 }; // namespace GQE
 ```
 
-## AssetManager.hpp
+## <a name="15" />AssetManager.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the AssetManager class in the GQE namespace which is responsible
@@ -3138,7 +3151,7 @@ namespace GQE
 #endif // ASSET_MANAGER_HPP_INCLUDED
 ```
 
-## AssetManager.cpp
+## <a name="16" />AssetManager.cpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the AssetManager class in the GQE namespace which is responsible
@@ -4053,7 +4066,7 @@ namespace GQE
 }; // namespace GQE
 ```
 
-## TAsset.hpp
+## <a name="17" />TAsset.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the TAsset template class for managing a single Asset and is used
@@ -4233,7 +4246,7 @@ namespace GQE
 #endif // TASSET_HPP_INCLUDED
 ```
 
-## ConfigAsset.hpp
+## <a name="18" />ConfigAsset.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the Config Asset type used by the AssetManager in the GQE namespace
@@ -4289,7 +4302,7 @@ namespace GQE
 #endif // CONFIG_ASSET_HPP_INCLUDED
 ```
 
-## ConfigAsset.cpp
+## <a name="19" />ConfigAsset.cpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the Config Asset type used by the AssetManager in the GQE namespace
@@ -4366,7 +4379,7 @@ namespace GQE
 }; // namespace GQE
 ```
 
-## FontAsset.hpp
+## <a name="20" />FontAsset.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the Font Asset type used by the AssetManager in the GQE namespace
@@ -4422,7 +4435,7 @@ namespace GQE
 #endif // FONT_ASSET_HPP_INCLUDED
 ```
 
-## FontAsset.cpp
+## <a name="21" />FontAsset.cpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the Font Asset type used by the AssetManager in the GQE namespace
@@ -4496,7 +4509,7 @@ namespace GQE
 }; // namespace GQE
 ```
 
-## ImageAsset.hpp
+## <a name="22" />ImageAsset.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the Image Asset type used by the AssetManager in the GQE namespace
@@ -4552,7 +4565,7 @@ namespace GQE
 #endif // IMAGE_ASSET_HPP_INCLUDED
 ```
 
-## ImageAsset.cpp
+## <a name="23" />ImageAsset.cpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the Image Asset type used by the AssetManager in the GQE namespace
@@ -4629,7 +4642,7 @@ namespace GQE
 }; // namespace GQE
 ```
 
-## MusicAsset.hpp
+## <a name="24" />MusicAsset.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the Music Asset type used by the AssetManager in the GQE namespace
@@ -4685,7 +4698,7 @@ namespace GQE
 #endif // MUSIC_ASSET_HPP_INCLUDED
 ```
 
-## MusicAsset.cpp
+## <a name="25" />MusicAsset.cpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the Music Asset type used by the AssetManager in the GQE namespace
@@ -4766,7 +4779,7 @@ namespace GQE
 }; // namespace GQE
 ```
 
-## SoundAsset.hpp
+## <a name="26" />SoundAsset.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the Sound Asset type used by the AssetManager in the GQE namespace
@@ -4822,7 +4835,7 @@ namespace GQE
 #endif // SOUND_ASSET_HPP_INCLUDED
 ```
 
-## SoundAsset.cpp
+## <a name="27" />SoundAsset.cpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides the Sound Asset type used by the AssetManager in the GQE namespace
@@ -4896,7 +4909,7 @@ namespace GQE
 }; // namespace GQE
 ```
 
-## GQE.hpp
+## <a name="28" />GQE.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides all GQE namespace includes and global variables.
@@ -4932,7 +4945,7 @@ namespace GQE
 #endif // GQE_HPP_INCLUDED
 ```
 
-## GQE_types.hpp
+## <a name="29" />GQE_types.hpp [ [Top] ](#top)
 ```cpp
 /**
  * Provides all GQE namespace typedef's and forward class declarations.
@@ -5023,7 +5036,7 @@ namespace GQE
 #endif // GQE_TYPES_HPP_INCLUDED
 ```
 
-## stdint.h
+## <a name="30" />stdint.h [ [Top] ](#top)
 If you are using Visual Studio 2008 or lower, you will need this file.  It defines the uint32_t, int32_t, and other typedef's.  Gcc and other compilers provide this file (since it is part of the C/C++ standard).
 
 ```cpp
@@ -5276,7 +5289,7 @@ typedef uint64_t  uintmax_t;
 #endif // _MSC_STDINT_H_ ]
 ```
 
-## Comments
+## <a name="comments" />Comments [ [Top] ](#top)
 Please leave your comments here or if you would appreciate a quick response, email my nick GatorQue in the forums.
 
 Jmgr - You should put your getters const. To allow settings getters const and using a mutex, simply set your mutex as mutable by putting this keyword before his declaration.

@@ -6,13 +6,13 @@ You are encouraged to come and share all kind of personal contributions: new pag
 
 ## Main categories
 
-* [Tutorials](Tutorials)
+* [[Tutorials]](Tutorials)
 
-* [Source codes](Sources)
+* [[Source codes]](Sources)
 
-* [Projects](Projects)
+* [[Projects]](Projects)
 
-* [FAQ](Faq)
+* [[FAQ]](Faq)
 
 ## Rules
 

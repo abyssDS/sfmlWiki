@@ -1,5 +1,5 @@
-# <a name="top" />Basic Game Engine
-
+# Basic Game Engine
+<a name="top" />
 The following is the start of a basic game engine intended for beginners and experienced developers to start from.  As time permits, I will add important features to this game engine and mention their uses in the [[Basic Game Engine|TutorialGQE-Engine]] tutorial wiki.  Below is the full source code for the Game Engine.  Credit would be appreciated but not required.  Please send me an email to my nick GatorQue in the forums if you have questions or recommendations.  I would also appreciate some help translating this and the tutorial into french to reach maximum exposure for the tutorial and source code.  Thanks and please don't hesitate to suggest improvements.
 
 Quick Links | | | | 

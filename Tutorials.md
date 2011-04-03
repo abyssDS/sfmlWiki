@@ -28,7 +28,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 
 ### Reference Cards
 
-* [Python] Download PDF
+* [Python] [Download PDF](http://www.losersjuegos.com.ar/_media/referencia/apuntes/pysfml/pysfml_reference_card.pdf)
 
 ### Miscellaneous
 

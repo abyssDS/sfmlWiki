@@ -150,4 +150,43 @@ void Mp3::OnSeek(float timeOffset)
 
 ## <a name="3" />main.cpp [ [Top] ](#top)
 ```cpp
+#include <SFML/Graphics.hpp>
+#include "Mp3.h"
+
+int main()
+{
+    sf::RenderWindow application(sf::VideoMode::GetDesktopMode(), "", sf::Style::Fullscreen);
+
+    sfe::Mp3 musique;
+    if (!musique.OpenFromFile("music.mp3"))
+        exit(EXIT_FAILURE);
+    musique.Play();
+
+    while (application.IsOpened())
+    {
+        sf::Event evenement;
+        while (application.GetEvent(evenement))
+        {
+            if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Escape))
+                application.Close();
+
+            if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::P))
+            {
+                if (musique.GetStatus() != sf::SoundStream::Paused)
+                    musique.Pause();
+                else
+                    musique.Play();
+            }
+        }
+
+        if (musique.GetStatus() != sf::SoundStream::Playing && musique.GetStatus() != sf::SoundStream::Paused)
+            application.Close();
+
+        application.Clear();
+
+        application.Display();
+    }
+
+    return EXIT_SUCCESS;
+}
 ```

@@ -12,6 +12,36 @@ Attention, decoding MP3 files is subject to strict licensing and is paid as part
 
 ## <a name="1" />Mp3.h [ [Top] ](#top)
 ```cpp
+#ifndef MP3_H_INCLUDED
+#define MP3_H_INCLUDED
+
+#include <SFML/Audio.hpp>
+#include "mpg123.h"
+
+namespace sfe
+{
+class Mp3 : public sf::SoundStream
+{
+public :
+    Mp3();
+    ~Mp3();
+
+    bool OpenFromFile(const std::string& filename);
+
+protected :
+    bool OnGetData(Chunk& data);
+    void OnSeek(float timeOffset);
+
+private :
+    mpg123_handle*      myHandle;
+    size_t              myBufferSize;
+    unsigned char*      myBuffer;
+    sf::Mutex           myMutex;
+};
+
+} // namespace sfe
+
+#endif // MP3_H_INCLUDED
 ```
 
 ## <a name="2" />Mp3.cpp [ [Top] ](#top)

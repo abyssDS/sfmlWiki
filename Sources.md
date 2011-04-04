@@ -23,7 +23,6 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Particle System|Sourceparticle_system]] : Enjoy colorful pixel explosions in your own home today!
 
 ## GUI
-
 * [C++] [[FormatText|Sourceformattext]] : Format simply a sf::Text in width and height. (by Thiziri)
 * [C++] [[RichText|Sourcerichtext]] : Class to handle rich text. (by Panithadrum)
 
@@ -37,3 +36,6 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[FPS|Sourcefps]] : A class that simplifies frame rate calculation.
 * [C++] [[ZipLoader|SourceZipLoader]] : Class that loads files from zip archive.
 * [Ruby] [[MessageBox class|Sourcemessagebox]](by Groogy)  : A simple Utility class for debugging purposes.
+
+## Audio
+* [C++][[Mp3 Player|Sourcemp3_player]] : Class based sf:: Music for playing mp3 file using the library mpg123

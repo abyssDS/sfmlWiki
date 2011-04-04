@@ -38,4 +38,4 @@ Welcome to the section dedicated to external source codes for SFML.
 * [Ruby] [[MessageBox class|Sourcemessagebox]](by Groogy)  : A simple Utility class for debugging purposes.
 
 ## Audio
-* [C++] [[Mp3 Player|Sourcemp3_player]] : Class inspired sf:: Music for playing mp3 file using the library mpg123
+* [C++] [[Mp3 Player|SourceMp3Player]] : Class inspired sf:: Music for playing mp3 file using the library mpg123

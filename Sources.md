@@ -29,7 +29,7 @@ Welcome to the section dedicated to external source codes for SFML.
 
 ## Miscellaneous
 * [C++] [[ResourceManager|Sourceresource_manager]](by Wavesonics) [[ResourceManager - with ImageManager sample|Sourceresource_manager_hiura]](by Hiura) [[ResourceManager|Sourceresource_manager_l0calh05t]](by l0calh05t)  : Generic class for managing resources
-* [C++] [[Smart Resource Manager|Sourcesmart_resource_manager]](by Groogy)  : Generic resource manager which keeps track of it's references.
+* [C++] [[Smart Resource Manager|Smart-Resource-Manager]] : Generic resource manager which keeps track of it's references. (by Groogy)
 * [Ruby] [[Resource Manager|Sourceruby_resource_manager]](by Groogy)  : Generic class for managing resources.
 * [Python] [[PausableClock|Sourcepy_pausable_clock]] : Class inheriting from sf.Clock allowing to pause the timer
 * [C++] [[PausableClock|Sourcepausableclock]] : Class using a sf::Clock to allow pausing and restarting the timer.

@@ -21,6 +21,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Masking using Sprites, Shapes or Strings|Sourcemasking_using_alpha_and_blending]] : Masking using Sprites, Shapes or Strings, and the Alpha Channel (by TurboLento)
 * [C++] [[Drawing color gradient|SourcegradientColor]] : Draw and manage color gradient easily with this class
 * [C++] [[Particle System|Sourceparticle_system]] : Enjoy colorful pixel explosions in your own home today!
+* [Ruby] [[Ruby Light Manager|Ruby-Light-Manager]] : Add lighting to your 2D game (by Groogy)
 
 ## GUI
 * [C++] [[FormatText|Sourceformattext]] : Format simply a sf::Text in width and height. (by Thiziri)

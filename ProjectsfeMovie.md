@@ -152,6 +152,21 @@ tiertexseqvideo, tiff, tmv, truehd, truemotion1, truemotion2, truespeech, tscc,
 tta, twinvq, txd, ulti, v210, v210x, vb, vc1, vcr1, vmdaudio, vmdvideo, vmnc,
 vorbis, vp3, vp5, vp6, vp6a, vp6f, vqa, wavpack, wmapro, wmav1, wmav2, wmavoice,
 wmv1, wmv2, wmv3, wnv1, ws_snd1, xan_dpcm, xan_wc3, xl, xsub, yop, zlib, zmbv
+
 ## <a name="status" />Current status about features [ [Top] ](#top)
+###Currently implemented features###
+- video output with any of the above video formats
+- audio output with any of the above audio formats
+- playing, pausing and stopping a movie
+- getting the movie properties
+- getting the current image
+- scaling the movie drawable to fit a given frame, eventually keeping the original ratio
+
+###Planned or missing features###
+- Linux port
+- seeking in the movie
+- movie playback looping
+- subtitles
+
 ## <a name="contact" />Contact [ [Top] ](#top)
 ## <a name="thanks" />Thanks [ [Top] ](#top)

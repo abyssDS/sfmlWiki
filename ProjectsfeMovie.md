@@ -14,7 +14,7 @@ title="Aperçu du film Sintel" alt="Aperçu du film Sintel"/></a> -->
 4. [Dependencies](#dependencies)
 5. [Download links](#downloads)
 6. [Supported file formats](#formats)
-7. [Current status about features](#status)
+7. [Features status](#features)
 8. [Contact](#contact)
 9. [Thanks](#thanks)
 
@@ -156,7 +156,7 @@ tta, twinvq, txd, ulti, v210, v210x, vb, vc1, vcr1, vmdaudio, vmdvideo, vmnc,
 vorbis, vp3, vp5, vp6, vp6a, vp6f, vqa, wavpack, wmapro, wmav1, wmav2, wmavoice,
 wmv1, wmv2, wmv3, wnv1, ws_snd1, xan_dpcm, xan_wc3, xl, xsub, yop, zlib, zmbv
 
-## <a name="status" />Current status about features [ [Top] ](#top)
+## <a name="features" />Features status [ [Top] ](#top)
 ###Currently implemented features###
 - video output with any of the above video formats
 - audio output with any of the above audio formats

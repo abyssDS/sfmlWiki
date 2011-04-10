@@ -92,6 +92,20 @@ application/library.
 See <http://www.gnu.org/licenses/lgpl.html> for more information on LGPL.
 
 ## <a name="requirements" />System requirements [ [Top] ](#top)
+sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on Linux.
+
+###Linux###
+- OS version: N/A
+- Architecture: N/A
+
+###Mac OS X###
+- OS version: Mac OS X 10.5 and later
+- Architecture: Intel 32 bits and Intel 64 bits
+
+###Windows###
+- OS Version: Windows XP and later
+- Architecture: Intel 32 bits
+
 ## <a name="dependencies" />Dependencies [ [Top] ](#top)
 ## <a name="downloads" />Download links [ [Top] ](#top)
 ## <a name="formats" />Supported file formats [ [Top] ](#top)

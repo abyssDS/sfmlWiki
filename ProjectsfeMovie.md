@@ -170,3 +170,11 @@ wmv1, wmv2, wmv3, wnv1, ws_snd1, xan_dpcm, xan_wc3, xl, xsub, yop, zlib, zmbv
 
 ## <a name="contact" />Contact [ [Top] ](#top)
 ## <a name="thanks" />Thanks [ [Top] ](#top)
+I (Lucas Soltic) would like to thank some people for their great help!
+
+- Laurent Gomilla for his excellent work on SFML
+- Loïc Siquet for his general support and work on sfeMovie
+- Alexandre Janniaux for his help on the Linux port of sfeMovie
+- Martin Bohme for its FFmpeg tutorial (http://dranger.com/ffmpeg/)
+- Xorlium and timidouveg for their video integration works from which was partly inspired sfeMovie (see http://www.sfml-dev.org/wiki/en/sources/video_integration and http://www.sfml-dev.org/wiki/fr/tutoriels/integrervideo)
+- and all of the other people who helped me in any way :) 

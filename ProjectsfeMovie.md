@@ -73,15 +73,17 @@ When using Xcode, you can automatize this process by [creating a Copy File build
 
 ## <a name="license" />License [ [Top] ](#top)
 
-libsfe-movie is statically linked against FFmpeg. Thus you don't need to care about
-the FFmpeg libraries, but therefore **sfeMovie is itself covered by the LGPL license**.
+libsfe-movie is statically linked against FFmpeg, that is licensed under [LGPL](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html). Thus you don't need to care about
+the FFmpeg libraries, but therefore **sfeMovie is itself covered by the [LGPL](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html) license**.
+
+As for the legal side, note that you can download sfeMovie sources from the [official Git repository](https://github.com/Yalir/sfeMovie).
 
 Basically, this means you can use sfeMovie for ANY project without ANY restriction until
 libsfe-movie is linked dynamically to your software. As soon as you link libsfe-movie statically,
 your software is also covered by the LGPL licence and you MUST provide the sources of your
 application/library. 
 
-See <http://www.gnu.org/licenses/lgpl.html> for more information on LGPL.
+See <http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html> for more information on LGPL.
 
 ## <a name="requirements" />System requirements [ [Top] ](#top)
 sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on Linux.

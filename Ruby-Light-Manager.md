@@ -3,7 +3,7 @@ I decided to do a conversion of the C++ Light manager in the old French wiki. So
 ### Future plans
 Well I want to work more on the class as I really enjoy working with lighting. Some of the plans to add is:
 
-*  Follow the target view for rendering.
+* Follow the target view for rendering.
 * Support Z-layers for games that want depth or maybe tiled levels/floors.
 * Regenerate affected static light when the environment geometry changes.
 * Directional light, both dynamic and static.
@@ -13,7 +13,7 @@ Well I want to work more on the class as I really enjoy working with lighting. S
 ### Example
 ![The current Light manager in action.](http://www.groogy.se/lightmanager.png)
 
-This example only has one light following the mouse but static light and walls will come up when I get the time.
+I added more walls to the example and the frame-rate dropped significantly. The static lights though has a high quality number but don't have an impact at all in the FPS. Will have to sort out what walls are relevant by doing a Circle-Vs-Point collision detection.
 ```ruby
 require 'sfml/all'
 require './LightManager.rb'
@@ -24,10 +24,29 @@ fps_text.position = [0, 0]
 image = SFML::Image.new( "background.jpg" )
 background = SFML::Sprite.new( image )
 
-window = SFML::RenderWindow.new( [image.width, image.height], "Performance Test" )
+window = SFML::RenderWindow.new( [800 , 600], "Performance Test" )
 
 light_manager = LightManager.new( window )
-mouse_light = light_manager.add_dynamic( SFML::Vector2.new( 0.0, 0.0 ), 255, 128, 16, SFML::Color::White )
+light_manager.debug = false
+light_manager.add_wall( SFML::Vector2.new( 100.0, 100.0 ), SFML::Vector2.new( 200.0, 200.0 ) )
+light_manager.add_wall( SFML::Vector2.new( 400.0, 400.0 ), SFML::Vector2.new( 300.0, 500.0 ) )
+light_manager.add_wall( SFML::Vector2.new( 400.0, 100.0 ), SFML::Vector2.new( 500.0, 0.0 ) )
+walls = []
+wall = SFML::Shape.line( 0.0, 0.0, 100.0, 100.0, 5, SFML::Color::White )
+wall.position = [ 100.0, 100.0 ]
+walls << wall
+
+wall = SFML::Shape.line( 0.0, 0.0, -100.0, 100.0, 5, SFML::Color::White )
+wall.position = [ 400.0, 400.0 ]
+walls << wall
+
+wall = SFML::Shape.line( 0.0, 0.0, 100.0, -100.0, 5, SFML::Color::White )
+wall.position = [ 400.0, 100.0 ]
+walls << wall
+
+mouse_light = light_manager.add_dynamic( SFML::Vector2.new( 0.0, 0.0 ), 1, 256, 32, SFML::Color::White )
+light_manager.add_static( SFML::Vector2.new( 450, 450 ), 1, 150, 128, SFML::Color::Red )
+light_manager.add_static( SFML::Vector2.new( 400, 0 ), 1, 180, 128, SFML::Color::Blue )
 
 frame = 0
 elapsed_time = 0.0
@@ -46,6 +65,9 @@ while true
   
   window.clear()
   window.draw( background )
+  for wall in walls
+    window.draw( wall )
+  end
   light_manager.render_on( window )
   window.draw( fps_text )
   window.display()
@@ -62,28 +84,9 @@ end
 
 ### The code
 ```ruby
-#  Copyright (c) 2010 Henrik Valter Vogelius Hansson
-# 
-#  This software is provided 'as-is', without any express or implied
-#  warranty. In no event will the authors be held liable for any damages.
-#  arising from the use of this software.
-# 
-#  Permission is granted to anyone to use this software for any purpose,
-#  including commercial applications, and to alter it and redistribute it
-#  freely, subject to the following restrictions:
-# 
-#    1. The origin of this software must not be misrepresented; you must not
-#    claim that you wrote the original software. If you use this software
-#    in a product, an acknowledgment in the product documentation would be
-#    appreciated but is not required.
-# 
-#    2. Altered source versions must be plainly marked as such, and must not be
-#    misrepresented as being the original software.
-# 
-#    3. This notice may not be removed or altered from any source
-#    distribution.
-
 class LightManager
+
+  attr_accessor :debug
 
   def add_dynamic( position, intensity, radius, quality, color )
     light = LightManager::Source.new( position, intensity, radius, quality, color )
@@ -102,12 +105,24 @@ class LightManager
   def add_static( position, intensity, radius, quality, color )
     light = LightManager::Source.new( position, intensity, radius, quality, color )
     @static_lights.push( light )
-    light.generate( @walls )
+    light.generate( @walls, @debug )
     return @static_lights.size - 1
   end
 
   def remove_static( light_handle )
     @static_lights.delete_at( light_handle )
+    nil
+  end
+  
+  def regenerate_static( light_handle )
+    @static_lights[ light_handle ].generate( @walls, @debug )
+    nil
+  end
+  
+  def regenerate_statics()
+    for light in @static_lights
+      light.generate( @walls, @debug )
+    end
   end
 
   def remove_all_statics()
@@ -166,7 +181,7 @@ class LightManager
   def generate()
     @buffer.clear( @ambience )
     for light in @dynamic_lights
-      light.generate( @walls )
+      light.generate( @walls, @debug )
       light.render_on( @buffer )
     end
 
@@ -192,6 +207,7 @@ private
     @buffer = SFML::RenderImage.new()
     @buffer.create( target_window.width, target_window.height )
     @ambience = SFML::Color::Black
+    @debug = false
   end
   
   class Wall
@@ -225,7 +241,7 @@ private
       end
     end
 
-    def add_triangle( point1, point2, minimum_wall, walls )
+    def add_triangle( point1, point2, minimum_wall, walls, debug )
       for index in minimum_wall...(walls.size)
         wall = walls[ index ]
         l1 = SFML::Vector2.new( wall.point1.x - @position.x, wall.point1.y - @position.y )
@@ -237,7 +253,7 @@ private
               ( ( point1.y > i.y && point2.y < i.y ) || ( point1.y < i.y && point2.y > i.y ) ) &&
               ( l1.y > 0 && i.y > 0 || l1.y < 0 && i.y < 0 ) &&
               ( l1.x > 0 && i.x > 0 || l1.x < 0 && i.x < 0 ) )
-            add_triangle( i, point2, index, walls )
+            add_triangle( i, point2, index, walls, debug )
             point2 = i
           end
         end
@@ -248,7 +264,7 @@ private
               ( ( point1.y > i.y && point2.y < i.y ) || ( point1.y < i.y && point2.y > i.y ) ) &&
               ( l2.y > 0 && i.y > 0 || l2.y < 0 && i.y < 0 ) &&
               ( l2.x > 0 && i.x > 0 || l2.x < 0 && i.x < 0 ) )
-            add_triangle( point1, i, index, walls )
+            add_triangle( point1, i, index, walls, debug )
             point1 = i
           end
         end
@@ -262,39 +278,47 @@ private
           point2 = n
         else
           if( ( m.x != 0 || m.y != 0 ) && ( o.x != 0 || o.y != 0 ) )
-            add_triangle( m, o, index, walls )
+            add_triangle( m, o, index, walls, debug )
             point1 = o
           end
           if( ( n.x != 0 || n.y != 0 ) && ( o.x != 0 || o.y != 0 ) )
-            add_triangle( o, n, index, walls )
+            add_triangle( o, n, index, walls, debug )
             point2 = o
           end
         end
       end
       
       shape = SFML::Shape.new()
-      color = SFML::Color.new( ( @intensity * (@color.r / 255) ).to_i,
-                               ( @intensity * (@color.g / 255) ).to_i,
-                               ( @intensity * (@color.b / 255) ).to_i )
-      shape.add_point( 0.0, 0.0, color, SFML::Color::White )
-
+      if debug == true
+        shape.outline = true
+        shape.outline_thickness = 1
+      end
+      color = SFML::Color.new( ( @intensity * @color.r ).to_i,
+                               ( @intensity * @color.g ).to_i,
+                               ( @intensity * @color.b ).to_i )
+      shape.add_point( 0.0, 0.0, color, SFML::Color::Green )
+      
+      dist = Math.sqrt( point1.x * point1.x + point1.y * point1.y )
+      intensity = ( @radius - dist ) / @radius * @intensity
       intensity = @intensity - Math.sqrt( point1.x * point1.x + point1.y * point1.y ) * @intensity / @radius
-      color = SFML::Color.new( ( intensity * @color.r / 255 ).to_i,
-                               ( intensity * @color.g / 255 ).to_i,
-                               ( intensity * @color.b / 255 ).to_i )
-      shape.add_point( point1, color, SFML::Color::White )
+      color = SFML::Color.new( ( intensity * @color.r ).to_i,
+                               ( intensity * @color.g ).to_i,
+                               ( intensity * @color.b ).to_i )
+      shape.add_point( point1, color, SFML::Color::Green )
 
+      dist = Math.sqrt( point2.x * point2.x + point2.y * point2.y )
+      intensity = ( @radius - dist ) / @radius * @intensity
       intensity = @intensity - Math.sqrt( point2.x * point2.x + point2.y * point2.y ) * @intensity / @radius
-      color = SFML::Color.new( ( intensity * @color.r / 255 ).to_i,
-                               ( intensity * @color.g / 255 ).to_i,
-                               ( intensity * @color.b / 255 ).to_i )
-      shape.add_point( point2, color, SFML::Color::White )
+      color = SFML::Color.new( ( intensity * @color.r ).to_i,
+                               ( intensity * @color.g ).to_i,
+                               ( intensity * @color.b ).to_i )
+      shape.add_point( point2, color, SFML::Color::Green )
       shape.blend_mode = SFML::Blend::Add
       shape.position = @position.clone
       @shapes.push( shape )
     end
 
-    def generate( walls )
+    def generate( walls, debug = false )
       @shapes.clear()
       buf = (Math::PI * 2) / @quality.to_f
       for i in 0...(@quality.to_i)
@@ -302,7 +326,7 @@ private
                                     @radius * Math.sin( i * buf ) )
         point2 = SFML::Vector2.new( @radius * Math.cos( ( i + 1 ) * buf ),
                                     @radius * Math.sin( ( i + 1 ) * buf ) )
-        add_triangle( point1, point2, 0, walls )
+        add_triangle( point1, point2, 0, walls, debug )
       end
     end
     
@@ -311,7 +335,7 @@ private
       @position = position.clone
       @intensity = intensity.to_f
       @radius = radius.to_f
-      @quality = quality.to_f
+      @quality = quality.to_i
       @color = color.clone
       @shapes = []
     end

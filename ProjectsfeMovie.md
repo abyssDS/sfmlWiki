@@ -9,7 +9,7 @@ title="Aperçu du film Sintel" alt="Aperçu du film Sintel"/></a> -->
 ###Quick links###
 
 1. [How to use sfeMovie?](#howto)
-2. [License](#license)
+2. [License and legal notes](#license)
 3. [System requirements](#requirements)
 4. [Dependencies](#dependencies)
 5. [Download links](#downloads)
@@ -68,22 +68,22 @@ I'm not going to explain how to use a library, most of it is like for any other 
 
 libsfe-movie has been built in a way that allows you to put the dynamic library in your bundle application, for distribution purpose. The copying process can be done manually or automatically through Xcode. If you want to do it manually, make sure to copy the library to your_app.app/Contents/Frameworks. Create the Frameworks directory if needed.
 
-When using Xcode, you can automatize this process by [creating a Copy File build phase](http://developer.apple.com/library/mac/#recipes/xcode_help-project_editor/Articles/CreatingaCopyFilesBuildPhase.html) and setting the Destination of this phase to "Frameworks". Then add libsfe-movie to this phase, this will ask Xcode to copy the library to your application at build time.
+When using Xcode, you can automatize this process by [creating a Copy File build phase](http://developer.apple.com/library/mac/#recipes/xcode_help-project_editor/Articles/CreatingaCopyFilesBuildPhase.html) and setting the Destination of this phase to "Frameworks". Then add libsfe-movie to this phase, this will ask Xcode to copy the library into your application at build time.
 
 
 ## <a name="license" />License [ [Top] ](#top)
 
-libsfe-movie is statically linked against FFmpeg, that is licensed under [LGPL](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html). Thus you don't need to care about
-the FFmpeg libraries, but therefore **sfeMovie is itself covered by the [LGPL](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html) license**.
-
-As for the legal side, note that you can download sfeMovie sources from the [official Git repository](https://github.com/Yalir/sfeMovie).
+libsfe-movie is statically linked against FFmpeg, that is licensed under [LGPL](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html). Thus you don't need to care about the FFmpeg libraries, but **sfeMovie is itself covered by the [LGPL](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html) license**. As for the legal side, note that you can download the sfeMovie sources from the [official Git repository](https://github.com/Yalir/sfeMovie).
 
 Basically, this means you can use sfeMovie for ANY project without ANY restriction until
 libsfe-movie is linked dynamically to your software. As soon as you link libsfe-movie statically,
 your software is also covered by the LGPL licence and you MUST provide the sources of your
-application/library. 
+application/library. This is the main restriction.
 
 See <http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html> for more information on LGPL.
+
+###Legal notes###
+As you may now, patents on video codecs is a complex issue. FFmpeg is distributed under LGPL and tries to use free code only, but this still doesn't completely protect you. I advise you to read the mini FAQ on [FFmpeg's legal page](http://ffmpeg.org/legal.html).
 
 ## <a name="requirements" />System requirements [ [Top] ](#top)
 sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on Linux.

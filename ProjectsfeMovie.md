@@ -106,7 +106,7 @@ There is no other specific dependency you have to care about.
 ## <a name="downloads" />Download links [ [Top] ](#top)
 There is no binary available for now.
 
-However you can view and download the latest sources from the [official Git repository](https://github.com/Yalir/sfeMovie). To build sfeMovie, make sure you have cmake, make and gcc installed (for Windows, make sure these are in the PATH environment variable). Then run build.sh from a [MSYS](http://www.mingw.org/wiki/msys)-like command line interpreter.
+However you can view and download the latest sources from the [official Git repository](https://github.com/Yalir/sfeMovie). To build sfeMovie, make sure you have cmake, make and gcc installed (for Windows, make sure these are in the PATH environment variable). Then run build.sh from a command line interpreter (see [MSYS](http://www.mingw.org/wiki/msys) for Windows).
 
 ## <a name="formats" />Supported file formats [ [Top] ](#top)
 The supported file formats depend on the FFmpeg configuration

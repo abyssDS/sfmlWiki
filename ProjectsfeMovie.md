@@ -1,7 +1,7 @@
 # sfeMovie project
 
 sfeMovie is a small C++ library that allows you playing movies in SFML based applications. It relies on SFML for the rendering process and FFmpeg for the decoding process. It supports both audio and video, and basic controls. This project has been written to work closely with SFML and tries to keep the same easy-to-use paradigm,
-while being coherent with SFML's conventions.
+while remaining coherent with SFML's conventions.
 
 <!-- <a href="http://lucas.soltic.perso.esil.univmed.fr/img/sfemovie.png"><img src="http://lucas.soltic.perso.esil.univmed.fr/img/sfemovie.png" width="616" height="491"
 title="Aperçu du film Sintel" alt="Aperçu du film Sintel"/></a> -->
@@ -21,7 +21,7 @@ title="Aperçu du film Sintel" alt="Aperçu du film Sintel"/></a> -->
 
 ## <a name="howto" />How to use sfeMovie ? [ [Top] ](#top)
 
-Here is a sample code showing how to use sfeMovie, the instructions for each OS follow.
+Here is a sample code showing how to use sfeMovie, the setup instructions follow.
 
 ```cpp
 #include <SFML/Graphics.hpp>
@@ -56,36 +56,25 @@ int main()
 }
 ```
 
+Make sure you downloaded sfeMovie (see [Download links](#downloads)) and have all of the headers and libraries ready to use.
+I'm not going to explain how to use a library, most of it is like for any other library. I'll just focus on some specific points.
 
-###Linux###
-N/A
+###General notes###
 
-###Mac OS X###
+- Make sure you correctly set the headers and libraries search path to find both sfeMovie's and SFML's headers and libraries
+- Link your product against sfeMovie (libsfe-movie) and SFML 2.0
 
+###Mac OS X specific###
 
-**With Xcode**
+libsfe-movie has been built in a way that allows you to put the dynamic library in your bundle application, for distribution purpose. The copying process can be done manually or automatically through Xcode. If you want to do it manually, make sure to copy the library to your_app.app/Contents/Frameworks. Create the Frameworks directory if needed.
 
-- Add the directory where you put Movie.h to the headers search path.
-- Drag every library from "lib" and "extlib" to your project.
-- Add a Copy File build phase to your project, and set the "Destination" of this phase to "Frameworks".
-- Add all of the imported libraries to this build phase.
-- Write your code and build your app.
+When using Xcode, you can automatize this process by [creating a Copy File build phase](http://developer.apple.com/library/mac/#recipes/xcode_help-project_editor/Articles/CreatingaCopyFilesBuildPhase.html) and setting the Destination of this phase to "Frameworks". Then add libsfe-movie to this phase, this will ask Xcode to copy the library to your application at build time.
 
-**Without Xcode**
-
-- Write your code.
-- Add the directory where you put Movie.h to the header search path (through option -I).
-- Add the directory/ies containing the libraries originally found in "lib" and "extlib" to the library search path (through option -L)
-- Compile your application.
-- Copy the libraries to your_app.app/Contents/Frameworks
-
-###Windows###
-N/A
 
 ## <a name="license" />License [ [Top] ](#top)
 
 libsfe-movie is statically linked against FFmpeg. Thus you don't need to care about
-the FFmpeg libraries, but **libsfe-movie is itself covered by the LGPL license**.
+the FFmpeg libraries, but therefore **sfeMovie is itself covered by the LGPL license**.
 
 Basically, this means you can use sfeMovie for ANY project without ANY restriction until
 libsfe-movie is linked dynamically to your software. As soon as you link libsfe-movie statically,
@@ -125,7 +114,7 @@ The FFmpeg library provided with sfeMovie has been built with the default flags 
 AAC, AC3, FLAC, MP3, PCM, Vorbis, WMA
 
 ###Short list of video formats###
-FLV, H264, MPEG4, Theora, WMV
+FLV, H264, MPEG4, Theora, VP6, WMV
 
 ###Comprehensive list including both audio and video formats###
 aac, aasc, ac3, adpcm_4xm, adpcm_adx, adpcm_ct, adpcm_ea, adpcm_ea_maxis_xa,

@@ -88,7 +88,7 @@ As you may now, patents on video codecs is a complex issue. FFmpeg is distribute
 I've asked the different codec owners for some information and here's a little sum up:
 
 - MPEG4 decoder is free to use until your product is not distributed at more than 100 000 units per year
-- H.264 decoder is free to use until your product is not distributed at more than 50 000 units per year
+- H.264 (MPEG4 AVC) decoder is free to use until your product is not distributed at more than 50 000 units per year
 
 
 ## <a name="requirements" />System requirements [ [Top] ](#top)
@@ -124,9 +124,9 @@ The FFmpeg library provided with sfeMovie has been built with the default flags 
 AAC, AC3, FLAC, MP3, PCM, Vorbis, WMA
 
 ###Short list of video formats###
-H.264 (also known as MPEG-4 AVC), Theora, VP6, WMV
+H.264 (aka MPEG-4 AVC), MPEG4, Theora, VP6, WMV
 
-Note that the FLV format is a container for H.264 and VP6.
+Note that the FLV format is a container for H.264 and VP6, and that FFmpeg supports this container.
 
 ###Comprehensive list including both audio and video formats###
 aac, aasc, ac3, adpcm_4xm, adpcm_adx, adpcm_ct, adpcm_ea, adpcm_ea_maxis_xa,

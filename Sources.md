@@ -40,3 +40,4 @@ Welcome to the section dedicated to external source codes for SFML.
 
 ## Audio
 * [C++] [[Mp3 Player|SourceMp3Player]] : Class inspired sf:: Music for playing mp3 file using the library mpg123
+* [C++] [[Audio Player|SourceAudioPlayer]] : Class inspired sf:: Music for playing audio file using the library ffmpeg

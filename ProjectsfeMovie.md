@@ -66,24 +66,30 @@ I'm not going to explain how to use a library, most of it is like for any other 
 
 ###Mac OS X specific###
 
-libsfe-movie has been built in a way that allows you to put the dynamic library in your bundle application, for distribution purpose. The copying process can be done manually or automatically through Xcode. If you want to do it manually, make sure to copy the library to your_app.app/Contents/Frameworks. Create the Frameworks directory if needed.
+libsfe-movie has been built in a way that allows you to put the dynamic library in your bundle application, for distribution purpose. The copying process can be done manually, or automatically through Xcode. If you want to do it manually, make sure the library is copied to your_app.app/Contents/Frameworks. Create the Frameworks directory if needed.
 
 When using Xcode, you can automatize this process by [creating a Copy File build phase](http://developer.apple.com/library/mac/#recipes/xcode_help-project_editor/Articles/CreatingaCopyFilesBuildPhase.html) and setting the Destination of this phase to "Frameworks". Then add libsfe-movie to this phase, this will ask Xcode to copy the library into your application at build time.
 
 
 ## <a name="license" />License [ [Top] ](#top)
 
-libsfe-movie is statically linked against FFmpeg, that is licensed under [LGPL 2.1](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html). Thus you don't need to care about the FFmpeg libraries, but **sfeMovie is itself covered by the LGPL license**. As for the legal side, note that you can download the sfeMovie sources from the [official Git repository](https://github.com/Yalir/sfeMovie).
+libsfe-movie is statically linked against FFmpeg, that is licensed under [LGPL 2.1](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html). Thus you don't need to care about the FFmpeg libraries, but **sfeMovie is itself covered by the LGPL v2.1 license**. As for the legal side, note that you can download the sfeMovie sources from the [official Git repository](https://github.com/Yalir/sfeMovie).
 
 Basically, this means you can use sfeMovie for ANY project without ANY restriction until
 libsfe-movie is linked dynamically to your software. As soon as you link libsfe-movie statically,
 your software is also covered by the LGPL licence and you MUST provide the sources of your
 application/library. This is the main restriction.
 
-See <http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html> for more information on LGPL.
+For more information on LGPL, have a look at <http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html>.
 
 ###Legal notes###
 As you may now, patents on video codecs is a complex issue. FFmpeg is distributed under LGPL and tries to use free code only, but this still doesn't completely protect you. I advise you to read the mini FAQ on [FFmpeg's legal page](http://ffmpeg.org/legal.html).
+
+I've asked the different codec owners for some information and here's a little sum up:
+
+- MPEG4 decoder is free to use until your product is not distributed at more than 100 000 units per year
+- H.264 decoder is free to use until your product is not distributed at more than 50 000 units per year
+
 
 ## <a name="requirements" />System requirements [ [Top] ](#top)
 sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on Linux.
@@ -118,7 +124,9 @@ The FFmpeg library provided with sfeMovie has been built with the default flags 
 AAC, AC3, FLAC, MP3, PCM, Vorbis, WMA
 
 ###Short list of video formats###
-FLV, H264, MPEG4, Theora, VP6, WMV
+H.264 (also known as MPEG-4 AVC), Theora, VP6, WMV
+
+Note that the FLV format is a container for H.264 and VP6.
 
 ###Comprehensive list including both audio and video formats###
 aac, aasc, ac3, adpcm_4xm, adpcm_adx, adpcm_ct, adpcm_ea, adpcm_ea_maxis_xa,

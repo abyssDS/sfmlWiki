@@ -21,7 +21,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Masking using Sprites, Shapes or Strings|Sourcemasking_using_alpha_and_blending]] : Masking using Sprites, Shapes or Strings, and the Alpha Channel (by TurboLento)
 * [C++] [[Drawing color gradient|SourcegradientColor]] : Draw and manage color gradient easily with this class
 * [C++] [[Particle System|Sourceparticle_system]] : Enjoy colorful pixel explosions in your own home today!
-* [Ruby] [[Ruby Light Manager|Ruby-Light-Manager]] : Add lighting to your 2D game (by Groogy)
+* [Ruby] [[Ruby Light Manager|SourceRubyLightManager]] : Add lighting to your 2D game (by Groogy)
 
 ## GUI
 * [C++] [[FormatText|Sourceformattext]] : Format simply a sf::Text in width and height. (by Thiziri)
@@ -29,7 +29,7 @@ Welcome to the section dedicated to external source codes for SFML.
 
 ## Miscellaneous
 * [C++] [[ResourceManager|Sourceresource_manager]](by Wavesonics) [[ResourceManager - with ImageManager sample|Sourceresource_manager_hiura]](by Hiura) [[ResourceManager|Sourceresource_manager_l0calh05t]](by l0calh05t)  : Generic class for managing resources
-* [C++] [[Smart Resource Manager|Smart-Resource-Manager]] : Generic resource manager which keeps track of it's references. (by Groogy)
+* [C++] [[Smart Resource Manager|SourceSmartResourceManager]] : Generic resource manager which keeps track of it's references. (by Groogy)
 * [Ruby] [[Resource Manager|Sourceruby_resource_manager]](by Groogy)  : Generic class for managing resources.
 * [Python] [[PausableClock|Sourcepy_pausable_clock]] : Class inheriting from sf.Clock allowing to pause the timer
 * [C++] [[PausableClock|Sourcepausableclock]] : Class using a sf::Clock to allow pausing and restarting the timer.

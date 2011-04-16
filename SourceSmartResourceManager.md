@@ -1,3 +1,5 @@
+# Smart resource manager
+
 This is a system to manage resources with a bit of more intelligence put into it. You specify a maximum size for the resource manager to work with and when it reaches that size it will look after if any of the already loaded resources is not in use any more and unload them and use their space instead. The biggest advantage of this system is that the system already have a large allocated chunk of memory so the resources don't get fragmented and we don't lock any threads that might exist every time we want to allocate a new resource. The **ResourceManager::Get** method has been made thread-safe but the resource handles haven't. Resources should never be shared between threads!
 
 ### Simple Example

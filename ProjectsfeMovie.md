@@ -87,8 +87,6 @@ As you may now, patents on video codecs is a complex issue. FFmpeg is distribute
 
 I've asked the different codec owners for some information and here's a little sum up:
 
-
-
 <table>
   <tr>
     <th>Video codec</th>
@@ -99,19 +97,19 @@ I've asked the different codec owners for some information and here's a little s
   <tr>
     <td>H.264 (MPEG4 AVC)</td>
     <td>free under 50 000 units distributed per year?</td>
-    <td><a href="http://www.mpegla.com/main/programs/AVC/Documents/AVC_TermsSummary.pdf">MPEG LA's website (PDF)</a></td>
+    <td><a href="http://www.mpegla.com/main/programs/AVC/Documents/AVC_TermsSummary.pdf">MPEG LA (PDF)</a></td>
   </tr>
 
   <tr>
     <td>MPEG4</td>
     <td>free under 100 000 units distributed per year?</td>
-    <td><a href="http://www.mpegla.com/main/programs/M4V/Documents/m4vweb.ppt">MPEG LA's website (PowerPoint)</a></td>
+    <td><a href="http://www.mpegla.com/main/programs/M4V/Documents/m4vweb.ppt">MPEG LA (PowerPoint)</a></td>
   </tr>
 
   <tr>
     <td>Theora</td>
     <td>free for any use</td>
-    <td><a href="http://www.theora.org/faq/">Theora's website</a></td>
+    <td><a href="http://www.theora.org/faq/">Theora</a></td>
   </tr>
 
   <tr>
@@ -137,8 +135,8 @@ I've asked the different codec owners for some information and here's a little s
 
   <tr>
     <td>AAC</td>
-    <td>?</td>
-    <td>?</td>
+    <td>US$ 0.48 per unit with a maximum annual payment per product of US$ 32 000</td>
+    <td><a href="http://www.vialicensing.com/licensing/aac-fees.aspx">Via Licensing</a></td>
   </tr>
   
   <tr>
@@ -150,13 +148,13 @@ I've asked the different codec owners for some information and here's a little s
   <tr>
     <td>FLAC</td>
     <td>free for any use</td>
-    <td><a href="http://flac.sourceforge.net/license.html">FLAC's website license page</a></td>
+    <td><a href="http://flac.sourceforge.net/license.html">flac</a></td>
   </tr>
   
   <tr>
     <td>MP3</td>
     <td>max between US$ 15 000.00 and US$ 0.75 per unit, or US$ 2 500.00 per title for games</td>
-    <td><a href="http://www.mp3licensing.com/royalty/">mp3licensing's website royalties page</a></td>
+    <td><a href="http://www.mp3licensing.com/royalty/">mp3licensing.com</a></td>
   </tr>
   
   <tr>
@@ -168,7 +166,7 @@ I've asked the different codec owners for some information and here's a little s
   <tr>
     <td>Vorbis</td>
     <td>free for any use</td>
-    <td><a href="http://www.vorbis.com/faq/#flic">Vorbis's website FAQ page</a></td>
+    <td><a href="http://www.vorbis.com/faq/#flic">Vorbis</a></td>
   </tr>
   
   <tr>

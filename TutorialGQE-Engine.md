@@ -317,7 +317,7 @@ So the new Game Logic algorithm is as follows:
 5. Allow the current game State to draw its objects to the screen
 6. Repeat all of the above steps until the Exit Game Loop flag is set (see *IsRunning* || *!mState.empty()* above)
 
-So this begs the question, what is a game State and what does it do?
+So this raises the question, what is a game State and what does it do?
 
 ## <a name="gamestate" />Game State [ [Top] ](#Top)
 Many modern games, especially the casual gamer variety found on many websites, are very predictable in their basic game flow. See if you agree with the following game flow found in many games today:
@@ -420,7 +420,7 @@ Great work!
 
 One detail though. The following code doesn't work as intended:
 ```cpp
-result = new(std::nothrow) ImageAsset(theFilename, theStyle);
+result = new ImageAsset(theFilename, theStyle);
 assert(NULL != result && "AssetManager::AddImage() unable to allocate memory");
 ```
 
@@ -437,3 +437,8 @@ assert(NULL != result && "AssetManager::AddImage() unable to allocate memory");
 Thank you for the comments and encouragement.  I have made the changes you recommended and appreciate learning something new!  I will be adding some new details to the basic game engine over the next few days before my next graduate semester begins.  I also hope to restructure this tutorial to improve the readability by emphasizing specific aspects of the game engine.
 
 //Ryan Lindeman//
+
+Ryan: thanks for the article!  I've read many similar articles over the years (and experimented with many incomplete alternatives of my own) and I must say yours stands out as appropriately clear.
+
+
+Peter: It appears you pasted the same block for both examples, I've adjusted it to what I imagine you were saying.

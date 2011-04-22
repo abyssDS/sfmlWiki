@@ -83,9 +83,9 @@ application/library. This is the main restriction.
 For more information on LGPL, have a look at <http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html>.
 
 ###Legal notes###
-As you may now, patents on video codecs is a complex issue. FFmpeg is distributed under LGPL and tries to use free code only, but this still doesn't completely protect you. I advise you to read the mini FAQ on [FFmpeg's legal page](http://ffmpeg.org/legal.html).
+As you may now, patents on video codecs is a complex issue. FFmpeg is distributed under LGPL and does not provide any binary version of the library. This is to avoid legal issue : decoders' source code can be freely distributed, but not binaries (though it still depends on whether the patent holder is strict, because it is not an end-software product). Moreover patents do not apply in some countries. That's why [VideoLAN doesn't pay any fee to distribute VLC](http://www.videolan.org/legal.html). But as I'm not a specialist and I don't know the details about laws, I won't provide sfeMovie binaries, and not even a binary version of FFmpeg. A script is provided so that all this compilation process can be performed flawlessly. You're also given the ability to choose which decoders you want to enable in the final sfeMovie binary.
 
-I've asked the different codec owners for some information and here's a little sum up:
+Considering this, you're responsible for checking the possible fees and licenses you may need, depending on your country and your needs. Here is a little (non official) sum up of the different fees for the main decoders. The information I'm showing here is the one I got from the different patents holders.
 
 <table>
   <tr>
@@ -96,13 +96,13 @@ I've asked the different codec owners for some information and here's a little s
 
   <tr>
     <td>H.264 (MPEG4 AVC)</td>
-    <td>free under 50 000 units distributed per year?</td>
+    <td>free under 100 000 units distributed per year (license still required), then US $0.20 per unit after first 100 000 units per year</td>
     <td><a href="http://www.mpegla.com/main/programs/AVC/Documents/AVC_TermsSummary.pdf">MPEG LA (PDF)</a></td>
   </tr>
 
   <tr>
     <td>MPEG4</td>
-    <td>free under 100 000 units distributed per year?</td>
+    <td>free under 50 000 units distributed per year (license still required), then US $0.25 per unit after first 50 000 units per year</td>
     <td><a href="http://www.mpegla.com/main/programs/M4V/Documents/m4vweb.ppt">MPEG LA (PowerPoint)</a></td>
   </tr>
 
@@ -121,7 +121,7 @@ I've asked the different codec owners for some information and here's a little s
   <tr>
     <td>WMV</td>
     <td><!-- free for any use? -->?</td>
-    <td><!-- <a href="http://www.microsoft.com/windows/windowsmedia/licensing/LicensingAVServices.aspx">Microsoft's website?</a> --></td>
+    <td><!-- <a href="http://www.microsoft.com/windows/windowsmedia/licensing/LicensingAVServices.aspx">Microsoft's website?</a> -->?</td>
   </tr>
 
 </table>
@@ -153,7 +153,7 @@ I've asked the different codec owners for some information and here's a little s
   
   <tr>
     <td>MP3</td>
-    <td>max between US$ 15 000.00 and US$ 0.75 per unit, or US$ 2 500.00 per title for games</td>
+    <td><b>maximum</b> between US$ 15 000 and US$ 0.75 per unit, or US$ 2 500 per title for games</td>
     <td><a href="http://www.mp3licensing.com/royalty/">mp3licensing.com</a></td>
   </tr>
   

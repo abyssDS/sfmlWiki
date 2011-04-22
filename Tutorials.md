@@ -21,7 +21,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 * [C++] Loading images in a thread (and displaying progress)
 * [C++] Displaying the FPS without loading a font
 * [C++] How to change your Cursor
-* [C++] [[Creating an image-manager]]
+* [C++] [Create a simple image manager](ImageManager)
 
 ### Video
 

@@ -79,7 +79,7 @@ void image_manager::delete_image( const sf::Image& image )
 		// compare the adresses
 		if( &image == &it->second )
 		{
-			images_.erase( it++ );
+			images_.erase( it );
                         return;
 		}
 		else
@@ -356,7 +356,7 @@ void image_manager::delete_image( const sf::Image& image )
 	{
 		if( &image == &it->second )
 		{
-			images_.erase( it++ );
+			images_.erase( it );
                         return;
 		}
 		else

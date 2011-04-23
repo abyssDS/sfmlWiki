@@ -74,17 +74,13 @@ void image_manager::delete_image( const sf::Image& image )
 {
 	for( std::map<std::string, sf::Image>::const_iterator it = images_.begin();
 		 it != images_.end(); 
-		 )
+		 ++it)
 	{
 		// compare the adresses
 		if( &image == &it->second )
 		{
 			images_.erase( it );
                         return;
-		}
-		else
-		{
-			++it;
 		}
 	}
 }
@@ -352,16 +348,12 @@ void image_manager::delete_image( const sf::Image& image )
 {
 	for( std::map<std::string, sf::Image>::const_iterator it = images_.begin();
 		 it != images_.end(); 
-		 )
+		 ++it)
 	{
 		if( &image == &it->second )
 		{
 			images_.erase( it );
                         return;
-		}
-		else
-		{
-			++it;
 		}
 	}
 }

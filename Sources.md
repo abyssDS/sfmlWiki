@@ -8,8 +8,8 @@ Welcome to the section dedicated to external source codes for SFML.
 ## Graphics
 * [C++] [[Loading images in a thread (and displaying progress)|Sourceloadimagesinthread.cpp]]
 * [C++] [[DrawableLineShape|Sourcedrawablelineshape]]: A drawable-derived fast-rendering class for shapes made of lines
-* [C++] [[Simple Collision Detection|Sourcesimple_collision_detection]]: A Static Class implementing Circle, BoundingBox and PixelPerfect collision detection.
-* [C++] [[Frame, Anim, Animated|Sourceframe_anim_animated]] : Classes that manage your animated sprites.
+* [C++] [[Simple Collision Detection|SourceSimpleCollisionDetection]]: A Static Class implementing Circle, BoundingBox and PixelPerfect collision detection.
+* [C++] [[Frame, Anim, Animated|SourceFrameAnimAnimated]] : Classes that manage your animated sprites.
 * [C++] [[Animation|Sourceanimation]] : A animation class that inherits from sf::Sprite to allow easy integration of Animations into new or existing code.
 * [C++] [[SFMLWidget|Sourcegtksfmlwidget]] : A class to integrate SFML into a gtkmm interface
 * [C++] [[Filter|Sourcefilter]] : Class to manage color filters or brightness filters.

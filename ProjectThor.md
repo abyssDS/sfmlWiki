@@ -1,3 +1,5 @@
+# Thor C++ Library
+
 ![Thor Logo](http://www.bromeon.ch/thor/thor.png)
 
 Thor is a cross-platform, open-source library which provides several extensions to SFML. It includes many features on top of the basic multimedia functionality supplied with SFML. The Thor C++ Library is intended to relieve SFML users from implementing often-used functionality related to graphics and game programming again and again.
@@ -69,45 +71,53 @@ Full-fledged example codes are included in the official SDK, but here are a few 
 
 ### Vectors
 
-    sf::Vector2f a(4.2f, 5.6f);
-    sf::Vector2f b(7.8f, 1.3f);
-    float d = thor::DotProduct(a, b);
-    float w = thor::Angle(a, b);
-    sf::Vector2f u = thor::UnitVector(a);
+```cpp
+sf::Vector2f a(4.2f, 5.6f);
+sf::Vector2f b(7.8f, 1.3f);
+float d = thor::DotProduct(a, b);
+float w = thor::Angle(a, b);
+sf::Vector2f u = thor::UnitVector(a);
+```
 
 ### Particles
 
-    // Color gradient from red to blue to green
-    thor::ColorGradient gradient = thor::CreateGradient(sf::Color::Red)(1)(sf::Color::Blue)(2)(sf::Color::Green);
+```cpp
+// Color gradient from red to blue to green
+thor::ColorGradient gradient = thor::CreateGradient(sf::Color::Red)(1)(sf::Color::Blue)(2)(sf::Color::Green);
 
-    // Load image, create particle system, add emitters and affectors
-    sf::Image image = ...;
-    thor::ParticleSystem system(image);
-    system.AddEmitter( thor::DirectionalEmitter::Create(50.f, 3.f) ); // 50 per second, each lives 3s
-    system.AddAffector( thor::ColorAffector::Create(gradient) )
-    system.AddAffector( thor::FadeOutAffector::Create() );
+// Load image, create particle system, add emitters and affectors
+sf::Image image = ...;
+thor::ParticleSystem system(image);
+system.AddEmitter( thor::DirectionalEmitter::Create(50.f, 3.f) ); // 50 per second, each lives 3s
+system.AddAffector( thor::ColorAffector::Create(gradient) )
+system.AddAffector( thor::FadeOutAffector::Create() );
 
-    // Inside main loop
-    system.Update(window.GetFrameTime());
-    system.Draw(window);
-    window.Display()
+// Inside main loop
+system.Update(window.GetFrameTime());
+system.Draw(window);
+window.Display()
+```
 
 ### Time
 
-    // Create pausable clock
-    thor::StopWatch stopwatch;
-    stopwatch.Start();
-    sf::Sleep(3.f);
-    stopwatch.Stop();
-    float time = stopwatch.GetElapsedTime();
+```cpp
+// Create pausable clock
+thor::StopWatch stopwatch;
+stopwatch.Start();
+sf::Sleep(3.f);
+stopwatch.Stop();
+float time = stopwatch.GetElapsedTime();
+```
 
 ### Resources
 
-    // Create image manager and load two images
-    thor::ResourceManager<sf::Image> imageMgr;
-    thor::ResourcePtr<sf::Image> p = imageMgr.Acquire( thor::Resources::ImageKey::FromFile("image.jpg") );
-    thor::ResourcePtr<sf::Image> q = imageMgr.Acquire( thor::Resources::ImageKey::FromSize(300, 200) );
+```cpp
+// Create image manager and load two images
+thor::ResourceManager<sf::Image> imageMgr;
+thor::ResourcePtr<sf::Image> p = imageMgr.Acquire( thor::Resources::ImageKey::FromFile("image.jpg") );
+thor::ResourcePtr<sf::Image> q = imageMgr.Acquire( thor::Resources::ImageKey::FromSize(300, 200) );
 
-    // Use shared smart pointers p and q to refer to the image instances
-    sf::Sprite sprite1(*p);
-    sf::Sprite sprite2(*p);
+// Use shared smart pointers p and q to refer to the image instances
+sf::Sprite sprite1(*p);
+sf::Sprite sprite2(*q);
+```

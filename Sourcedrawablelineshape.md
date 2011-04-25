@@ -1,3 +1,5 @@
+# Drawable Line Shape
+
 ## Class summary
 This is an SFML-based class that produces a fast-rendering shape drawn with display lists and GL_LNES.
 Inherits from sf::Drawable, but some of those functions don't work, specifically SetColor since it's overrided per line segment.

@@ -18,9 +18,9 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[CairoShape|Sourcecairoshape]] : A really basic class for generating graphics using Cairo.
 * [C++] [[Stroke|Sourcestroke]] : Complete class to draw cool looking strokes from an array of points.
 * [C++] [[VideoIntegration|Sourcevideo_integration]] : Object Oriented ffmpeg wrapper. Play videos the same way you use images.
-* [C++] [[Masking using Sprites, Shapes or Strings|Sourcemasking_using_alpha_and_blending]] : Masking using Sprites, Shapes or Strings, and the Alpha Channel (by TurboLento)
-* [C++] [[Drawing color gradient|SourcegradientColor]] : Draw and manage color gradient easily with this class
-* [C++] [[Particle System|Sourceparticle_system]] : Enjoy colorful pixel explosions in your own home today!
+* [C++] [[Masking using Sprites, Shapes or Strings|SourceMaskingAlphaBlending]] : Masking using Sprites, Shapes or Strings, and the Alpha Channel (by TurboLento)
+* [C++] [[Drawing color gradient|SourceGradientColor]] : Draw and manage color gradient easily with this class
+* [C++] [[Particle System|SourceParticleSystem]] : Enjoy colorful pixel explosions in your own home today!
 * [Ruby] [[Ruby Light Manager|SourceRubyLightManager]] : Add lighting to your 2D game (by Groogy)
 
 ## GUI

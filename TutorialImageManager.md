@@ -102,7 +102,7 @@ test_sprite.SetImage( img_mgr.get_image( "media/images/test.png" ) );
 ```
 Or you could do this in the get_image function to load images from "media/images" all the time:
 ```c++
-if( image.LoadFromFile( "media/images"/ + filename ) )
+if( image.LoadFromFile( "media/images/" + filename ) )
 ```
 But this is not the best way to do it. It would be nice, if the user was able to decide where the images should be loaded from. The user should define some "resource-directorys" where all the images should be placed.
 ```c++

@@ -193,7 +193,7 @@ const sf::Image& image_manager::get_image( const std::string& filename )
 	return images_[filename];
 }
 ```
-And that's it. Now for example it ise very easy to use an external script which defines the resource directories. It will be parsed when the application has started and it will be very easy to test a new tileset or a few new images by changing the directory in the script. 
+And that's it. Now for example it is very easy to use an external script which defines the resource directories. It will be parsed when the application has started and it will be very easy to test a new tileset or a few new images by changing the directory in the script. 
 
 ## Time for testing!
 To make sure our new image-manager works correctly, we will write a test-application which is supposed to load a few images.

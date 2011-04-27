@@ -22,6 +22,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Drawing color gradient|SourceGradientColor]] : Draw and manage color gradient easily with this class
 * [C++] [[Particle System|SourceParticleSystem]] : Enjoy colorful pixel explosions in your own home today!
 * [Ruby] [[Ruby Light Manager|SourceRubyLightManager]] : Add lighting to your 2D game (by Groogy)
+* [C++] [[Draw Rounded Rectangle|SourceDrawRoundedRectangle]] 
 
 ## GUI
 * [C++] [[FormatText|Sourceformattext]] : Format simply a sf::Text in width and height. (by Thiziri)

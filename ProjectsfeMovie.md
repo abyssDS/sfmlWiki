@@ -204,8 +204,7 @@ However you can view and download the latest sources from the [official Git repo
 
 ## <a name="formats" />Supported file formats [ [Top] ](#top)
 The supported file formats depend on the FFmpeg configuration
-flags used at compilation time.
-The FFmpeg library provided with sfeMovie has been built with the default flags and supports the following formats:
+flags used at compilation time. When building FFmpeg, you can choose which decoders you want sfeMovie to support. Building FFmpeg with the default configuration flags enables the following formats:
 ###Short list of audio formats###
 AAC, AC3, FLAC, MP3, PCM, Vorbis, WMA
 

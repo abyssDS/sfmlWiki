@@ -6,18 +6,18 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Basic Game Engine Source|SourceGQE-Engine]] (from tutorial [[Basic Game Engine|TutorialGQE-Engine]])
 
 ## Graphics
-* [C++] [[Loading images in a thread (and displaying progress)|Sourceloadimagesinthread.cpp]]
-* [C++] [[DrawableLineShape|Sourcedrawablelineshape]]: A drawable-derived fast-rendering class for shapes made of lines
+* [C++] [[Loading images in a thread (and displaying progress)|SourceLoadImagesInThread]]
+* [C++] [[DrawableLineShape|SourceDrawableLineShape]]: A drawable-derived fast-rendering class for shapes made of lines
 * [C++] [[Simple Collision Detection|SourceSimpleCollisionDetection]]: A Static Class implementing Circle, BoundingBox and PixelPerfect collision detection.
 * [C++] [[Frame, Anim, Animated|SourceFrameAnimAnimated]] : Classes that manage your animated sprites.
-* [C++] [[Animation|Sourceanimation]] : A animation class that inherits from sf::Sprite to allow easy integration of Animations into new or existing code.
-* [C++] [[SFMLWidget|Sourcegtksfmlwidget]] : A class to integrate SFML into a gtkmm interface
-* [C++] [[Filter|Sourcefilter]] : Class to manage color filters or brightness filters.
-* [C++] [[AniSprite|Sourceanisprite]] : A alternative animation class that extends sf::Sprite and has frame rate independence animation.
-* [python] [[ImageSheet|Sourcespritesheets]] : A class to handle sprite sheet and simple animations.
-* [C++] [[CairoShape|Sourcecairoshape]] : A really basic class for generating graphics using Cairo.
-* [C++] [[Stroke|Sourcestroke]] : Complete class to draw cool looking strokes from an array of points.
-* [C++] [[VideoIntegration|Sourcevideo_integration]] : Object Oriented ffmpeg wrapper. Play videos the same way you use images.
+* [C++] [[Animation|SourceAnimation]] : A animation class that inherits from sf::Sprite to allow easy integration of Animations into new or existing code.
+* [C++] [[SFMLWidget|SourceGtkSfmlWidget]] : A class to integrate SFML into a gtkmm interface
+* [C++] [[Filter|SourceFilter]] : Class to manage color filters or brightness filters.
+* [C++] [[AniSprite|SourceAniSprite]] : A alternative animation class that extends sf::Sprite and has frame rate independence animation.
+* [python] [[ImageSheet|SourceSpriteSheets]] : A class to handle sprite sheet and simple animations.
+* [C++] [[CairoShape|SourceCairoShape]] : A really basic class for generating graphics using Cairo.
+* [C++] [[Stroke|SourceStroke]] : Complete class to draw cool looking strokes from an array of points.
+* [C++] [[VideoIntegration|SourceVideoIntegration]] : Object Oriented ffmpeg wrapper. Play videos the same way you use images.
 * [C++] [[Masking using Sprites, Shapes or Strings|SourceMaskingAlphaBlending]] : Masking using Sprites, Shapes or Strings, and the Alpha Channel (by TurboLento)
 * [C++] [[Drawing color gradient|SourceGradientColor]] : Draw and manage color gradient easily with this class
 * [C++] [[Particle System|SourceParticleSystem]] : Enjoy colorful pixel explosions in your own home today!
@@ -25,19 +25,19 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Draw Rounded Rectangle|SourceDrawRoundedRectangle]] 
 
 ## GUI
-* [C++] [[FormatText|Sourceformattext]] : Format simply a sf::Text in width and height. (by Thiziri)
-* [C++] [[RichText|Sourcerichtext]] : Class to handle rich text. (by Panithadrum)
+* [C++] [[FormatText|SourceFormatText]] : Format simply a sf::Text in width and height. (by Thiziri)
+* [C++] [[RichText|SourceRichText]] : Class to handle rich text. (by Panithadrum)
 
 ## Miscellaneous
-* [C++] [[ResourceManager|Sourceresource_manager]](by Wavesonics) [[ResourceManager - with ImageManager sample|Sourceresource_manager_hiura]](by Hiura) [[ResourceManager|Sourceresource_manager_l0calh05t]](by l0calh05t)  : Generic class for managing resources
+* [C++] [[ResourceManager|SourceResourceManager]](by Wavesonics) [[ResourceManager - with ImageManager sample|SourceResourceManagerHiura]](by Hiura) [[ResourceManager|SourceResourceManagerL0calh05t]](by l0calh05t)  : Generic class for managing resources
 * [C++] [[Smart Resource Manager|SourceSmartResourceManager]] : Generic resource manager which keeps track of it's references. (by Groogy)
-* [Ruby] [[Resource Manager|Sourceruby_resource_manager]](by Groogy)  : Generic class for managing resources.
-* [Python] [[PausableClock|Sourcepy_pausable_clock]] : Class inheriting from sf.Clock allowing to pause the timer
-* [C++] [[PausableClock|Sourcepausableclock]] : Class using a sf::Clock to allow pausing and restarting the timer.
-* [C++] [[Signal System|Sourcesignal_system]](by Groogy)  : Set of classes replacing Events with Signals and allowing custom signals.
-* [C++] [[FPS|Sourcefps]] : A class that simplifies frame rate calculation.
+* [Ruby] [[Resource Manager|SourceRubyResourceManager]](by Groogy)  : Generic class for managing resources.
+* [Python] [[PausableClock|SourcePyPausableClock]] : Class inheriting from sf.Clock allowing to pause the timer
+* [C++] [[PausableClock|SourcePausableClock]] : Class using a sf::Clock to allow pausing and restarting the timer.
+* [C++] [[Signal System|SourceSignalSystem]](by Groogy)  : Set of classes replacing Events with Signals and allowing custom signals.
+* [C++] [[FPS|SourceFps]] : A class that simplifies frame rate calculation.
 * [C++] [[ZipLoader|SourceZipLoader]] : Class that loads files from zip archive.
-* [Ruby] [[MessageBox class|Sourcemessagebox]](by Groogy)  : A simple Utility class for debugging purposes.
+* [Ruby] [[MessageBox class|SourceMessageBox]](by Groogy)  : A simple Utility class for debugging purposes.
 
 ## Audio
 * [C++] [[Mp3 Player|SourceMp3Player]] : Class inspired sf:: Music for playing mp3 file using the library mpg123

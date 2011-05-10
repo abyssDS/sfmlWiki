@@ -13,9 +13,9 @@ title="Aperçu du film Sintel" alt="Aperçu du film Sintel"/></a> -->
 3. [System requirements](#requirements)
 4. [Dependencies](#dependencies)
 5. [Download links](#downloads)
-6. [Supported file formats](#formats)
-7. [Features status](#features)
-8. [Contact](#contact)
+6. [Building sfeMovie](#build)
+7. [Supported file formats](#formats)
+8. [Features status](#features)
 9. [Thanks](#thanks)
 
 
@@ -186,7 +186,7 @@ sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on 
 
 ###Mac OS X###
 - OS version: Mac OS X 10.5 and later
-- Architecture: Intel 32 bits and Intel 64 bits
+- Architecture: Intel 64 bits (or native architecture is you build sfeMovie by yourself)
 
 ###Windows###
 - OS version: Windows XP and later
@@ -198,9 +198,67 @@ sfeMovie relies on SFML 2.0, you can find the required SFML libraries in the ext
 There is no other specific dependency you have to care about.
 
 ## <a name="downloads" />Download links [ [Top] ](#top)
-There is no binary available for now.
 
-However you can view and download the latest sources from the [official Git repository](https://github.com/Yalir/sfeMovie). To build sfeMovie, make sure you have cmake, make and gcc installed (for Windows, make sure these are in the PATH environment variable). Then run build.sh from a command line interpreter (see [MSYS](http://www.mingw.org/wiki/msys) for Windows).
+<table>
+	<tr>
+		<th colspan=3>sfeMovie 1.0</th>
+	</tr>
+	<tr>
+		<th>Operating System</th>
+		<th>Binaries</th>
+		<th>Sources</th>
+	</tr>
+	
+	<tr>
+		<td>Linux</td>
+		<td>N/A</td>
+		<td rowspan=3>N/A</td>
+	</tr>
+	
+	<tr>
+		<td>Mac OS X</td>
+		<td>N/A</td>
+	</tr>
+	
+	<tr>
+		<td>Windows</td>
+		<td>N/A</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<th colspan=3>Latest sfeMovie files (from the Git repository)</th>
+	</tr>
+	<tr>
+		<th>Operating System</th>
+		<th>Binaries</th>
+		<th>Sources</th>
+	</tr>
+	
+	<tr>
+		<td>Linux</td>
+		<td>N/A</td>
+		<td rowspan=3><a href="https://github.com/Yalir/sfeMovie/zipball/master">zip archive</a></td>
+	</tr>
+	
+	<tr>
+		<td>Mac OS X</td>
+		<td>N/A</td>
+	</tr>
+	
+	<tr>
+		<td>Windows</td>
+		<td>N/A</td>
+	</tr>
+</table>
+ 
+
+## <a name="build" />Building sfeMovie [ [Top] ](#top)
+
+
+
+To build sfeMovie, make sure you have CMake, Make and GCC installed (for Windows, make sure these are in the PATH environment variable), and download the latest sources (see [download links](#downloads)). For now GCC is the only supported compiler. Then run build.sh from a command line interpreter (see [MSYS](http://www.mingw.org/wiki/msys) for Windows).
+
 
 ## <a name="formats" />Supported file formats [ [Top] ](#top)
 The supported file formats depend on the FFmpeg configuration

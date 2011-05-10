@@ -325,3 +325,5 @@ I (Lucas Soltic) would like to thank some people for their great help!
 - Martin Bohme for his FFmpeg tutorial (<http://dranger.com/ffmpeg/>)
 - Xorlium and timidouveg for their video integration works from which was partly inspired sfeMovie (see <http://www.sfml-dev.org/wiki/en/sources/video_integration> and <http://www.sfml-dev.org/wiki/fr/tutoriels/integrervideo>)
 - and all of the other people who helped me in any way :) 
+
+I you ever wished to contact me, you can [drop me a line through the SFML's private messaging system](#http://www.sfml-dev.org/forum/privmsg.php?mode=post&u=395) or post on the [sfeMovie's forum topic](http://www.sfml-dev.org/forum/viewtopic.php?t=3463).

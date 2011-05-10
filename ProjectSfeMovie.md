@@ -315,7 +315,6 @@ wmv1, wmv2, wmv3, wnv1, ws_snd1, xan_dpcm, xan_wc3, xl, xsub, yop, zlib, zmbv
 - movie playback looping
 - subtitles
 
-## <a name="contact" />Contact [ [Top] ](#top)
 ## <a name="thanks" />Thanks [ [Top] ](#top)
 I (Lucas Soltic) would like to thank some people for their great help!
 

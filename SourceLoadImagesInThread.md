@@ -1,3 +1,5 @@
+# Loading images in a thread (and displaying progress)
+
 ```cpp
 
     #include <SFML/System.hpp>

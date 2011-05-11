@@ -193,7 +193,7 @@ sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on 
 - Architecture: Intel 32 bits
 
 ## <a name="dependencies" />Dependencies [ [Top] ](#top)
-sfeMovie relies on SFML 2.0, you can find the required SFML libraries in the extlib directory. These were built with the sources of the official Git repository on $date$.
+sfeMovie relies on SFML 2.0, you can find the required SFML libraries in the extlib directory. These were built with the sources of the official Git repository on 2011-05-11.
 
 There is no other specific dependency you have to care about.
 

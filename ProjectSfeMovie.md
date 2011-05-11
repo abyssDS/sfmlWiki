@@ -186,7 +186,7 @@ sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on 
 
 ###Mac OS X###
 - OS version: Mac OS X 10.5 and later
-- Architecture: Intel 64 bits (or native architecture is you build sfeMovie by yourself)
+- Architecture: Intel 64 bits (or native architecture if you build sfeMovie by yourself)
 
 ###Windows###
 - OS version: Windows XP and later

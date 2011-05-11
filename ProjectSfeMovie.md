@@ -257,7 +257,7 @@ There is no other specific dependency you have to care about.
 
 
 
-To build sfeMovie, make sure you have CMake, Make and GCC installed (for Windows, make sure these are in the PATH environment variable), and download the latest sources (see [download links](#downloads)). For now GCC is the only supported compiler. Then run build.sh from a command line interpreter (see [MSYS](http://www.mingw.org/wiki/msys) for Windows).
+To build sfeMovie, make sure you have CMake, Make and GCC installed (for Windows, make sure these are in the PATH environment variable), and download the latest sources (see [download links](#downloads)). For now GCC is the only supported compiler. Then run build.sh from a command line interpreter (see [MinGW](http://sourceforge.net/projects/mingw/files/Automated%20MinGW%20Installer/mingw-get-inst/) for Windows).
 
 
 ## <a name="formats" />Supported file formats [ [Top] ](#top)

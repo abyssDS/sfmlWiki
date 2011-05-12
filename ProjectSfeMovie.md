@@ -83,9 +83,11 @@ application/library. This is the main restriction.
 For more information on LGPL, have a look at <http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html>.
 
 ###Legal notes###
-As you may know, patents on video codecs is a complex issue. FFmpeg is distributed under LGPL and does not provide any binary version of the library. This is to avoid legal issue : decoders' source code can be freely distributed, but not binaries (though it still depends on whether the patent holder is strict, because it is not an end-software product). Moreover patents do not apply in some countries. That's why [VideoLAN doesn't pay any fee to distribute VLC](http://www.videolan.org/legal.html). But as I'm not a specialist and I don't know the details about laws, I won't provide sfeMovie binaries, and not even a binary version of FFmpeg. A script is provided so that all this compilation process can be performed flawlessly. You're also given the ability to choose which decoders you want to enable in the final sfeMovie binary.
+As you may know, patents on video codecs is a complex issue. FFmpeg is distributed under LGPL and does not provide any binary version of the library. This is to avoid legal issue : decoders' source code can be freely distributed, but not binaries (though it still depends on whether the patent holder is strict, because FFmpeg is not an end-software product). Moreover patents do not apply in some countries. That's why [VideoLAN doesn't pay any fee to distribute VLC](http://www.videolan.org/legal.html). But as I'm not a specialist and I don't know the details about laws, the binaries I'm providing only support the free decoders : flac, vorbis, theora. If you want support for more decoders, you'll have to build sfeMovie yourself. A script is provided so that the whole compilation process can be performed flawlessly. Note that you're given the ability to exactly choose which decoders you want to enable in the final sfeMovie binary.
 
-Considering this, you're responsible for checking the possible fees and licenses you may need, depending on your country and your needs. Here is a little (non official) sum up of the different fees for the main decoders. The information I'm showing here is the one I got from the different patents holders.
+You don't have to worry about licenses and royalties if you're a lonely developer working on a private project. But if you plan to distribute your product to "a lot" of people, or as a commercial purpose, you should be careful.
+
+Considering this, you're responsible for checking the possible fees and licenses you may need, depending on your country, needs and situation. Here is a little (non official) sum up of the different fees for the main decoders. The information I'm showing here is the one I got from the different patents holders.
 
 <table>
   <tr>
@@ -186,7 +188,7 @@ sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on 
 
 ###Mac OS X###
 - OS version: Mac OS X 10.5 and later
-- Architecture: Intel 64 bits (or native architecture if you build sfeMovie by yourself)
+- Architecture: Intel 32 bits
 
 ###Windows###
 - OS version: Windows XP and later
@@ -199,9 +201,10 @@ There is no other specific dependency you have to care about.
 
 ## <a name="downloads" />Download links [ [Top] ](#top)
 
+<b>Important note:</b> the given binaries only provide support for the free decoders (flac, vorbis and theora). If you want to use other decoders, please read the [License section](#license) (and especially the legal notes), and consider [building sfeMovie yourself](#build).
 <table>
 	<tr>
-		<th colspan=3>sfeMovie 1.0</th>
+		<th colspan=3>sfeMovie beta_20110512</th>
 	</tr>
 	<tr>
 		<th>Operating System</th>
@@ -212,17 +215,17 @@ There is no other specific dependency you have to care about.
 	<tr>
 		<td>Linux</td>
 		<td>N/A</td>
-		<td rowspan=3>N/A</td>
+		<td rowspan=3><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-src-beta_20110512.zip">sfeMovie-src-beta_20110512.zip</a></td>
 	</tr>
 	
 	<tr>
 		<td>Mac OS X</td>
-		<td>N/A</td>
+		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-macosx-beta_20110512.zip">sfeMovie-macosx-beta_20110512.zip</a></td>
 	</tr>
 	
 	<tr>
 		<td>Windows</td>
-		<td>N/A</td>
+		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-windows-beta_20110512.zip">sfeMovie-windows-beta_20110512.zip</a></td>
 	</tr>
 </table>
 <table>
@@ -231,24 +234,20 @@ There is no other specific dependency you have to care about.
 	</tr>
 	<tr>
 		<th>Operating System</th>
-		<th>Binaries</th>
 		<th>Sources</th>
 	</tr>
 	
 	<tr>
 		<td>Linux</td>
-		<td>N/A</td>
 		<td rowspan=3><a href="https://github.com/Yalir/sfeMovie/zipball/master">zip archive</a></td>
 	</tr>
 	
 	<tr>
 		<td>Mac OS X</td>
-		<td>N/A</td>
 	</tr>
 	
 	<tr>
 		<td>Windows</td>
-		<td>N/A</td>
 	</tr>
 </table>
  
@@ -257,12 +256,12 @@ There is no other specific dependency you have to care about.
 
 
 
-To build sfeMovie, make sure you have CMake, Make and GCC installed (for Windows, make sure these are in the PATH environment variable), and download the latest sources (see [download links](#downloads)). For now GCC is the only supported compiler. Then run build.sh from a command line interpreter (see [MinGW](http://sourceforge.net/projects/mingw/files/Automated%20MinGW%20Installer/mingw-get-inst/) for Windows).
+To build sfeMovie, make sure you have CMake, Make and GCC installed (for Windows, make sure these are in the PATH environment variable), and download the latest sources (see [download links](#downloads)). GCC is the only supported compiler. Then run build.sh from a command line interpreter (see [MinGW](http://sourceforge.net/projects/mingw/files/Automated%20MinGW%20Installer/mingw-get-inst/) for Windows).
 
 
 ## <a name="formats" />Supported file formats [ [Top] ](#top)
 The supported file formats depend on the FFmpeg configuration
-flags used at compilation time. When building FFmpeg, you can choose which decoders you want sfeMovie to support. Building FFmpeg with the default configuration flags enables the following formats:
+flags used at compilation time. When building FFmpeg, you can choose which decoders you want sfeMovie to support. Note that the provided sfeMovie binaries only support the free decoders : flac, vorbis and theora. Building FFmpeg with the default configuration flags enables the following formats:
 ###Short list of audio formats###
 AAC, AC3, FLAC, MP3, PCM, Vorbis, WMA
 
@@ -325,4 +324,4 @@ I (Lucas Soltic) would like to thank some people for their great help!
 - Xorlium and timidouveg for their video integration works from which was partly inspired sfeMovie (see <http://www.sfml-dev.org/wiki/en/sources/video_integration> and <http://www.sfml-dev.org/wiki/fr/tutoriels/integrervideo>)
 - and all of the other people who helped me in any way :) 
 
-I you ever wished to contact me, you can [drop me a line through the SFML's private messaging system](#http://www.sfml-dev.org/forum/privmsg.php?mode=post&u=395) or post on the [sfeMovie's forum topic](http://www.sfml-dev.org/forum/viewtopic.php?t=3463).
+If you ever wished to contact me, you can [drop me a line through the SFML's private messaging system](http://www.sfml-dev.org/forum/privmsg.php?mode=post&u=395) or post on the [sfeMovie's forum topic](http://www.sfml-dev.org/forum/viewtopic.php?t=3463).

@@ -201,7 +201,7 @@ There is no other specific dependency you have to care about.
 
 ## <a name="downloads" />Download links [ [Top] ](#top)
 
-<b>Important note:</b> the given binaries only provide support for the free decoders (flac, vorbis and theora). If you want to use other decoders, please read the [License section](#license) (and especially the legal notes), and consider [building sfeMovie yourself](#build).
+<b>Important note:</b> the provided binaries only support the free decoders (flac, vorbis and theora). If you want to use other decoders, please read the [License section](#license) (and especially the legal notes), and consider [building sfeMovie yourself](#build).
 <table>
 	<tr>
 		<th colspan=3>sfeMovie beta_20110512</th>

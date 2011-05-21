@@ -1,4 +1,3 @@
-
 # Frequently asked questions (FAQ)
 
 - **[Main](#main_)**
@@ -19,10 +18,10 @@
   - [What audio formats does SFML support?](#audio_formats)
   - [What image formats does SFML support?](#image_formats)
   - [Does SFML support Unicode?](#unicode)
-  - [I'm having trouble using SFML](#trouble)
+  - [I'm having trouble using SFML.](#trouble)
 - [**Troubleshooting**](#troubleshooting)
   - [(CodeBlocks / Windows) I've recompiled the static version of SFML and I'm getting linker errors.](#cb_win_static)
-  - [(CodeBlocks) I'm getting linker errors](#cb_linker)
+  - [(CodeBlocks) I'm getting linker errors.](#cb_linker)
   - [(Windows) Why does a console attach itself to my project?](#win_console)
   - [My sprite isn't displayed but a white square!](#sprite_white)
   - [(Windows / Visual Studio) My project crashes randomly, but I don't get any compiler or linker errors.](#win_vs_crash)
@@ -32,15 +31,15 @@
 
 ## <a name="main_"/>Main
 
-### <a name="whatis"/>What is SFML ?
+### <a name="whatis"/>What is SFML?
 
-SFML is a simple to use and portable API, written in C++. You can think of it as an object oriented SDL. SFML is made of modules in order to be as usefull as possible for everyone. You can use SFML as a minimalist window system in order to use OpenGL, or as a complete multimedia library full of features to build video games or multimedia softwares.
+SFML is a simple to use and portable API, written in C++. You can think of it as an object oriented SDL. SFML is made of modules in order to be as useful as possible for everyone. You can use SFML as a minimalist window system in order to use OpenGL, or as a complete multimedia library full of features to build video games or multimedia softwares.
 
 You can find a more specific presentation of its features on [this page](http://www.sfml-dev.org/features.php).
 
 ### <a name="platforms"/>On which platforms is SFML currently available?
 
-SFML is currently available and fully functional in Windows (Vista, XP, 2000, 98) as well as Linux. A port of the current version to MacOS is in progress. SFML works both on 32 and 64 bit systems.
+SFML is currently available and fully functional in Windows (Vista, XP, 2000, 98) as well as Linux. A port of the current version to MacOS is in progress. SFML works on both 32 and 64 bit systems.
 
 ### <a name="languages"/>In which languages in SFML available?
 
@@ -65,7 +64,7 @@ Post any questions in the [SFML forum](http://www.sfml-dev.org/forum/).
 
 Post in the forum of the package in question, and don't forget to provide a precise description of your problem, the version of SFML you're using, your system configuration, and compilable code, if necessary, or the logs of your compiler or linker.
 
-### <a name="minimal"/>What is a minimal code ?
+### <a name="minimal"/>What is a minimal code?
 
 A minimal code is a source which everyone can easily compile after a simple copy-paste in a single file (no extra .h, .hpp or .cpp) and which is made only of source code showing the bug.
 
@@ -74,7 +73,7 @@ A minimal code is a source which everyone can easily compile after a simple copy
 Easy :
 
 * Create a new main with all the code
-* Delete each line, line by line, and compile to see if the bug is always present or not (By the way, this can help you to found the bug !)
+* Delete each line, line by line, and compile to see if the bug is always present or not (By the way, this can help you to find the bug!)
 
 ### <a name="feature_request"/>I want to propose a new feature!
 
@@ -106,7 +105,7 @@ Image loading is handled by an external library, SOIL. It support most modern im
 
 SFML supports the input and display of international characters, via the UTF-16 encoding. Input is provided via sf::Event::TextEntered, and display via sf::String.
 
-### <a name="trouble"/>I'm having trouble using SFML
+### <a name="trouble"/>I'm having trouble using SFML.
 
 First, make sure that you have followed the installation instructions in the official tutorials.
 
@@ -117,7 +116,7 @@ Have you:
 * Included the headers for the packages you're using? (“SFML/[capitalized name of module].hpp”)
 * Linked with the packages you're using? (See the dependencies section of this document)
 * On Windows, have you copied the libsndfile-1.dll and openal32.dll files (you can find them in the complete SDK) into the folder for executable, along with the DLLs for the packages you're using (and all of their dependencies)?
-* On Linux, have your installed the libraryes (sudo make install in the SFML folder)?
+* On Linux, have you installed the libraries (sudo make install in the SFML folder)?
 
 If you've checked all of those, and SFML still refuses to work, see “I found a bug!”
 
@@ -148,9 +147,9 @@ Here are the commands to together the external dependencies:
     ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s-d.a && rm *.o && echo 'done'
     ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s.a && rm *.o && echo 'done'
 
-### <a name="cb_linker"/>[CodeBlocks] I'm getting linker errors
+### <a name="cb_linker"/>[CodeBlocks] I'm getting linker errors.
 
-With MinGW, you must link the libraries in a precise order: if libX depends on libY, libX MUST be linked before libY. For example, si you use the Graphics and Audio modules, the correct linking order would be the following: sfml-audio, sfml-graphics, sfml-window, sfml-system.
+With MinGW, you must link the libraries in a precise order: if libX depends on libY, libX MUST be linked before libY. For example, if you use the Graphics and Audio modules, the correct linking order would be the following: sfml-audio, sfml-graphics, sfml-window, sfml-system.
 
 If you use the dynamic versions of the SFML libraries, you must also define the SFML_DYNAMIC symbol in the options for your project. For more details, see the installation tutorial for Code::Blocks.
 
@@ -165,9 +164,9 @@ To maintain a portable entry point (main), you link your program with the sfml-m
 
 ### <a name="sprite_white"/>My sprite isn't displayed but a white square!
 
-This is due to a premature destruction of the sf::Image. Indeed a sf::Sprite only point to an external sf::Image. You have to keep yourself the sf::Image “alive” as long as the sprite use it.
+This is due to a premature destruction of the sf::Image. Indeed a sf::Sprite only points to an external sf::Image. You have to keep the sf::Image “alive” as long as the sprite uses it.
 
-When your image is move from one memory place to another you have to update your sprite ( via SetImage function ) .
+When your image is moved from one memory place to another you have to update your sprite ( via SetImage function ) .
 
 ### <a name="win_vs_crash"/>[Windows / Visual Studio] My project crashes randomly, but I don't get any compiler or linker errors.
 

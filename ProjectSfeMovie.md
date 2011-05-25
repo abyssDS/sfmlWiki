@@ -63,6 +63,7 @@ I'm not going to explain how to use a library, most of it is like for any other 
 
 - Make sure you correctly set the headers and libraries search path to find both sfeMovie's and SFML's headers and libraries
 - Link your product against sfeMovie (libsfe-movie) and SFML 2.0
+- Release your software with the required libraries : sfe-movie, sfml-system, sfml-window, sfml-graphics, sfml-audio.
 
 ###Mac OS X specific###
 
@@ -83,7 +84,7 @@ application/library. This is the main restriction.
 For more information on LGPL, have a look at <http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html>.
 
 ###Legal notes###
-As you may know, patents on video codecs is a complex issue. FFmpeg is distributed under LGPL and does not provide any binary version of the library. This is to avoid legal issue : decoders' source code can be freely distributed, but not binaries (though it still depends on whether the patent holder is strict, because FFmpeg is not an end-software product). Moreover patents do not apply in some countries. That's why [VideoLAN doesn't pay any fee to distribute VLC](http://www.videolan.org/legal.html). But as I'm not a specialist and I don't know the details about laws, the binaries I'm providing only support the free decoders : flac, vorbis, theora. If you want support for more decoders, you'll have to build sfeMovie yourself. A script is provided so that the whole compilation process can be performed flawlessly. Note that you're given the ability to exactly choose which decoders you want to enable in the final sfeMovie binary.
+As you may know, patents on video codecs is a complex issue. FFmpeg is distributed under LGPL and does not provide any binary version of the library. This is to avoid legal issues : decoders' source code can be freely distributed, but not binaries (though it still depends on whether the patent holder is strict, because FFmpeg is not an end-software product). Moreover patents do not apply in some countries. That's why [VideoLAN doesn't pay any fee to distribute VLC](http://www.videolan.org/legal.html). But as I'm not a specialist and I don't know the details about laws, the binaries I'm providing only support the free decoders : flac, vorbis, theora. If you want support for more decoders, you'll have to build sfeMovie yourself. A script is provided so that the whole compilation process can be performed flawlessly. Note that you're given the ability to exactly choose which decoders you want to enable in the final sfeMovie binary.
 
 You don't have to worry about licenses and royalties if you're a lonely developer working on a private project. But if you plan to distribute your product to "a lot" of people, or as a commercial purpose, you should be careful.
 

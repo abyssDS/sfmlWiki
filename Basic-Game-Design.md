@@ -1,4 +1,5 @@
-# <a name="top" />Basic Game Design
+# Basic Game Design
+<a name="top" />
 So you have a new game idea and want to see it come to life but are not sure where to start.  This tutorial is intended to guide you through the process of turning your new game idea into a basic game design and get you well on the path of bringing your game to life.  If while reading this tutorial you find things that are completely wrong or could be improved, please don't hesitate to fix the tutorial.  This tutorial is based on years of designing my own games for fun and reviewing the code base of the PopCap engine and the PlayFirst engine and other tutorial online.  If your experience is from working at a real game company, please share your insights to the rest of us.  That being said, lets begin by discussing Game Ideas.
 
 ###Quick Links###

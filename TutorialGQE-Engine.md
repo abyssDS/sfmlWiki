@@ -15,7 +15,7 @@ At the core of every good game is a game engine. But as a beginner, building you
 
 ## <a name="namespaces" />Namespaces [ [Top] ](#top)
 
-Most Game Engines begin with basic building blocks that are borrowed, stolen (hopefully not!), or written by other people. SFML is an example of a building block that provides basic Graphics, Sound, Network, System, and Image support. All of the classes in SFML are wrapped in a container known as a Namespace called SFML. This is why every class, enumeration, constant, and variable is prefaced with SFML::. For us, we will wrap our game engine in the Namespace of GQE (which stands for GatorQue Engine, after my nick GatorQue). Feel free to use a different Namespace for your project, but keep it simple and short if you do, it saves typing. To wrap a class inside of a namespace you simply do the following for the .hpp file.
+Most Game Engines begin with basic building blocks that are borrowed, stolen (hopefully not!), or written by other people. SFML is an example of a building block that provides basic Graphics, Sound, Network, System, and Image support. All of the classes in SFML are wrapped in a container known as a Namespace called `sf`. This is why every class, enumeration, constant, and variable is prefaced with `sf::`. For us, we will wrap our game engine in the Namespace of GQE (which stands for GatorQue Engine, after my nick GatorQue). Feel free to use a different Namespace for your project, but keep it simple and short if you do, it saves typing. To wrap a class inside of a namespace you simply do the following for the .hpp file.
 ```cpp
 namespace MyStuff
 {
@@ -41,7 +41,7 @@ namespace MyStuff
 };
 ```
 
-Another great feature about Namespaces is that they prevent two identically named classes from interfering with each other. For example, in SFML there is a class called Clock. But you may decide to create your own Clock class that is completely different from the SFML::Clock class. If you use a Namespace around your Clock class then you can help the compiler determine which clock class you really want by prefacing the Clock class declaration with a namespace as shown below:
+Another great feature about Namespaces is that they prevent two identically named classes from interfering with each other. For example, in SFML there is a class called Clock. But you may decide to create your own Clock class that is completely different from the `sf::Clock` class. If you use a Namespace around your Clock class then you can help the compiler determine which clock class you really want by prefacing the Clock class declaration with a namespace as shown below:
 ```cpp
 class MyClass {
   public:
@@ -49,7 +49,7 @@ class MyClass {
     virtual ~MyClass();
  
     // Variables
-    SFML::Clock mClock1;
+    sf::Clock mClock1;
     MyStuff::Clock mClock2;
 };
 
@@ -58,13 +58,13 @@ Notice how we can create variables of *both* clock classes by using their Namesp
 ```cpp
 using namespace MyStuff;
 // OR
-using namespace SFML;
+using namespace sf;
 ```
 
 The problem with this approach is that it will make ALL classes in that Namespace visible without their Namespace tag. So if you have a local class with the same name, the compiler will get confused. I prefer to only select the classes that I want by doing the following:
 ```cpp
 using MyStuff::MyClass;
-using SFML::Clock;
+using sf::Clock;
 ```
 
 This way, you can select specific classes you will use in the current file without bringing in the potentially conflicting classes. Now that you understand Namespaces, the next topic is how do you deal with sheer number of files you will need for a large project like a Game Project. Easy, use Forward Declarations and pointers.

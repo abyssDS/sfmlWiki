@@ -1,4 +1,5 @@
 # Creating a Basic Game Engine
+<a name="top" />
 At the core of every good game is a game engine. But as a beginner, building your first game engine can be pretty daunting. There are lots of things to consider when designing a solid game engine. Managing all the graphics, sounds, music, and game objects takes a lot of effort and is not as fun as designing what the game will actually do. Most people interested in game programming start with a game idea and don't know where to start in bringing their game idea into reality. And quite frankly, many of these game ideas suck. Many are just minor variations of existing games that people have already played. But this should not stop people from trying to create games, because with every half finished game comes experience and sometimes you discover that the joy of game programming comes in the process of seeing your game (good or bad) come to life at your hands. For me, that is what I seek, the *journey* of seeing my game creations come to life. For this purpose, I have decided to create a basic game engine that I can use for future game ideas, so I can more easily get to the fun part of game creation: the Game Mechanics. But before I share with you the features of my basic game engine, I want to share with you a few hard lessons I have learned over the years starting with an explanation of Namespaces.
 
 ###Quick Links###
@@ -119,7 +120,7 @@ Now what happens is the compiler will see that GameObject or Level are both Clas
 If you answer yes to these questions, you should consider using Forward Declaration. This is also the reason why you should try to put all of your code in the CPP class and only the class declaration in the HPP file. Now that we have discussed the basics of Forward Declarations lets get to discussing the Basic Game engine I have created and the underlying features.
 
 ## <a name="mainfunc" />Main function [ [Top] ](#top)
-For me, I try to keep my main.cpp files simple and straightforward. This is done by creating a single class that represents the Game Application and instantiating this class in my main function (see the full [[main.cpp|SourceGQE-Engine#1]] in [[Basic Game Engine Source|SourceGQE-Engine]]) as shown below:
+For me, I try to keep my main.cpp files simple and straightforward. This is done by creating a single class that represents the Game Application and instantiating this class in my main function (see the [[GQE Project|http://code.google.com/p/gqe/]] for full source) as shown below:
 
 ```cpp
 /**
@@ -130,17 +131,21 @@ For me, I try to keep my main.cpp files simple and straightforward. This is done
  * @file main.cpp
  * @author Ryan Lindeman
  * @date 20100707 - Initial Release
+ * @date 20110611 - Added new logging capabilities using macros and c++ classes.
  */
- 
+
 #include <assert.h>
 #include <stddef.h>
-#include "GQE/GQE.hpp"
- 
+#include <GQE/Core.hpp>
+
 int main(int argc, char* argv[])
 {
   // Default anExitCode to a specific value
   int anExitCode = GQE::StatusNoError;
  
+  // Create our Logger first before creating our application
+  GQE::gLogger = new(std::nothrow) GQE::FileLogger("output.txt");
+
   // Create our action application.
   GQE::App* anApp = new(std::nothrow) GQE::App();
   assert(NULL != anApp && "main() Can't create Application");
@@ -161,6 +166,12 @@ int main(int argc, char* argv[])
   // Don't keep pointers to objects we have just deleted
   anApp = NULL;
  
+  // Delete our Logger last before exiting
+  delete GQE::gLogger;
+
+  // Don't keep pointers to objects we have just deleted
+  GQE::gLogger = NULL;
+
   // return our exit code
   return anExitCode;
 }
@@ -169,13 +180,11 @@ int main(int argc, char* argv[])
 Because the main function above is so generic, you should have no trouble copying this exact file for every game you write.  And every file we can copy verbatim is one less file we have to modify when moving on to the next great game project (oh that I could finish every game I start...).  If you decide that the generic App class (shown soon below) is not cutting it, then the only line in your main function that needs to change is the *GQE::App\* anApp = new(std::nothrow) GQE::App();* line shown above.  Lets look under the hood of the App class and see what makes it tick.
 
 ## <a name="gameapp" />Game Application [ [Top] ](#top)
-In order for our basic game engine to work for any game we write, we need to determine the most generic game application algorithm to put into our Game Application class App. To do this, I took examples of other open source game engines, game engine tutorials, and personal games I have written to find the most common algorithm that works for each of them. The Game Application algorithm is outlined as follows from the App.cpp file (see the full [[App.cpp|SourceGQE-Engine#3]] in [[Basic Game Engine Source|SourceGQE-Engine]]):
+In order for our basic game engine to work for any game we write, we need to determine the most generic game application algorithm to put into our Game Application class App. To do this, I took examples of other open source game engines, game engine tutorials, and personal games I have written to find the most common algorithm that works for each of them. The Game Application algorithm is outlined as follows from the App.cpp file (see the [[GQE Project|http://code.google.com/p/gqe/]] for full source):
 ```cpp
-
-int App::Run(void)
+  int App::Run(void)
   {
-    // Log the starting of Run
-    mLog << "App::Run() starting" << std::endl;
+    SLOG(App_Run,SeverityInfo) << std::endl;
  
     // First set our Running flag to true
     mRunning = true;
@@ -183,6 +192,9 @@ int App::Run(void)
     // Register our App pointer with our AssetManager
     mAssetManager.RegisterApp(this);
  
+    // Register our App pointer with our StatManager
+    mStatManager.RegisterApp(this);
+
     // Register our App pointer with our StateManager
     mStateManager.RegisterApp(this);
  
@@ -203,10 +215,12 @@ int App::Run(void)
     // Make sure our Running flag is set to false before exiting
     mRunning = false;
  
-    // Log our Exit Code value
-    mLog << "App::Run() returning with " << mExitCode << std::endl;
- 
-    // Return the Exit Code specified by Quit or 0 of Quit was never called
+    if(mExitCode < 0)
+      SLOGR(App_Run,SeverityError) << "exitCode=" << mExitCode << std::endl;
+    else
+      SLOGR(App_Run,SeverityInfo) << "exitCode=" << mExitCode << std::endl;
+
+     // Return the Exit Code specified by Quit or 0 of Quit was never called
     return mExitCode;
   }
 ```
@@ -230,10 +244,12 @@ Most Game Engine tutorials give you the following Game Loop algorithm:
 3. Erase the screen and draw each game object
 4. Repeat until the game end signal is set (usually set during processing of Input devices)
 
-There is only one problem with this Game Loop algorithm: It ties your processing of Game Logic to the speed in which the computer can display graphics to the screen. If you run your game on a computer with a slow graphics card, the game logic will run at a slower speed then if you run your game on a computer with a faster graphics card. To prevent this from happening I scoured the internet for the solution to this problem (see [entropyinteractive.com](http://entropyinteractive.com/2011/02/game-engine-design-the-game-loop/)) and came up with the following Game Loop implementation (see the full [[App.cpp|SourceGQE-Engine#3]] in [[Basic Game Engine Source|SourceGQE-Engine]]):
+There is only one problem with this Game Loop algorithm: It ties your processing of Game Logic to the speed in which the computer can display graphics to the screen. If you run your game on a computer with a slow graphics card, the game logic will run at a slower speed then if you run your game on a computer with a faster graphics card. To prevent this from happening I scoured the internet for the solution to this problem (see [entropyinteractive.com](http://entropyinteractive.com/2011/02/game-engine-design-the-game-loop/)) and came up with the following Game Loop implementation (see the [[GQE Project|http://code.google.com/p/gqe/]] for full source):
 ```cpp
   void App::Loop(void)
   {
+    SLOG(App_Loop, SeverityInfo) << std::endl;
+
     // Clock used in restricting Update loop to a fixed rate
     sf::Clock anUpdateClock;
     anUpdateClock.Reset();
@@ -262,7 +278,11 @@ There is only one problem with this Game Loop algorithm: It ties your processing
       {
         // Handle some events and let the current active state handle the rest
         sf::Event anEvent;
+#if (SFML_VERSION_MAJOR < 2)
         while(mWindow.GetEvent(anEvent))
+#else
+        while(mWindow.PollEvent(anEvent))
+#endif
         {
           // Switch on Event Type
           switch(anEvent.Type)
@@ -286,6 +306,9 @@ There is only one problem with this Game Loop algorithm: It ties your processing
         // Let the current active state perform updates next
         anState->Update();
  
+        // Let the StatManager perfom its updates
+        mStatManager.Update();
+
         // Update our update next time
         anUpdateNext += mUpdateRate;
       } // while(anUpdateClock.GetElapsedTime() > anUpdateNext)
@@ -293,11 +316,14 @@ There is only one problem with this Game Loop algorithm: It ties your processing
       // Let the current active state draw stuff
       anState->Draw();
  
-      // Handle Cleanup of this state as needed
-      anState->HandleCleanup();
- 
+      // Let the StatManager perform its drawing
+      mStatManager.Draw();
+
       // Display Render window to the screen
       mWindow.Display();
+
+      // Handle Cleanup of any recently removed states at this point as needed
+      mStateManager.HandleCleanup(); 
     } // while(IsRunning() && !mStates.empty())
   }
 ```
@@ -329,12 +355,17 @@ Many modern games, especially the casual gamer variety found on many websites, a
 5. Present the mode of game play to the gamer until the gamer either quits the game or ends up with Game Over
 6. Repeat either the last 2 or 3 steps until the gamer exits the Game Application
 
-If you agree with this general outline you can see that many games perform the following linear timeline: Splash→Load→Menu→Game→Load Level→Game→Load Level→Game→Menu→Exit As a gamer you expect to be able to return to the previous timeline if your current point in the timeline suddenly quits. This means if you reach a Game Over situation, you will be returned to the Main Menu. Each of these points in the timeline can be called a game State. A game State is just a fancy term for a specific point in your overall game flow. If you have had some advanced classes at a College for Computer Science or have read several Game Tutorials you know that I am talking about Finite State Machines or FSM's (if you have never heard of this term, please go a read a tutorial about it now, its very useful). Finite State Machines are a way of expressing the flow from one game State to another game State in a succinct graphical representation. Basically, its just a diagram of circles with lines that connect the circles. Above or below each line is written the criteria necessary to transition from one circle, or game State, to another circle. For example, our first circle would be labeled Splash and represents the Splash screen displayed to the gamer when the first program starts. A second circle could be added called the Loading which represents the Loading Please Wait screen mentioned earlier. A line between these circles might be „wait 3 seconds” meaning that after showing the Splash screen for 3 seconds transition to the Loading Please Wait screen. A third circle representing the Main Menu might also be added with a line connecting the Main Menu to the Loading Please Wait circle that has the label „wait until last sound and image is loaded” next to it. At this point our circles and lines are pretty linear. But now we have many choices to choose from and many lines will leave the Main Menu circle and go to other circles. Some of these circles will be the Options screen, the Single Player campaign, the Multi-Player campaign, or the Death Match mode or whatever else our game flow dictates. But since we desire to have a Basic Game Engine cover all of these possibilities we need some easy way to manage these transitions. We could create a custom Game Loop for each of these different game States, but why copy code when you can just abstract away the parts that change. So that is what the abstract class called IState (see the full [[App.cpp|SourceGQE-Engine#8]] in [[Basic Game Engine Source|SourceGQE-Engine]]) does:
+If you agree with this general outline you can see that many games perform the following linear timeline: Splash→Load→Menu→Game→Load Level→Game→Load Level→Game→Menu→Exit As a gamer you expect to be able to return to the previous timeline if your current point in the timeline suddenly quits. This means if you reach a Game Over situation, you will be returned to the Main Menu. Each of these points in the timeline can be called a game State. A game State is just a fancy term for a specific point in your overall game flow. If you have had some advanced classes at a College for Computer Science or have read several Game Tutorials you know that I am talking about Finite State Machines or FSM's (if you have never heard of this term, please go a read a tutorial about it now, its very useful). Finite State Machines are a way of expressing the flow from one game State to another game State in a succinct graphical representation. Basically, its just a diagram of circles with lines that connect the circles. Above or below each line is written the criteria necessary to transition from one circle, or game State, to another circle. For example, our first circle would be labeled Splash and represents the Splash screen displayed to the gamer when the first program starts. A second circle could be added called the Loading which represents the Loading Please Wait screen mentioned earlier. A line between these circles might be „wait 3 seconds” meaning that after showing the Splash screen for 3 seconds transition to the Loading Please Wait screen. A third circle representing the Main Menu might also be added with a line connecting the Main Menu to the Loading Please Wait circle that has the label „wait until last sound and image is loaded” next to it. At this point our circles and lines are pretty linear. But now we have many choices to choose from and many lines will leave the Main Menu circle and go to other circles. Some of these circles will be the Options screen, the Single Player campaign, the Multi-Player campaign, or the Death Match mode or whatever else our game flow dictates. But since we desire to have a Basic Game Engine cover all of these possibilities we need some easy way to manage these transitions. We could create a custom Game Loop for each of these different game States, but why copy code when you can just abstract away the parts that change. So that is what the abstract class called IState (see the [[GQE Project|http://code.google.com/p/gqe/]] for full source) does:
 ```cpp
-    /**
-     * DoInit is responsible for initializing this State
+   /**
+     * DoInit is responsible for initializing this State.  HandleCleanup will
+     * be called if mCleanup is true so Derived classes should always call
+     * IState::DoInit() first before initializing their assets.
      */
-    virtual void DoInit() = 0;
+    virtual void DoInit(void)
+    {
+      ...
+    }
  
     /**
      * ReInit is responsible for Reseting this state when the 
@@ -342,10 +373,37 @@ If you agree with this general outline you can see that many games perform the f
      * State can be restarted without unloading and reloading the game assets
      */
     virtual void ReInit(void) = 0;
- 
+
+    /**
+     * DeInit is responsible for marking this state to be cleaned up
+     */
+    void DeInit(void)
+    {
+      ...
+    }
+
+    /**
+     * Pause is responsible for pausing this State since the Application
+     * may have lost focus or another State has become activate.
+     */
+    virtual void Pause(void)
+    {
+      ...
+    }
+
+    /**
+     * Resume is responsible for resuming this State since the Application
+     * may have gained focus or the previous State was removed.
+     */
+    virtual void Resume(void)
+    {
+      ...
+    }
+
     /**
      * HandleEvents is responsible for handling input events for this
      * State when it is the active State.
+     * @param[in] theEvent to process from the App class Loop method
      */
     virtual void HandleEvents(sf::Event theEvent) = 0;
  
@@ -355,17 +413,20 @@ If you agree with this general outline you can see that many games perform the f
      */
     virtual void Update(void) = 0;
  
-     /**
+    /**
      * Draw is responsible for handling all Drawing needs for this State
      * when it is the Active State.
      */
     virtual void Draw(void) = 0;
  
-    /**
+   /**
      * Cleanup is responsible for performing any cleanup required before
      * this State is removed.
      */
-    virtual void Cleanup(void) = 0;
+    virtual void Cleanup(void)
+    {
+      ...
+    }
 ```
 
 This way our Game Application class **App** need not concern itself with what the game flow actually is, it just needs to get the current game State that is running and call the methods of the game State that was derived from the IState class shown above. That is the beauty of polymorphism (a fancy term used in object oriented programming) in action. In other words, by keeping things generic, we can save ourselves a lot of time by not reinventing the wheel every time we want to start a new game. The class that handles providing the current game State is known as a Manager class. So this leads us into our next discussion, what are Manager classes?
@@ -374,11 +435,12 @@ This way our Game Application class **App** need not concern itself with what th
 A Manager class is an object oriented technique used in our Game Application to isolate specific features. Manager classes are used to perform specific functions that all game States or game Objects need and naturally live as public member variables in the Game Application class **App**. For example, managing which state is being shown right now or which one will be shown next is the primary purpose of the StateManager class. Managing all the loading and unloading of game assets like images, sounds, and music for our game is also the responsibility of the AssetManager class. One of the nice features about the AssetManager class is that deals with the complexity of multiple game States sharing the same image, sound, or music assets. As each game State tells the AssetManager class about the game assets it needs, the AssetManager keeps track of the number of references for these game assets. When the game State tells the AssetManager class that it no longer needs an image, sound, or music asset the AssetManager decrements the reference count and removes the game asset from memory if it is no longer referenced. Also, the AssetManager allows you to defer the loading of all or some of the game assets until a later point in time. This is helpful for creating a special game State specifically for loading game assets. When this game State becomes the current state it activates the AssetManager loader and monitors the loading of the game assets. When the loading of the game assets completes the loader game State uses the StateManager class to remove itself from being the active state and return to the previous game State. Additional Manager classes will be added to our Basic Game Engine overtime. I am already working on a WidgetManager for providing GUI support for our Basic Game Engine.
 
 ## <a name="config" />Configuration files [ [Top] ](#top)
-One of the critical aspects in creating a Basic Game Engine is having the flexibility to load configuration information from a file. The ConfigReader class provides the ability to read in .INI style files and can by a game State to load any type of information from a file. The PreInit method found in the App.cpp class (see the full [[App.cpp|SourceGQE-Engine#3]] in [[Basic Game Engine Source|SourceGQE-Engine]]) provides a simple example of using the ConfigReader class as shown below:
+One of the critical aspects in creating a Basic Game Engine is having the flexibility to load configuration information from a file. The ConfigReader class provides the ability to read in .INI style files and can by a game State to load any type of information from a file. The PreInit method found in the App.cpp class (see the [[GQE Project|http://code.google.com/p/gqe/]] for full source) provides a simple example of using the ConfigReader class as shown below:
 
 ```cpp
   void App::PreInit(void)
   {
+    SLOG(App_PreInit, SeverityInfo) << std::endl;
     ConfigReader anConfig;       // For reading .INI style files
  
     // Use our default configuration file to obtain the initial window settings
@@ -404,14 +466,19 @@ One of the critical aspects in creating a Basic Game Engine is having the flexib
       mVideoMode.BitsPerPixel = DEFAULT_VIDEO_BPP;
     }
  
+#if (SFML_VERSION_MAJOR < 2)
     // Create a RenderWindow object using VideoMode object above
     mWindow.Create(mVideoMode, mTitle, mWindowStyle, mWindowSettings);
- 
+
     // Use Vertical Sync
     mWindow.UseVerticalSync(true);
- 
-    // Output to log file
-    mLog << "App::PreInit() completed" << std::endl;
+#else
+    // Create a RenderWindow object using VideoMode object above
+    mWindow.Create(mVideoMode, mTitle, mWindowStyle, mContextSettings);
+
+    // Use Vertical Sync
+    mWindow.EnableVerticalSync(true);
+#endif
   }
 ```
 

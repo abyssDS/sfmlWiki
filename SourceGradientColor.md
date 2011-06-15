@@ -214,13 +214,14 @@ public:
  */
 
 #include "ColorScale.h"
-#include <math.h>
+#include <cmath>
+#include <algorithm>
 
 const double PI = 3.1415926535;
 
 double linearInterpolation(double v1, double v2, double mu)
 {
-	return(v1*(1-mu)+v2*mu);
+	return v1*(1-mu)+v2*mu;
 }
 
 double interpolateCosinus(double y1, double y2, double mu)
@@ -228,7 +229,7 @@ double interpolateCosinus(double y1, double y2, double mu)
 	double mu2;
 	
 	mu2 = (1-cos(mu*PI))/2;
-	return (y1*(1-mu2)+y2*mu2);
+	return y1*(1-mu2)+y2*mu2;
 }
 
 sf::Color GradientLinear(sf::Color* colorTab,int size,const sf::Vector2f& start,const sf::Vector2f& end,int x,int y)
@@ -246,9 +247,9 @@ sf::Color GradientLinear(sf::Color* colorTab,int size,const sf::Vector2f& start,
 sf::Color GradientCircle(sf::Color* colorTab,int size,const sf::Vector2f& start,const sf::Vector2f& end,int x,int y)
 {
 	sf::Vector2f v_radius  = end-start;
-	double radius          = sqrt(v_radius.x*v_radius.x+v_radius.y*v_radius.y);
+	double radius          = std::sqrt(v_radius.x*v_radius.x+v_radius.y*v_radius.y);
 	sf::Vector2f pix       = sf::Vector2f(x,y)-start;
-	double dist            = sqrt(pix.x*pix.x+pix.y*pix.y);
+	double dist            = std::sqrt(pix.x*pix.x+pix.y*pix.y);
 	dist                  *= (size-1)/radius;
 	
 	if((int)dist < 0.0      ) return colorTab[0];
@@ -259,10 +260,10 @@ sf::Color GradientCircle(sf::Color* colorTab,int size,const sf::Vector2f& start,
 sf::Color GradientRadial(sf::Color* colorTab,int size,const sf::Vector2f& start,const sf::Vector2f& end,int x,int y)
 {
 	sf::Vector2f base     = end-start;
-	base                 /= (float)sqrt(base.x*base.x+base.y*base.y);
+	base                 /= (float)std::sqrt(base.x*base.x+base.y*base.y);
 	sf::Vector2f pix      = sf::Vector2f(x,y)-start;
-	pix                  /= (float)sqrt(pix.x*pix.x+pix.y*pix.y);
-	double angle          = acos(pix.x*base.x+pix.y*base.y);
+	pix                  /= (float)std::sqrt(pix.x*pix.x+pix.y*pix.y);
+	double angle          = std::acos(pix.x*base.x+pix.y*base.y);
 	double aSin           = pix.x*base.y-pix.y*base.x;
 	if( aSin < 0) angle   = 2*PI-angle;
 	angle                *= (size-1)/(2*PI);
@@ -279,7 +280,7 @@ sf::Color GradientReflex(sf::Color* colorTab,int size,const sf::Vector2f& start,
 	sf::Vector2f pix  = sf::Vector2f(x,y)-start; 
 	double dotProduct = pix.x*dir.x+pix.y*dir.y;
 	dotProduct       *= (size-1)/(dir.x*dir.x+dir.y*dir.y);
-	dotProduct        = (dotProduct>0)?dotProduct:-dotProduct;
+	dotProduct        = std::abs(dotProduct);
 	
 	if((int)dotProduct < 0.0      ) return colorTab[0];
 	if((int)dotProduct > (size-1) ) return colorTab[size-1];
@@ -292,12 +293,12 @@ ColorScale::ColorScale()
 
 bool ColorScale::insert(double position, sf::Color color)
 {
-	std::pair< ColorScale::iterator,bool > ret = std::map<double,sf::Color>::insert(std::pair<double, sf::Color>(position,color));
+	std::pair< ColorScale::iterator,bool > ret = std::map<double,sf::Color>::insert(std::make_pair(position,color));
 	return ret.second;
 }
 
 
-#define ABS(a) ((a>0)?(a):0)
+#define ABS(a) (std::max(a, 0))
 
 void ColorScale::fillTab(sf::Color* colorTab, int size,InterpolationFunction::InterpolationFunction function) const
 {

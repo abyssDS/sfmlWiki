@@ -38,6 +38,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[FPS|SourceFps]] : A class that simplifies frame rate calculation.
 * [C++] [[ZipLoader|SourceZipLoader]] : Class that loads files from zip archive.
 * [Ruby] [[MessageBox class|SourceMessageBox]](by Groogy)  : A simple Utility class for debugging purposes.
+* [C++] [[wxScrolledSFMLWindow|SourcewxScrolledSFMLWindow]] (by TricksterGuy) : Integrates an SFML window onto a scrolled wxWindow
 
 ## Audio
 * [C++] [[Mp3 Player|SourceMp3Player]] : Class inspired sf:: Music for playing mp3 file using the library mpg123

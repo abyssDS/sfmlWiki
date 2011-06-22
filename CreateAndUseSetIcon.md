@@ -1,3 +1,5 @@
+# Create and use SetIcon
+
 ### Intro
 A custom icon for your program looks just that little more professional, especially if the icon file is 'hidden' in the exe. In this tutorial we will convert your icon in bytes, put it in the exe and display it. For the conversion from image to bytes we will use the free and great program GIMP. Here is an example of the result:
 

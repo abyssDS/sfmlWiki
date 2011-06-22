@@ -11,7 +11,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 * [C++] [[Manage dynamic key binding|TutorialManageDynamicKeyBinding]]
 
 ### Game Design
-* [N/A] [[Basic Game Design|Basic Game Design]]
+* [N/A] [[Basic Game Design|TutorialBasicGameDesign]]
 
 ### Game Engines
 

@@ -2,6 +2,8 @@
 
 I decided to do a conversion of the C++ Light manager in the old French wiki. So now it's available for Ruby! I've done some modifications to the general structure to apply a more Ruby-like feel to the whole. There is for instance no handle classes to manipulate light sources or walls. 
 
+EDIT by Gregouar (original creator of this light manager) : You can have more informations in French about this light manager here : [[http://gregouar.developpez.com/tutoriels/jeux/moteur-lumieres-dynamiques-2d/]].
+
 ### Future plans
 Well I want to work more on the class as I really enjoy working with lighting. Some of the plans to add is:
 

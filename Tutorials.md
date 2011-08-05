@@ -40,3 +40,4 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 * How to get ready-to-use Packages for Ubuntu or Debian
 * How to install PySFML on Python 2.6 and Visual C++ 2008
 * [C++] Stock all your resources in a single DAT file
+* [C++] [Use SFML with GTK+](http://lalaland.github.com/gtkGuide.html)

@@ -8,15 +8,18 @@ We want to write a very simple image-manager. Of course you could write such a m
 ## How am I supposed to use an image-manager?
 Before we're getting into programming our image-manager, we should think of the usability and the design of it. It should not be very complicated to use it. 
 So it would be nice if you could just do something like this, to create an image:
+
 ```c++
 image_manager img_mgr;
 sf::Sprite test_sprite;
 test_sprite.SetImage( img_mgr.get_image( "test.png" ) );
 ```
+
 This is what we're aiming at. We want to be able to load an image with only a single line of code. And it should be safe in use(even if an image does not exist) and not produce any runtime errors.
 
 ## Let's start programming!
 Now we know, what we want to do, it is quite easy to create an image-manager-class:
+
 ```c++
 class image_manager
 {
@@ -38,6 +41,7 @@ private:
 
 "images_" is a map which binds every image to a std::string(its filename). If you call get_image, the image-map will be searched for the desired image and if it is not found, the image will be loaded and added to the map. Obviously get_image has to be able to do both finding an image which is already in the map and loading an image, if it hasn't been loaded before.
 So let's talk about the implementation of get_image:
+
 ```c++
 const sf::Image& image_manager::get_image( const std::string& filename )
 {
@@ -67,8 +71,10 @@ const sf::Image& image_manager::get_image( const std::string& filename )
 	return images_[filename];
 }
 ```
+
 In the first part of this function, as I've already mentioned, we're looking for the image and check, whether it has already been loaded. If not we have to load and register it. And if it is not possible to load any image it will be filled with an empty image to prevent runtime-errors(of course it would also be possible to throw an exception, if you want to).
 Maybe it is sometimes necessary to unload an image. For this reason let's add some functions which have to remove some images:
+
 ```c++
 void image_manager::delete_image( const sf::Image& image )
 {
@@ -92,29 +98,39 @@ void image_manager::delete_image( const std::string& filename )
 		images_.erase( it );
 }
 ```
+
 But you should be really careful to use these functions. If you delete an image which is still in use it will be replaced with a nice white rectangle.
 
 ## But what about different directories?
 You should now easily be able to load images using our code from above. But what to do, if you want to use images that are not in the main-directory of your project?
 Of course you could simply put your directory in front of your image filename:
+
 ```c++
 test_sprite.SetImage( img_mgr.get_image( "media/images/test.png" ) );
 ```
+
 Or you could do this in the get_image function to load images from "media/images" all the time:
+
 ```c++
 if( image.LoadFromFile( "media/images/" + filename ) )
 ```
+
 But this is not the best way to do it. It would be nice, if the user was able to decide where the images should be loaded from. The user should define some "resource-directorys" where all the images should be placed.
+
 ```c++
 image_manager img_mgr;
 img_mgr.add_resource_directory("media/" );
 img_mgr.add_resource_directory("media/images/" );
 ```
+
 This requires of course that we have to add some functions to our image-manager. At first we need a new list to handle all the directories:
+
 ```c++
 std::vector< std::string > resource_directories_;
 ```
+
 To add a new directory we will use:
+
 ```c++
 void image_manager::add_resource_directory( const std::string& directory )
 {
@@ -132,7 +148,9 @@ void image_manager::add_resource_directory( const std::string& directory )
 	resource_directories_.push_back( directory );
 }
 ```
+
 Of course the user should also be able to remove directories:
+
 ```c++
 void image_manager::remove_resource_directory( const std::string& directory )
 {
@@ -147,7 +165,9 @@ void image_manager::remove_resource_directory( const std::string& directory )
 	}
 }
 ```
+
 And of course we now have to search in all directories for the images. Hence we must adjust our get_image-function:
+
 ```c++
 const sf::Image& image_manager::get_image( const std::string& filename )
 {
@@ -193,10 +213,12 @@ const sf::Image& image_manager::get_image( const std::string& filename )
 	return images_[filename];
 }
 ```
+
 And that's it. Now for example it is very easy to use an external script which defines the resource directories. It will be parsed when the application has started and it will be very easy to test a new tileset or a few new images by changing the directory in the script. 
 
 ## Time for testing!
 To make sure our new image-manager works correctly, we will write a test-application which is supposed to load a few images.
+
 ```c++
 int main()
 {
@@ -250,11 +272,12 @@ int main()
 }
 ```
 
-I hope that I was able to help you and that you understood how to handle images to prevent reloading them all the time. You can also download this article as [PDF](http://dl.dropbox.com/u/2541480/image_manager_tutorial.pdf).
+I hope that I was able to help you and that you understood how to handle images to prevent reloading them all the time.
 
 Have a look at the whole source code of the image-manager:
 
 ## image_manager.h
+
 ```c++
 #ifndef IMAGE_MANAGER_H_
 #define IMAGE_MANAGER_H_
@@ -283,6 +306,7 @@ private:
 ```
 
 ## image_manager.cpp
+
 ```c++
 #include <map>
 #include <iostream>

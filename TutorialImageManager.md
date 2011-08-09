@@ -67,7 +67,7 @@ const sf::Image& image_manager::get_image( const std::string& filename )
 	return images_[filename];
 }
 ```
-In the first part of this function, as I've already mentioned, we're looking for the image and check, wether it has already been loaded. If not we have to load and register it. And if it is not possible to load any image it will be filled with an empty image to prevent runtime-errors(of course it would also be possible to throw an exception, if you want to).
+In the first part of this function, as I've already mentioned, we're looking for the image and check, whether it has already been loaded. If not we have to load and register it. And if it is not possible to load any image it will be filled with an empty image to prevent runtime-errors(of course it would also be possible to throw an exception, if you want to).
 Maybe it is sometimes necessary to unload an image. For this reason let's add some functions which have to remove some images:
 ```c++
 void image_manager::delete_image( const sf::Image& image )
@@ -118,7 +118,7 @@ To add a new directory we will use:
 ```c++
 void image_manager::add_resource_directory( const std::string& directory )
 {
-	// Check wether the path already exists
+	// Check whether the path already exists
 	for( std::vector<std::string>::const_iterator it  = resource_directories_.begin();
 		 it != resource_directories_.end();
 		++it )
@@ -367,7 +367,7 @@ void image_manager::delete_image( const std::string& filename )
 
 void image_manager::add_resource_directory( const std::string& directory )
 {
-	// Check wether the path already exists
+	// Check whether the path already exists
 	for( std::vector<std::string>::const_iterator it  = resource_directories_.begin();
 		 it != resource_directories_.end();
 		++it )

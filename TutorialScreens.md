@@ -3,6 +3,7 @@
 When speaking about screens, I mean Menu screen, Config screen, Game screen, etc... Those screens you find in every games. The problem here is that each screen can be compared to a small SFML application : Each screen will have its own events and will use some variables useless for other screens.
 
 So, we need to separate each screen in order to avoid conflicts. With SFML, it's very simple to do that! You just have to create a cScreen class which will represent each screen. This is an virtual object and it's containing only one method:
+
 ```cpp
 class cScreen
 {
@@ -14,6 +15,7 @@ public :
 This object is made very simple in order to allow great compatibility with every application structure. Run is a method called from the main function, and it returns a positive integer if an other screen must be shown. Otherwise, it returns -1 and the application exits. With a simple object, we have now some screens containing their owns variables and an SFML event loop...
 
 The old SFML Event loop is replaced with :
+
 ```cpp
 while (screen >= 0)
 {
@@ -28,6 +30,7 @@ More, screens are objects created in the main function of the application. So, t
 Here is a demo app using the cScreen object :
 
 \- A simple main function
+
 ```cpp
 #include <fstream>
 #include <iostream>
@@ -64,6 +67,7 @@ int main(int argc, char** argv)
 
 
 \- screens.hpp contains the cScreen include, plus the hpp of each screens of the game. Here, screen_0 is a menu, and screen_1 is the game. Each screen inherits from cScreen :
+
 ```cpp
 #ifndef SCREENS_HPP_INCLUDED
 #define SCREENS_HPP_INCLUDED
@@ -80,6 +84,7 @@ int main(int argc, char** argv)
 
 
 \- screen_0.hpp contains the object definition and its code. "Run" is like the main loop you can have in a simple SFML application. The constructor defines the first value of private members which are finally more like static variables in our case. This permits to have a fade presentation at first loading, since the menu will appear directly. Once background is shown, we use two string to make a menu in which you can navigate with direction's key. Choosing "Play" will go to the game, "Exit" will exit the application by returning -1 to the main function :
+
 ```cpp
 #include <iostream>
 #include "screen.hpp"
@@ -232,6 +237,7 @@ int screen_0::Run (sf::RenderWindow &App)
 ```
 
 \- screen_1.hpp contains the game itself. We can't exit from the game directly. If you push Escape, you'll go on the Main Menu. If you move the "player" and go to the menu, you can go back to the game and your position will stay the same. Because your object screen_1 has not been destroyed :
+
 ```cpp
 #include <iostream>
 #include "screen.hpp"

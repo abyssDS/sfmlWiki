@@ -25,7 +25,7 @@ You can download the environment from the github page located [here](https://git
 ### Simple example
 Here's a simple example to get started:
 
-```cpp
+```ruby
 # main.rb
 load './src/gde/gde.rb'
 
@@ -39,7 +39,7 @@ end
 
 GDE.exit()
 ```
-```cpp
+```ruby
 # print.rb
 def print_message()
   puts "Hello world!"

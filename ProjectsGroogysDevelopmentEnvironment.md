@@ -2,7 +2,7 @@
 This is a open-source development environment to help out with developing rbSFML applications. It includes some debugging utilities and various features to make development easier. Feel free to add your own additions to the library. Thumb rule being that it is to help out with developing applications in Ruby and not take over it so it can't develop into framework, everything should be optional to use.
 
 ## Features
-So far the library adds three parts.
+So far the library adds three parts. A fourth and fifth part is planned and on the way.
 
 ### Logger
 The library comes with a logger pre-setup to STDOUT for any messages for the developer. The library itself uses this logger as well to output various failures.
@@ -14,6 +14,14 @@ The library comes with a message class that let's you display messages graphical
 A thread run in the background monitoring the loaded files for changes. If a file is changed while the application is running then that file will be reloaded into memory updating the code currently running with the new changes. This gives us the possibility to have an application running while we are developing and see the changes tread into effect at the moment we save.
 
 So far this handles any syntax errors that might arise but it is still in it's early age of development. For instance if we define a method in a module and then remove it this method will still exist in the ruby interpreter. 
+
+### Console (Under development)
+A console class that acts pretty much like the IO operations of Kernel. The difference is that it creates a SFML window where the input is put. So far it only supports outputting information to the console. 
+
+A second thing I need to fix is the need for a call to a _update_ method which annoys me. It would be a lot nicer if the window could handle this on it's own like putting it in a separate thread. But then there is a risk that window input will start to act a bit undefined.
+
+### Watches (Concept/Theory/Under development)
+Haven't started on this yet but will be based on the console. Will allow the developer to specify the environment to watch a specific variable for any changes and report back trough a console window. This will let the developer see various values in real-time without clogging up the main application window.
 
 ## License
 GDE is completely free to use for open-source and closed-source projects. Like SFML, it is licensed under the very permissive zlib/libpng license.

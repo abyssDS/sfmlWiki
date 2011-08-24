@@ -8,7 +8,7 @@ Welcome to the section dedicated to projects using/for SFML.
 ## Other extensions
 * [C++] [[Thor C++ Library|ProjectThor]]: Provides pausable clocks, vector functions, particles, resource/event handling, triangulations, and more...
 * [C++] [[SFMLPHYSFS|SFMLPHYSFS]]: A simple module that load assets with the phyfs library using the sf::InputStream class.
-* [Ruby] [[Groogy's Development Environment|ProjectsGroogysDevelopmentEnvironment]]: An environment for rbSFML that helps out with development.
+* [Ruby] [[GDE|ProjectsGroogysDevelopmentEnvironment]]: An environment for rbSFML that helps out with development.
 
 ## Websites/Other
 

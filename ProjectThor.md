@@ -89,7 +89,7 @@ thor::ColorGradient gradient = thor::CreateGradient(sf::Color::Red)(1)(sf::Color
 sf::Image image = ...;
 thor::ParticleSystem system(image);
 system.AddEmitter( thor::DirectionalEmitter::Create(50.f, 3.f) ); // 50 per second, each lives 3s
-system.AddAffector( thor::ColorAffector::Create(gradient) )
+system.AddAffector( thor::ColorAffector::Create(gradient) );
 system.AddAffector( thor::FadeOutAffector::Create() );
 
 // Inside main loop

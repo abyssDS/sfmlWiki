@@ -77,7 +77,7 @@ while (App.GetEvent(Event))
 }
 ```
 
-So, we see that qe are managing each action separately with her name. It's now possible to use a function or code directly, or anything else.
+So, we see that we are managing each action separately with her name. It's now possible to use a function or code directly, or anything else.
 
 The TestEvent function:
 

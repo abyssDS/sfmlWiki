@@ -15,10 +15,13 @@ A thread run in the background monitoring the loaded files for changes. If a fil
 
 So far this handles any syntax errors that might arise but it is still in it's early age of development. For instance if we define a method in a module and then remove it this method will still exist in the ruby interpreter. 
 
-### Console (Under development)
-A console class that acts pretty much like the IO operations of Kernel. The difference is that it creates a SFML window where the input is put. So far it only supports outputting information to the console. 
+### Console
+A few console classes that acts pretty much like the IO operations of Kernel. The difference is that it is made to act like how you expect a console to do. Two classes was added that directly outputs the text into a graphical context like window or texture. 
 
-A second thing I need to fix is the need for a call to a _update_ method which annoys me. It would be a lot nicer if the window could handle this on it's own like putting it in a separate thread. But then there is a risk that window input will start to act a bit undefined.
+### Resource Loader
+A module that will load resources in another thread and which you can query for progress information. Pretty handy if you want to load things in the background and not get a huge pause from the load time. Can be used in conjunction with a loading screen or in-game to load the next level while playing. 
+
+**NOTE!** Does not speed up loading in any way! More or less it should make it slower because of Ruby's GIL.
 
 ### Watches (Concept/Theory/Under development)
 Haven't started on this yet but will be based on the console. Will allow the developer to specify the environment to watch a specific variable for any changes and report back trough a console window. This will let the developer see various values in real-time without clogging up the main application window.

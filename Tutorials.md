@@ -26,6 +26,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 * [C++] How to change your Cursor
 * [C++] [Create a simple image manager](TutorialImageManager)
 * [C++] [[Create and use SetIcon|TutorialCreateAndUseSetIcon]]
+* [C++] [[Correctly display accents|TutorialCorrectlyDisplayAccents]]
 
 ### Video
 

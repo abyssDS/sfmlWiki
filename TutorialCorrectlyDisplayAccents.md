@@ -1,3 +1,5 @@
+# Correctly display accents
+
 To solve the problem of accents that are not displayed correctly, there are three steps:
 
 1 - The encoding of pages .cpp must be UTF-8

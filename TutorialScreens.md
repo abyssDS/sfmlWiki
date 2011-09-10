@@ -89,7 +89,7 @@ int main(int argc, char** argv)
 #include <iostream>
 #include "screen.hpp"
 
-class screen_0 : public Screen
+class screen_0 : public cScreen
 {
 private:
     int alpha_max;
@@ -242,7 +242,7 @@ int screen_0::Run (sf::RenderWindow &App)
 #include <iostream>
 #include "screen.hpp"
 
-class screen_1 : public Screen
+class screen_1 : public cScreen
 {
 private:
     int movement_step;

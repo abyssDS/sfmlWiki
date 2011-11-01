@@ -2,6 +2,8 @@ CMake allows your project to be built in various environments, including command
 
 In this tutorial we'll write a simple CMake configuration file with centralized version numbering, and see how to integrate SFML in it.
 
+# The source files
+
 First, create a `cmake_modules` directory and copy [FindSFML.cmake](https://github.com/LaurentGomila/SFML/blob/master/cmake/Modules/FindSFML.cmake) in it.  FindXXXX is automatically searched by CMake's `find_package` command.
 
 Then create a main.cpp, for instance:
@@ -27,6 +29,10 @@ We use a `config.h` file that is built by CMake, let's also create a `config.h.i
 #define myproject_VERSION_MAJOR @myproject_VERSION_MAJOR@
 #define myproject_VERSION_MINOR @myproject_VERSION_MINOR@
 ```
+
+And place your project license (such as the [GNU GPL](http://www.gnu.org/copyleft/gpl.html)) in a file named `COPYING`.
+
+# CMake configuration
 
 Let's describe our project configuration in the `CMakeLists.txt` file:
 ```cmake
@@ -77,12 +83,13 @@ target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 * Then we request CMake to look for it in the system, and search for the specified modules (here I specified them all).
 * Last, we tell CMake to link our executable with the SFML libraries that it just found. 
 
+# Compilation
+
 To build with Make and the GCC compiler on the command-line:
 ```bash
 cd build/  # a separate directory so we can easily remove all the CMake work files
 cmake ..  # generate Makefile's
 make
-make install
 ```
 
 To create Code::Blocks project files:
@@ -90,6 +97,22 @@ To create Code::Blocks project files:
 cmake .. -G "CodeBlocks - Unix Makefiles"
 ```
 and open `project.cbp` with Code::Blocks.
+
+# Installation
+
+CMake supports the classic:
+```bash
+make install
+```
+
+It also supports DESTDIR, useful in packaging:
+```bash
+make install DESTDIR=`pwd`/myworkdir
+```
+
+You can also define `CMAKE_INSTALL_PREFIX` when invoking `cmake` to change the default install path (`/usr/local` under Unix).  DESTDIR would still override this setting.
+
+# Packaging
 
 You then can use `cpack` to make a project release:
 ```bash
@@ -100,7 +123,7 @@ cpack -C CPackSourceConfig.cmake
 ```
 You will get a nice `myproject-1.0.tar.gz`, among others.
 
-Further information:
+# Further information
 
 * CMake has built-in help, for instance:
 ```bash

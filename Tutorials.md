@@ -4,7 +4,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 
 ### Configuration
 
-*no tutorials yet*
+* [[Build your SFML project with CMake|TutorialCMake]]
 
 ### Events
 

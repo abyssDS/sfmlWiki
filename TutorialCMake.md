@@ -16,10 +16,14 @@ using namespace std;
 int main(int argc, char* argv[]) {
   cout << "Version " << myproject_VERSION_MAJOR << "." << myproject_VERSION_MINOR << endl;
 
-  sf::Window screen(sf::VideoMode(800, 600), "myproject");
-  bool running = true;
-  while (running) {
-    screen.Display();
+  glClear(GL_COLOR_BUFFER_BIT);
+  while (App.IsOpened()) {
+    sf::Event Event;
+    while (App.GetEvent(Event)) {
+      if (Event.Type == sf::Event::Closed)
+	App.Close();
+    }
+    App.Display();
   }
 }
 ```
@@ -59,6 +63,12 @@ find_package(SFML 1.6 REQUIRED system window graphics network audio)
 target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 
 
+# OpenGL
+find_package(OpenGL)
+include_directories(${OPENGL_INCLUDE_DIR})
+target_link_libraries(${EXECUTABLE_NAME} ${OPENGL_LIBRARIES})
+target_link_libraries(${EXECUTABLE_NAME} m)  # if you use maths.h
+
 # Install target
 install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
 
@@ -83,6 +93,15 @@ target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 * Then we request CMake to look for it in the system, and search for the specified modules (here I specified them all).
 * Last, we tell CMake to link our executable with the SFML libraries that it just found. 
 
+In the sample main.cpp, we used OpenGL, so we can add:
+```cmake
+# OpenGL
+find_package(OpenGL)
+include_directories(${OPENGL_INCLUDE_DIR})
+target_link_libraries(${EXECUTABLE_NAME} ${OPENGL_LIBRARIES})
+target_link_libraries(${EXECUTABLE_NAME} m)  # if you use maths.h
+```
+
 # Compilation
 
 To build with Make and the GCC compiler on the command-line:
@@ -90,6 +109,8 @@ To build with Make and the GCC compiler on the command-line:
 cd build/  # a separate directory so we can easily remove all the CMake work files
 cmake ..  # generate Makefile's
 make
+# or, if you want a more traditional output with the commands run:
+make VERBOSE=1
 ```
 
 To create Code::Blocks project files:

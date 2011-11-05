@@ -162,7 +162,7 @@ cmake version 2.8.5
        CMAKE_BINARY_DIR.
 ```
 
-* [Reference for v2.8](http://www.cmake.org/cmake/help/cmake-2-8-docs.html#command:target_link_libraries2-8-docs.html)
+* [Reference for v2.8](http://www.cmake.org/cmake/help/cmake-2-8-docs.html)
 * [CMake Tutorial](http://www.cmake.org/cmake/help/cmake_tutorial.html)
 
 -- [Beuc](http://www.beuc.net/)

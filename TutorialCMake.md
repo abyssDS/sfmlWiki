@@ -133,6 +133,9 @@ make install DESTDIR=`pwd`/myworkdir
 ```
 
 You can also define `CMAKE_INSTALL_PREFIX` when invoking `cmake` to change the default install path (`/usr/local` under Unix).  DESTDIR would still override this setting.
+```bash
+cmake -D CMAKE_INSTALL_PREFIX=/usr ..
+```
 
 # Packaging
 

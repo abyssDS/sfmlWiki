@@ -44,6 +44,12 @@ Let's describe our project configuration in the `CMakeLists.txt` file:
 cmake_minimum_required(VERSION 2.6)
 project(myproject)
 
+# Enable debug symbols by default
+if(CMAKE_BUILD_TYPE STREQUAL "")
+  set(CMAKE_BUILD_TYPE Debug)
+endif()
+# (you can also set it on the command line: -D CMAKE_BUILD_TYPE=Release)
+
 # Set version information in a config.h file
 set(myproject_VERSION_MAJOR 1)
 set(myproject_VERSION_MINOR 0)
@@ -107,7 +113,7 @@ endif()
 
 # boost::filesystem
 #set(Boost_ADDITIONAL_VERSIONS "1.78" "1.78.0" "1.79" "1.79.0")
-find_package(Boost 1.34.0 REQUIRED filesystem)
+find_package(Boost 1.34.0 REQUIRED system filesystem)
 if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
   target_link_libraries(${EXECUTABLE_NAME} ${Boost_LIBRARIES})

@@ -10,14 +10,14 @@ Then create a main.cpp, for instance:
 ```c++
 #include "config.h"
 #include <iostream>
-#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 using namespace std;
 
 int main(int argc, char* argv[]) {
   cout << "Version " << myproject_VERSION_MAJOR << "." << myproject_VERSION_MINOR << endl;
 
   sf::Window App(sf::VideoMode(800, 600), "myproject");
-  glClear(GL_COLOR_BUFFER_BIT);
+  App.Clear();
   while (App.IsOpened()) {
     sf::Event Event;
     while (App.GetEvent(Event)) {
@@ -61,14 +61,11 @@ add_executable(${EXECUTABLE_NAME} main.cpp)
 # Detect and add SFML
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 find_package(SFML 1.6 REQUIRED system window graphics network audio)
-target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
+if(SFML_FOUND)
+  include_directories(${SFML_INCLUDE_DIR})
+  target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
+endif()
 
-
-# OpenGL
-find_package(OpenGL)
-include_directories(${OPENGL_INCLUDE_DIR})
-target_link_libraries(${EXECUTABLE_NAME} ${OPENGL_LIBRARIES})
-target_link_libraries(${EXECUTABLE_NAME} m)  # if you use maths.h
 
 # Install target
 install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
@@ -94,13 +91,27 @@ target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 * Then we request CMake to look for it in the system, and search for the specified modules (here I specified them all).
 * Last, we tell CMake to link our executable with the SFML libraries that it just found. 
 
-In the sample main.cpp, we used OpenGL, so we can add:
+# Additional libraries
+
+Here are a few example of commonly used C/C++ libraries:
+
 ```cmake
 # OpenGL
-find_package(OpenGL)
+find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
-target_link_libraries(${EXECUTABLE_NAME} ${OPENGL_LIBRARIES})
-target_link_libraries(${EXECUTABLE_NAME} m)  # if you use maths.h
+if (OPENGL_FOUND)
+  target_link_libraries(${EXECUTABLE_NAME} ${OPENGL_LIBRARIES})
+  # or: target_link_libraries(${EXECUTABLE_NAME} ${OPENGL_gl_LIBRARY})
+  target_link_libraries(${EXECUTABLE_NAME} m)  # if you use maths.h
+endif()
+
+# boost::filesystem
+#set(Boost_ADDITIONAL_VERSIONS "1.78" "1.78.0" "1.79" "1.79.0")
+find_package(Boost 1.34.0 REQUIRED filesystem)
+if(Boost_FOUND)
+  include_directories(${Boost_INCLUDE_DIRS})
+  target_link_libraries(${EXECUTABLE_NAME} ${Boost_LIBRARIES})
+endif()
 ```
 
 # Compilation

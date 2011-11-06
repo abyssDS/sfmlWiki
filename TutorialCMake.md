@@ -110,7 +110,8 @@ if (OPENGL_FOUND)
   # or: target_link_libraries(${EXECUTABLE_NAME} ${OPENGL_gl_LIBRARY})
   target_link_libraries(${EXECUTABLE_NAME} m)  # if you use maths.h
 endif()
-
+```
+```cmake
 # boost::filesystem
 #set(Boost_ADDITIONAL_VERSIONS "1.78" "1.78.0" "1.79" "1.79.0")
 find_package(Boost 1.34.0 REQUIRED system filesystem)
@@ -119,6 +120,19 @@ if(Boost_FOUND)
   target_link_libraries(${EXECUTABLE_NAME} ${Boost_LIBRARIES})
 endif()
 ```
+```cmake
+# pkg-config-based library
+include(FindPkgConfig)
+pkg_check_modules(yaml-cpp REQUIRED yaml-cpp>=0.2.5)
+if(yaml-cpp_FOUND)
+  include_directories(${yaml-cpp_INCLUDE_DIRS})
+  link_directories(${yaml-cpp_LIBRARY_DIRS})
+endif()
+add_executable(${EXECUTABLE_NAME} ${SOURCES})
+target_link_libraries(${EXECUTABLE_NAME} ${yaml-cpp_LIBRARIES})
+...
+```
+Note: because `link_directories` needs to be called before a target is created, if you use the pkg-config snippet, you need to move you `add_executable` and `target_link_libraries` calls _after_ the call to `link_directories`.
 
 # Compilation
 
@@ -154,6 +168,8 @@ You can also define `CMAKE_INSTALL_PREFIX` when invoking `cmake` to change the d
 cmake -D CMAKE_INSTALL_PREFIX=/usr ..
 ```
 
+If you want to check a variable's value, open `CMakeCache.txt`, they are all there!
+
 # Packaging
 
 You then can use `cpack` to make a project release:
@@ -181,5 +197,6 @@ cmake version 2.8.5
 
 * [Reference for v2.8](http://www.cmake.org/cmake/help/cmake-2-8-docs.html)
 * [CMake Tutorial](http://www.cmake.org/cmake/help/cmake_tutorial.html)
+* [Tutorial en français](http://geenux.wordpress.com/2009/12/27/utilisation-de-cmake/)
 
 -- [Beuc](http://www.beuc.net/)

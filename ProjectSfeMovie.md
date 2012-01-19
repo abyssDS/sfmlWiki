@@ -255,9 +255,9 @@ There is no other specific dependency you have to care about.
 
 ## <a name="build" />Building sfeMovie [ [Top] ](#top)
 
+You may need to build sfeMovie yourself in order to use non royalty-free decoders. The provided binaries only includes the flac, vorbis and theora decoders.
 
-
-To build sfeMovie, make sure you have CMake, Make and GCC installed, and download the latest sources (see [download links](#downloads)). Then run build.sh from a command line interpreter. Both MSVC++ and GCC are supported, with a little difference for MSVC++: it dynamically links against FFmpeg instead of static linking.
+To build sfeMovie, make sure you have CMake, Make and GCC/MSVC++ installed, and download the latest sources (see [download links](#downloads)). Then run build.sh from a command line interpreter. Both MSVC++ and GCC are supported.
 
 ###Windows specific###
 sfeMovie relies on FFmpeg, and to build FFmpeg you need a Unix environment plus some settings. This can be achieved by installing MinGW, here are the steps:
@@ -269,7 +269,7 @@ sfeMovie relies on FFmpeg, and to build FFmpeg you need a Unix environment plus 
 - launch the MinGW shell (C:\MinGW\msys\1.0\msys.bat)
 - go to the directory where you downloaded sfeMovie, type "./build.sh windows" and return
 
-If you use Visual Studio, you'll need to finish the compilation process using the generated sfeMovie.sln solution.
+If you use Visual Studio, you'll need to finish the compilation process using the generated sfeMovie.sln solution. Note that for technical reasons, the sfe-movie library is dynamically linked to FFmpeg (instead of static linking for GCC).
 
 ## <a name="formats" />Supported file formats [ [Top] ](#top)
 The supported file formats depend on the FFmpeg configuration

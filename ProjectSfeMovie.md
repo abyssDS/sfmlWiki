@@ -255,7 +255,7 @@ There is no other specific dependency you have to care about.
 
 ## <a name="build" />Building sfeMovie [ [Top] ](#top)
 
-You may need to build sfeMovie yourself in order to use non royalty-free decoders. The provided binaries only includes the flac, vorbis and theora decoders.
+You may need to build sfeMovie yourself in order to use non royalty-free decoders. The provided binaries only includes the free decoders : flac, vorbis and theora.
 
 To build sfeMovie, make sure you have CMake, Make and GCC/MSVC++ installed, and download the latest sources (see [download links](#downloads)). Then run build.sh from a command line interpreter. Both MSVC++ and GCC are supported.
 

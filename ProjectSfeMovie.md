@@ -257,7 +257,7 @@ There is no other specific dependency you have to care about.
 
 
 
-To build sfeMovie, make sure you have CMake, Make and GCC installed, and download the latest sources (see [download links](#downloads)). GCC is the only supported compiler for now. Then run build.sh from a command line interpreter.
+To build sfeMovie, make sure you have CMake, Make and GCC installed, and download the latest sources (see [download links](#downloads)). Then run build.sh from a command line interpreter. Both MSVC++ and GCC are supported, with a little difference for MSVC++: it dynamically links against FFmpeg instead of static linking.
 
 ###Windows specific###
 sfeMovie relies on FFmpeg, and to build FFmpeg you need a Unix environment plus some settings. This can be achieved by installing MinGW, here are the steps:
@@ -268,6 +268,8 @@ sfeMovie relies on FFmpeg, and to build FFmpeg you need a Unix environment plus 
 - add "C:\Program Files\CMake 2.8\bin" to your PATH (replace "2.8" with your CMake version if needed)
 - launch the MinGW shell (C:\MinGW\msys\1.0\msys.bat)
 - go to the directory where you downloaded sfeMovie, type "./build.sh windows" and return
+
+If you use Visual Studio, you'll need to finish the compilation process using the generated sfeMovie.sln solution.
 
 ## <a name="formats" />Supported file formats [ [Top] ](#top)
 The supported file formats depend on the FFmpeg configuration

@@ -29,13 +29,13 @@ public :
     Media();
     ~Media();
  
-    bool OpenFromFile(const std::string &filename);
+    bool OpenFromFile(const std::string& filename);
  
 private :
-    int GetAVAudioData(void *data, int length);
+    int GetAVAudioData(void* data, int length);
     void GetNextPacket();
-    bool OnGetData(Chunk &data);
-    void OnSeek(float timeOffset);
+    bool OnGetData(Chunk& data);
+    void OnSeek(sf::Time timeOffset);
  
     AVFormatContext*    myFormatCtx;
     int                 myAudioStream;
@@ -76,7 +76,7 @@ Media::~Media()
     {
         for (unsigned int i=0; i<myFormatCtx->nb_streams; i++)
         {
-            if (myFormatCtx->streams[i]->codec->codec_type == CODEC_TYPE_AUDIO)
+            if (myFormatCtx->streams[i]->codec->codec_type == AVMEDIA_TYPE_AUDIO)
             {
                 if (myData)
                     av_free(myData);
@@ -91,19 +91,19 @@ Media::~Media()
             }
         }
  
-        av_close_input_file(myFormatCtx);
+        avformat_free_context(myFormatCtx);
     }
 }
  
-bool Media::OpenFromFile(const std::string &filename)
+bool Media::OpenFromFile(const std::string& filename)
 {
-    if (av_open_input_file(&myFormatCtx, filename.c_str(), NULL, 0, NULL) != 0)
+    if (avformat_open_input(&myFormatCtx, filename.c_str(), NULL, NULL) != 0)
     {
         std::cerr << "Unexisting file!" << std::endl;
         return false;
     }
  
-    if (av_find_stream_info(myFormatCtx) < 0)
+    if (avformat_find_stream_info(myFormatCtx, NULL) < 0)
     {
         std::cerr << "Couldn't find stream information!" << std::endl;
         return false;
@@ -111,12 +111,12 @@ bool Media::OpenFromFile(const std::string &filename)
  
     for (unsigned int i=0; i<myFormatCtx->nb_streams; i++)
     {
-        if (myFormatCtx->streams[i]->codec->codec_type == CODEC_TYPE_AUDIO && myAudioStream < 0)
+        if (myFormatCtx->streams[i]->codec->codec_type == AVMEDIA_TYPE_AUDIO && myAudioStream < 0)
         {
             AVCodec* codec = avcodec_find_decoder(myFormatCtx->streams[i]->codec->codec_id);
             if (!codec)
                 std::cerr << "Unsupported codec!" << std::endl;
-            else if (avcodec_open(myFormatCtx->streams[i]->codec, codec) < 0)
+            else if (avcodec_open2(myFormatCtx->streams[i]->codec, codec, NULL) < 0)
                 std::cerr << "Couldn't open audio codec context!" << std::endl;
             else
             {
@@ -136,7 +136,7 @@ bool Media::OpenFromFile(const std::string &filename)
     return true;
 }
  
-int Media::GetAVAudioData(void *data, int length)
+int Media::GetAVAudioData(void* data, int length)
 {
     static size_t decodedDataSize = 0;
     static char decodedData[AVCODEC_MAX_AUDIO_FRAME_SIZE];
@@ -173,7 +173,11 @@ int Media::GetAVAudioData(void *data, int length)
  
             int size = AVCODEC_MAX_AUDIO_FRAME_SIZE;
             int len;
-            while((len = avcodec_decode_audio2(myFormatCtx->streams[myAudioStream]->codec, (int16_t*)decodedData, &size, (uint8_t*)myData, insize)) == 0)
+            AVPacket pkt;
+            av_init_packet(&pkt);
+            pkt.data = (unsigned char*)myData;
+            pkt.size = insize;
+            while((len = avcodec_decode_audio2(myFormatCtx->streams[myAudioStream]->codec, (int16_t*)decodedData, &size, &pkt)) == 0)
             {
                 if (size > 0)
                     break;
@@ -238,9 +242,9 @@ bool Media::OnGetData(Chunk &data)
         int done = GetAVAudioData(mySamples, 19200);
  
         data.Samples   = (sf::Int16*)mySamples;
-        data.NbSamples = done/sizeof(sf::Int16);
+        data.SampleCount = done/sizeof(sf::Int16);
  
-        return (data.NbSamples > 0);
+        return (data.SampleCount > 0);
     }
     else
         return false;
@@ -268,18 +272,18 @@ int main()
         exit(EXIT_FAILURE);
     media.Play();
  
-    while (application.IsOpened())
+    while (application.IsOpen())
     {
         sf::Event evenement;
-        while (application.GetEvent(evenement))
+        while (application.PollEvent(evenement))
         {
             if (evenement.Type == sf::Event::Closed)
                 application.Close();
  
-            if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Escape))
+            if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Keyboard::Escape))
                 application.Close();
  
-            if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::P))
+            if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Keyboard::P))
             {
                 if (media.GetStatus() != sf::SoundStream::Paused)
                     media.Pause();

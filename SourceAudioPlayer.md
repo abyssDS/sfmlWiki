@@ -177,7 +177,8 @@ int Media::GetAVAudioData(void* data, int length)
             av_init_packet(&pkt);
             pkt.data = (unsigned char*)myData;
             pkt.size = insize;
-            while((len = avcodec_decode_audio2(myFormatCtx->streams[myAudioStream]->codec, (int16_t*)decodedData, &size, &pkt)) == 0)
+            while((len = avcodec_decode_audio3(myFormatCtx->streams[myAudioStream]->codec, (int16_t*)decodedData, 
+&size, &pkt)) == 0)
             {
                 if (size > 0)
                     break;

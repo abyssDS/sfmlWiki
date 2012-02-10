@@ -4,7 +4,7 @@ By MickaGL
 
 Works exclusively with the latest revision of SFML 2.
 
-Here is a class using the library [ffmpeg](http://ffmpeg.arrozcru.org/) which allows playback of audio files.  
+Here is a class using the library [ffmpeg](http://ffmpeg.zeranoe.com/builds/) which allows playback of audio files.  
 Works on the same principle that sf:: Music
 
 Inspired by the source code of the tutorial found on this page alFFmpeg : [http://kcat.strangesoft.net/openal.html](http://kcat.strangesoft.net/openal.html)

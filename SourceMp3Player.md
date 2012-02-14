@@ -30,7 +30,7 @@ public :
 
 protected :
     bool OnGetData(Chunk& data);
-    void OnSeek(float timeOffset);
+    void OnSeek(sf::Time timeOffset);
 
 private :
     mpg123_handle*      myHandle;
@@ -102,7 +102,7 @@ bool Mp3::OpenFromFile(const std::string& filename)
     int  channels = 0, encoding = 0;
     if (mpg123_getformat(myHandle, &rate, &channels, &encoding) != MPG123_OK)
     {
-        std::cerr << "Failed to get format information for \"" << filename << "\"" << std::endl;
+        std::cerr << "Failed to get format information for 464480e9ee6eb73bc2b768d7e3d7865aa432fc34quot;" << filename << "464480e9ee6eb73bc2b768d7e3d7865aa432fc34quot;" << std::endl;
         return false;
     }
 
@@ -110,7 +110,7 @@ bool Mp3::OpenFromFile(const std::string& filename)
     myBuffer = new unsigned char[myBufferSize];
     if (!myBuffer)
     {
-        std::cerr << "Failed to reserve memory for decoding one frame for \"" << filename << "\"" << std::endl;
+        std::cerr << "Failed to reserve memory for decoding one frame for 464480e9ee6eb73bc2b768d7e3d7865aa432fc34quot;" << filename << "464480e9ee6eb73bc2b768d7e3d7865aa432fc34quot;" << std::endl;
         return false;
     }
 
@@ -129,20 +129,20 @@ bool Mp3::OnGetData(Chunk& data)
         mpg123_read(myHandle, myBuffer, myBufferSize, &done);
 
         data.Samples   = (short*)myBuffer;
-        data.NbSamples = done/sizeof(short);
+        data.SampleCount = done/sizeof(short);
 
-        return (data.NbSamples > 0);
+        return (data.SampleCount > 0);
     }
     else
         return false;
 }
 
-void Mp3::OnSeek(float timeOffset)
+void Mp3::OnSeek(sf::Time timeOffset)
 {
     sf::Lock lock(myMutex);
 
     if (myHandle)
-        mpg123_seek(myHandle, timeOffset, 0);
+        mpg123_seek(myHandle, timeOffset.AsSeconds(), 0);
 }
 
 } // namespace sfe
@@ -158,19 +158,19 @@ int main()
     sf::RenderWindow application(sf::VideoMode::GetDesktopMode(), "", sf::Style::Fullscreen);
 
     sfe::Mp3 musique;
-    if (!musique.OpenFromFile("music.mp3"))
+    if (!musique.OpenFromFile(("music.mp3"))
         exit(EXIT_FAILURE);
     musique.Play();
 
-    while (application.IsOpened())
+    while (application.IsOpen())
     {
         sf::Event evenement;
-        while (application.GetEvent(evenement))
+        while (application.PollEvent(evenement))
         {
-            if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::Escape))
+            if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Keyboard::Escape))
                 application.Close();
 
-            if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Key::P))
+            if ((evenement.Type == sf::Event::KeyPressed) && (evenement.Key.Code == sf::Keyboard::P))
             {
                 if (musique.GetStatus() != sf::SoundStream::Paused)
                     musique.Pause();

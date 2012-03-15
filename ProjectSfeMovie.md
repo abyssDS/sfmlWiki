@@ -179,17 +179,32 @@ Considering this, you're responsible for checking the possible fees and licenses
 ## <a name="requirements" />System requirements [ [Top] ](#top)
 sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on Linux.
 
-###Linux###
-- OS version: N/A
-- Architecture: N/A
-
-###Mac OS X###
-- OS version: Mac OS X 10.6 and later (may work on 10.5 but not tested)
-- Architecture: Intel 64 bits
-
-###Windows###
-- OS version: Windows XP and later
-- Architecture: Intel 32 bits
+<table>
+    <tr>
+        <th>OS</th>
+        <th>Minimum OS version</th>
+        <th>Architecture</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <td>Linux/td>
+        <td>N/A</td>
+        <td>N/A</td>
+        <td>Untested</td>
+    </tr>
+    <tr>
+        <td>Mac OS X</td>
+        <td>Mac OS X 10.6 (may work on 10.5 but not tested)</td>
+        <td>Intel 64 bits only</td>
+        <td>Ok</td>
+    </tr>
+    <tr>
+        <td>Windows</td>
+        <td>Windows XP</td>
+        <td>Intel 32 bits</td>
+        <td>Ok</td>
+    </tr>
+</table>
 
 ## <a name="dependencies" />Dependencies [ [Top] ](#top)
 sfeMovie relies on SFML 2.0, sndfile and OpenAL, you can find the required libraries in the "deps" (dependencies) directory.

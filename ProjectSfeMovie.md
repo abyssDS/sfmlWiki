@@ -25,14 +25,14 @@ Here is a sample code showing how to use sfeMovie, the setup instructions follow
 
 ```cpp
 #include <SFML/Graphics.hpp>
-#include <Movie.h>
+#include <sfeMovie/Movie.hpp>
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "SFE Movie Player");
+    sf::RenderWindow window(sf::VideoMode(640, 480), "sfeMovie Player");
     sfe::Movie movie;
 
-    if (!movie.openFromFile("movie.avi"))
+    if (!movie.openFromFile("movie.ogg"))
         return 1;
 
     movie.resizeToFrame(0, 0, 640, 480);
@@ -63,28 +63,24 @@ I'm not going to explain how to use a library, most of it is like for any other 
 
 - Make sure you correctly set the headers and libraries search path to find both sfeMovie's and SFML's headers and libraries
 - Link your product against sfeMovie (libsfe-movie) and SFML 2.0
-- Release your software with the required libraries : sfe-movie, sfml-system, sfml-window, sfml-graphics, sfml-audio.
+- Release your software with the required libraries : sfe-movie, sfml-system, sfml-window, sfml-graphics, sfml-audio, sndfile and openal.
 
 ###Mac OS X specific###
 
-libsfe-movie has been built in a way that allows you to put the dynamic library in your bundle application, for distribution purpose. The copying process can be done manually, or automatically through Xcode. If you want to do it manually, make sure the library is copied to your_app.app/Contents/Frameworks. Create the Frameworks directory if needed.
+The sfe-movie framework has been built in a way that allows you to put the framework in your bundle application, for distribution purpose. The copying process can be done manually, or automatically through Xcode. If you want to do it manually, make sure the framework is copied to your_app.app/Contents/Frameworks. Create the Frameworks directory if needed.
 
-When using Xcode, you can automatize this process by [creating a Copy File build phase](http://developer.apple.com/library/mac/#recipes/xcode_help-project_editor/Articles/CreatingaCopyFilesBuildPhase.html) and setting the Destination of this phase to "Frameworks". Then add libsfe-movie to this phase, this will ask Xcode to copy the library into your application at build time.
+When using Xcode, you can automatize this process by [creating a Copy Files build phase](https://developer.apple.com/library/mac/#recipes/xcode_help-project_editor/Articles/CreatingaCopyFilesBuildPhase.html) and setting the Destination of this phase to "Frameworks". Then add sfe-movie.framework and its dependencies to this phase, this will ask Xcode to copy the frameworks into your application at build time.
 
 
 ## <a name="license" />License [ [Top] ](#top)
 
-libsfe-movie is statically linked against FFmpeg, that is licensed under [LGPL 2.1](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html). Thus you don't need to care about the FFmpeg libraries, but **sfeMovie is itself covered by the LGPL v2.1 license**. As for the legal side, note that you can download the sfeMovie sources from the [official Git repository](https://github.com/Yalir/sfeMovie).
+**sfeMovie is covered by the LGPL v2.1 license(http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html)**. As for the legal side, note that you can download the sfeMovie sources from the [official Git repository](https://github.com/Yalir/sfeMovie).
 
 Basically, this means you can use sfeMovie for ANY project without ANY restriction until
-libsfe-movie is linked dynamically to your software. As soon as you link libsfe-movie statically,
-your software is also covered by the LGPL licence and you MUST provide the sources of your
-application/library. This is the main restriction.
-
-For more information on LGPL, have a look at <http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html>.
+sfe-movie is dynamically linked to your software. The provided binaries are dynamic libraries only. If you want to know more about LGPL, have a look at the [GNU website](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html).
 
 ###Legal notes###
-As you may know, patents on video codecs is a complex issue. FFmpeg is distributed under LGPL and does not provide any binary version of the library. This is to avoid legal issues : decoders' source code can be freely distributed, but not binaries (though it still depends on whether the patent holder is strict, because FFmpeg is not an end-software product). Moreover patents do not apply in some countries. That's why [VideoLAN doesn't pay any fee to distribute VLC](http://www.videolan.org/legal.html). But as I'm not a specialist and I don't know the details about laws, the binaries I'm providing only support the free decoders : flac, vorbis, theora. If you want support for more decoders, you'll have to build sfeMovie yourself. A script is provided so that the whole compilation process can be performed flawlessly. You're also given the ability to exactly choose which decoders you want to enable in the final sfeMovie binary.
+As you may know, patents on video codecs is a complex issue. FFmpeg is distributed under LGPL and does not provide any binary version of the library. This is to avoid legal issues : decoders' source code can be freely distributed, but not binaries. Moreover patents do not apply in some countries, which is why [VideoLAN doesn't pay any fee to distribute VLC](http://www.videolan.org/legal.html). But as I'm not a specialist and I don't know the details about laws, the binaries I'm providing only support the free decoders : flac, vorbis, theora. If you want support for more decoders, you'll have to build sfeMovie yourself. A script is provided so that the whole compilation process can be performed flawlessly. You're also given the ability to exactly choose which decoders you want to enable in the final sfeMovie binary.
 
 Note that you shoudln't worry about licenses and royalties if you're a lonely developer working on a private project. But if you plan to distribute your product to "a lot" of people, or as a commercial purpose, you should be careful.
 
@@ -188,21 +184,47 @@ sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on 
 - Architecture: N/A
 
 ###Mac OS X###
-- OS version: Mac OS X 10.5 and later
-- Architecture: Intel 32 bits
+- OS version: Mac OS X 10.6 and later (may work on 10.5 but not tested)
+- Architecture: Intel 64 bits
 
 ###Windows###
 - OS version: Windows XP and later
 - Architecture: Intel 32 bits
 
 ## <a name="dependencies" />Dependencies [ [Top] ](#top)
-sfeMovie relies on SFML 2.0, sndfile and OpenAL, you can find the required libraries in the "deps" (dependencies) directory. The SFML libraries were built with the sources of the official Git repository on 2011-05-11.
-
+sfeMovie relies on SFML 2.0, sndfile and OpenAL, you can find the required libraries in the "deps" (dependencies) directory.
 There is no other specific dependency you have to care about.
 
 ## <a name="downloads" />Download links [ [Top] ](#top)
 
-<b>Important note:</b> the provided binaries only support the free decoders (flac, vorbis and theora). If you want to use other decoders, please read the [License section](#license) (and especially the legal notes), and consider [building sfeMovie yourself](#build).
+<b>Important note:</b> **the provided binaries only support the free decoders** (flac, vorbis and theora). If you want to use other decoders, please read the [License section](#license) (and especially the legal notes), and consider [building sfeMovie yourself](#build).
+
+<table>
+	<tr>
+		<th colspan=3>sfeMovie 1.0 RC1</th>
+	</tr>
+	<tr>
+		<th>Operating System</th>
+		<th>Binaries</th>
+		<th>Sources</th>
+	</tr>
+	
+	<tr>
+		<td>Linux</td>
+		<td>N/A</td>
+		<td rowspan=3>N/A</td>
+	</tr>
+	
+	<tr>
+		<td>Mac OS X</td>
+		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-macosx-64b-1.0-rc1.zip">sfeMovie-macosx-64b-1.0-rc1.zip</a></td>
+	</tr>
+	
+	<tr>
+		<td>Windows</td>
+		<td>N/A</td>
+	</tr>
+</table>
 <table>
 	<tr>
 		<th colspan=3>sfeMovie beta_20110512</th>

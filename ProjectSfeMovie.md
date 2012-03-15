@@ -187,7 +187,7 @@ sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on 
         <th>Status</th>
     </tr>
     <tr>
-        <td>Linux/td>
+        <td>Linux</td>
         <td>N/A</td>
         <td>N/A</td>
         <td>Untested</td>
@@ -214,6 +214,28 @@ There is no other specific dependency you have to care about.
 
 <b>Important note:</b> **the provided binaries only support the free decoders** (flac, vorbis and theora). If you want to use other decoders, please read the [License section](#license) (and especially the legal notes), and consider [building sfeMovie yourself](#build).
 
+<table>
+	<tr>
+		<th colspan=3>Latest sfeMovie files (from the Git repository)</th>
+	</tr>
+	<tr>
+		<th>Operating System</th>
+		<th>Sources</th>
+	</tr>
+	
+	<tr>
+		<td>Linux</td>
+		<td rowspan=3><a href="https://github.com/Yalir/sfeMovie/zipball/master">zip archive</a></td>
+	</tr>
+	
+	<tr>
+		<td>Mac OS X</td>
+	</tr>
+	
+	<tr>
+		<td>Windows</td>
+	</tr>
+</table>
 <table>
 	<tr>
 		<th colspan=3>sfeMovie 1.0 RC1</th>
@@ -265,30 +287,7 @@ There is no other specific dependency you have to care about.
 		<td>Windows</td>
 		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-windows-beta_20110512.zip">sfeMovie-windows-beta_20110512.zip</a></td>
 	</tr>
-</table>
-<table>
-	<tr>
-		<th colspan=3>Latest sfeMovie files (from the Git repository)</th>
-	</tr>
-	<tr>
-		<th>Operating System</th>
-		<th>Sources</th>
-	</tr>
-	
-	<tr>
-		<td>Linux</td>
-		<td rowspan=3><a href="https://github.com/Yalir/sfeMovie/zipball/master">zip archive</a></td>
-	</tr>
-	
-	<tr>
-		<td>Mac OS X</td>
-	</tr>
-	
-	<tr>
-		<td>Windows</td>
-	</tr>
-</table>
- 
+</table> 
 
 ## <a name="build" />Building sfeMovie [ [Top] ](#top)
 

@@ -25,7 +25,7 @@ Here is a sample code showing how to use sfeMovie, the setup instructions follow
 
 ```cpp
 #include <SFML/Graphics.hpp>
-#include <sfeMovie/Movie.hpp>
+#include "Movie.h"
 
 int main()
 {

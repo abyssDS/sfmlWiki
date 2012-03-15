@@ -32,24 +32,24 @@ int main()
     sf::RenderWindow window(sf::VideoMode(640, 480), "SFE Movie Player");
     sfe::Movie movie;
 
-    if (!movie.OpenFromFile("movie.avi"))
+    if (!movie.openFromFile("movie.avi"))
         return 1;
 
-    movie.ResizeToFrame(0, 0, 640, 480);
-    movie.Play();
+    movie.resizeToFrame(0, 0, 640, 480);
+    movie.play();
 
-    while (window.IsOpened())
+    while (window.isOpen())
     {
         sf::Event ev;
-        while (window.GetEvent(ev))
+        while (window.pollEvent(ev))
         {
-            if (ev.Type == sf::Event::Closed)
-                window.Close();
+            if (ev.type == sf::Event::Closed)
+                window.close();
         }
 
-        window.Clear();
-        window.Draw(movie);
-        window.Display();
+        window.clear();
+        window.draw(movie);
+        window.display();
     }
 
     return 0;

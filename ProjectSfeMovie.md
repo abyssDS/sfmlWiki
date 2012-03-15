@@ -253,7 +253,7 @@ There is no other specific dependency you have to care about.
 	<tr>
 		<td>Linux</td>
 		<td>N/A</td>
-		<td rowspan=3>N/A</td>
+		<td rowspan=5>N/A</td>
 	</tr>
 	
 	<tr>

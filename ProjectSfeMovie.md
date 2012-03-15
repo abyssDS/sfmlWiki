@@ -183,6 +183,7 @@ sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on 
     <tr>
         <th>OS</th>
         <th>Minimum OS version</th>
+        <th>Compiler</th>
         <th>Architecture</th>
         <th>Status</th>
     </tr>
@@ -190,17 +191,20 @@ sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on 
         <td>Linux</td>
         <td>N/A</td>
         <td>N/A</td>
+        <td>N/A</td>
         <td>Untested</td>
     </tr>
     <tr>
         <td>Mac OS X</td>
         <td>Mac OS X 10.6 (may work on 10.5 but not tested)</td>
+        <td>GCC & Clang</td>
         <td>Intel 64 bits only</td>
         <td>Ok</td>
     </tr>
     <tr>
         <td>Windows</td>
         <td>Windows XP</td>
+        <td>MinGW/CodeBlocks & Visual C++ Compiler</td>
         <td>Intel 32 bits</td>
         <td>Ok</td>
     </tr>

@@ -300,12 +300,11 @@ sfeMovie relies on FFmpeg, and to build FFmpeg you need a Unix environment plus 
 
 - download the latest MinGW from [this page](http://sourceforge.net/projects/mingw/files/Automated%20MinGW%20Installer/mingw-get-inst/)
 - install MinGW, without forgetting to enable : C++ Compiler, MSYS Basic System and MinGW Developer ToolKit
-- install CMake if needed (see [CMake website](http://www.cmake.org/cmake/resources/software.html))
-- add "C:\Program Files\CMake 2.8\bin" to your PATH (replace "2.8" with your CMake version if needed)
+- install CMake if needed (see [CMake website](http://www.cmake.org/cmake/resources/software.html)) and accept setting CMake in your PATH
 - launch the MinGW shell (C:\MinGW\msys\1.0\msys.bat)
 - go to the directory where you downloaded sfeMovie, type "./build.sh windows" and return
 
-If you use Visual Studio, you'll need to finish the compilation process using the generated sfeMovie.sln solution. Note that for technical reasons, the sfe-movie library is dynamically linked to FFmpeg (instead of static linking for GCC).
+If you use Visual Studio, you'll need to finish the compilation process using the generated sfeMovie.sln solution. Note that for technical reasons, the sfe-movie library is dynamically linked to FFmpeg (instead of static linking for MinGW/CodeBlocks).
 
 ## <a name="formats" />Supported file formats [ [Top] ](#top)
 The supported file formats depend on the FFmpeg configuration

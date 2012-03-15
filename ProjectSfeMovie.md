@@ -262,8 +262,16 @@ There is no other specific dependency you have to care about.
 	</tr>
 	
 	<tr>
-		<td>Windows</td>
-		<td>N/A</td>
+		<td>Windows (MinGW/Codeblocks)</td>
+		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-windows-32b-mingw-1.0-rc1.zip">sfeMovie-windows-32b-mingw-1.0-rc1.zip</a></td>
+	</tr>
+	<tr>
+		<td>Windows (Visual C++ 2008)</td>
+		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-windows-32b-vs2008-1.0-rc1.zip">sfeMovie-windows-32b-vs2008-1.0-rc1.zip</a></td>
+	</tr>
+	<tr>
+		<td>Windows (Visual C++ 2010)</td>
+		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-windows-32b-vs2010-1.0-rc1.zip">sfeMovie-windows-32b-vs2010-1.0-rc1.zip</a></td>
 	</tr>
 </table>
 <table>

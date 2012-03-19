@@ -32,9 +32,11 @@ int main()
     sf::RenderWindow window(sf::VideoMode(640, 480), "sfeMovie Player");
     sfe::Movie movie;
 
+    // Open movie file for reading
     if (!movie.openFromFile("movie.ogg"))
         return 1;
 
+    // Scale the movie drawable to fit the window and start the playback
     movie.resizeToFrame(0, 0, 640, 480);
     movie.play();
 
@@ -48,6 +50,7 @@ int main()
         }
 
         window.clear();
+        // Render the movie, the images and sound are updated in the background
         window.draw(movie);
         window.display();
     }
@@ -242,7 +245,7 @@ There is no other specific dependency you have to care about.
 </table>
 <table>
 	<tr>
-		<th colspan=3>sfeMovie 1.0 RC1</th>
+		<th colspan=3>sfeMovie 1.0 RC1 (March 15, 2012)</th>
 	</tr>
 	<tr>
 		<th>Operating System</th>
@@ -276,7 +279,7 @@ There is no other specific dependency you have to care about.
 </table>
 <table>
 	<tr>
-		<th colspan=3>sfeMovie beta_20110512</th>
+		<th colspan=3>sfeMovie beta_20110512 (May 12, 2011)</th>
 	</tr>
 	<tr>
 		<th>Operating System</th>

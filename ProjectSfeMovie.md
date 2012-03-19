@@ -74,7 +74,7 @@ When using Xcode, you can automatize this process by [creating a Copy Files buil
 
 ## <a name="license" />License [ [Top] ](#top)
 
-**sfeMovie is covered by the [LGPL v2.1 license](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html)**. As for the legal side, note that you can download the sfeMovie sources from the [official Git repository](https://github.com/Yalir/sfeMovie).
+sfeMovie is covered by the [LGPL v2.1 license](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html). As for the legal side, note that you can download the sfeMovie sources from the [official Git repository](https://github.com/Yalir/sfeMovie).
 
 Basically, this means you can use sfeMovie for ANY project without ANY restriction until
 sfe-movie is dynamically linked to your software. The provided binaries are dynamic libraries only. If you want to know more about LGPL, have a look at the [GNU website](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html).

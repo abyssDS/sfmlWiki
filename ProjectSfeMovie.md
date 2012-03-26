@@ -256,25 +256,25 @@ There is no other specific dependency you have to care about.
 	<tr>
 		<td>Linux</td>
 		<td>N/A</td>
-		<td rowspan=5><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-src-1.0-rc1.zip">sfeMovie-src-1.0-rc1.zip</a></td>
+		<td rowspan=5><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-src-1.0-rc1.zip">sfeMovie-src-1.0-rc1.zip</a> (21.2 MB)</td>
 	</tr>
 	
 	<tr>
 		<td>Mac OS X</td>
-		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-macosx-64b-1.0-rc1.zip">sfeMovie-macosx-64b-1.0-rc1.zip</a></td>
+		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-macosx-64b-1.0-rc1.zip">sfeMovie-macosx-64b-1.0-rc1.zip</a> (3.3 MB)</td>
 	</tr>
 	
 	<tr>
 		<td>Windows (MinGW/Codeblocks)</td>
-		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-windows-32b-mingw-1.0-rc1.zip">sfeMovie-windows-32b-mingw-1.0-rc1.zip</a></td>
+		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-windows-32b-mingw-1.0-rc1.zip">sfeMovie-windows-32b-mingw-1.0-rc1.zip</a> (8.4 MB)</td>
 	</tr>
 	<tr>
 		<td>Windows (Visual C++ 2008)</td>
-		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-windows-32b-vs2008-1.0-rc1.zip">sfeMovie-windows-32b-vs2008-1.0-rc1.zip</a></td>
+		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-windows-32b-vs2008-1.0-rc1.zip">sfeMovie-windows-32b-vs2008-1.0-rc1.zip</a> (8.9 MB)</td>
 	</tr>
 	<tr>
 		<td>Windows (Visual C++ 2010)</td>
-		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-windows-32b-vs2010-1.0-rc1.zip">sfeMovie-windows-32b-vs2010-1.0-rc1.zip</a></td>
+		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-windows-32b-vs2010-1.0-rc1.zip">sfeMovie-windows-32b-vs2010-1.0-rc1.zip</a> (8.9 MB)</td>
 	</tr>
 </table>
 <table>

@@ -256,7 +256,7 @@ There is no other specific dependency you have to care about.
 	<tr>
 		<td>Linux</td>
 		<td>N/A</td>
-		<td rowspan=5><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-src-1.0-rc1.zip">sfeMovie-src-1.0-rc1.zip</a> (21.2 MB)</td>
+		<td rowspan=5><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-src-1.0-rc1.zip">sfeMovie-src-1.0-rc1.zip</a> (25.5 MB)</td>
 	</tr>
 	
 	<tr>

@@ -1,3 +1,7 @@
+# Creating a Basic Chat Example
+<a name="top" />
+This is a very simple chat example to get your feet wet.
+
 ```cop
 #include "stdafx.h"
 

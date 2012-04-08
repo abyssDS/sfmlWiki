@@ -3,7 +3,19 @@
 This is a very simple chat example to get your feet wet.
 
 ```cop
-#include "stdafx.h"
+#pragma comment(lib, "sfml-system.lib")
+#pragma comment(lib, "sfml-window.lib")
+#pragma comment(lib, "sfml-graphics.lib")
+#pragma comment(lib, "sfml-audio.lib")
+#pragma comment(lib, "sfml-network.lib")
+
+#include <iostream>
+
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Network.hpp>
 
 const unsigned short PORT = 5000;
 const std::string IPADDRESS("192.168.0.100");//change to suit your needs

@@ -5,8 +5,6 @@ Welcome to the section dedicated to external source codes for SFML.
 ## Game Engines
 * [C++] [[Basic Game Engine Source|SourceGQE-Engine]] (from tutorial [[Basic Game Engine|TutorialGQE-Engine]])
 
-## Graphics
-* [C++] [[Loading images in a thread (and displaying progress)|SourceLoadImagesInThread]]
 * [C++] [[DrawableLineShape|SourceDrawableLineShape]]: A drawable-derived fast-rendering class for shapes made of lines
 * [C++] [[Simple Collision Detection|SourceSimpleCollisionDetection]]: A Static Class implementing Circle, BoundingBox and PixelPerfect collision detection.
 * [C++] [[Frame, Anim, Animated|SourceFrameAnimAnimated]] : Classes that manage your animated sprites.
@@ -23,6 +21,9 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Particle System|SourceParticleSystem]] : Enjoy colorful pixel explosions in your own home today!
 * [Ruby] [[Ruby Light Manager|SourceRubyLightManager]] : Add lighting to your 2D game (by Groogy)
 * [C++] [[Draw Rounded Rectangle|SourceDrawRoundedRectangle]] 
+
+## Network
+* [C++] [[Simple chat example using sf::TcpSocket|SourceNetworkChatExample]]
 
 ## GUI
 * [C++] [[FormatText|SourceFormatText]] : Format simply a sf::Text in width and height. (by Thiziri)

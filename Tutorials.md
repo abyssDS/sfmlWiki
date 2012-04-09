@@ -34,7 +34,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 
 ### Networking
 
-* [C++]  [[Simple chat example using sf::TcpSocket|Chat-Example-sf::TcpSocket]]
+* [C++]  [[Simple chat example using sf::TcpSocket|NetworkChatExample]]
 
 ### Reference Cards
 

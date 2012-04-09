@@ -2,7 +2,7 @@
 <a name="top" />
 This is a very simple chat example to get your feet wet.
 
-```cop
+```cpp
 #pragma comment(lib, "sfml-network.lib")
 
 #include <iostream>

@@ -22,15 +22,15 @@ If you have requests, suggestions or questions about this wiki, feel free to cre
 
 ## Pages names and local links
 
-When you create a link to a new page, you must separate the label of the link (for example *A class for animated sprites*) and the address of the page (for example *animated_sprite*). This allows to use descriptive link labels while keeping the name of pages simple.
+When you create a link to a new page, you must separate the label of the link (for example *A class for animated sprites*) and the address of the page (for example *AnimatedSprite*). This allows to use descriptive link labels while keeping the name of pages simple.
 
 The example above would translate the following wiki syntax:
 
-```[A class for animated sprites](animated_sprite)```
+```[A class for animated sprites](AnimatedSprite)```
 
 Please use capitals to separate words in pages names. Avoid slashes, underscores and spaces.
 
-This wiki is "flat": you can't create sections/directories, all pages have to be under the "wiki/" root. To keep them organized, please follow this pattern to name them: "wiki/CategoryPageName". Categories are the main categories listed on the home page: Tutorial, Source, Project (Faq should have no child page).
+This wiki is "flat": you can't create sections/directories, all pages have to be under the "wiki/" root. To keep them organized, please follow this pattern to name them: "wiki/CategoryPageName". Categories are the main categories listed on the home page: Tutorial, Source, Project (FAQ should have no child page).
 
 Examples:
 

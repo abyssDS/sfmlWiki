@@ -332,38 +332,12 @@ flags used at compilation time. When building FFmpeg, you can choose which decod
 AAC, AC3, FLAC, MP3, PCM, Vorbis, WMA
 
 ###Short list of video formats###
-H.264 (aka MPEG-4 AVC), MPEG4, Theora, VP6, WMV
+H.264 (aka MPEG-4 AVC), MPEG4, Theora, VP8, WMV
 
 Note that the FLV format is a container for H.264 and VP6, and that FFmpeg supports this container.
 
 ###Comprehensive list including both audio and video formats###
-aac, aasc, ac3, adpcm_4xm, adpcm_adx, adpcm_ct, adpcm_ea, adpcm_ea_maxis_xa,
-adpcm_ea_r1, adpcm_ea_r2, adpcm_ea_r3, adpcm_ea_xas, adpcm_g726, adpcm_ima_amv,
-adpcm_ima_dk3, adpcm_ima_dk4, adpcm_ima_ea_eacs, adpcm_ima_ea_sead,
-adpcm_ima_iss, adpcm_ima_qt, adpcm_ima_smjpeg, adpcm_ima_wav, adpcm_ima_ws,
-adpcm_ms, adpcm_sbpro_2, adpcm_sbpro_3, adpcm_sbpro_4, adpcm_swf, adpcm_thp,
-adpcm_xa, adpcm_yamaha, alac, als, amrnb, amv, anm, ape, asv1, asv2, atrac1,
-atrac3, aura, aura2, avs, bethsoftvid, bfi, bink, binkaudio_dct, binkaudio_rdft,
-bmp, c93, cavs, cdgraphics, cinepak, cljr, cook, cscd, cyuv, dca, dnxhd, dpx,
-dsicinaudio, dsicinvideo, dvbsub, dvdsub, dvvideo, dxa, eac3, eacmv, eamad,
-eatgq, eatgv, eatqi, eightbps, eightsvx_exp, eightsvx_fib, escape124, ffv1,
-ffvhuff, flac, flashsv, flic, flv, fourxm, fraps, frwu, gif, h261, h263, h263i,
-h264, huffyuv, idcin, iff_byterun1, iff_ilbm, imc, indeo2, indeo3, indeo5,
-interplay_dpcm, interplay_video, jpegls, kgv1, kmvc, loco, mace3, mace6, mdec,
-mimic, mjpeg, mjpegb, mlp, mmvideo, motionpixels, mp1, mp2, mp3, mp3adu, mp3on4,
-mpc7, mpc8, mpeg1video, mpeg2video, mpeg4, mpeg_xvmc, mpegvideo, msmpeg4v1,
-msmpeg4v2, msmpeg4v3, msrle, msvideo1, mszh, nellymoser, nuv, pam, pbm, pcm_alaw,
-pcm_bluray, pcm_dvd, pcm_f32be, pcm_f32le, pcm_f64be, pcm_f64le, pcm_mulaw,
-pcm_s16be, pcm_s16le, pcm_s16le_planar, pcm_s24be, pcm_s24daud, pcm_s24le,
-pcm_s32be, pcm_s32le, pcm_s8, pcm_u16be, pcm_u16le, pcm_u24be, pcm_u24le,
-pcm_u32be, pcm_u32le, pcm_u8, pcm_zork, pcx, pgm, pgmyuv, pgssub, png, ppm,
-ptx, qcelp, qdm2, qdraw, qpeg, qtrle, r210, ra_144, ra_288, rawvideo, rl2, roq,
-roq_dpcm, rpza, rv10, rv20, rv30, rv40, sgi, shorten, sipr, smackaud, smacker,
-smc, snow, sol_dpcm, sonic, sp5x, sunrast, svq1, svq3, targa, theora, thp,
-tiertexseqvideo, tiff, tmv, truehd, truemotion1, truemotion2, truespeech, tscc,
-tta, twinvq, txd, ulti, v210, v210x, vb, vc1, vcr1, vmdaudio, vmdvideo, vmnc,
-vorbis, vp3, vp5, vp6, vp6a, vp6f, vqa, wavpack, wmapro, wmav1, wmav2, wmavoice,
-wmv1, wmv2, wmv3, wnv1, ws_snd1, xan_dpcm, xan_wc3, xl, xsub, yop, zlib, zmbv
+aac, aac_latm, aasc, ac3, adpcm_4xm, adpcm_adx, adpcm_ct, adpcm_ea, adpcm_ea_maxis_xa, adpcm_ea_r1, adpcm_ea_r2, adpcm_ea_r3, adpcm_ea_xas, adpcm_g722, adpcm_g726, adpcm_ima_amv, adpcm_ima_apc, adpcm_ima_dk3, adpcm_ima_dk4, adpcm_ima_ea_eacs, adpcm_ima_ea_sead, adpcm_ima_iss, adpcm_ima_qt, adpcm_ima_smjpeg, adpcm_ima_wav, adpcm_ima_ws, adpcm_ms, adpcm_sbpro_2, adpcm_sbpro_3, adpcm_sbpro_4, adpcm_swf, adpcm_thp, adpcm_xa, adpcm_yamaha, alac, als, amrnb, amrwb, amv, anm, ansi, ape, ass, asv1, asv2, atrac1, atrac3, aura, aura2, avrp, avs, bethsoftvid, bfi, bink, binkaudio_dct, binkaudio_rdft, bintext, bmp, bmv_audio, bmv_video, c93, cavs, cdgraphics, cinepak, cljr, cook, cscd, cyuv, dca, dfa, dirac, dnxhd, dpx, dsicinaudio, dsicinvideo, dvbsub, dvdsub, dvvideo, dxa, dxtory, eac3, eacmv, eamad, eatgq, eatgv, eatqi, eightbps, eightsvx_exp, eightsvx_fib, escape124, escape130, ffv1, ffvhuff, ffwavesynth, flac, flashsv, flashsv2, flic, flv, fourxm, fraps, frwu, g723_1, g729, gif, gsm, gsm_ms, h261, h263, h263i, h264, h264_crystalhd, h264_vdpau, huffyuv, idcin, idf, iff_byterun1, iff_ilbm, imc, indeo2, indeo3, indeo4, indeo5, interplay_dpcm, interplay_video, jpeg2000, jpegls, jv, kgv1, kmvc, lagarith, libcelt, libdirac, libgsm, libgsm_ms, libopencore_amrnb, libopencore_amrwb, libopenjpeg, libschroedinger, libspeex, libstagefright_h264, libutvideo, libvpx, loco, mace3, mace6, mdec, mimic, mjpeg, mjpegb, mlp, mmvideo, motionpixels, mp1, mp1float, mp2, mp2float, mp3, mp3adu, mp3adufloat, mp3float, mp3on4, mp3on4float, mpc7, mpc8, mpeg1_vdpau, mpeg1video, mpeg2_crystalhd, mpeg2video, mpeg4, mpeg4_crystalhd, mpeg4_vdpau, mpeg_vdpau, mpeg_xvmc, mpegvideo, msmpeg4_crystalhd, msmpeg4v1, msmpeg4v2, msmpeg4v3, msrle, msvideo1, mszh, mxpeg, nellymoser, nuv, pam, pbm, pcm_alaw, pcm_bluray, pcm_dvd, pcm_f32be, pcm_f32le, pcm_f64be, pcm_f64le, pcm_lxf, pcm_mulaw, pcm_s16be, pcm_s16le, pcm_s16le_planar, pcm_s24be, pcm_s24daud, pcm_s24le, pcm_s32be, pcm_s32le, pcm_s8, pcm_s8_planar, pcm_u16be, pcm_u16le, pcm_u24be, pcm_u24le, pcm_u32be, pcm_u32le, pcm_u8, pcm_zork, pcx, pgm, pgmyuv, pgssub, pictor, png, ppm, prores, prores_lgpl, ptx, qcelp, qdm2, qdraw, qpeg, qtrle, r10k, r210, ra_144, ra_288, rawvideo, rl2, roq, roq_dpcm, rpza, rv10, rv20, rv30, rv40, s302m, sgi, shorten, sipr, smackaud, smacker, smc, snow, sol_dpcm, sonic, sp5x, srt, sunrast, svq1, svq3, targa, theora, thp, tiertexseqvideo, tiff, tmv, truehd, truemotion1, truemotion2, truespeech, tscc, tta, twinvq, txd, ulti, utvideo, v210, v210x, v308, v410, vb, vble, vc1, vc1_crystalhd, vc1_vdpau, vc1image, vcr1, vmdaudio, vmdvideo, vmnc, vorbis, vp3, vp5, vp6, vp6a, vp6f, vp8, vqa, wavpack, wmalossless, wmapro, wmav1, wmav2, wmavoice, wmv1, wmv2, wmv3, wmv3_crystalhd, wmv3_vdpau, wmv3image, wnv1, ws_snd1, xan_dpcm, xan_wc3, xan_wc4, xbin, xl, xsub, xwd, y41p, yop, yuv4, zlib, zmbv
 
 ## <a name="features" />Features status [ [Top] ](#top)
 ###Currently implemented features###

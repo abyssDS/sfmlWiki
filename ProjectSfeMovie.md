@@ -98,13 +98,13 @@ Considering this, you're responsible for checking the possible fees and licenses
 
   <tr>
     <td>H.264 (MPEG4 AVC)</td>
-    <td>free under 100 000 units distributed per year (license still required), then US $0.20 per unit after first 100 000 units per year</td>
+    <td>free under 100,000 units per year (license still required), then US $0.20 per unit after first 100,000 units per year</td>
     <td><a href="http://www.mpegla.com/main/programs/AVC/Documents/AVC_TermsSummary.pdf">MPEG LA (PDF)</a></td>
   </tr>
 
   <tr>
     <td>MPEG4</td>
-    <td>free under 50 000 units distributed per year (license still required), then US $0.25 per unit after first 50 000 units per year</td>
+    <td>free under 50,000 units per year (license still required), then US $0.25 per unit after first 50,000 units per year</td>
     <td><a href="http://www.mpegla.com/main/programs/M4V/Documents/m4vweb.ppt">MPEG LA (PowerPoint)</a></td>
   </tr>
 
@@ -122,8 +122,8 @@ Considering this, you're responsible for checking the possible fees and licenses
 
   <tr>
     <td>WMV</td>
-    <td><!-- free for any use? -->?</td>
-    <td><!-- <a href="http://www.microsoft.com/windows/windowsmedia/licensing/LicensingAVServices.aspx">Microsoft's website?</a> -->?</td>
+    <td>free for any use on Windows, US $0.10 per unit + US $400,000 per year for other OS</td>
+    <td><a href="http://www.microsoft.com/windows/windowsmedia/licensing/final.aspx#WindowsMediaVideo_Final">Microsoft</a></td>
   </tr>
 
 </table>
@@ -137,7 +137,7 @@ Considering this, you're responsible for checking the possible fees and licenses
 
   <tr>
     <td>AAC</td>
-    <td>US$ 0.48 per unit with a maximum annual payment per product of US$ 32 000</td>
+    <td>US $0.48 per unit with a maximum annual payment per product of US $32,000</td>
     <td><a href="http://www.vialicensing.com/licensing/aac-fees.aspx">Via Licensing</a></td>
   </tr>
   
@@ -155,7 +155,7 @@ Considering this, you're responsible for checking the possible fees and licenses
   
   <tr>
     <td>MP3</td>
-    <td><b>maximum</b> between US$ 15 000 and US$ 0.75 per unit, or US$ 2 500 per title for games</td>
+    <td><b>maximum</b> between US $15,000 and US $0.75 per unit, or US $2,500 per title for games</td>
     <td><a href="http://www.mp3licensing.com/royalty/">mp3licensing.com</a></td>
   </tr>
   
@@ -173,8 +173,8 @@ Considering this, you're responsible for checking the possible fees and licenses
   
   <tr>
     <td>WMA</td>
-    <td>?</td>
-    <td>?</td>
+    <td>free for any use on Windows, US $0.10 to US $0.20 per unit + US $20,000 to US $40,000 per year for other OS</td>
+    <td><a href="http://www.microsoft.com/windows/windowsmedia/licensing/final.aspx#WindowsMediaAudioStandardVersion_Final">Microsoft</a></td>
   </tr>
 
 </table>
@@ -310,9 +310,8 @@ sfeMovie's Git repository is [https://github.com/Yalir/sfeMovie](https://github.
 
 You may need to build sfeMovie yourself in order to use non royalty-free decoders. The provided binaries only include the free decoders : flac, vorbis and theora.
 
-To build sfeMovie, make sure you have CMake, Make* and Clang/GCC/MSVC++ installed, and download the latest sources (see [download links](#downloads)). Then run build.sh from a command line interpreter. Both Clang, GCC and MSVC++ are supported.
+To build sfeMovie, make sure you have CMake, Make, and a compiler (Clang, GCC or MSVC++) installed, and download the latest sources (see [download links](#downloads)). Then run build.sh from a command line interpreter.
 
-*only needed when compiling with Clang or GCC
 
 ###Windows specific###
 sfeMovie relies on FFmpeg, and to build FFmpeg you need a Unix environment plus some settings. This can be achieved by installing MinGW, here are the steps:

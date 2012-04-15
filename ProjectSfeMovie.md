@@ -25,7 +25,7 @@ Here is a sample code showing how to use sfeMovie, the setup instructions follow
 
 ```cpp
 #include <SFML/Graphics.hpp>
-#include "Movie.h"
+#include <sfeMovie/Movie.hpp>
 
 int main()
 {
@@ -115,9 +115,9 @@ Considering this, you're responsible for checking the possible fees and licenses
   </tr>
 
   <tr>
-    <td>VP6</td>
-    <td>?</td>
-    <td>?</td>
+    <td>VP8</td>
+    <td>free for any use</td>
+    <td><a href="http://www.webmproject.org/about/faq/#licensing">WebM</a></td>
   </tr>
 
   <tr>

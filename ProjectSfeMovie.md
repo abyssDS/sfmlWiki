@@ -66,13 +66,13 @@ I'm not going to explain how to use a library, most of it is like for any other 
 
 - Make sure you correctly set the headers and libraries search path to find both sfeMovie's and SFML's headers and libraries
 - Link your product against sfeMovie (libsfe-movie) and SFML 2.0
-- Release your software with the required libraries : sfe-movie, sfml-system, sfml-window, sfml-graphics, sfml-audio, sndfile and openal.
+- Release your software with the required libraries : sfeMovie, sfml-system, sfml-window, sfml-graphics, sfml-audio, sndfile and openal.
 
 ###Mac OS X specific###
 
-The sfe-movie framework has been built in a way that allows you to put the framework in your bundle application, for distribution purpose. The copying process can be done manually, or automatically through Xcode. If you want to do it manually, make sure the framework is copied to your_app.app/Contents/Frameworks. Create the Frameworks directory if needed.
+The sfeMovie framework has been built in a way that allows you to put the framework in your bundle application, for distribution purpose. The copying process can be done manually, or automatically through Xcode. If you want to do it manually, make sure the framework is copied to your_app.app/Contents/Frameworks. Create the Frameworks directory if needed.
 
-When using Xcode, you can automatize this process by [creating a Copy Files build phase](https://developer.apple.com/library/mac/#recipes/xcode_help-project_editor/Articles/CreatingaCopyFilesBuildPhase.html) and setting the Destination of this phase to "Frameworks". Then add sfe-movie.framework and its dependencies to this phase, this will ask Xcode to copy the frameworks into your application at build time.
+When using Xcode, you can automatize this process by [creating a Copy Files build phase](https://developer.apple.com/library/mac/#recipes/xcode_help-project_editor/Articles/CreatingaCopyFilesBuildPhase.html) and setting the Destination of this phase to "Frameworks". Then add sfeMovie.framework and its dependencies to this phase, this will ask Xcode to copy the frameworks into your application at build time.
 
 
 ## <a name="license" />License [ [Top] ](#top)
@@ -80,7 +80,7 @@ When using Xcode, you can automatize this process by [creating a Copy Files buil
 sfeMovie is covered by the [LGPL v2.1 license](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html). As for the legal side, note that you can download the sfeMovie sources from the [official Git repository](https://github.com/Yalir/sfeMovie).
 
 Basically, this means you can use sfeMovie for ANY project without ANY restriction until
-sfe-movie is dynamically linked to your software. The provided binaries are dynamic libraries only. If you want to know more about LGPL, have a look at the [GNU website](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html).
+sfeMovie is dynamically linked to your software. The provided binaries are dynamic libraries only. If you want to know more about LGPL, have a look at the [GNU website](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html).
 
 ###Legal notes###
 As you may know, patents on video codecs is a complex issue. FFmpeg is distributed under LGPL and does not provide any binary version of the library. This is to avoid legal issues : decoders' source code can be freely distributed, but not binaries. Moreover patents do not apply in some countries, which is why [VideoLAN doesn't pay any fee to distribute VLC](http://www.videolan.org/legal.html). But as I'm not a specialist and I don't know the details about laws, **the binaries I'm providing only include the free decoders : flac, vorbis, theora**. If you want support for more decoders, you'll have to build sfeMovie yourself. A script is provided so that the whole compilation process can be performed flawlessly. You're also given the ability to exactly choose which decoders you want to enable in the final sfeMovie binary.

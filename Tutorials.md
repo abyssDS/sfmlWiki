@@ -27,6 +27,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 * [C++] [Create a simple image manager](TutorialImageManager)
 * [C++] [[Create and use SetIcon|TutorialCreateAndUseSetIcon]]
 * [C++] [[Correctly display accents|TutorialCorrectlyDisplayAccents]]
+* [C++] [[Grouping your Drawables in a Group class|TutorialDrawableGroup]]
 
 ### Video
 

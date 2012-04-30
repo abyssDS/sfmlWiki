@@ -58,14 +58,14 @@ Here's what I use. The SFML doesn't implement a Group class for ownership reason
 		}
 	}
 
-You can even add `namespace sf { ... }` if you think that Group should belong to the SFML ;).
-
-//This is what ables you to do Group.Draw() to draw all the Drawable inside of a Group, and to apply common settings such as position, color, ... to its elements.
-void Group::Render(sf::RenderTarget& Tar) const {
-	for(unsigned int i = 0, len = size(); i < len; ++i) {
-		Tar.Draw(*(*this)[i]);
+	//This is what ables you to do Group.Draw() to draw all the Drawable inside of a Group, and to apply common settings such as position, color, ... to its elements.
+	void Group::Render(sf::RenderTarget& Tar) const {
+		for(unsigned int i = 0, len = size(); i < len; ++i) {
+			Tar.Draw(*(*this)[i]);
+		}
 	}
-}
+
+You can even add `namespace sf { ... }` if you think that Group should belong to the SFML ;).
 
 # Examples
 

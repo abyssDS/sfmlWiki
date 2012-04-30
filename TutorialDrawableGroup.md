@@ -23,7 +23,7 @@ Group would behave like a simple [std::vector](http://en.cppreference.com/w/cpp/
 * simplicity: it's easier to type `Group.Draw()` than `for(int i = 0; ...) { Group[i].Draw() }`. It also makes Groups storable in other Groups, like other Drawables, which ables to process the whole very easily ;
 * sharing of properties for the membres of a Group. For example, if you want all the Sprites stored in a Group to move at the same time, you can just update the coordinates of the Group. This is very useful if you make an articulated body made of sprites. You can also separate objects around a single point: the origin of the Group, just by using `Group.SetCenter(..., ...)`!
 
-## Suggested implementation
+## Suggested implementation (using SFML 1.6)
 
 Here's what I use. The SFML doesn't implement a Group class for ownership reasons: should the Group destroy its elements when it is destroyed? etc.
 
@@ -56,9 +56,8 @@ Here's what I use. The SFML doesn't implement a Group class for ownership reason
 	Group::~Group() {
 		for(unsigned int i = 0, len = size(); i < len; ++i) {
 			delete (*this)[i];
-			pop_back();
-			--len;
 		}
+		clear();
 	}
 
 	//This is what ables you to do Group.Draw() to draw all the Drawable inside of a Group, and to apply common settings such as position, color, ... to its elements.

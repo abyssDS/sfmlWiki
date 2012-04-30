@@ -28,7 +28,7 @@ Group would behave like a simple [std::vector](http://en.cppreference.com/w/cpp/
 Here's what I use. The SFML doesn't implement a Group class for ownership reasons: should the Group destroy its elements when it is destroyed? etc.
 
 ### Group.hpp
-
+	```cpp
 	#ifndef GROUP_INCLUDED_HPP
 	#define GROUP_INCLUDED_HPP
 
@@ -46,6 +46,7 @@ Here's what I use. The SFML doesn't implement a Group class for ownership reason
 
 ### Group.cpp
 
+	```cpp
 	#include "group.hpp"
 
 	Group::Group() :

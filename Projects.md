@@ -17,4 +17,4 @@ Welcome to the section dedicated to projects using/for SFML.
 
 ## Video Games
 
-* [Metroid Prime : Némésis](http://metroidprime4.xooit.fr/index.php): 2D fangame following the famous Metroid Prime 3.
+* [C++] [Metroid Prime : Némésis](http://metroidprime4.xooit.fr/index.php): 2D fangame following the famous Metroid Prime 3.

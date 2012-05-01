@@ -23,7 +23,7 @@ Group would behave like a simple [std::vector](http://en.cppreference.com/w/cpp/
 * simplicity: it's easier to type `Group.Draw()` than `for(int i = 0; ...) { Group[i].Draw() }`. It also makes Groups storable in other Groups, like other Drawables, which ables to process the whole very easily ;
 * sharing of properties for the membres of a Group. For example, if you want all the Sprites stored in a Group to move at the same time, you can just update the coordinates of the Group. This is very useful if you make an articulated body made of sprites. You can also separate objects around a single point: the origin of the Group, just by using `Group.SetCenter(..., ...)`!
 
-## Suggested implementation (using SFML 2.0)
+## Suggested implementation (using SFML 1.6)
 
 Here's what I use. The SFML doesn't implement a Group class for ownership reasons: should the Group destroy its elements when it is destroyed? etc.
 
@@ -39,7 +39,7 @@ Here's what I use. The SFML doesn't implement a Group class for ownership reason
 			Group();
 			~Group();
 
-			void render(sf::RenderTarget&) const;
+			void Render(sf::RenderTarget&) const;
 	};
 
 	#endif
@@ -54,15 +54,16 @@ Here's what I use. The SFML doesn't implement a Group class for ownership reason
 		std::vector<sf::Drawable*>() {
 	}
 	Group::~Group() {
-		for(std::vector<sf::Drawable*>::iterator i = begin(); i != end(); ++i) {
-			delete *i;
+		for(unsigned int i = 0, len = size(); i < len; ++i) {
+			delete (*this)[i];
 		}
+		clear();
 	}
 
 	//This is what ables you to do Group.Draw() to draw all the Drawable inside of a Group, and to apply common settings such as position, color, ... to its elements.
-	void Group::render(sf::RenderTarget& Tar) const {
-		for(std::vector<sf::Drawable*>::iterator i = begin(); i != end(); ++i) {
-			Tar.draw(*i);
+	void Group::Render(sf::RenderTarget& Tar) const {
+		for(unsigned int i = 0, len = size(); i < len; ++i) {
+			Tar.Draw(*(*this)[i]);
 		}
 	}
 

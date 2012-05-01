@@ -87,7 +87,7 @@ At the moment, SFML does not have a GUI package. You can certainly use any exter
 
 ### <a name="video"/>Can I read video files with SFML?
 
-SFML does not have a video playback module.
+SFML does not have a video playback module, but there is [one on this wiki](https://github.com/LaurentGomila/SFML/wiki/ProjectSfeMovie).
 
 ### <a name="embed_gui"/>Can you interface SFML with a GUI library?
 
@@ -164,7 +164,7 @@ To maintain a portable entry point (main), you link your program with the sfml-m
 
 ### <a name="sprite_white"/>My sprite isn't displayed but a white square!
 
-This is due to a premature destruction of the sf::Image. Indeed a sf::Sprite only points to an external sf::Image. You have to keep the sf::Image “alive” as long as the sprite uses it.
+This is due to a premature destruction of the sf::Image. Indeed a sf::Sprite only points to an external sf::Image. You have to keep the sf::Image “alive” as long as the sprite uses it. It can also be that you never gave Sprite an Image, hence used Sprite.SetImage().
 
 When your image is moved from one memory place to another you have to update your sprite ( via SetImage function ) .
 

@@ -6,7 +6,7 @@ This tutorial has been written because of [this thread](http://fr.sfml-dev.org/f
 
 ## Introduction
 
-Drawable's children cover a wide range of uses: shapes, sprites, strings, etc. but the "family" lacks one member: Group, so we'll create it there. Indeed, the class exists in well-known libraries such as [Pygame](http://www.pygame.org/news.html).
+Drawable's children cover a wide range of uses: Shapes, Sprites, Texts, etc. but the "family" lacks one member: Group, so we'll create it there. Indeed, the class exists in well-known libraries such as [Pygame](http://www.pygame.org/news.html).
 
 ## Utility
 

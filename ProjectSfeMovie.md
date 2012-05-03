@@ -356,7 +356,7 @@ aac, aac_latm, aasc, ac3, adpcm_4xm, adpcm_adx, adpcm_ct, adpcm_ea, adpcm_ea_max
 ## <a name="thanks" />Thanks [ [Top] ](#top)
 I (Lucas Soltic) would like to thank some people for their great help!
 
-- Laurent Gomilla for his excellent work on SFML
+- Laurent Gomila for his excellent work on SFML
 - Loïc Siquet for his general support and work
 - Alexandre Janniaux for his help on the Linux port
 - Martin Bohme for his FFmpeg tutorial (<http://dranger.com/ffmpeg/>)

@@ -316,7 +316,7 @@ To build sfeMovie, make sure you have CMake, Make and Clang/GCC installed. You'l
 ###Windows specific###
 sfeMovie relies on FFmpeg, and to build FFmpeg you need a Unix environment plus some settings. This can be achieved by installing MinGW, here are the steps:
 
-- download the latest MinGW from [this page](http://sourceforge.net/projects/mingw/files/Automated%20MinGW%20Installer/mingw-get-inst/)
+- download the latest MinGW from [this page](http://sourceforge.net/projects/mingw/files/Installer/mingw-get-inst/)
 - install MinGW, without forgetting to enable : C++ Compiler, MSYS Basic System and MinGW Developer ToolKit
 - install CMake if needed (see [CMake website](http://www.cmake.org/cmake/resources/software.html)) and accept setting CMake in your PATH
 - launch the MinGW shell (C:\MinGW\msys\1.0\msys.bat)

@@ -11,7 +11,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [[Thor C++ Library|ProjectThor]]: Provides pausable clocks, vector functions, particles, resource/event handling, triangulations, and more...
 * [Ruby] [[GDE|ProjectsGroogysDevelopmentEnvironment]]: An environment for rbSFML that helps out with development.
 
-## Physique
+### Physique
 * [C++] [SFML with Box2D](https://github.com/Krozark/SFML2---Box2D): A small project that let you use Box2D with SFML.
 
 ### Websites/Tools/Other

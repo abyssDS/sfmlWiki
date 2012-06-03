@@ -310,7 +310,7 @@ sfeMovie's Git repository is [https://github.com/Yalir/sfeMovie](https://github.
 
 You may need to build sfeMovie yourself in order to use non royalty-free decoders. **The provided binaries only include the free decoders : flac, vorbis and theora.**
 
-To build sfeMovie, make sure you have CMake, Make and Clang/GCC installed. You'll also need MSVC++ if you want to build sfeMovie for this IDE. Then download the latest sources (see [download links](#downloads)), and run build.sh from a command line interpreter.
+To build sfeMovie, make sure you have CMake, Make and Clang/GCC installed. You'll also need MSVC++ if you want to build sfeMovie for this IDE. Then download the latest sources (see [download links](#downloads)), and run **build.sh** from a command line interpreter. **Directly using the CMake file will not work!**
 
 
 ###Windows specific###

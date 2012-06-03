@@ -29,8 +29,9 @@ Here is a sample code showing how to use sfeMovie, the setup instructions follow
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "sfeMovie Player");
     sfe::Movie movie;
+    sf::RenderWindow window(sf::VideoMode(640, 480), "sfeMovie Player");
+    window.setVerticalSyncEnabled(true);
 
     // Open movie file for reading
     if (!movie.openFromFile("movie.ogg"))

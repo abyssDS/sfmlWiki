@@ -1,3 +1,5 @@
+# Load Image From Resource
+
 ```cpp
 /*
  *	Loads an sf::Image from RCDATA in a resource file

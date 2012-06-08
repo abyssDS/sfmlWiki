@@ -41,6 +41,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [Ruby] [[MessageBox class|SourceMessageBox]](by Groogy)  : A simple Utility class for debugging purposes.
 * [C++] [[wxScrolledSFMLWindow|SourceWxScrolledSfmlWindow]] (by TricksterGuy) : Integrates an SFML window onto a scrolled wxWindow
 * [C++] [[PhyFS|SourceSfmlPhysfs]] : A class that adapts PhysFS to SFML with a custom sf::InputStream
+* [C++] [[LoadImageFromResource|SourceLoadImageFromResource]] : An example of how to load data from a resource (.rc) into sf::Image.
 
 ## Audio
 * [C++] [[Mp3 Player|SourceMp3Player]] : Class inspired sf:: Music for playing mp3 file using the library mpg123

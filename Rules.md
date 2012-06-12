@@ -18,7 +18,7 @@ When you edit content, please leave a comment in the dedicated text field at the
 
 ## Major modifications
 
-If you have requests, suggestions or questions about this wiki, feel free to create a new discussion on the [Wiki section](http://www.sfml-dev.org/forum/viewforum.php?f=11) of the forum. You should also use this forum to report any bug encountered while using the wiki.
+If you have requests, suggestions or questions about this wiki, feel free to create a new discussion on the [Wiki section](http://en.sfml-dev.org/forums/index.php?board=11.0) of the forum. You should also use this forum to report any bug encountered while using the wiki.
 
 ## Pages names and local links
 

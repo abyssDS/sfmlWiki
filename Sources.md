@@ -42,7 +42,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[wxScrolledSFMLWindow|SourceWxScrolledSfmlWindow]] (by TricksterGuy) : Integrates an SFML window onto a scrolled wxWindow
 * [C++] [[PhyFS|SourceSfmlPhysfs]] : A class that adapts PhysFS to SFML with a custom sf::InputStream
 * [C++] [[LoadImageFromResource|SourceLoadImageFromResource]] : An example of how to load data from a resource (.rc) into sf::Image.
-* [C++] [[Verlet physic|Verlet-physic-snippet]] : A simple example of physic circle body in space.
+* [C++] [[Verlet physic|SourceVerletPhysic]] : A simple example of physic circle body in space.
 
 ## Audio
 * [C++] [[Mp3 Player|SourceMp3Player]] : Class inspired sf:: Music for playing mp3 file using the library mpg123

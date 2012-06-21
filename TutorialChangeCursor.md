@@ -1,4 +1,4 @@
-# How to change your Cursor
+# How to change your cursor
 
 The cursor is something every computer user is familiar with and in fact is constantly staring at, yet many people don't even realize anymore that it's there and changes its shape every so often. Next to the functionality like pointing and clicking the cursor can show many different states and indicate possible actions. For example you'll get a selection cursor when hovering over a text or a hand shaped cursor could indicate a link etc.
 

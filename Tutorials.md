@@ -23,7 +23,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 * [C++] [[Using CEGUI in SFML|TutorialCEGUI]]
 * [C++] Loading images in a thread (and displaying progress)
 * [C++] Displaying the FPS without loading a font
-* [C++] How to change your Cursor
+* [C++] [How to change your cursor](TutorialChangeCursor)
 * [C++] [Create a simple image manager](TutorialImageManager)
 * [C++] [[Create and use SetIcon|TutorialCreateAndUseSetIcon]]
 * [C++] [[Correctly display accents|TutorialCorrectlyDisplayAccents]]

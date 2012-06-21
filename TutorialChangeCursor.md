@@ -108,7 +108,7 @@ namespace sf
     public:
         enum TYPE{ WAIT, TEXT, NORMAL, HAND /*,...*/ };
         StandardCursor(const TYPE t);
-        void set(const sf::WindowHandle aWindowHandle) const;
+        void set(const sf::WindowHandle& aWindowHandle) const;
         ~StandardCursor();
     };
 }

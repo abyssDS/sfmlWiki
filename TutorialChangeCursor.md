@@ -1,9 +1,9 @@
 # How to change your Cursor
 
-The cursor is something every computer user is familiar with and in fact is constantly staring at, yet many people don't even realize anymore that it's there and changes its shape every so often. Next to the functionality like pointing and clicking the cursor can show many diffrent states and indicate possible actions. For example you'll get a selection cursor when hovering over a text or a hand shaped cursor could indicate a link etc.
+The cursor is something every computer user is familiar with and in fact is constantly staring at, yet many people don't even realize anymore that it's there and changes its shape every so often. Next to the functionality like pointing and clicking the cursor can show many different states and indicate possible actions. For example you'll get a selection cursor when hovering over a text or a hand shaped cursor could indicate a link etc.
 
 Since SFML is not a framework nor a GUI system providing a native function for changing the mouse cursor doesn't fit its purpose. Here's where this tutorial comes in.
-If you're making an application or game, you might want to be able to display a diffrent cursor. There are two ways to change your cursor:
+If you're making an application or game, you might want to be able to display a different cursor. There are two ways to change your cursor:
 
 1. You can hide the default cursor and draw a sprite where the cursor should be
 2. You can ask your OS to do it for you. (Windows & Linux)
@@ -72,7 +72,7 @@ What are the advantages of using this method over the other?
 
 ### Class Prototype
 
-Since we have to store the cursor diffrently for the Linux as for the Windows platform, we've introduced an preprocessor switch for the include files and the private class members.
+Since we have to store the cursor differently for the Linux as for the Windows platform, we've introduced an preprocessor switch for the include files and the private class members.
 
 ```cpp
 #ifndef STANDARCURSOR_HPP
@@ -197,9 +197,9 @@ sf::StandardCursor::~StandardCursor()
 #endif
 ```
 
-### Cursor Demonstartion
+### Cursor Demonstration 
 
-This section presents a fully functional demonstartion of both cursor changing possibilities.
+This section presents a fully functional demonstration of both cursor changing possibilities.
 
 To get an handle to the window we will use SFML's `sf::Window::getSystemHandle()` function and then we will load the cursor with the OS specific implementation.
 

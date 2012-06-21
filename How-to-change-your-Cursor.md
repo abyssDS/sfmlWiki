@@ -1,4 +1,3 @@
-# How to change your Cursor
 The cursor is something every computer user is familiar with and in fact is constantly staring at, yet many people don't even realize anymore that it's there and changes its shape every so often. Next to the functionality like pointing and clicking the cursor can show many diffrent states and indicate possible actions. For example you'll get a selection cursor when hovering over a text or a hand shaped cursor could indicate a link etc.
 
 Since SFML is not a framework nor a GUI system providing a native function for changing the mouse cursor doesn't fit its purpose. Here's where this tutorial comes in.

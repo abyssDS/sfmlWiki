@@ -75,8 +75,8 @@ What are the advantages of using this method over the other?
 Since we have to store the cursor differently for the Linux as for the Windows platform, we've introduced an preprocessor switch for the include files and the private class members.
 
 ```cpp
-#ifndef STANDARCURSOR_HPP
-#define STANDARCURSOR_HPP
+#ifndef STANDARDCURSOR_HPP
+#define STANDARDCURSOR_HPP
 
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
@@ -113,7 +113,7 @@ namespace sf
     };
 }
 
-#endif // STANDARCURSOR_HPP
+#endif // STANDARDCURSOR_HPP
 ```
 
 ### Class Implementation

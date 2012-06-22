@@ -95,16 +95,16 @@ namespace sf
     class StandardCursor
     {
     private:
-		#ifdef SFML_SYSTEM_WINDOWS
+        #ifdef SFML_SYSTEM_WINDOWS
             
-		HCURSOR Cursor; /*Type of the Cursor with Windows*/
-			
-		#else
+        HCURSOR Cursor; /*Type of the Cursor with Windows*/
+            
+        #else
 
         XID Cursor;
         Display* display;
 
-		#endif
+        #endif
     public:
         enum TYPE{ WAIT, TEXT, NORMAL, HAND /*,...*/ };
         StandardCursor(const TYPE t);
@@ -147,12 +147,12 @@ sf::StandardCursor::StandardCursor(const sf::StandardCursor::TYPE t)
 
 void sf::StandardCursor::set(const sf::WindowHandle& aWindowHandle) const
 {
-	SetClassLongPtr(aWindowHandle, GCLP_HCURSOR, reinterpret_cast<LONG_PTR>(Cursor));
+    SetClassLongPtr(aWindowHandle, GCLP_HCURSOR, reinterpret_cast<LONG_PTR>(Cursor));
 }
 
 sf::StandardCursor::~StandardCursor()
 {
-	// Nothing to do for destructor : no memory has been allocated (shared ressource principle)
+    // Nothing to do for destructor : no memory has been allocated (shared ressource principle)
 }
 
 #elif defined(SFML_SYSTEM_LINUX)
@@ -210,48 +210,48 @@ To get an handle to the window we will use SFML's `sf::Window::getSystemHandle()
 
 int main()
 {
-	int choice = 0;
-	while(choice != 1 && choice != 2)
-	{
-		std::cout << "\t1. Hide the cursor and draw your own." << std::endl;
-		std::cout << "\t2. Let the OS handle the cursor." << std::endl;
-		std::cout << "Choose your cursor behaviour: ";
-		std::cin >> choice;
-	}
+    int choice = 0;
+    while(choice != 1 && choice != 2)
+    {
+        std::cout << "\t1. Hide the cursor and draw your own." << std::endl;
+        std::cout << "\t2. Let the OS handle the cursor." << std::endl;
+        std::cout << "Choose your cursor behaviour: ";
+        std::cin >> choice;
+    }
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Cursor Demonstration");
 
-	if(choice == 2)
+    if(choice == 2)
     {
-		sf::StandardCursor Cursor(sf::StandardCursor::HAND);
-		Cursor.set(window.getSystemHandle());
-	}
-	else
-		window.setMouseCursorVisible(false);
-	
-	sf::View fixed = window.getView();
-	sf::Texture texture;
-	if(!texture.loadFromFile("cursor.png"))
-		return EXIT_FAILURE;
-	sf::Sprite sprite(texture);
+        sf::StandardCursor Cursor(sf::StandardCursor::HAND);
+        Cursor.set(window.getSystemHandle());
+    }
+    else
+        window.setMouseCursorVisible(false);
+    
+    sf::View fixed = window.getView();
+    sf::Texture texture;
+    if(!texture.loadFromFile("cursor.png"))
+        return EXIT_FAILURE;
+    sf::Sprite sprite(texture);
     
     while(window.isOpen())
     {
-		sf::Event event;
-		while(window.pollEvent(event))
-			if(event.type == sf::Event::Closed)
-				window.close();
+        sf::Event event;
+        while(window.pollEvent(event))
+            if(event.type == sf::Event::Closed)
+                window.close();
 
-		window.clear();
+        window.clear();
 
-		if(choice == 1)
-		{
-			sprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));
-			window.setView(fixed);
-			window.draw(sprite);
-		}
+        if(choice == 1)
+        {
+            sprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));
+            window.setView(fixed);
+            window.draw(sprite);
+        }
 
-		window.display();
+        window.display();
     }
     return EXIT_SUCCESS;
 }

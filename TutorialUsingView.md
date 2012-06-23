@@ -158,4 +158,4 @@ I've created a small application which packs up every introduced concept. The co
 * [Image Package](http://dev.my-gate.net/wp-content/uploads/2012/06/images.zip) (801 KB)
 * [Full Package](http://dev.my-gate.net/wp-content/uploads/2012/06/complete.zip) (1.16 MB)
 
-Direct questions to this article can be made in the [forum]() or on my [blog](http://dev.my-gate.net/2012/06/using-sfview/). Feel free to edit/correct mistakes on this wiki entry!
+Direct questions to this article can be made in the [forum](http://en.sfml-dev.org/forums/index.php?topic=8334) or on my [blog](http://dev.my-gate.net/2012/06/using-sfview/). Feel free to edit/correct mistakes on this wiki entry!

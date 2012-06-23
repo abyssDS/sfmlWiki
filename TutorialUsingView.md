@@ -96,7 +96,7 @@ sf::View view(origin.x, origin.y, size.width, size.height);
 
 Where origin relates to a 2D vector of the origin in the rendering coordination system and size relates to the `sf::View` size as discussed above.
 
-### The viewport rectangle
+## The viewport rectangle
 
 After we've seen most of the things `sf::View` can do, we want to generalize this even further. For now we've assumed we were using a window and rendered 1:1 onto it's surface, but what if we wanted to display my stuff only on the lower right corner or use only the half left side? That's where the viewport comes in.
 

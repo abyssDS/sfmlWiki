@@ -1,5 +1,7 @@
 # Using `sf::View`
-What can sf::View do? This question is not that complicated to answer and I would've already been able to do so a few weeks back but I never really understood how `sf::View` works. The answer would be a description, so here you go:
+
+## What can sf::View do?
+This question is not that complicated to answer and I would've already been able to do so a few weeks back but I never really understood how `sf::View` works. The answer would be a description, so here you go:
 
 >  A `sf::View` is basically a 2D camera i.e. you can move freely in two dimensions, you can rotate the whole scene clockwise or counterclockwise and you can zoom in and out but there's no tilting or panning. Furthermore zooming really means enlarging the existing picture rather than closing in on something. In short terms there's no 3D interaction.
 

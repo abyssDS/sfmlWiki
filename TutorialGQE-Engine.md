@@ -27,7 +27,7 @@ namespace MyStuff
       MyClass();
       virtual ~MyClass();
   };
-}; // namespace MyStuff
+} // namespace MyStuff
 ```
 
 …and for the .cpp file you do the following:
@@ -43,10 +43,10 @@ namespace MyStuff
   MyClass::~MyClass()
   {
   }
-};
+} // namespace MyStuff
 ```
 
-Another great feature about Namespaces is that they prevent two identically named classes from interfering with each other. For example, in SFML there is a class called Clock. But you may decide to create your own Clock class that is completely different from the `sf::Clock` class. If you use a Namespace around your Clock class then you can help the compiler determine which clock class you really want by prefacing the Clock class declaration with a namespace as shown below:
+Another great feature about Namespaces is that they prevent two identically named classes from interfering with each other. For example, in SFML there is a class called Clock. But you may decide to create your own Clock class that is completely different from the `sf::Clock` class. If you use a Namespace around your Clock class then you can help the compiler determine which Clock class you really want by prefacing the Clock class declaration with a namespace as shown below:
 
 
 ```cpp
@@ -62,7 +62,7 @@ class MyClass {
 ```
 
 
-Notice how we can create variables of *both* clock classes by using their Namespace tag. Because typing the namespace MyStuff in front of every variable gets tedious it is often helpful to put a single line at the top of your .cpp or .hpp file that will tell the compiler that you are using EVERY class inside of some Namespace as shown here:
+Notice how we can create variables of *both* Clock classes by using their Namespace tag. Because typing the namespace MyStuff in front of every variable gets tedious it is often helpful to put a single line at the top of your .cpp or .hpp file that will tell the compiler that you are using EVERY class inside of some Namespace as shown here:
 
 
 ```cpp
@@ -113,7 +113,7 @@ class GameObject; // Notice there is no definition of what the class looks like,
  
 class Level {
   public:
-    GameObjects* mObjects[100]; // Notice how GameObjects is a pointer now, not a full object
+    GameObjects* mObjects; // Notice how GameObjects is a pointer now, not a full object
 };
 ```
 
@@ -122,19 +122,20 @@ Now, see what happens in the GameObject.hpp file
 
 ```cpp
 // Forward declare the Level class
-class Level; // Notice there is no definition of what the class looks like, this comes later in the cpp file
+class Level; // Notice there is no include for the Level.hpp file, this will be done in the cpp file
  
 class GameObject {
   public
-    Level* mParent; // Notice the change to a pointer object
+    Level& mParent;
 }
 ```
 
-Now what happens is the compiler will see that GameObject or Level are both Classes and will be looking for their definitions when they are defined. Also, since the variables themselves are pointers, the compiler knows what size they need to be (32 bits or 64 bits, depending on your target CPU architecture) and happily makes them that size. Forward declarations are handy for these exact scenarios, but you must be willing to deal with Pointer objects and all the necessary pointer checks throughout your code (If someone knows a better way, please send me an email to my nick GatorQue or add a comment with a reference to a tutorial below in the comments section). In summary, here are some simple rules that will help you decide when to use Forward Declaration in your HPP files:
+Now what happens is the compiler will see that GameObject or Level are both Classes and will be looking for their definitions when they are defined. Also, since the variables themselves are pointers or address references, the compiler knows what size they need to be (32 bits or 64 bits, depending on your target CPU architecture) and happily makes them that size. Forward declarations are handy for these exact scenarios, but you must be willing to deal with Pointer or Reference objects and any necessary pointer checks throughout your code. In summary, here are some simple rules that will help you decide when to use Forward Declaration in your HPP files:
 
 1. Is this class only used as an argument in the methods of my class? Can I change this argument to be a pointer to this class?
-2. Will these two classes need to reference each other? Are all of the uses of this class pointers?
-3. Is this variable a pointer to a class?
+2. Will I know the address of the dependent class (e.g. Level) this class at Construction time of the other class (e.g. GameObject)? Then use a Reference and not a Pointer for the dependent class (e.g. Level).
+3. Will these two classes need to use each other in the code? Are all of the uses of this class pointers or references?
+4. Is this variable a pointer or reference address to a class?
 
 If you answer yes to these questions, you should consider using Forward Declaration. This is also the reason why you should try to put all of your code in the CPP class and only the class declaration in the HPP file. Now that we have discussed the basics of Forward Declarations lets get to discussing the Basic Game engine I have created and the underlying features.
 
@@ -156,6 +157,7 @@ For me, I try to keep my main.cpp files simple and straightforward. This is done
 #include <assert.h>
 #include <stddef.h>
 #include <GQE/Core.hpp>
+#include <MyApplication.hpp>
 
 int main(int argc, char* argv[])
 {
@@ -163,10 +165,10 @@ int main(int argc, char* argv[])
   int anExitCode = GQE::StatusNoError;
  
   // Create our Logger first before creating our application
-  GQE::gLogger = new(std::nothrow) GQE::FileLogger("output.txt");
+  GQE::FileLogger anLogger("output.txt", true);
 
   // Create our action application.
-  GQE::App* anApp = new(std::nothrow) GQE::App();
+  GQE::IApp* anApp = new(std::nothrow) GQE::MyApplication();
   assert(NULL != anApp && "main() Can't create Application");
  
   // Process command line arguments
@@ -185,18 +187,12 @@ int main(int argc, char* argv[])
   // Don't keep pointers to objects we have just deleted
   anApp = NULL;
  
-  // Delete our Logger last before exiting
-  delete GQE::gLogger;
-
-  // Don't keep pointers to objects we have just deleted
-  GQE::gLogger = NULL;
-
   // return our exit code
   return anExitCode;
 }
 ```
 
-Because the main function above is so generic, you should have no trouble copying this exact file for every game you write.  And every file we can copy verbatim is one less file we have to modify when moving on to the next great game project (oh that I could finish every game I start...).  If you decide that the generic App class (shown soon below) is not cutting it, then the only line in your main function that needs to change is the *GQE::App\* anApp = new(std::nothrow) GQE::App();* line shown above.  Lets look under the hood of the App class and see what makes it tick.
+Because the main function above is so generic, you should have no trouble copying this exact file for every game you write and changed only the creation of the Application file and Include line. Lets look under the hood of the App class and see what makes it tick.
 
 ## <a name="gameapp" />Game Application [ [Top] ](#top)
 In order for our basic game engine to work for any game we write, we need to determine the most generic game application algorithm to put into our Game Application class App. To do this, I took examples of other open source game engines, game engine tutorials, and personal games I have written to find the most common algorithm that works for each of them. The Game Application algorithm is outlined as follows from the App.cpp file (see the [[GQE Project|http://code.google.com/p/gqe/]] for full source):
@@ -210,29 +206,46 @@ In order for our basic game engine to work for any game we write, we need to det
     // First set our Running flag to true
     mRunning = true;
  
-    // Register our App pointer with our AssetManager
-    mAssetManager.RegisterApp(this);
- 
     // Register our App pointer with our StatManager
     mStatManager.RegisterApp(this);
 
     // Register our App pointer with our StateManager
     mStateManager.RegisterApp(this);
  
-    // Pre-init is responsible for the following:
-    // 1) Opening our configuration file
-    // 2) Setting up our render window
-    PreInit();
+    // First register the IAssetHandler derived classes in the GQE Core library
+    mAssetManager.RegisterHandler(new(std::nothrow) ConfigHandler());
+    mAssetManager.RegisterHandler(new(std::nothrow) FontHandler());
+    mAssetManager.RegisterHandler(new(std::nothrow) ImageHandler());
+    mAssetManager.RegisterHandler(new(std::nothrow) MusicHandler());
+    mAssetManager.RegisterHandler(new(std::nothrow) SoundHandler());
  
-    // Initialize our application which might set our Running flag to false
-    Init();
+    // Give derived class a time to register custom IAssetHandler classes
+    InitAssetHandlers();
  
-    // Loop if Running flag is still true
-    Loop();
+    // Attempt to open the application wide settings.cfg file as a ConfigAsset
+    // registered under the ID of "resources/settings.cfg"
+    InitSettingsConfig();
+
+    // Try to open the Renderer window to display graphics
+    InitRenderer();
  
+    // Give the derived application a chance to register a IScreenFactory class
+    // to provide IScreen derived classes (previously known as IState derived
+    // classes) as requested.
+    InitScreenFactory();
+
+    // Give the StatManager a chance to initialize
+    mStatManager.DoInit();
+
+    // GameLoop if Running flag is still true
+    GameLoop();
+
     // Cleanup our application
-    Cleanup();
+    HandleCleanup();
  
+    // Perform our own internal Cleanup
+    Cleanup();
+
     // Make sure our Running flag is set to false before exiting
     mRunning = false;
  
@@ -249,13 +262,15 @@ In order for our basic game engine to work for any game we write, we need to det
 As you can see, the algorithm consists of the following basic steps:
 
 1. Make sure every Manager class (more about Manager classes later) has a pointer/reference to its' parent Game Application class
-2. Open the game's configuration file and retrieve any game settings needed including those necessary for creating the Render window
-3. Initialize the game specific information which includes creating the initial game states (more about Game states later)
-4. Start running the actual game loop
-5. Do any cleanup required before exiting the Game Application
-6. Quit the Game Application
+2. Register each AssetHandler class with the AssetManager class (more about AssetHandler classes later)
+3. Open the game's configuration file and retrieve any game settings needed including those necessary for creating the Render window
+4. Initialize the SFML rendering window/targets
+5. Initialize the game specific information which includes creating the initial game states (more about Game states later)
+6. Start running the actual game loop
+7. Do any cleanup required before exiting the Game Application
+8. Quit the Game Application
 
-These steps are adequate for creating any type of game regardless of what game it might be. The only step that might need to change is the Init and Cleanup steps, but all the others should be the same for every game you write (at least that is the goal). The second purpose of the Game Application class is to serve as the holding container for all our common classes that are shared throughout the entire game. Our game sf::RendererWindow class, sf::Input class, game objects, game States, game Manager classes, etc. Before we dive into the details of the game Manager classes and game States, I want to cover the Game Loop algorithm found in the App::Loop method next.
+These steps are adequate for creating any type of game regardless of what game it might be. The only step that might need to change is the Init and Cleanup steps, but all the others should be the same for every game you write (at least that is the goal). The second purpose of the Game Application class is to serve as the holding container for all our common classes that are shared throughout the entire game. Our game sf::RendererWindow class, game objects, game States, game Manager classes, etc. Before we dive into the details of the game Manager classes and game States, I want to cover the Game Loop algorithm found in the App::GameLoop method next.
 
 ## <a name="gameloop" />Game Loop [ [Top] ](#top)
 Most Game Engine tutorials give you the following Game Loop algorithm:

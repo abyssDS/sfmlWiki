@@ -17,6 +17,9 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 
 * [C++] [[Basic Game Engine|TutorialBasicGameEngine]]
 
+### Game Objects
+* [C++] [[Object Properties|TutorialObjectProperties]]
+
 ### Graphics
 
 * [C++] [Using sf::View](TutorialUsingView)

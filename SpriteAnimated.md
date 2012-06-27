@@ -34,7 +34,7 @@ Here is usage example (for usage details see docs):
     using SFML.Graphics;
     using SFML.Audio;
 
-    namespace SFMLproject
+    namespace SpriteNamespace
     {
     class SpriteAnimated : Sprite
     {

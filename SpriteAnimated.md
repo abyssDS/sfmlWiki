@@ -123,7 +123,7 @@ Here is usage example (for usage details see docs):
             set
             {
                 _fps = value;
-                _interval = _fps / 1000;
+                _interval = 1000 / _fps;
             }
             get
             {

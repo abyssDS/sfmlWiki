@@ -177,5 +177,15 @@ Here is usage example (for usage details see docs):
                 this.TextureRect = this.GetFramePosition(FirstFrame);
             }
         }
+        /// <summary>
+        /// Pause on particular frame.
+        /// </summary>
+        /// <param name="Frame">Frame number.</param>
+        public void SetFrame(int Frame)
+        {
+            _currentFrame = Frame;
+            _isAnimated = true;
+            _isLooped = false;
+        }
     }
     }

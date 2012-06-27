@@ -22,8 +22,10 @@ Here is usage example (for usage details see docs):
     // Game loop
     while()
     {
+        _YourRenderWindow.Clear();
         Game.Delta = NewDeltaTime;
         SomeSprite.Update;
+        _YourRenderWindow.Display();
     }
 
 ### Actual code

@@ -6,7 +6,7 @@ In this class, all sprite animations are stored in single texture, consisting of
 This picture shows an example of frame sequence, stored in one image, where each 64x64 square is one frame. You can also see in which order frames are numered. When your sprite is updated in game loop, it will switch between frames at given rate, using TextureRect property.
 
 ### Using this class
-First, to make this work, you have to pass to this code time since last frame (delta time). In method Update() fint this line: 
+First, to make this work, you have to pass to this code time since last frame (delta time). In method Update() find this line: 
 
 `// _clock += Game.Delta; - Here should be your relative time implementation.`
 

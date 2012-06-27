@@ -21,7 +21,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Particle System|SourceParticleSystem]] : Enjoy colorful pixel explosions in your own home today!
 * [Ruby] [[Ruby Light Manager|SourceRubyLightManager]] : Add lighting to your 2D game (by Groogy)
 * [C++] [[Draw Rounded Rectangle|SourceDrawRoundedRectangle]] 
-* [C#] [[SpriteAnimated||SpriteAnimated]] : A C# version of animated sprite class.
+* [C#] [[SpriteAnimated|SpriteAnimated]] : A C# version of animated sprite class.
 
 ## Network
 * [C++] [[Simple chat example using sf::TcpSocket|SourceNetworkChatExample]]

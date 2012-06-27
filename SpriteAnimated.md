@@ -107,10 +107,10 @@ Here is usage example (for usage details see docs):
                 _clock = 0;
             }
 
-            //if (!_isLooped & (_currentFrame == _lastFrame))
-            //{
-            //     _isAnimated = false;
-            //}
+            if (!_isLooped & (_currentFrame == _lastFrame))
+            {
+                 _isAnimated = false;
+            }
 
             this.Draw(_renderTarget, _renderStates);
         }

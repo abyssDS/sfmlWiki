@@ -8,7 +8,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [[sfeMovie|ProjectSfeMovie]]: A small C++ library that lets you play movies in SFML based applications.
 
 ### Other extensions
-* [C++] [[Zin C++ Library|ZinProject]: Geometric objects, customizable shapes, animation tools & light rendering.
+* [C++] [[Zoost & Zoom C++ Libraries|ProjectsZoostAndZoom]]: Geometric objects, customizable shapes, animation tools & light rendering.
 * [C++] [[Thor C++ Library|ProjectThor]]: Provides pausable clocks, vector functions, particles, resource/event handling, triangulations, and more...
 * [Ruby] [[GDE|ProjectsGroogysDevelopmentEnvironment]]: An environment for rbSFML that helps out with development.
 

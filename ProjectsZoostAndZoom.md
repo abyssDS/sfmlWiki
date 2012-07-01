@@ -1,7 +1,7 @@
 [C++] Zoost & Zoom: An easy way to create and handle geometric objets, animate and use them for better graphics 
 
 
-# Zin project (Zoost & Zoom)
+# Zoost & Zoom
 
 Zoost & Zoom are two libraries that allow you to animate, intersect, test, enlight and render the geometric objects you create in your code. They are as simple to use than the SFML2 and compatible with its last revision.
 In example, you can create a Geom , give it the desired shape, and use it to create a drawable Shape with custom properties (colors, segments thickness, etc...).

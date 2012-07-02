@@ -161,7 +161,7 @@ With Kinetic you can track a point running on a curve over time :
 
 ...
 
-Kinetic kinetic(curve); // You can use a Bezier Curve here; so fun !
+Kinetic kinetic(curve); // You can use a Bezier Curve here; have fun !
 sf::Clock clock;
 
 while( ... )

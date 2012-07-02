@@ -4,7 +4,7 @@
 # Zoost & Zoom
 
 Zoost & Zoom are two libraries that allow you to animate, intersect, test, enlight and render the geometric objects you create in your code. They are as simple to use than the SFML2 and compatible with its last revision.
-In example, you can create a Geom , give it the desired shape, and use it to create a drawable Shape with custom properties (colors, segments thickness, etc...).
+For example, you can create a Geom , give it the desired shape, and use it to create a drawable Shape with custom properties (colors, segments thickness, etc...).
 Of course, you can create your own lib that use the Geom objects in the way you want (like a Physic engine) !
 
 ![Zin](http://uppix.net/1/d/f/de6652b31c9e7133cdd84c8aacd6d.png)
@@ -87,7 +87,7 @@ geom+=geom3;
 Geom geom4 = geom3;
 
 // Finaly you can create pre made Geom easilly :
-Geom star = Geom::Star(); // Create a star Shape
+Geom star = Geom::star(); // Create a star Shape
 
 // Here is the complete list of the method you can call to get all the pre made Geom :
  Geom::segment(const Point& point1, const Point& point2);

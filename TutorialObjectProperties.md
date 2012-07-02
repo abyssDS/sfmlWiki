@@ -34,8 +34,14 @@ int main(int argc, char* argv[])
     // Draw our sprite
     renderWindow.draw(properties.Get<sf::Sprite>("Sprite"));
 
-    // Reset our Animation Clock
-    properties.Get<sf::Clock>("AnimationClock").reset();
+    // First retrieve the sf::Clock property
+    sf::Clock anClock = properties.Get<sf::Clock>("AnimationClock");
+
+    // Next reset the Animation Clock
+    anClock.reset();
+
+    // Then save the results back in the property
+    properties.Set<sf::Clock>("AnimationClock", anClock);
   }
 
   // See if a property exists
@@ -52,7 +58,7 @@ int main(int argc, char* argv[])
 }
 ```
 
-The beauty of this system is that it is very easy to save nearly any kind of property you might want to store in your Game Object/Entity. Each Game Entity can have unique properties added without creating an inheritance class nightmare. This makes your game logic reusable and more generic. Here is the .hpp file for the PropertyManager class
+The beauty of this system is that it is very easy to save nearly any kind of property object (must have a default constructor that doesn't require any arguments) that you might want to store in your Game Object/Entity. Each Game Entity can have unique properties added without creating an inheritance class nightmare. This makes your game logic reusable and more generic. Here is the .hpp file for the PropertyManager class
 ```cpp
 #ifndef PROPERTY_MANAGER_HPP_INCLUDED
 #define PROPERTY_MANAGER_HPP_INCLUDED

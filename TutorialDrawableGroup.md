@@ -28,43 +28,45 @@ Group would behave like a simple [std::vector](http://en.cppreference.com/w/cpp/
 Here's what I use. The SFML doesn't implement a Group class for ownership reasons: should the Group destroy its elements when it is destroyed? etc.
 
 ### Group.hpp
-	```cpp
-	#ifndef GROUP_INCLUDED_HPP
-	#define GROUP_INCLUDED_HPP
+```cpp
+#ifndef GROUP_INCLUDED_HPP
+#define GROUP_INCLUDED_HPP
 
-	#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
-	class Group : public sf::Drawable, public std::vector<sf::Drawable*> {
-		public:
-			Group();
-			~Group();
+class Group : public sf::Drawable, public std::vector<sf::Drawable*> {
+	public:
+		Group();
+		~Group();
 
-			void render(sf::RenderTarget&) const;
-	};
+		void render(sf::RenderTarget&) const;
+};
 
-	#endif
+#endif
+```
 
 ### Group.cpp
+```cpp
+#include "group.hpp"
 
-	```cpp
-	#include "group.hpp"
+Group::Group() :
+	sf::Drawable(),
+	std::vector<sf::Drawable*>() {
+}
+Group::~Group() {
+	for(std::vector<sf::Drawable*>::iterator i = begin(); i != end(); ++i) {
+		delete *i;
+	}
+}
 
-	Group::Group() :
-		sf::Drawable(),
-		std::vector<sf::Drawable*>() {
+// This is what ables you to do Group.Draw() to draw all the Drawable inside of a Group,
+// and to apply common settings such as position, color, ... to its elements.
+void Group::render(sf::RenderTarget& Tar) const {
+	for(std::vector<sf::Drawable*>::iterator i = begin(); i != end(); ++i) {
+		Tar.draw(*i);
 	}
-	Group::~Group() {
-		for(std::vector<sf::Drawable*>::iterator i = begin(); i != end(); ++i) {
-			delete *i;
-		}
-	}
-
-	//This is what ables you to do Group.Draw() to draw all the Drawable inside of a Group, and to apply common settings such as position, color, ... to its elements.
-	void Group::render(sf::RenderTarget& Tar) const {
-		for(std::vector<sf::Drawable*>::iterator i = begin(); i != end(); ++i) {
-			Tar.draw(*i);
-		}
-	}
+}
+```
 
 You can even add `namespace sf { ... }` if you think that Group should belong to the SFML ;).
 

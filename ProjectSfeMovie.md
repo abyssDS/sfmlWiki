@@ -216,7 +216,7 @@ There is no other specific dependency you have to care about.
 
 ## <a name="downloads" />Download links [ [Top] ](#top)
 
-<b>Important note:</b> **the provided binaries only support the free decoders** (see [Supported codecs](#codecs). If you want to use other decoders, please read the [License section](#license) (and especially the legal notes), and consider [building sfeMovie yourself](#build).
+<b>Important note:</b> **the provided binaries only support the free decoders** (see [Supported codecs](#codecs)). If you want to use other decoders, please read the [License section](#license) (and especially the legal notes), and consider [building sfeMovie yourself](#build).
 
 sfeMovie's Git repository is [https://github.com/Yalir/sfeMovie](https://github.com/Yalir/sfeMovie).
 

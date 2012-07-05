@@ -66,7 +66,7 @@ I'm not going to explain how to use a library, most of it is like for any other 
 ###General notes###
 
 - Make sure you correctly set the headers and libraries search path to find both sfeMovie's and SFML's headers and libraries
-- Link your product against sfeMovie (libsfe-movie) and SFML 2.0
+- Link your product against sfeMovie ([lib]sfeMovie) and SFML 2.0
 - Release your software with the required libraries : sfeMovie, sfml-system, sfml-window, sfml-graphics, sfml-audio, sndfile and openal.
 
 ###Mac OS X specific###
@@ -78,7 +78,7 @@ When using Xcode, you can automatize this process by [creating a Copy Files buil
 
 ## <a name="license" />License [ [Top] ](#top)
 
-sfeMovie is covered by the [LGPL v2.1 license](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html). As for the legal side, note that you can download the sfeMovie sources from the [official Git repository](https://github.com/Yalir/sfeMovie).
+sfeMovie is covered by the [LGPL v2.1 license](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html). You can download the sources from the [official Git repository](https://github.com/Yalir/sfeMovie).
 
 Basically, this means you can use sfeMovie for ANY project without ANY restriction until
 sfeMovie is dynamically linked to your software, except as far as codec patents are concerned (see Legal notes). The provided binaries are dynamic libraries only. If you want to know more about LGPL, have a look at the [GNU website](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html).
@@ -162,8 +162,8 @@ Considering this, you're responsible for checking the possible fees and licenses
   
   <tr>
     <td>PCM</td>
-    <td>?</td>
-    <td>?</td>
+    <td>free for any use</td>
+    <td><a href="http://www.digitalpreservation.gov/formats/fdd/fdd000016.shtml#sustainability">www.digitalpreservation.gov</a></td>
   </tr>
   
   <tr>

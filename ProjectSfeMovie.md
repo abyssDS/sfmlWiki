@@ -181,7 +181,7 @@ Considering this, you're responsible for checking the possible fees and licenses
 </table>
 
 ## <a name="requirements" />System requirements [ [Top] ](#top)
-sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on Linux.
+sfeMovie is known to work fine on Linux, Mac OS X and Windows.
 
 <table>
     <tr>
@@ -189,28 +189,24 @@ sfeMovie is known to work fine on both Mac OS X and Windows, but is unstable on 
         <th>Minimum OS version</th>
         <th>Compiler</th>
         <th>Architecture</th>
-        <th>Status</th>
     </tr>
     <tr>
         <td>Linux</td>
         <td>N/A</td>
-        <td>N/A</td>
-        <td>N/A</td>
-        <td>Untested</td>
+        <td>GCC & Clang</td>
+        <td>Intel 32 bits & Intel 64 bits</td>
     </tr>
     <tr>
         <td>Mac OS X</td>
         <td>Mac OS X 10.6 (may work on 10.5 but not tested)</td>
         <td>GCC & Clang</td>
         <td>Intel 64 bits only</td>
-        <td>Ok</td>
     </tr>
     <tr>
         <td>Windows</td>
         <td>Windows XP</td>
         <td>MinGW/CodeBlocks & Visual C++ Compiler</td>
         <td>Intel 32 bits</td>
-        <td>Ok</td>
     </tr>
 </table>
 

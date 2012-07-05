@@ -347,9 +347,9 @@ aac, ac3, act, adf, adx, aea, aiff, amr, anm, apc, ape, applehttp, asf, ass, au,
 - getting the movie properties
 - getting the current image
 - scaling the movie drawable to fit a given frame, eventually keeping the original ratio
+- portability across Linux, Mac OS X and Windows
 
 ###Planned or missing features###
-- Linux port
 - seeking in the movie
 - movie playback looping
 - subtitles

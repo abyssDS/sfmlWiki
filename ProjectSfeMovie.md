@@ -276,32 +276,8 @@ sfeMovie's Git repository is [https://github.com/Yalir/sfeMovie](https://github.
 		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-windows-32b-vs2010-1.0-rc1.zip">sfeMovie-windows-32b-vs2010-1.0-rc1.zip</a> (8.9 MB)</td>
 	</tr>
 </table>
-<table>
-	<tr>
-		<th colspan=3>sfeMovie beta_20110512 (May 12, 2011)</th>
-	</tr>
-	<tr>
-		<th>Operating System</th>
-		<th>Binaries</th>
-		<th>Sources</th>
-	</tr>
-	
-	<tr>
-		<td>Linux</td>
-		<td>N/A</td>
-		<td rowspan=3><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-src-beta_20110512.zip">sfeMovie-src-beta_20110512.zip</a></td>
-	</tr>
-	
-	<tr>
-		<td>Mac OS X</td>
-		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-macosx-beta_20110512.zip">sfeMovie-macosx-beta_20110512.zip</a></td>
-	</tr>
-	
-	<tr>
-		<td>Windows</td>
-		<td><a href="https://github.com/downloads/Yalir/sfeMovie/sfeMovie-windows-beta_20110512.zip">sfeMovie-windows-beta_20110512.zip</a></td>
-	</tr>
-</table> 
+
+[Older downloads](https://github.com/Yalir/sfeMovie/downloads)
 
 ## <a name="build" />Building sfeMovie [ [Top] ](#top)
 

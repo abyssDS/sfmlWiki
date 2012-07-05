@@ -88,7 +88,7 @@ As you may know, patents on video codecs is a complex issue. FFmpeg is distribut
 
 Note that you shouldn't worry about licenses and royalties if you're a lonely developer working on a private project. But if you plan to distribute your product to "a lot" of people, or as a commercial purpose, you should be careful.
 
-Considering this, you're responsible for checking the possible fees and licenses you may need, depending on your country, needs and situation. Here is a little (non official) sum up of the different fees for the main decoders. The information I'm showing here is the one I got from the different patents holders.
+Considering this, you're responsible for checking the possible fees and licenses you may need, depending on your country, needs and situation. Here is a little (non official) sum up of the different fees for the main decoders. The information I'm showing here is the one I got from the different patents holders or the Internet.
 
 <table>
   <tr>
@@ -163,7 +163,7 @@ Considering this, you're responsible for checking the possible fees and licenses
   <tr>
     <td>PCM</td>
     <td>free for any use</td>
-    <td><a href="http://www.digitalpreservation.gov/formats/fdd/fdd000016.shtml#sustainability">www.digitalpreservation.gov</a></td>
+    <td><a href="http://www.digitalpreservation.gov/formats/fdd/fdd000016.shtml#sustainability">DigitalPreservation</a></td>
   </tr>
   
   <tr>

@@ -3,7 +3,7 @@
 Welcome to the section dedicated to external source codes for SFML.
 
 ## Game Engines
-* [C++] [[Basic Game Engine Source|SourceGQE-Engine]] (from tutorial [[Basic Game Engine|TutorialBasicGameEngine]])
+* [C++] [[Basic Game Engine Source|SourceBasicGameEngine]] (from tutorial [[Basic Game Engine|TutorialBasicGameEngine]])
 
 * [C++] [[DrawableLineShape|SourceDrawableLineShape]]: A drawable-derived fast-rendering class for shapes made of lines
 * [C++] [[Simple Collision Detection|SourceSimpleCollisionDetection]]: A Static Class implementing Circle, BoundingBox and PixelPerfect collision detection.

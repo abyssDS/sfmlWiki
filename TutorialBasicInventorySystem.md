@@ -1,6 +1,6 @@
 ### **Scheduled for editing to put more information into it!**
 
-Hey, here's a basic inventory system that (as a beginner) I'm fairly proud of. Just a little disclaimer, if you're a good programmer then this post won't be of use to you, as you'd be able to come up with a totally better system including pointers, iterations etc etc. **This is programmed in SFML 1.6 but can _easily_ be updated to SFML2! I also know that things can be done a lot better than how I've gone about them.  **
+Hey, here's a basic inventory system that (as a beginner) I'm fairly proud of. Just a little disclaimer, if you're a good programmer then this post won't be of use to you, as you'd be able to come up with a totally better system including pointers, iterations etc etc. *This is programmed in SFML 1.6 but can _easily_ be updated to SFML2! I also know that things can be done a lot better than how I've gone about them.*
 
 This post is more aimed at the newer people to SFML, whom have gone over the first tutorials but are seeking out examples of such.
 

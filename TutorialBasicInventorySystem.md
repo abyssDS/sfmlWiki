@@ -8,7 +8,7 @@ Down to business.
 
 For my inventory system, I had a total of 6 functions: InventoryDisplay, InventoryAdd, InventoryRemove, InventoryUpdate, InventoryEquip and InventoryUnequip as well as a few global variables.
 
-The first thing to do is to create some items to work with; this is using the normal sprite creation [url=http://sfml-dev.org/tutorials/1.6/graphics-sprite.php]tutorial[/url].
+The first thing to do is to create some items to work with; this is using the normal [sprite creation tutorial](http://sfml-dev.org/tutorials/1.6/graphics-sprite.php).
 
 ### **--- Global Variables ---**
 

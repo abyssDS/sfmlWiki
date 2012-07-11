@@ -15,10 +15,10 @@ The first thing to do is to create some items to work with; this is using the no
 I'll now shed some light on the global variables:
 
 ```
-int Slot[48] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int Slot[48] = {0};
 
-int Item1Have[3] = {0,0,0}; int Item3Have[3] = {0,0,0};
-int Item2Have[3] = {0,0,0}; int Item4Have[3] = {0,0,0};
+int Item1Have[3] = {0}; int Item3Have[3] = {0};
+int Item2Have[3] = {0}; int Item4Have[3] = {0};
 
 int Gold = 0;
 

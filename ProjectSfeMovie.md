@@ -200,7 +200,7 @@ sfeMovie is known to work fine on Linux, Mac OS X and Windows.
         <td>Mac OS X</td>
         <td>Mac OS X 10.6 (may work on 10.5 but not tested)</td>
         <td>GCC & Clang</td>
-        <td>Intel 64 bits only</td>
+        <td>Intel 32 bits & Intel 64 bits</td>
     </tr>
     <tr>
         <td>Windows</td>

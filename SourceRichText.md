@@ -1,4 +1,4 @@
-# Using some sort of RichText
+# A RichText class
 
 sf::RichText is an expansion created by Panithadrum and updated to the lasted SFML version by eXpl0it3r. The point is to have something like sf::Text but with the power of having differente styles in it.
 

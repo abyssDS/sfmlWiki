@@ -1,6 +1,7 @@
 # Drawable Line Shape
 
 ## Class summary
+
 This is an SFML-based class that produces a fast-rendering shape drawn with display lists and GL_LNES.
 Inherits from sf::Drawable, but some of those functions don't work, specifically SetColor since it's overrided per line segment.
 To change the color, use the SetLineSegmentColor method.
@@ -10,6 +11,38 @@ The shape can then be modified by adding/removing/moving points and line segment
 This class meant to work with SFML (www.sfml-dev.org) and is released under the same liscence as SFML, zlib/png.
 
 Class written by "Quasius"
+
+## SFML 2
+
+In SFML 2 this class is lapsed, since the library has it's own ability to render lines fast:
+
+### Single lines
+
+```cpp
+sf::VertexArray lines(sf::Lines, 4);
+lines[0].position = sf::Vector2f(10, 0);
+lines[1].position = sf::Vector2f(20, 0);
+lines[2].position = sf::Vector2f(30, 5);
+lines[3].position = sf::Vector2f(40, 2);
+
+window.draw(lines);
+```
+
+### Connected lines
+
+```cpp
+sf::VertexArray lines(sf::LinesStrip, 4);
+lines[0].position = sf::Vector2f(10, 0);
+lines[1].position = sf::Vector2f(20, 0);
+lines[2].position = sf::Vector2f(30, 5);
+lines[3].position = sf::Vector2f(40, 2);
+
+window.draw(lines);
+```
+
+From this point it's easy to write a wrapper class if needed.
+
+Further functions like setting colors etc. see the documentation about the [`sf::VertexArray`](http://www.sfml-dev.org/documentation/2.0/classsf_1_1VertexArray.php) and [`sf::Vertex`](http://www.sfml-dev.org/documentation/2.0/classsf_1_1Vertex.php).
 
 ## DrawableLineShape.h
 

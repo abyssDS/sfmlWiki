@@ -1,3 +1,4 @@
+<a name="top" />
 # sfeMovie project
 
 sfeMovie is a small C++ library that lets you play movies in SFML based applications. It relies on SFML for the rendering process and FFmpeg for the decoding process. It supports both audio and video, and basic controls. This project has been written to work closely with SFML and tries to keep the same easy-to-use paradigm,

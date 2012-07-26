@@ -1,6 +1,6 @@
 # A RichText class
 
-[sfe::RichText](https://github.com/Skyrpex/RichText) is an expansion created by Panithadrum (aka Skyrpex) and updated to the lasted SFML version by eXpl0it3r. The point is to have something like sf::Text but with the power of having differente styles in it.
+[sfe::RichText](https://github.com/Skyrpex/RichText) is an expansion created by Panithadrum (aka Skyrpex) and updated to the latest SFML version by eXpl0it3r. The point is to have something like sf::Text but with the power of having differente styles in it.
 
 Be careful, '\n' characters are not supported. You can use it, but you will see visual errors! (try it)
 

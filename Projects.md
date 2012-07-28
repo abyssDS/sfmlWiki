@@ -5,7 +5,7 @@ Welcome to the section dedicated to projects using/for SFML.
 ## For SFML
 
 ### Video
-* [C++] [[sfeMovie|ProjectSfeMovie]]: A small C++ library that lets you play movies in SFML based applications.
+* [C++] [sfeMovie](http://lucas.soltic.perso.luminy.univmed.fr/sfeMovie/): A C++ library that lets you play movies in SFML based applications.
 
 ### Other extensions
 * [C++] [[Zoost & Zoom libraries|ProjectsZoostAndZoom]]: Geometric objects, customizable shapes, animation tools & light rendering.

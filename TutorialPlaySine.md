@@ -29,7 +29,7 @@ int main() {
 }
 ```
 
-Now here comes the fun part. We want to load up `raw` with a sine wave that plays at 440hz (A4). We know that specifying the frequency of a sine wave is a simple as `sin(x*2π*frequency)`, but we have to remember that the sample rate dictates our time domain. So we have to multiply by increments of `440/44100` in order to get a sine wave that properly fits our sample rate. The last part is the amplitude. We will pick a nice and loud amplitude so you can hear it clearly over your speakers. 30,000 should do.
+Now here comes the fun part. We want to load up `raw` with a sine wave that plays at 440hz (A4). We know that specifying the frequency of a sine wave is as simple as `sin(x*2π*frequency)`, but we have to remember that the sample rate dictates our time domain. So we have to multiply by increments of `440/44100` in order to get a sine wave that properly fits our sample rate. The last part is the amplitude. We will pick a nice and loud amplitude so you can hear it clearly over your speakers. 30,000 should do.
 
 ```cpp
 const unsigned AMPLITUDE = 30000;

@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
 ```
 
 ## Source Code
-*Note: This was compiled using G++ and gtkmm-2.4 on a machine running Linux Mint 12.04*
+*Note: This was compiled using G++ and gtkmm-3.0 on a machine running Linux Mint 12.04*
 
 ### SFMLWidget.h
 
@@ -51,24 +51,22 @@ int main(int argc, char* argv[])
 #define SFMLWIDGET_H_INCLUDED
 
 #include <SFML/Graphics.hpp>
-#include <gdkmm.h>
 #include <gtkmm/widget.h>
 
-class SFMLWidget : public Gtk::Widget, public sf::RenderWindow
+class SFMLWidget : public Gtk::Widget
 {
 protected:
     sf::VideoMode m_vMode;
 
-    virtual void on_size_request(Gtk::Requisition* requisition);
     virtual void on_size_allocate(Gtk::Allocation& allocation);
-    virtual void on_map();
-    virtual void on_unmap();
     virtual void on_realize();
     virtual void on_unrealize();
 
     Glib::RefPtr<Gdk::Window> m_refGdkWindow;
 public:
-    SFMLWidget(sf::VideoMode Mode);
+    sf::RenderWindow renderWindow;
+
+    SFMLWidget(sf::VideoMode mode, int size_request=-1);
     virtual ~SFMLWidget();
 
     void invalidate();
@@ -82,7 +80,7 @@ public:
 
 ```cpp
 #include "SFMLWidget.h"
-
+#include <iostream>
 
 // Tested on Linux Mint 12.4 and Windows 7
 #if defined(SFML_SYSTEM_WINDOWS)
@@ -106,24 +104,19 @@ public:
 #endif
 
 
-SFMLWidget::SFMLWidget(sf::VideoMode Mode)
-    : sf::RenderWindow(Mode, "")
+SFMLWidget::SFMLWidget(sf::VideoMode mode, int size_request)
+    : renderWindow(mode, "")
 {
-    set_flags(Gtk::NO_WINDOW); // Makes this behave like an interal object rather then a parent window.
+    if(size_request<=0)
+        size_request = std::max<int>(1, std::min<int>(mode.width, mode.height) / 2);
+        
+    set_size_request(size_request, size_request);
+
+    set_has_window(false); // Makes this behave like an interal object rather then a parent window.
 }
 
 SFMLWidget::~SFMLWidget()
 {
-}
-
-void SFMLWidget::on_size_request(Gtk::Requisition* requisition)
-{
-    *requisition = Gtk::Requisition();
-
-    sf::Vector2u size = this->getSize();
-
-    requisition->width = size.x;
-    requisition->height = size.y;
 }
 
 void SFMLWidget::on_size_allocate(Gtk::Allocation& allocation)
@@ -140,19 +133,9 @@ void SFMLWidget::on_size_allocate(Gtk::Allocation& allocation)
                                     allocation.get_y(),
                                     allocation.get_width(),
                                     allocation.get_height() );
-        this->setSize(sf::Vector2u(allocation.get_width(),
-                                   allocation.get_height()));
+        renderWindow.setSize(sf::Vector2u(allocation.get_width(),
+                                          allocation.get_height()));
     }
-}
-
-void SFMLWidget::on_map()
-{
-    Gtk::Widget::on_map();
-}
-
-void SFMLWidget::on_unmap()
-{
-    Gtk::Widget::on_unmap();
 }
 
 void SFMLWidget::on_realize()
@@ -180,22 +163,22 @@ void SFMLWidget::on_realize()
 
         m_refGdkWindow = Gdk::Window::create(get_window(), &attributes,
                 GDK_WA_X | GDK_WA_Y);
-        unset_flags(Gtk::NO_WINDOW);
+        set_has_window(true);
         set_window(m_refGdkWindow);
 
-        //set colors
-        modify_bg(Gtk::STATE_NORMAL , Gdk::Color("red"));
-        modify_fg(Gtk::STATE_NORMAL , Gdk::Color("blue"));
-
         // transparent background
+#if GTK_VERSION_GE(3, 0)
+        this->unset_background_color();
+#else
         this->get_window()->set_back_pixmap(Glib::RefPtr<Gdk::Pixmap>());
+#endif
 
         this->set_double_buffered(false);
 
         //make the widget receive expose events
         m_refGdkWindow->set_user_data(gobj());
 
-        this->sf::RenderWindow::create(GET_WINDOW_HANDLE_FROM_GDK(m_refGdkWindow->gobj()));
+        renderWindow.create(GET_WINDOW_HANDLE_FROM_GDK(m_refGdkWindow->gobj()));
     }
 }
 
@@ -211,7 +194,7 @@ void SFMLWidget::display()
 {
     if(m_refGdkWindow)
     {
-        sf::RenderWindow::display();
+        renderWindow.display();
     }
 }
 
@@ -226,7 +209,7 @@ void SFMLWidget::invalidate()
 
 ## Customizing
 ### Render
-In order to render something, you should overload the `on_expose_event` method or connect to the `signal_expose_event()` signal. Don't forget to call the `display()` method. Use `SFMLWidget::display()` instead of `sf::RenderWindow::display()` as it will check whether the Widget has been already initialized.
+In order to render something, you should overload the `on_draw` method or connect to the `signal_draw()` signal (in earlier version of gtkmm you should use `signal_expose_event` instead). Don't forget to call the `display()` method. Use `SFMLWidget::display()` instead of `sf::RenderWindow::display()` as it will check whether the Widget has been already initialized.
 
 ### Animations
 In order to add animate something, call `invalidate()` often enough. This will cause gtkmm to redraw the Widget.
@@ -234,7 +217,7 @@ In order to add animate something, call `invalidate()` often enough. This will c
 ### Example
 The following example shows one way to animate and render a circle.
 
-*Note: This was compiled using G++ and gtkmm-2.4 on a machine running Linux Mint 12.04*
+*Note: This was compiled using G++ and gtkmm-3.0 on a machine running Linux Mint 12.04*
 
 ```cpp
 #include <gtkmm.h>
@@ -271,14 +254,19 @@ public:
                                        50);
         
         // Makes our draw Method beeing drawn everytime the widget itself gets drawn.
-        // Note: MovingCircle::draw() doesn't accept any parameter, but signal_expose_event() gives one.
+        // Note: MovingCircle::draw() doesn't accept any parameter, but signal_draw() gives one.
         //       Using sigc::hide(...) we get a signal expecting one.
-        widget.signal_expose_event().connect(sigc::bind_return(
-                                                sigc::hide(
-                                                    sigc::mem_fun(this, &MovingCircle::draw)),
-                                                true));
+        widget.signal_draw().connect(sigc::bind_return(
+                                     sigc::hide(
+                                         sigc::mem_fun(this, &MovingCircle::draw)),
+                                     true));
+        // NOTE: in earlier gtkmm-versions (<3.0) instead of signal_draw, connext to signal_event_expose:
+        // widget.signal_event_expose().connect(sigc::bind_return(
+        //                                          sigc::hide(
+        //                                              sigc::mem_fun(this, &MovingCircle::draw)),
+        //                                          true));
                                 
-        // Everytime the widget gets resized, we need to adjust the view.                
+        // Everytime the widget gets resized, we need to adjust the view.
         widget.signal_size_allocate().connect(sigc::hide(
                                                     sigc::mem_fun(this, &MovingCircle::resize_view)));
     }
@@ -291,7 +279,7 @@ public:
         position.y += 8.f;
         
         // until it "leaves" the Widget
-        if(position.x > widget.getSize().x+radius || position.y > widget.getSize().y+radius)
+        if(position.x > widget.renderWindow.getSize().x+radius || position.y > widget.renderWindow.getSize().y+radius)
           moveToStartPoint();
         else
           circle.setPosition(position);
@@ -301,11 +289,10 @@ public:
     }
     
     void draw()
-    {    
-        widget.clear();
+    {
+        widget.renderWindow.clear();
     
-        // SFMLWidget oferrides sf::RenderWindow, so you can use every method of sf::RenderWindow
-        widget.draw(circle);
+        widget.renderWindow.draw(circle);
         
         // Calls SFMLWidget::display, whitch checks wether the widget is realized
         // and if so, sf::RenderWindow::display gets called.
@@ -315,12 +302,12 @@ public:
     void resize_view()
     {
         // Let the View fit the pixels of the window.
-        sf::Vector2f lower_right(widget.getSize().x,
-                                 widget.getSize().y);
+        sf::Vector2f lower_right(widget.renderWindow.getSize().x,
+                                 widget.renderWindow.getSize().y);
     
         sf::View view(lower_right * 0.5f,
                       lower_right);
-        widget.setView(view);
+        widget.renderWindow.setView(view);
     }
     
     void moveToStartPoint()

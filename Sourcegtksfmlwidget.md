@@ -1,11 +1,3 @@
-TODO:
-update to gtkmm 3.0
-
-
-
-
-
-
 # SFMLWidget
 ## Overview
 This class is used to integrate a SFML RenderWindow into a gtkmm userinterface. Just use it like a normal RenderWindow but place it as you would a gtkmm widget.

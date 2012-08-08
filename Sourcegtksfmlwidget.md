@@ -367,5 +367,5 @@ int main(int argc, char* argv[])
 
 ## References
 * [gtkmm Websit](http://www.gtkmm.org)
-* [sf::RenderWindow Documentation](http://www.sfml-dev.org/documentation/1.4/classsf_1_1RenderWindow.htm)
+* [sf::RenderWindow Documentation](http://www.sfml-dev.org/documentation/2.0/classsf_1_1RenderWindow.php)
 * [Gtk::Widget Documentation](http://www.gtkmm.org/docs/gtkmm-2.4/docs/reference/html/classGtk_1_1Widget.html)

@@ -66,7 +66,8 @@ But now comes the center of view, which is in fact defined from the middle point
 
 The black square should represent the window and since we set the viewport to a fixed value the origin of the `sf::View` coordinate system will always be in the middle of the window. Here are the two separated coordinate systems:
 
-[![coord-view](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-render_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-render_.png)
+[![coord-render](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-render_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-render.png)
+[![coord-view](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-view_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-view.png)
 
 If we combine them we get for example something like:
 

@@ -44,9 +44,9 @@ So lets see what the documentation of SFML says about this:
 
 If you've understood everything then congrats! I didn't (at first) and although it's a good, short and precise description it's not very intuitive.
 
-From the text above we can extract that there are two different rectangle defining the `sf::View`: a source and a viewport. What we also have, although not 'physically', is the render coordination system, i.e. the coordination you use to draw sprites etc.
+From the text above we can extract that there are two different rectangle defining the `sf::View`: a source and a viewport. What we also have, although not 'physically', is the render coordinate system, i.e. the coordinates you use to draw sprites etc.
 
-At first I'll explain how the source rectangle and the render coordination system work together, then talk about the size and the constructor, furthermore show you how to use the viewport to create different layouts like a split-screen or a mini-map, as suggest in the description and at the end get a bit away from the direct manipulation of the `sf::View` and look at the `convertCoords(…)` function of a `sf::RenderTarget`. At the bottom of the post you'll find a ZIP file which holds a fully working example, demonstrating everything you'll learn in this post.
+At first I'll explain how the source rectangle and the render coordinate system work together, then talk about the size and the constructor, furthermore show you how to use the viewport to create different layouts like a split-screen or a mini-map, as suggest in the description and at the end get a bit away from the direct manipulation of the `sf::View` and look at the `convertCoords(…)` function of a `sf::RenderTarget`. At the bottom of the post you'll find a ZIP file which holds a fully working example, demonstrating everything you'll learn in this post.
 
 ## The source rectangle
 
@@ -64,7 +64,7 @@ Since I'm assuming that you've already some knowledge with SFML, I'll also assum
 
 But now comes the center of view, which is in fact defined from the middle point of the display area. The view uses a Cartesian coordinate system too but this time the X axis gets flipped. In the end we have the point (0, 0) (also known as origin) in middle of the view, the maximum x and y values are in the top left corner and the minimal and negative x and y values are in the bottom right corner. What you're now actually can set with `setCenter` is the where origin of the rendering coordinate system is put in the coordinate system of the view. I hope the following images will clarify the situation a bit.
 
-The black square should represent the window and since we set the viewport to a fixed value the origin of the `sf::View` coordination system will always be in the middle of the window. Here are the two separated coordination systems:
+The black square should represent the window and since we set the viewport to a fixed value the origin of the `sf::View` coordinate system will always be in the middle of the window. Here are the two separated coordinate systems:
 
 [![coord-view](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-render_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-render_.png)
 
@@ -78,7 +78,7 @@ Then we have our two operations `rotate()` and `zoom()`. The last picture combin
 
 I think it's nearly impossible to explain this even better.
 
-Note that in the images above, I've moved the rendering coordination system around to get a few different variations. I guess most of the time it's better to use the `move()` function since you won't need to deal with where to place the origin point. On the other hand you really need to understand how `sf::View` works to use `rotate()` and `zoom()` because it's not obvious that those transformation will happen around the `sf::View` origin i.e. the middle of the view.
+Note that in the images above, I've moved the rendering coordinate system around to get a few different variations. I guess most of the time it's better to use the `move()` function since you won't need to deal with where to place the origin point. On the other hand you really need to understand how `sf::View` works to use `rotate()` and `zoom()` because it's not obvious that those transformation will happen around the `sf::View` origin i.e. the middle of the view.
 
 You should keep in mind the introduced concept doesn't just hold for a window it'll work with any render target including `sf::RenderTexture`.
 
@@ -94,7 +94,7 @@ With that in mind it's now easy to understand how to use the constructor.
 sf::View view(origin.x, origin.y, size.width, size.height);
 ```
 
-Where origin relates to a 2D vector of the origin in the rendering coordination system and size relates to the `sf::View` size as discussed above.
+Where origin relates to a 2D vector of the origin in the rendering coordinate system and size relates to the `sf::View` size as discussed above.
 
 ## The viewport rectangle
 
@@ -141,7 +141,7 @@ window.draw(map);
 
 ## The `convertCoords(…)` function
 
-As we've seen in the paragraph with the source rectangle it's not very intuitive to work with those two coordination system. It's also pretty hard to determine by hand at which position for instance your mouse cursor is located relative to the view underneath. But why would you want to do this by hand, since SFML has already a build in function that will do the heavy lifting for you, namely [`convertCoords(…)`](http://www.sfml-dev.org/documentation/2.0/classsf_1_1RenderTarget.php#ae5e7ba65ef73df2778b29b7fdcdb20ee)?
+As we've seen in the paragraph with the source rectangle it's not very intuitive to work with those two coordinate system. It's also pretty hard to determine by hand at which position for instance your mouse cursor is located relative to the view underneath. But why would you want to do this by hand, since SFML has already a build in function that will do the heavy lifting for you, namely [`convertCoords(…)`](http://www.sfml-dev.org/documentation/2.0/classsf_1_1RenderTarget.php#ae5e7ba65ef73df2778b29b7fdcdb20ee)?
 
 There are two ways to use this function:
 

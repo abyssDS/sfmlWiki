@@ -4,8 +4,6 @@ Welcome to the section dedicated to external source codes for SFML.
 
 ## Game Engines
 * [C++] [[Basic Game Engine Source|SourceBasicGameEngine]] (from tutorial [[Basic Game Engine|TutorialBasicGameEngine]])
-
-* [C++] [[DrawableLineShape|SourceDrawableLineShape]]: A drawable-derived fast-rendering class for shapes made of lines
 * [C++] [[Simple Collision Detection|SourceSimpleCollisionDetection]]: A Static Class implementing Circle, BoundingBox and PixelPerfect collision detection.
 * [C++] [[Frame, Anim, Animated|SourceFrameAnimAnimated]] : Classes that manage your animated sprites.
 * [C++] [[Animation|SourceAnimation]] : A animation class that inherits from sf::Sprite to allow easy integration of Animations into new or existing code.
@@ -14,14 +12,19 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[AniSprite|SourceAniSprite]] : A alternative animation class that extends sf::Sprite and has frame rate independence animation.
 * [python] [[ImageSheet|SourceSpriteSheets]] : A class to handle sprite sheet and simple animations.
 * [C++] [[CairoShape|SourceCairoShape]] : A really basic class for generating graphics using Cairo.
-* [C++] [[Stroke|SourceStroke]] : Complete class to draw cool looking strokes from an array of points.
 * [C++] [[VideoIntegration|SourceVideoIntegration]] : Object Oriented ffmpeg wrapper. Play videos the same way you use images.
 * [C++] [[Masking using Sprites, Shapes or Strings|SourceMaskingAlphaBlending]] : Masking using Sprites, Shapes or Strings, and the Alpha Channel (by TurboLento)
-* [C++] [[Drawing color gradient|SourceGradientColor]] : Draw and manage color gradient easily with this class
 * [C++] [[Particle System|SourceParticleSystem]] : Enjoy colorful pixel explosions in your own home today!
 * [Ruby] [[Ruby Light Manager|SourceRubyLightManager]] : Add lighting to your 2D game (by Groogy)
-* [C++] [[Draw Rounded Rectangle|SourceDrawRoundedRectangle]] 
 * [C#] [[SpriteAnimated|SpriteAnimated]] : A C# version of animated sprite class.
+
+##Drawables
+* [C++] [[Round Ended Lines|Round-Ended-Lines]] : A class that renders round ended Lines (by Foaly)
+* [C++] [[DrawableLineShape|SourceDrawableLineShape]]: A drawable-derived fast-rendering class for shapes made of lines
+* [C++] [[Stroke|SourceStroke]] : Complete class to draw cool looking strokes from an array of points.
+* [C++] [[Drawing color gradient|SourceGradientColor]] : Draw and manage color gradient easily with this class
+* [C++] [[Draw Rounded Rectangle|SourceDrawRoundedRectangle]] 
+
 
 ## Network
 * [C++] [[Simple chat example using sf::TcpSocket|SourceNetworkChatExample]]

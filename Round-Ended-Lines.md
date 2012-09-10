@@ -1,5 +1,5 @@
 ## Summary
-This is a class that provides an easy interface to lines with rounded ends.
+This is a class for SFML 2 that provides an easy interface to lines with rounded ends.
 
 Class written by Foaly. You can use it in any way you want. Just a little note that the class was written by me would be nice :)
 

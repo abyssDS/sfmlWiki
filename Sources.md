@@ -38,7 +38,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Smart Resource Manager|SourceSmartResourceManager]] : Generic resource manager which keeps track of it's references. (by Groogy)
 * [Ruby] [[Resource Manager|SourceRubyResourceManager]](by Groogy)  : Generic class for managing resources.
 * [Python] [[PausableClock|SourcePyPausableClock]] : Class inheriting from sf.Clock allowing to pause the timer
-* [C++] [[PausableClock|SourcePausableClock]] : Class using a sf::Clock to allow pausing and restarting the timer.
+* [C++] [[sftools::Chronometer|SourceChronometer]] : This class provides the basic mechanism of a chronometer.
 * [C++] [[Signal System|SourceSignalSystem]](by Groogy)  : Set of classes replacing Events with Signals and allowing custom signals.
 * [C++] [[FPS|SourceFps]] : A class that simplifies frame rate calculation.
 * [C++] [[ZipLoader|SourceZipLoader]] : Class that loads files from zip archive.

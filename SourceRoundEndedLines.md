@@ -1,3 +1,5 @@
+# Round Ended Lines
+
 ## Summary
 This is a class for SFML 2 that provides an easy interface to lines with rounded ends.
 

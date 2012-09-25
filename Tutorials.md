@@ -8,14 +8,14 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 
 ### Configuration
 
-* [[Build your SFML project with CMake|TutorialCMake]]
+* [[Build your SFML project with CMake|Tutorial:-Build-your-SFML-project-with-CMake]]
 
 ### Events
 
-* [C++] [[Manage dynamic key binding|TutorialManageDynamicKeyBinding]]
+* [C++] [[Manage dynamic key binding|Tutorial:-Manage-dynamic-key-binding]]
 
 ### Game Design
-* [N/A] [[Basic Game Design|TutorialBasicGameDesign]]
+* [N/A] [[Basic Game Design|Tutorial:-Basic-Game-Design]]
 
 ### Game Engines
 * [C++] [[Basic Game Engine|TutorialBasicGameEngine]]

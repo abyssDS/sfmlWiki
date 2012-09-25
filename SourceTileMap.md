@@ -5,7 +5,6 @@ StaticTiledMap - class that holds chunksize and tilesize constants and will load
 TileLoader - abstract base class, StaticTiledMap loads tiles by calling virtual method of class derieved from TileLoader that you pass to it.  
 MapData - struct that holds measurements of map(in tiles) and the name of texture that is to be used by StaticTiledMap, it's placed in TileLoader.h because MapData makes sense only when recieved/used by StaticTiledMap/TileLoader so putting it in it's own header would be redundant.  
 
-All the code is missing `#pragma once` and `#include` of sfml, vector, string or precompiled headers with them, you must add these yourself.  
 TileLoader.h:
 ```cpp
 	#ifndef TILE_LOADER_INCLUDED

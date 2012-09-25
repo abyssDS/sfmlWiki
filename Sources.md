@@ -24,7 +24,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Stroke|SourceStroke]] : Complete class to draw cool looking strokes from an array of points.
 * [C++] [[Drawing color gradient|SourceGradientColor]] : Draw and manage color gradient easily with this class
 * [C++] [[Draw Rounded Rectangle|SourceDrawRoundedRectangle]] 
-
+* [C++] [[Tile Map with VertexArrays|SourceTileMap]] : Load, cull, texture and display quads as tiles
 
 ## Network
 * [C++] [[Simple chat example using sf::TcpSocket|SourceNetworkChatExample]]

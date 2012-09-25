@@ -163,6 +163,7 @@ Example implementation of TileLoader:
 			while(app.pollEvent(eve))
 				if(eve.type==sf::Event::Closed)
 					app.close();
+
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 				cam.zoom(1.05f);
 

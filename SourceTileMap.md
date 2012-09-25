@@ -1,4 +1,4 @@
-## Basic Tiled Map using SFML's VertexArrays
+#Basic Tiled Map using SFML's VertexArrays
 
 This Tile Map example consists of two classes and one struct.  
 StaticTiledMap - class that holds chunksize and tilesize constants and will load vertices, store, display and texture them.  

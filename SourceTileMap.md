@@ -8,8 +8,8 @@ MapData - struct that holds measurements of map(in tiles) and the name of textur
 All the code is missing `#pragma once` and `#include` of sfml, vector, string or precompiled headers with them, you must add these yourself.  
 TileLoader.h:
 ```cpp
-#ifndef TILE_LOADER_INCLUDED
-#define TILE_LOADER_INCLUDED
+	#ifndef TILE_LOADER_INCLUDED
+	#define TILE_LOADER_INCLUDED
 	struct MapData
 	{
 		std::string TextureName;
@@ -32,12 +32,12 @@ TileLoader.h:
 		*/
 		const MapData& GetData(void)const{return m_mapdata;}
 	};
-#endif //TILE_LOADER_INCLUDED
+	#endif //TILE_LOADER_INCLUDED
 ```
 StaticTiledMap.h:   
 ```cpp
-#ifndef STATIC_TILED_MAP_INCLUDED
-#define STATIC_TILED_MAP_INCLUDED
+	#ifndef STATIC_TILED_MAP_INCLUDED
+	#define STATIC_TILED_MAP_INCLUDED
 	class TileLoader;//forward declaration for pointer
 	class StaticTiledMap : public sf::Drawable
 	{
@@ -52,7 +52,7 @@ StaticTiledMap.h:
 		virtual ~StaticTiledMap(void){};
 		void LoadFrom(TileLoader* gloader);
 	};
-#endif //STATIC_TILED_MAP_INCLUDED
+	#endif //STATIC_TILED_MAP_INCLUDED
 ```
 StaticTiledMap.cpp:
 ```cpp

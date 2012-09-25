@@ -1,5 +1,3 @@
-# Manage dynamic key binding
-
 „Bind“ a key means linking an action to a specific key. For example, you can make the player to use direction keys to move and the Return key to fire. You can also make the left mouse button to shoot in a FPS. In fact, the action is linked to a specific Event.
 
 Ok, that's great, but how can we change all those binds if the player is left-handed? He would probably use the Right mouse button instead of the left one! Binding is making this possible simply. You just have to say that this action is linked to this new Event.

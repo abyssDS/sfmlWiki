@@ -10,6 +10,10 @@ TileLoader.h:
 ```cpp
 	#ifndef TILE_LOADER_INCLUDED
 	#define TILE_LOADER_INCLUDED
+
+	#include <SFML/Graphics/VertexArray.hpp>
+	#include <string>
+
 	struct MapData
 	{
 		std::string TextureName;
@@ -30,14 +34,22 @@ TileLoader.h:
 		for correct displaying and culling it's assumed your appended tile will be square with side equal to tilesize
 		and have it's top left point at (tilesize*gx,tilesize*gy),
 		*/
-		const MapData& GetData(void)const{return m_mapdata;}
+		const MapData& GetData(void) const {return m_mapdata;}
 	};
+
 	#endif //TILE_LOADER_INCLUDED
 ```
 StaticTiledMap.h:   
 ```cpp
 	#ifndef STATIC_TILED_MAP_INCLUDED
 	#define STATIC_TILED_MAP_INCLUDED
+
+	#include <SFML/Graphics/Drawable.hpp>
+	#include <SFML/Graphics/RenderTarget.hpp>
+	#include <SFML/Graphics/RenderStates.hpp>
+	#include <SFML/Graphics/Texture.hpp>
+	#include <vector>
+
 	class TileLoader;//forward declaration for pointer
 	class StaticTiledMap : public sf::Drawable
 	{
@@ -52,12 +64,16 @@ StaticTiledMap.h:
 		virtual ~StaticTiledMap(void){};
 		void LoadFrom(TileLoader* gloader);
 	};
+
 	#endif //STATIC_TILED_MAP_INCLUDED
 ```
 StaticTiledMap.cpp:
 ```cpp
 	#include "StaticTiledMap.h"
 	#include "TileLoader.h"
+
+	#include <SFML/System/Vector2.hpp>
+
 	void StaticTiledMap::draw(sf::RenderTarget& target,sf::RenderStates states)const
 	{
 
@@ -118,6 +134,14 @@ Example implementation of TileLoader:
 ```cpp
 	#include "TileLoader.h"
 	#include "StaticTiledMap.h"
+
+	#include <SFML/System/Vector2.hpp>
+	#include <SFML/Graphics/RenderWindow.hpp>
+	#include <SFML/Graphics/View.hpp>
+	#include <SFML/Graphics/Vertex.hpp>
+	#include <SFML/Window/Event.hpp>
+	#include <SFML/Window/Keyboard.hpp>
+
 	class ExampleLoader : public TileLoader
 	{
 	public:

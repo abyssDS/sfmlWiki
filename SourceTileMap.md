@@ -42,10 +42,7 @@ StaticTiledMap.h:
 ```cpp
 	#ifndef STATIC_TILED_MAP_INCLUDED
 	#define STATIC_TILED_MAP_INCLUDED
-
 	#include <SFML/Graphics/Drawable.hpp>
-	#include <SFML/Graphics/RenderTarget.hpp>
-	#include <SFML/Graphics/RenderStates.hpp>
 	#include <SFML/Graphics/Texture.hpp>
 	#include <SFML/Graphics/VertexArray.hpp>
 	#include <vector>
@@ -71,7 +68,7 @@ StaticTiledMap.cpp:
 ```cpp
 	#include "StaticTiledMap.h"
 	#include "TileLoader.h"
-
+	#include <SFML/Graphics/RenderTarget.hpp>
 	#include <SFML/System/Vector2.hpp>
 
 	void StaticTiledMap::draw(sf::RenderTarget& target,sf::RenderStates states)const

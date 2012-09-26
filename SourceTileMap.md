@@ -47,6 +47,7 @@ StaticTiledMap.h:
 	#include <SFML/Graphics/RenderTarget.hpp>
 	#include <SFML/Graphics/RenderStates.hpp>
 	#include <SFML/Graphics/Texture.hpp>
+	#include <SFML/Graphics/VertexArray.hpp>
 	#include <vector>
 
 	class TileLoader;//forward declaration for pointer

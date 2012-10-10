@@ -25,7 +25,7 @@ My code was focused on the usage I will give to my game, which only requires arb
 
 
 `
-    struct HSL
+     struct HSL
     { 
     int Hue;
     int Saturation;

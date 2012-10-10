@@ -48,7 +48,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[LoadImageFromResource|SourceLoadImageFromResource]] : An example of how to load data from a resource (.rc) into sf::Image.
 * [C++] [[Verlet physic|SourceVerletPhysic]] : A simple example of physic circle body in space.
 * [C++] [[Settings Parser|SourceSettingsParser]] : Simple class for reading and writing settings in text file. (by cristaloleg)
-* [C++] [[HSL Color|SourceHSLColor]] : A class for working with HSL and converting to and from RGB. (by masskiller)
+* [C++] [[[https://github.com/LaurentGomila/SFML/wiki/HSL-Color-Standard-and-Conversions-on-Image-colorizing](HSL Color)|SourceHSLColor]] : A class for working with HSL and converting to and from RGB. (by masskiller)
 
 ## Audio
 * [C++] [[Mp3 Player|SourceMp3Player]] : Class inspired sf:: Music for playing mp3 file using the library mpg123

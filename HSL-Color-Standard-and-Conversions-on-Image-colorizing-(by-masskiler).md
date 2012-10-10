@@ -27,7 +27,6 @@ My code was focused on the usage I will give to my game, which only requires arb
 `
     struct HSL
     { 
-    ///Exactly what says on the tin class, not much to clarify or add.
     int Hue;
     int Saturation;
     int Luminance;

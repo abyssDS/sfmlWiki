@@ -4,6 +4,8 @@ Let's start with a sort of long explanation. If you truly want to learn about HS
 
 Some Eyecandy before you get to this huge wall of text:
 ![Normal Image](http://www.tannerhelland.com/wp-content/uploads/Enslaved-Odyssey-to-the-West-normal.jpg)
+
+
 ![Colorized Image](http://www.tannerhelland.com/wp-content/uploads/Enslaved-Odyssey-to-the-West-blue-original-saturation.jpg)
 
 HSL is color standard that works on a polar color hexagon (check wikipedia for further explanation), The hue is a color that is represented in the said hexagon. The color given is a raw one, not taking shading or lighting directly. All hue does is grant you a 0 to 360 range between colors allowing you to take intermediate values between base colors. Base colors are: Red, Green, Blue, Magenta, Yellow and Cyan.
@@ -24,8 +26,8 @@ The problem is fixed by adding a fixed saturation to them. The gray pixels have 
 My code was focused on the usage I will give to my game, which only requires arbitrary precision, therefore I used int as component for the three numbers required by HSL. If you want more precision you can change them to float. However I _do not_ guarantee that it will work correctly. If you want it to work with greater precision and it doesn't work right out the box, you're on your own. Usually the offset in color conversion is not something you can actually perceive so it's usually fine that way.
 
 
-`
-     struct HSL
+`   
+    struct HSL
     { 
     int Hue;
     int Saturation;
@@ -200,4 +202,4 @@ My code was focused on the usage I will give to my game, which only requires arb
     }
 `
 
-I think that all that remains is the '=' operator, but it follows the same syntax the constructor does, all you have to do is use the same logic to it.
+I think that all that remains is the '=' operator, but it follows the same syntax the constructor does, all you have to do is use the same logic to it. Also sorry for the indentation. This is my first page in the wiki so I don't know much about how to make it readable.

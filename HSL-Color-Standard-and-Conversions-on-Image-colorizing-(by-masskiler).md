@@ -27,11 +27,11 @@ My code was focused on the usage I will give to my game, which only requires arb
 
 
 `   
-    struct HSL
-    { 
-    int Hue;
-    int Saturation;
-    int Luminance;
+        struct HSL
+        { 
+        int Hue;
+        int Saturation;
+        int Luminance;
 
     HSL();
     HSL(int H, int S, int L);

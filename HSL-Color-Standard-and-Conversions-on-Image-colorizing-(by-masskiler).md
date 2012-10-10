@@ -40,11 +40,6 @@ My code was focused on the usage I will give to my game, which only requires arb
 
     private:
     float HueToRGB(float arg1, float arg2, float H);
-    /**This function is private for a reason. 
-    *You can't just take the hue of a color and hope it will work. 
-    *The parameters it receives are the problem.
-    *I know not a safe way to calculating Hue without Saturation and Luminance. 
-    */
 
     };
     HSL TurnToHSL(const sf::Color& C);

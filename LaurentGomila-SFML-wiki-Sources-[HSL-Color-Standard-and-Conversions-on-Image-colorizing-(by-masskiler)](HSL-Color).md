@@ -200,6 +200,6 @@ My code was focused on the usage I will give to my game, which only requires arb
     A.Luminance = l;
     return A;
     }
-`
+
 
 I think that all that remains is the '=' operator, but it follows the same syntax the constructor does, all you have to do is use the same logic to it. Also sorry for the indentation. This is my first page in the wiki so I don't know much about how to make it readable.

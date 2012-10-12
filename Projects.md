@@ -10,6 +10,7 @@ Welcome to the section dedicated to projects using/for SFML.
 ### Other extensions
 * [C++] [[Zoost & Zoom libraries|ProjectsZoostAndZoom]]: Geometric objects, customizable shapes, animation tools & light rendering.
 * [C++] [[Thor C++ Library|ProjectThor]]: Provides pausable clocks, vector functions, particles, resource/event handling, triangulations, and more...
+* [C++] [SimpleButton](http://en.sfml-dev.org/forums/index.php?topic=9379.0): A C++ API that allows easy creation of Buttons and other GUI features.
 * [Ruby] [[GDE|ProjectsGroogysDevelopmentEnvironment]]: An environment for rbSFML that helps out with development.
 
 ### Physics

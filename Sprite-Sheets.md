@@ -2,7 +2,8 @@ Hey, so these are tested, but still under construction. Use the third constructo
 
 **AutoSprites.cpp**
 
-`#include <SFML/Graphics.hpp>
+```c++
+#include <SFML/Graphics.hpp>
 #include <sstream>
 #include <iostream>
 
@@ -314,14 +315,13 @@ namespace AutoSprites{
     
     
 }
-
-
-
-`
+```
 
 
 **AutoSprites.h**
-`//
+
+```c++
+//
 //  AutoSprites.h
 //  Baconator
 //
@@ -353,4 +353,4 @@ public:
 }
 
 #endif
-`
+```

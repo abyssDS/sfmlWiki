@@ -1,14 +1,7 @@
 Hey, so these are tested, but still under construction. Use the third constructor in MovableSprite. Just input your sprite sheet and frames per second. Next if you wish add an animation. Just a name and range and then set animation with just the name.
 
 **AutoSprites.cpp**
-`//
-//  AutoSprites.cpp
-//  Baconator
-//
-//  Created by Thomas Paniagua on 10/13/12.
-//  Copyright (c) 2012 LIA. All rights reserved.
-//
-
+`
 #include <SFML/Graphics.hpp>
 #include <sstream>
 #include <iostream>

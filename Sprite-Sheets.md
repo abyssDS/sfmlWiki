@@ -1,8 +1,8 @@
 Hey, so these are tested, but still under construction. Use the third constructor in MovableSprite. Just input your sprite sheet and frames per second. Next if you wish add an animation. Just a name and range and then set animation with just the name.
 
 **AutoSprites.cpp**
-`
-#include <SFML/Graphics.hpp>
+
+`#include <SFML/Graphics.hpp>
 #include <sstream>
 #include <iostream>
 

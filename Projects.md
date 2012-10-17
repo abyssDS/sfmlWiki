@@ -20,6 +20,17 @@ Welcome to the section dedicated to projects using/for SFML.
 
 * [SFMLUploads.org](http://www.sfmluploads.org): Upload your project archives & screenshots, or codesnippets for inclusion in forums, here.
 
+## Language Bindings
+
+* [C] *CSFML*: available on the [download page](http://www.sfml-dev.org/download.php) of sfml website
+* [Python] *PySFML*: available on the [download page](http://www.sfml-dev.org/download.php) of sfml website
+* [Ruby] *RubySFML*: available on the [download page](http://www.sfml-dev.org/download.php) of sfml website
+* [D] *DSFML*: available on the [download page](http://www.sfml-dev.org/download.php) of sfml website
+* [.Net] available on the [download page](http://www.sfml-dev.org/download.php) of sfml website
+* [Java] *JSFML*: http://jsfml.org/
+* [OCaml] *ocaml-sfml*: hosted on the ocaml forge: http://ocaml-sfml.forge.ocamlcore.org/
+* [OCaml] *Ocsfml*: hosted on github: https://github.com/JoeDralliam/Ocsfml
+
 ## Video Games
 
 * [C++] [Metroid Prime : Némésis](http://metroidprime4.xooit.fr/index.php): 2D fangame following the famous Metroid Prime 3.

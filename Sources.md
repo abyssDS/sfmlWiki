@@ -49,7 +49,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Verlet physic|SourceVerletPhysic]] : A simple example of physic circle body in space.
 * [C++] [[Settings Parser|SourceSettingsParser]] : Simple class for reading and writing settings in text file. (by cristaloleg)
 * [C++] [[HSL Color|SourceHSLColor]] : A class for working with HSL and converting to and from RGB. (by masskiller)
-* [C++] [[Simple and elegant File Logger|Simple-C---File-Logger-(by-mateandmetal)]] (by mateandmetal)
+* [C++] [Simple and elegant File Logger](https://github.com/LaurentGomila/SFML/wiki/Simple-C---File-Logger-(by-mateandmetal) (by mateandmetal)
 
 ## Audio
 * [C++] [[Mp3 Player|SourceMp3Player]] : Class inspired sf:: Music for playing mp3 file using the library mpg123

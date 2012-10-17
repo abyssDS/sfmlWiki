@@ -141,7 +141,8 @@ sf::StandardCursor::StandardCursor(const sf::StandardCursor::TYPE t)
         case sf::StandardCursor::TEXT :
             Cursor = LoadCursor(NULL, IDC_IBEAM);
         break;
-        //For more cursor options on Windows go here: http://msdn.microsoft.com/en-us/library/ms648391%28v=vs.85%29.aspx
+        //For more cursor options on Windows go here:
+        // http://msdn.microsoft.com/en-us/library/ms648391%28v=vs.85%29.aspx
     }
 }
 
@@ -175,7 +176,8 @@ sf::StandardCursor::StandardCursor(const sf::StandardCursor::TYPE t)
         case sf::StandardCursor::TEXT:
             Cursor = XCreateFontCursor(display, XC_xterm);
         break;
-        // For more cursor options on Linux go here: http://www.tronche.com/gui/x/xlib/appendix/b/
+        // For more cursor options on Linux go here:
+        // http://www.tronche.com/gui/x/xlib/appendix/b/
     }
 }
 

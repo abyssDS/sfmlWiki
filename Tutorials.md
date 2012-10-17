@@ -43,6 +43,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 
 ### Audio
 * [C++] [[Playing a sine wave|TutorialPlaySine]]
+* [OCaml] [[Playing a sine wave|TutorialPlaySine_OCaml]]
 
 ### Reference Cards
 

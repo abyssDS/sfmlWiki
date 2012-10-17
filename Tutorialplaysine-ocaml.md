@@ -1,6 +1,6 @@
 # Playing a Sine Wave in OCaml
 
-The main explanation in on the C++ page [[playing a sine wave|TutorialPlaySine]].  
+The main explanation is on the C++ page [[playing a sine wave|TutorialPlaySine]].  
 Here we only provide the equivalent code for the OCaml programming language:
 
 ```ocaml

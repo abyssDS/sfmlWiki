@@ -22,7 +22,7 @@ struct MyKeys
 {
     InputType myInputType;
     sf::Event::EventType myEventType;
-    sf::Key::Code myKeyCode;
+    sf::Keyboard::Key myKeyCode;
     sf::Mouse::Button myMouseButton;
 };
 ```
@@ -32,47 +32,50 @@ Here it is, with this simple structure, you can link an action to a specific inp
 You have to add, in the main application, the std::map containing the bindings. You can fill it simply or with a xml file, etc… :
 
 ```cpp
-std::map<std::string,MyKeys> Keys;
-MyKeys key;
-//Let's bind the left mouse button to the "Shoot" action
-key.myInputType = MouseInput;
-key.myEventType = sf::Event::MouseButtonPressed;
-key.myMouseButton = sf::Mouse::Left;
-Keys["Shoot"] = key;
-//Let's bind the Return key to the "Jump" action
-key.myInputType = KeyboardInput;
-key.myEventType = sf::Event::KeyPressed;
-key.myKeyCode = sf::Key::Return;
-Keys["Jump"] = key;
-//Let's bind the Left Control key to the "Use" action
-key.myInputType = KeyboardInput;
-key.myEventType = sf::Event::KeyPressed;
-key.myKeyCode = sf::Key::LControl;
-Keys["Use"] = key;
+    std::map<std::string,MyKeys> Keys;
+    MyKeys key;
+
+    // Let's bind the left mouse button to the "Shoot" action
+    key.myInputType = MouseInput;
+    key.myEventType = sf::Event::MouseButtonPressed;
+    key.myMouseButton = sf::Mouse::Left;
+    Keys["Shoot"] = key;
+
+    // Let's bind the Return key to the "Jump" action
+    key.myInputType = KeyboardInput;
+    key.myEventType = sf::Event::KeyPressed;
+    key.myKeyCode = sf::Keyboard::Return;
+    Keys["Jump"] = key;
+
+    // Let's bind the Left Control key to the "Use" action
+    key.myInputType = KeyboardInput;
+    key.myEventType = sf::Event::KeyPressed;
+    key.myKeyCode = sf::Keyboard::LControl;
+    Keys["Use"] = key;
 ```
 
 Using a std::map permit a simply use of actions directly by their name. We have now to modify our „Freaky“ Event Manager to make it dynamic!
 
 ```cpp
-//Manage Events
-while (App.GetEvent(Event))
-{
-   bla bla bla...
-   //My events
-   //Shoot Event
-   if (TestEvent(Keys["Shoot"],Event))
-   {
-      Shoot ();
-   }
-   if (TestEvent(Keys["Jump"],Event))
-   {
-      Jump ();
-   }
-   if (TestEvent(Keys["Use"],Event))
-   {
-      Use ();
-   }
-}
+    // Manage Events
+    while (App.pollEvent(Event))
+    {
+        bla bla bla...
+        // My events
+        // Shoot Event
+        if (TestEvent(Keys["Shoot"], Event))
+        {
+            Shoot();
+        }
+        if (TestEvent(Keys["Jump"], Event))
+        {
+            Jump();
+        }
+        if (TestEvent(Keys["Use"], Event))
+        {
+            Use ();
+        }
+    }
 ```
 
 So, we see that we are managing each action separately with her name. It's now possible to use a function or code directly, or anything else.
@@ -80,15 +83,19 @@ So, we see that we are managing each action separately with her name. It's now p
 The TestEvent function:
 
 ```cpp
-bool TestEvent (MyKeys k, sf::Event e)
+bool TestEvent(MyKeys k, sf::Event e)
 {
-    //Mouse event
-    if (k.myInputType==MouseInput && k.myEventType==e.Type && k.myMouseButton==e.MouseButton.Button)
+    // Mouse event
+    if (k.myInputType == MouseInput &&
+        k.myEventType == e.type &&
+        k.myMouseButton == e.mouseButton.button)
     {
         return (true);
     }
-    //Keyboard event
-    if (k.myInputType==KeyboardInput && k.myEventType==e.Type && k.myKeyCode==e.Key.Code)
+    // Keyboard event
+    if (k.myInputType == KeyboardInput &&
+        k.myEventType == e.type &&
+        k.myKeyCode == e.key.code)
     {
         return (true);
     }
@@ -103,6 +110,7 @@ Here is a complete sample code for testing:
 ```cpp
 #include <iostream>
 #include <fstream>
+#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
  
 enum InputType
@@ -116,121 +124,128 @@ struct MyKeys
 {
     InputType myInputType;
     sf::Event::EventType myEventType;
-    sf::Key::Code myKeyCode;
+    sf::Keyboard::Key myKeyCode;
     sf::Mouse::Button myMouseButton;
 };
  
-bool TestEvent (MyKeys k, sf::Event e);
-void Shoot (void);
+bool TestEvent(MyKeys k, sf::Event e);
+void Shoot(void);
 void Jump(void);
  
 int main(int argc, char** argv)
 {
-    //Variables for main
+    // Variables for main
     sf::RenderWindow App;
     bool Running = true;
     sf::Event Event;
  
-    //Variables for demo
+    // Variables for demo
     std::map<std::string,MyKeys> Keys;
     MyKeys key;
-    //Let's bind the left mouse button to the "Shoot" action
+
+    // Let's bind the left mouse button to the "Shoot" action
     key.myInputType = MouseInput;
     key.myEventType = sf::Event::MouseButtonPressed;
     key.myMouseButton = sf::Mouse::Left;
     Keys["Shoot"] = key;
-    //Let's bind the Return key to the "Jump" action
+
+    // Let's bind the Return key to the "Jump" action
     key.myInputType = KeyboardInput;
     key.myEventType = sf::Event::KeyPressed;
-    key.myKeyCode = sf::Key::Return;
+    key.myKeyCode = sf::Keyboard::Return;
     Keys["Jump"] = key;
-    //Let's bind the Left Control key to the "Use" action
+
+    // Let's bind the Left Control key to the "Use" action
     key.myInputType = KeyboardInput;
     key.myEventType = sf::Event::KeyPressed;
-    key.myKeyCode = sf::Key::LControl;
+    key.myKeyCode = sf::Keyboard::LControl;
     Keys["Use"] = key;
  
-    //Window creation
-    App.Create(sf::VideoMode(640, 480, 16), "config test");
+    // Window creation
+    App.create(sf::VideoMode(640, 480, 16), "config test");
  
-    //Main loop
+    // Main loop
     while (Running)
     {
-        //Manage Events
-        while (App.GetEvent(Event))
+        // Manage Events
+        while (App.pollEvent(Event))
         {
-            //Using Event normally
+            // Using Event normally
  
-            //Window closed
-            if (Event.Type == sf::Event::Closed)
+            // Window closed
+            if (Event.type == sf::Event::Closed)
             {
                 Running = false;
             }
  
-            //Key pressed
-            if (Event.Type == sf::Event::KeyPressed)
+            // Key pressed
+            if (Event.type == sf::Event::KeyPressed)
             {
-                switch (Event.Key.Code)
+                switch (Event.key.code)
                 {
-                    case sf::Key::Escape :
+                    case sf::Keyboard::Escape :
                         Running = false;
                         break;
-                    case sf::Key::A :
-                        std::cout<<"Key A !"<<std::endl;
+                    case sf::Keyboard::A :
+                        std::cout << "Key A !" << std::endl;
                         break;
                     default :
                         break;
                 }
             }
  
-            //Using Event for binding
-            //Shoot
-            if (TestEvent(Keys["Shoot"],Event))
+            // Using Event for binding
+            // Shoot
+            if (TestEvent(Keys["Shoot"], Event))
             {
-                //You can use a function
-                Shoot ();
+                // You can use a function
+                Shoot();
             }
-            if (TestEvent(Keys["Jump"],Event))
+            if (TestEvent(Keys["Jump"], Event))
             {
-                Jump ();
+                Jump();
             }
-            if (TestEvent(Keys["Use"],Event))
+            if (TestEvent(Keys["Use"], Event))
             {
-                //or only code
-                std::cout<<"Use !"<<std::endl;
+                // or only code
+                std::cout << "Use !" << std::endl;
             }
         }
  
-        //Display the result
-        App.Display();
+        // Display the result
+        App.display();
     }
  
-    //End of application
+    // End of application
     return EXIT_SUCCESS;
 }
  
-bool TestEvent (MyKeys k, sf::Event e)
+bool TestEvent(MyKeys k, sf::Event e)
 {
-    //Mouse event
-    if (k.myInputType==MouseInput && k.myEventType==e.Type && k.myMouseButton==e.MouseButton.Button)
+    // Mouse event
+    if (k.myInputType == MouseInput &&
+        k.myEventType == e.type &&
+        k.myMouseButton == e.mouseButton.button)
     {
         return (true);
     }
-    //Keyboard event
-    if (k.myInputType==KeyboardInput && k.myEventType==e.Type && k.myKeyCode==e.Key.Code)
+    // Keyboard event
+    if (k.myInputType == KeyboardInput &&
+        k.myEventType == e.type &&
+        k.myKeyCode == e.key.code)
     {
         return (true);
     }
     return (false);
 }
  
-void Shoot (void)
+void Shoot(void)
 {
-    std::cout<<"Shoot !"<<std::endl;
+    std::cout << "Shoot !" << std::endl;
 }
  
-void Jump (void)
+void Jump(void)
 {
-    std::cout<<"Jump !"<<std::endl;
+    std::cout << "Jump !" << std::endl;
 }
 ```

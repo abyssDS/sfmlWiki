@@ -48,8 +48,9 @@ int main()
                 window.close();
             }
         }
-        
-        sprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window))); // Set position
+
+        // Set position        
+        sprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));
         
         window.clear();
         window.setView(fixed);
@@ -153,7 +154,8 @@ void sf::StandardCursor::set(const sf::WindowHandle& aWindowHandle) const
 
 sf::StandardCursor::~StandardCursor()
 {
-    // Nothing to do for destructor : no memory has been allocated (shared ressource principle)
+    // Nothing to do for destructor :
+    // no memory has been allocated (shared ressource principle)
 }
 
 #elif defined(SFML_SYSTEM_LINUX)

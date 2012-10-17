@@ -43,7 +43,7 @@ SFML is currently available and fully functional in Windows (Vista, XP, 2000, 98
 
 ### <a name="languages"/>In which languages is SFML available?
 
-SFML is implemented in C++. That said, several bindings have been created for other languages that allow SFML to be used from C, D, Ruby, and Python. A .NET binding (C#, C++/CLI, VB.NET, …) is also in development.
+SFML is implemented in C++. That said, several bindings have been created for other languages that allow SFML to be used from C, D, Ruby, OCaml, Java and Python. A .NET binding (C#, C++/CLI, VB.NET, …) is also in development.
 
 ### <a name="license"/>Under what license is SFML available?
 

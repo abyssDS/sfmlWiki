@@ -22,12 +22,12 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Round Ended Lines|Source:-Round-Ended-Lines]] : A class that renders round ended Lines (by Foaly)
 * [C++] [[Drawable Line Shape|Source:-Drawable-Line-Shape]]: A drawable-derived fast-rendering class for shapes made of lines
 * [C++] [[Stroke|Source:-Stroke]] : Complete class to draw cool looking strokes from an array of points.
-* [C++] [[Drawing color gradient|Source:-Gradient-Color]] : Draw and manage color gradient easily with this class
+* [C++] [[Drawing Color Gradient|Source:-Color-Gradient]] : Draw and manage color gradient easily with this class
 * [C++] [[Draw Rounded Rectangle|Source:-Draw-Rounded-Rectangle]] 
 * [C++] [[Tile Map with VertexArrays|Source:-TileMap]] : Load, cull, texture and display quads as tiles
 
 ## Network
-* [C++] [[Simple chat example using sf::TcpSocket|Source:-Network-Chat-Exampel]]
+* [C++] [[Simple chat example using sf::TcpSocket|Source:-Network-Chat-Example]]
 
 ## GUI
 * [C++] [[FormatText|Source:-FormatText]] : Format simply a sf::Text in width and height. (by Thiziri)
@@ -35,7 +35,7 @@ Welcome to the section dedicated to external source codes for SFML.
 
 ## Miscellaneous
 * [C++] [[ResourceManager|Source:-ResourceManager]](by Wavesonics) [[ResourceManager - with ImageManager sample|Source:-ResourceManager-by-Hiura]](by Hiura) [[ResourceManager|Source:-ResourceManager-by-L0calh05t]](by l0calh05t)  : Generic class for managing resources
-* [C++] [[Smart Resource Manager|Source:-Smart-Resource-Manager]] : Generic resource manager which keeps track of it's references. (by Groogy)
+* [C++] [[Smart Resource Manager|Source:-Smart-ResourceManager]] : Generic resource manager which keeps track of it's references. (by Groogy)
 * [Ruby] [[Resource Manager|Source:Ruby-ResourceManager]](by Groogy)  : Generic class for managing resources.
 * [Python] [[PausableClock|Source:-PyPausableClock]] : Class inheriting from sf.Clock allowing to pause the timer
 * [C++] [[sftools::Chronometer|Source:-Chronometer]] : This class provides the basic mechanism of a chronometer.
@@ -45,7 +45,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [Ruby] [[MessageBox class|Source:-MessageBox]](by Groogy)  : A simple Utility class for debugging purposes.
 * [C++] [[wxScrolledSFMLWindow|Source:-wxScrolledSFMLWindow]] (by TricksterGuy) : Integrates an SFML window onto a scrolled wxWindow
 * [C++] [[PhysFS|Source:-SFML-PhysFS]] : A class that adapts PhysFS to SFML with a custom sf::InputStream
-* [C++] [[LoadImageFromResource|Source:-LoadImageFromResource]] : An example of how to load data from a resource (.rc) into sf::Image.
+* [C++] [[LoadImageFromResource|Source:-Load-Image-From-Resource]] : An example of how to load data from a resource (.rc) into sf::Image.
 * [C++] [[Verlet physic|Source:-Verlet-Physic]] : A simple example of physic circle body in space.
 * [C++] [[Settings Parser|Source:-Settings-Parser]] : Simple class for reading and writing settings in text file. (by cristaloleg)
 * [C++] [[HSL Color|Source:-HSL-Color]] : A class for working with HSL and converting to and from RGB. (by masskiller)

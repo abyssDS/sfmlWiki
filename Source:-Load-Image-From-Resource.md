@@ -1,4 +1,3 @@
-
 # Load Image From Resource
 
 An example of how to load data from a resource (.rc) into sf::Image.

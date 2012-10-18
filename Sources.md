@@ -10,13 +10,13 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[SFMLWidget|Source:-GTK-SFMLWidget]] : A class to integrate SFML into a gtkmm interface
 * [C++] [[Filter|Source:-Filter]] : Class to manage color filters or brightness filters.
 * [C++] [[AniSprite|Source:-AniSprite]] : A alternative animation class that extends sf::Sprite and has frame rate independence animation.
-* [python] [[ImageSheet|Source:-Sprite-Sheets]] : A class to handle sprite sheet and simple animations.
-* [C++] [[CairoShape|Source:-Cairo-Shape]] : A really basic class for generating graphics using Cairo.
+* [C++] [[Sprite Sheet|Source:-Sprite-Sheets]] : A class to handle sprite sheet and simple animations.
+* [C++] [[Cairo Shape|Source:-Cairo-Shape]] : A really basic class for generating graphics using Cairo.
 * [C++] [[VideoIntegration|Source:-Video-Integration]] : Object Oriented ffmpeg wrapper. Play videos the same way you use images.
 * [C++] [[Masking using Sprites, Shapes or Strings|Source:-Masking-Alpha-Blending]] : Masking using Sprites, Shapes or Strings, and the Alpha Channel (by TurboLento)
 * [C++] [[Particle System|Source:-Particle-System]] : Enjoy colorful pixel explosions in your own home today!
 * [Ruby] [[Ruby Light Manager|Source:-Ruby-Light-Manager]] : Add lighting to your 2D game (by Groogy)
-* [C#] [[SpriteAnimated|Sprite:-Animated]] : A C# version of animated sprite class.
+* [C#] [[SpriteAnimated|Source:-Sprite-Animated]] : A C# version of animated sprite class.
 
 ##Drawables
 * [C++] [[Round Ended Lines|Source:-Round-Ended-Lines]] : A class that renders round ended Lines (by Foaly)
@@ -46,6 +46,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[wxScrolledSFMLWindow|Source:-wxScrolledSFMLWindow]] (by TricksterGuy) : Integrates an SFML window onto a scrolled wxWindow
 * [C++] [[PhysFS|Source:-SFML-PhysFS]] : A class that adapts PhysFS to SFML with a custom sf::InputStream
 * [C++] [[LoadImageFromResource|Source:-Load-Image-From-Resource]] : An example of how to load data from a resource (.rc) into sf::Image.
+* [C++] [[Loading Images in a Thread|Source:-Loading-Images-in-a-Thread]] : An example of how to load images in a background thread.
 * [C++] [[Verlet physic|Source:-Verlet-Physic]] : A simple example of physic circle body in space.
 * [C++] [[Settings Parser|Source:-Settings-Parser]] : Simple class for reading and writing settings in text file. (by cristaloleg)
 * [C++] [[HSL Color|Source:-HSL-Color]] : A class for working with HSL and converting to and from RGB. (by masskiller)

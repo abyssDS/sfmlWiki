@@ -18,32 +18,32 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 * [N/A] [[Basic Game Design|Tutorial:-Basic-Game-Design]]
 
 ### Game Engines
-* [C++] [[Basic Game Engine|TutorialBasicGameEngine]]
-* [C++] [[Basic Inventory System|TutorialBasicInventorySystem]]
+* [C++] [[Basic Game Engine|Tutorial:-Basic-Game-Engine]]
+* [C++] [[Basic Inventory System|Tutorial:-Basic-Inventory-System]]
 
 ### Game Objects
-* [C++] [[Object Properties|TutorialObjectProperties]]
+* [C++] [[Object Properties|Tutorial:-Object-Properties]]
 
 ### Graphics
 
-* [C++] [Using sf::View](TutorialUsingView)
-* [C++] [[Manage different screens in a game|TutorialScreens]]
-* [C++] [[Using CEGUI in SFML|TutorialCEGUI]]
+* [C++] [Using sf::View](Tutorial:-Using-View)
+* [C++] [[Manage different screens in a game|Tutorial:-Manage-different-Screens]]
+* [C++] [[Using CEGUI in SFML|Tutorial:-CEGUI-and-SFML]]
 * [C++] Loading images in a thread (and displaying progress)
 * [C++] Displaying the FPS without loading a font
-* [C++] [How to change your cursor](TutorialChangeCursor)
-* [C++] [Create a simple image manager](TutorialImageManager)
-* [C++] [[Create and use SetIcon|TutorialCreateAndUseSetIcon]]
-* [C++] [[Correctly display accents|TutorialCorrectlyDisplayAccents]]
-* [C++] [[Grouping your Drawables in a Group class|TutorialDrawableGroup]]
+* [C++] [How to change your cursor](Tutorial:-Change-Cursor)
+* [C++] [Create a simple image manager](Tutorial:-Image-Manager)
+* [C++] [[Create and use SetIcon|Tutorial:-Create-and-Use-SetIcon]]
+* [C++] [[Correctly display accents|Tutorial:-Correctly-Display-Accents]]
+* [C++] [[Grouping your Drawables in a Group class|Tutorial:-Drawable-Group]]
 
 ### Video
 
 * [C++] Play a video without sound using FFMpeg.
 
 ### Audio
-* [C++] [[Playing a sine wave|TutorialPlaySine]]
-* [OCaml] [[Playing a sine wave|Tutorialplaysine-ocaml]]
+* [C++] [[Playing a sine wave|Tutorial:-Play-Sine-Wave]]
+* [OCaml] [[Playing a sine wave|Tutorial:-Play-Sine-Wave-(OCaml)]]
 
 ### Reference Cards
 

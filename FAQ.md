@@ -139,9 +139,9 @@ Have you:
 * On Windows, have you copied the libsndfile-1.dll and openal32.dll files (you can find them in the complete SDK) into the folder for executable, along with the DLLs for the packages you're using (and all of their dependencies)?
 * On Linux, have you installed the libraries (sudo make install in the SFML folder)?
 
-If you've checked all of those, and SFML still refuses to work, see “I found a bug!”
+If you've checked all of those, and SFML still refuses to work, see [I found a bug!](#wiki-bug).
 
-## <a name="fuse_libraries/>(MinGW) I want to fuse the libraries into one. (Not recommended)
+### <a name="fuse_libraries"/>(MinGW) I want to fuse the libraries into one. (Not recommended)
 
 To fuse two libraries, you can use the ar.exe utility provided with MinGW. You'll also need a minimal Unix environment (like [CYGWIN](http://www.cygwin.com/)). The syntax is:
 

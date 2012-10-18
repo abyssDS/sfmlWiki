@@ -1,7 +1,7 @@
 # Groogy's Development Environment
 This is a open-source development environment to help out with developing rbSFML applications. It includes some debugging utilities and various features to make development easier. Feel free to add your own additions to the library. Thumb rule being that it is to help out with developing applications in Ruby and not take over it so it can't develop into framework, everything should be optional to use.
 
-![Example of GDE in action](http://www.sfmluploads.org//cache/pics/141_gde-example.png)
+![Example of GDE in action](http://www.sfmluploads.org/cache/pics/141_gde-example.png)
 
 ## Features
 So far the library adds seven parts. A eight part is planned and on the way.

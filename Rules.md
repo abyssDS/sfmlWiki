@@ -22,20 +22,22 @@ If you have requests, suggestions or questions about this wiki, feel free to cre
 
 ## Pages names and local links
 
-When you create a link to a new page, you must separate the label of the link (for example *A class for animated sprites*) and the address of the page (for example *AnimatedSprite*). This allows to use descriptive link labels while keeping the name of pages simple.
+With the change from GitHub on how titles of wiki pages are being handled it's no longer possible to keep the address of a page short and handy, but we still want to have a nicely organized wiki, so read the new rules below.
 
-The example above would translate the following wiki syntax:
+When you create a link to a new page, you must separate the label of the link (for example *A class for animated sprites*) and the address of the page (for example *Tutorial:-Animated-Sprite*). This allows to use descriptive link labels while keeping the name of pages simple enough. Keep in mind that the address will get automatically generated and you don't have to add the dashes for the page name, but instead use spaces.
 
-```[A class for animated sprites](AnimatedSprite)```
+The example above would translate into the following wiki syntax:
 
-Please use capitals to separate words in pages names. Avoid slashes, underscores and spaces.
+```[A class for animated sprites](Tutorial:-Animated-Sprite)```
 
-This wiki is "flat": you can't create sections/directories, all pages have to be under the "wiki/" root. To keep them organized, please follow this pattern to name them: "wiki/CategoryPageName". Categories are the main categories listed on the home page: Tutorial, Source, Project (FAQ should have no child page).
+Since the page name is now automatically set as the title, you can't avoid adding spaces which then get translated into dashes. Please try to keep the characters count low and try to avoid special characters like slashes, underscores, etc.
+
+This wiki is "flat": you can't create sections/directories, all pages have to be under the "wiki/" root. To keep them organized, please follow this pattern to name them: "wiki/Category:-Page-Name". Categories are the main categories listed on the home page: Tutorial, Source, Project (FAQ should have no child page).
 
 Examples:
 
-* ```wiki/SourceLightManager```
-* ```wiki/TutorialCollisionDetection```
+* ```wiki/Source:-Light-Manager```
+* ```wiki/Tutorial:-Collision-Detection```
 
 ## Media (images)
 

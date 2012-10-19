@@ -62,7 +62,7 @@ My code was focused on the usage I will give to my game, which only requires arb
         {
           if(H > 360) { Hue = H%360; }
           else if(H < 0 && H > -360) { Hue = -H; }
-          else if(H < 0 && H < -360) { Hue = -(H & 360); }
+          else if(H < 0 && H < -360) { Hue = -(H % 360); }
         }
 
         /// Range control for Saturation.
@@ -197,4 +197,4 @@ My code was focused on the usage I will give to my game, which only requires arb
   }
 ```
 
-I think that all that remains is the '=' operator, but it follows the same syntax the constructor does, all you have to do is use the same logic to it. Also sorry for the indentation. This is my first page in the wiki so I don't know much about how to make it readable.
+I think that all that remains is the '=' operator, but it follows the same syntax the constructor does, all you have to do is use the same logic to it. Indentation has been fixed, thanks to eXpl0it3r for doing so when it wasn't his obligation at all.

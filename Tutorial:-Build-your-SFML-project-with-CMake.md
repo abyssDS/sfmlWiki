@@ -132,7 +132,7 @@ add_executable(${EXECUTABLE_NAME} ${SOURCES})
 target_link_libraries(${EXECUTABLE_NAME} ${yaml-cpp_LIBRARIES})
 ...
 ```
-Note: because `link_directories` needs to be called before a target is created, if you use the pkg-config snippet, you need to move you `add_executable` and `target_link_libraries` calls _after_ the call to `link_directories`.
+Note: because `link_directories` needs to be called before a target is created, if you use the pkg-config snippet, you need to move your `add_executable` and `target_link_libraries` calls _after_ the call to `link_directories`.
 
 # Compilation
 

@@ -26,7 +26,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 
 ### Graphics
 
-* [C++] [Using sf::View](Tutorial:-Using-View)
+* [C++] [[Using sf::View|Tutorial:-Using-View]]
 * [C++] [[Manage different screens in a game|Tutorial:-Manage-different-Screens]]
 * [C++] [[Using CEGUI in SFML|Tutorial:-CEGUI-and-SFML]]
 * [C++] Loading images in a thread (and displaying progress)

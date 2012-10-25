@@ -7,7 +7,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Simple Collision Detection|Source:-Simple-Collision-Detection]]: A Static Class implementing Circle, BoundingBox and PixelPerfect collision detection.
 * [C++] [[Frame, Anim, Animated|Source:-Frame-Anim-Animated]] : Classes that manage your animated sprites.
 * [C++] [[Animation|Source:-Animation]] : A animation class that inherits from sf::Sprite to allow easy integration of Animations into new or existing code.
-* [C++] [[SFMLWidget|Source:-GTK-SFMLWidget]] : A class to integrate SFML into a gtkmm interface
+* [C++] [[gtkmm SFMLWidget|Source:-GTK-SFMLWidget]] : A class to integrate SFML into a gtkmm interface
 * [C++] [[Filter|Source:-Filter]] : Class to manage color filters or brightness filters.
 * [C++] [[AniSprite|Source:-AniSprite]] : A alternative animation class that extends sf::Sprite and has frame rate independence animation.
 * [C++] [[Sprite Sheet|Source:-Sprite-Sheets]] : A class to handle sprite sheet and simple animations.

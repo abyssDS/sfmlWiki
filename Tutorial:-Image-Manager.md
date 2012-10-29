@@ -311,7 +311,6 @@ private:
 #include <map>
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include <boost/filesystem.hpp>
 #include "image_manager.h"
 
 image_manager::image_manager() : images_(), resource_directories_()
@@ -407,7 +406,7 @@ void image_manager::add_resource_directory( const std::string& directory )
 
 void image_manager::remove_resource_directory( const std::string& directory )
 {
-	for( std::vector<std::string>::const_iterator it  = resource_directories_.begin();
+	for( std::vector<std::string>::iterator it  = resource_directories_.begin();
 		 it != resource_directories_.end(); )
 	{
 		// The path exists. So it isn't necessary to add id once more.

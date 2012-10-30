@@ -1,0 +1,103 @@
+This tutorial will first show you, how to build SFML with Qt creator and after that how to link your application against SFML.
+
+# Building SFML
+### Step 1
+Visit https://github.com/LaurentGomila/SFML
+
+And press "Download this repository as a zip file" button.
+![ ](http://i.imgur.com/3IemL.png)
+
+### Step 2
+Unzip the downloaded file.
+
+### Step 3
+Download and Install the appropriate version of CMake for your operating system (e.g. win32).
+Visit: http://www.cmake.org/cmake/resources/software.html
+
+![ ](http://i.imgur.com/cNNPo.png)
+
+### Step 4
+Open Qt Creator (tested on Qt Creator version provided with the Qt SDK)
+
+Go to: Tools->Options->Build & Run->CMake
+
+Search for the CMake executable NOT the GUI executable but rather the command line one (e.g. cmake.exe)
+
+### Step 5
+Click the "Open Project..." button and look for the CMakelists.txt file in the SFML source folder that you have just downloaded.
+
+### Step 6
+Click on the Projects icon on the left hand side of the IDE. Choose Build Settings from the top of the menu. 
+Expand the Build Environment roll-out and look for the PATH variable. Click Edit and insert the following text making sure not to delete anything that is already there.
+`C:\QtSDK\mingw\bin;C:\qtsdk\qt\bin;`
+
+### Step 7
+Click on the Projects icon on the left hand side of the IDE.
+Choose Build Settings from the top of the menu.
+Click the Run CMake button from the Reconfigure Project option.
+
+### Step 8
+On the CMake wizard choose the compiler you would normally use with your Qt Creator projects.
+And click the Run CMake button.
+When done click finish.
+
+### Step 9
+Click on the hammer icon on the bottom left of the editor to build the project. 
+ 
+_This process will build SFML - RELEASE VERSION on the directory specified._
+
+### Step 10
+In order to build the debug version of the libraries go to the folder that the newly created libraries are located (e.g. C:\SFML\qt creator build\) and search for the file "CMakeCache.txt"
+ 
+Open that file with a text editor and change this line:
+
+    // Choose the type of build (Debug or Release) 
+    CMAKE_BUILD_TYPE:STRING=Release```
+
+With this:
+
+    //Choose the type of build (Debug or Release) 
+    CMAKE_BUILD_TYPE:STRING=Debug 
+
+### Step 11: 
+Click on the hammer icon on the bottom left of the editor to build the project again and the debug versions of the libraries and .dlls will be created.
+
+# Linking SFML
+Because the default compiler produces .a files instead of .lib we have to manually edit the project in 
+order to include the libraries.
+
+After creating a new project in Qt edit the .pro file in the and paste the following lines:
+
+    win32:CONFIG(release, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-audio.a
+    else:win32:CONFIG(debug, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-audio-d.a
+    
+    win32:CONFIG(release, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-graphics.a
+    else:win32:CONFIG(debug, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-graphics-d.a
+    
+    win32:CONFIG(release, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-main.a
+    else:win32:CONFIG(debug, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-main-d.a
+    
+    win32:CONFIG(release, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-network.a
+    else:win32:CONFIG(debug, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-network-d.a
+    
+    win32:CONFIG(release, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-system.a
+    else:win32:CONFIG(debug, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-system-d.a
+    
+    win32:CONFIG(release, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-window.a
+    else:win32:CONFIG(debug, debug|release): LIBS += C:\ SFML\qtcreator-build\lib\libsfml-window-d.a
+
+The above applies to a windows OS and you have to change the `C:\SFML\qtcreator-build\lib\` with the path where you created the SFML libraries.
+Linux and Mac users can follow a similar process which I have not tested but should work the same way. 
+The last two lines you should include in the .pro file are:
+
+    INCLUDEPATH += C:\SFML\include
+    DEPENDPATH += C:\ SFML\include
+
+Which are self explanatory...
+
+Gotchas:
+* The IDE will issue warnings that the line endings used in the .pro file are deprecated. 
+* If you want your executables in the same folder as your project you have to turn off __Shadow Build__ from the build options.
+* If the executable runs but does not show anything it's not an error...Copy the SFML dlls in the same directory as the executable __plus `libgcc_s_dw2-1.dll` and `mingwm10.dll`__ which are located in the `C:\QtSDK\mingw\bin` folder.
+
+After completing the above procedure you should have successfully created an SFML application up and running in the Qt Creator IDE using its native compilers!

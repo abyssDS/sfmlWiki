@@ -64,30 +64,32 @@ order to include the libraries.
 
 After creating a new project in Qt edit the .pro file in the and paste the following lines:
 
-    win32:CONFIG(release, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-audio.a
-    else:win32:CONFIG(debug, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-audio-d.a
-    
-    win32:CONFIG(release, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-graphics.a
-    else:win32:CONFIG(debug, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-graphics-d.a
-    
-    win32:CONFIG(release, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-main.a
-    else:win32:CONFIG(debug, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-main-d.a
-    
-    win32:CONFIG(release, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-network.a
-    else:win32:CONFIG(debug, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-network-d.a
-    
-    win32:CONFIG(release, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-system.a
-    else:win32:CONFIG(debug, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-system-d.a
-    
-    win32:CONFIG(release, debug|release): LIBS += C:\SFML\qtcreator-build\lib\libsfml-window.a
-    else:win32:CONFIG(debug, debug|release): LIBS += C:\ SFML\qtcreator-build\lib\libsfml-window-d.a
+    LIBS += -LC:\SFML\qtcreator-build\lib
+
+    win32:CONFIG(release, debug|release): LIBS += -lsfml-audio
+    else:win32:CONFIG(debug, debug|release): LIBS += -lsfml-audio-d
+
+    win32:CONFIG(release, debug|release): LIBS += -lsfml-graphics
+    else:win32:CONFIG(debug, debug|release): LIBS += -lsfml-graphics-d
+
+    win32:CONFIG(release, debug|release): LIBS += -lsfml-main
+    else:win32:CONFIG(debug, debug|release): LIBS += -lsfml-main-d
+
+    win32:CONFIG(release, debug|release): LIBS += -lsfml-network
+    else:win32:CONFIG(debug, debug|release): LIBS += -lsfml-network-d
+
+    win32:CONFIG(release, debug|release): LIBS += -lsfml-system
+    else:win32:CONFIG(debug, debug|release): LIBS += -lsfml-system-d
+
+    win32:CONFIG(release, debug|release): LIBS += -lsfml-window
+    else:win32:CONFIG(debug, debug|release): LIBS += -lsfml-window-d
 
 The above applies to a windows OS and you have to change the `C:\SFML\qtcreator-build\lib\` with the path where you created the SFML libraries.
 Linux and Mac users can follow a similar process which I have not tested but should work the same way. 
 The last two lines you should include in the .pro file are:
 
     INCLUDEPATH += C:\SFML\include
-    DEPENDPATH += C:\ SFML\include
+    DEPENDPATH += C:\SFML\include
 
 Which are self explanatory...
 

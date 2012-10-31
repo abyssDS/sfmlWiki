@@ -47,20 +47,16 @@ Click on the hammer icon on the bottom left of the editor to build the project.
 _This process will build SFML - RELEASE VERSION on the directory specified._
 
 ### Step 10
-In order to build the debug version of the libraries go to the folder that the newly created libraries are located (e.g. C:\SFML\qt creator build\) and search for the file "CMakeCache.txt"
- 
-Open that file with a text editor and change this line:
+In order to build the debug version of the libraries:
+Click on the Projects icon on the left hand side of the IDE.
+Choose Build Settings from the top of the menu.
+Click the Run CMake button from the Reconfigure Project option. (Similar to step 8)
+But pass as an argument
 
-    // Choose the type of build (Debug or Release) 
-    CMAKE_BUILD_TYPE:STRING=Release```
+-DCMAKE_BUILD_TYPE=Debug
 
-With this:
-
-    //Choose the type of build (Debug or Release) 
-    CMAKE_BUILD_TYPE:STRING=Debug 
-
-### Step 11: 
-Click on the hammer icon on the bottom left of the editor to build the project again and the debug versions of the libraries and .dlls will be created.
+Click Finish
+And rebuild the project.
 
 # Linking SFML
 Because the default compiler produces .a files instead of .lib we have to manually edit the project in 

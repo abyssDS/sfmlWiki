@@ -64,7 +64,7 @@ order to include the libraries.
 
 After creating a new project in Qt edit the .pro file in the and paste the following lines:
 
-    LIBS += -LC:\SFML\qtcreator-build\lib
+    LIBS += -LC:/SFML/qtcreator-build/lib
 
     CONFIG(release, debug|release): LIBS += -lsfml-audio -lsfml-graphics -lsfml-main -lsfml-network -lsfml-system -lsfml-window
     CONFIG(debug, debug|release): LIBS += -lsfml-audio-d -lsfml-graphics-d -lsfml-main-d -lsfml-network-d -lsfml-system-d -lsfml-window-d
@@ -73,13 +73,12 @@ The above system path applies to a windows OS and you have to change the `C:\SFM
 Linux and Mac users can follow a similar process which I have not tested but should work the same way. 
 The last two lines you should include in the .pro file are:
 
-    INCLUDEPATH += C:\SFML\include
-    DEPENDPATH += C:\SFML\include
+    INCLUDEPATH += C:/SFML/include
+    DEPENDPATH += C:/SFML/include
 
 Which are self explanatory...
 
 Gotchas:
-* The IDE will issue warnings that the line endings used in the .pro file are deprecated. 
 * If you want your executables in the same folder as your project you have to turn off __Shadow Build__ from the build options.
 * If the executable runs but does not show anything it's not an error...Copy the SFML dlls in the same directory as the executable __plus `libgcc_s_dw2-1.dll` and `mingwm10.dll`__ which are located in the `C:\QtSDK\mingw\bin` folder.
 

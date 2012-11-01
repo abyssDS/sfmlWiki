@@ -1,6 +1,6 @@
 CMake allows your project to be built in various environments, including command-line make, Code::Blocks project files, Eclipse project files, etc.  It's used in SFML 2.0.
 
-In this tutorial we'll write a simple CMake configuration file with centralized version numbering, and see how to integrate SFML in it.
+In this tutorial we'll write a simple CMake configuration file with centralized version numbering, and see how to integrate SFML in it.  This example is not for compiling SFML using CMake but for creating an example project that utilizes an existing build of SFML.
 
 # The source files
 
@@ -14,17 +14,20 @@ Then create a main.cpp, for instance:
 using namespace std;
 
 int main(int argc, char* argv[]) {
+
+  /* Code adapted from the SFML 2 "Window" example */
+
   cout << "Version " << myproject_VERSION_MAJOR << "." << myproject_VERSION_MINOR << endl;
 
   sf::Window App(sf::VideoMode(800, 600), "myproject");
-  App.Clear();
-  while (App.IsOpened()) {
+
+  while (App.isOpen()) {
     sf::Event Event;
-    while (App.GetEvent(Event)) {
-      if (Event.Type == sf::Event::Closed)
-	App.Close();
+    while (App.pollEvent(Event)) {
+      if (Event.type == sf::Event::Closed)
+	App.close();
     }
-    App.Display();
+    App.display();
   }
 }
 ```
@@ -41,6 +44,7 @@ And place your project license (such as the [GNU GPL](http://www.gnu.org/copylef
 
 Let's describe our project configuration in the `CMakeLists.txt` file:
 ```cmake
+#Change this if you need to target a specific CMake version
 cmake_minimum_required(VERSION 2.6)
 project(myproject)
 
@@ -66,7 +70,9 @@ add_executable(${EXECUTABLE_NAME} main.cpp)
 
 # Detect and add SFML
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
-find_package(SFML 1.6 REQUIRED system window graphics network audio)
+#Find any version 2.X of SFML
+#See the FindSFML.cmake file for additional details and instructions
+find_package(SFML 2 REQUIRED system window graphics network audio)
 if(SFML_FOUND)
   include_directories(${SFML_INCLUDE_DIR})
   target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
@@ -89,7 +95,7 @@ The interesting part is:
 ```cmake
 # Detect and add SFML
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
-find_package(SFML 1.6 REQUIRED system window graphics network audio)
+find_package(SFML 2 REQUIRED system window graphics network audio)
 target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 ```
 
@@ -135,6 +141,10 @@ target_link_libraries(${EXECUTABLE_NAME} ${yaml-cpp_LIBRARIES})
 Note: because `link_directories` needs to be called before a target is created, if you use the pkg-config snippet, you need to move your `add_executable` and `target_link_libraries` calls _after_ the call to `link_directories`.
 
 # Compilation
+
+If you installed SFML to a nonstandard place and CMake cannot find it, you'll need to add the location of the libraries manually.  To do this, add an entry called `CMAKE_PREFIX_PATH`.  These are locations that CMake searches in addition to the usual directories.  Specify the type as `PATH` and for the value, put the path to the `lib` directory of SFML.  This will then pull the necessary libraries in.
+
+In addition, CMake may complain that it cannot find the include files for the `SFML_INCLUDE_DIR` entry.  You will have to set this manually to the `include` directory.
 
 To build with Make and the GCC compiler on the command-line:
 ```bash
@@ -195,8 +205,9 @@ cmake version 2.8.5
        CMAKE_BINARY_DIR.
 ```
 
-* [Reference for v2.8](http://www.cmake.org/cmake/help/cmake-2-8-docs.html)
+* [CMake reference for version 2.8](http://www.cmake.org/cmake/help/cmake-2-8-docs.html)
 * [CMake Tutorial](http://www.cmake.org/cmake/help/cmake_tutorial.html)
-* [Tutorial en français](http://geenux.wordpress.com/2009/12/27/utilisation-de-cmake/)
+* [CMake tutorial en français](http://geenux.wordpress.com/2009/12/27/utilisation-de-cmake/)
+
 
 -- [Beuc](http://www.beuc.net/)

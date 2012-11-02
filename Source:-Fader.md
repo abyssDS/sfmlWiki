@@ -118,6 +118,8 @@ Feel free to use the code for whatever you care to.
 
                 if ( _drawUpdate )
                     _drawUpdate() ;
+                else
+                    _window.clear() ;
 
                 _window.draw(_overlay) ;
                 _window.display() ;

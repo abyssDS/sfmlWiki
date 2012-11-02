@@ -32,6 +32,7 @@ Welcome to the section dedicated to external source codes for SFML.
 ## GUI
 * [C++] [[FormatText|Source:-FormatText]] : Format simply a sf::Text in width and height. (by Thiziri)
 * [C++] [[RichText|Source:-RichText]] : Class to handle rich text. (by Panithadrum)
+* [C++] [[Fader|Source:-Fader]] : Class to facilitate fading. (by cire)
 
 ## Miscellaneous
 * [C++] [[ResourceManager|Source:-ResourceManager]](by Wavesonics) [[ResourceManager - with ImageManager sample|Source:-ResourceManager-by-Hiura]](by Hiura) [[ResourceManager|Source:-ResourceManager-by-L0calh05t]](by l0calh05t)  : Generic class for managing resources

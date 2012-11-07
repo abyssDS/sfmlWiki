@@ -3,7 +3,8 @@
 This Tile Map example consists of two classes and one struct.  
 StaticTiledMap - class that holds chunksize and tilesize constants and will load vertices, store, display and texture them.  
 TileLoader - abstract base class, StaticTiledMap loads tiles by calling virtual method of class derieved from TileLoader that you pass to it.  
-MapData - struct that holds measurements of map(in tiles) and the name of texture that is to be used by StaticTiledMap, it's placed in TileLoader.h because MapData makes sense only when recieved/used by StaticTiledMap/TileLoader so putting it in it's own header would be redundant.  
+MapData - struct that holds measurements of map(in tiles) and the name of texture that is to be used by StaticTiledMap, it's placed in TileLoader.h because MapData makes sense only when recieved/used by StaticTiledMap/TileLoader so putting it in it's own header would be redundant. 
+Provided under terms of zlib license(free for any use, giving credit appreciated but not required, do not misrepresent original authorship).
 
 TileLoader.h:
 ```cpp

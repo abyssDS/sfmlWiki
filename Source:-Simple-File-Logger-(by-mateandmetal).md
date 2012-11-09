@@ -2,45 +2,46 @@ Hi there! This is a very simple (and elegant) file logger for C++. Feel free to 
 
 FileLogger.hpp:
 
-    #ifndef FILELOGGER_HPP
-    #define FILELOGGER_HPP
+```cpp
+#ifndef FILELOGGER_HPP
+#define FILELOGGER_HPP
 
-    #include <fstream>
+#include <fstream>
 
-    // Use the namespace you want
-    namespace ige {
+// Use the namespace you want
+namespace ige {
 
-        class FileLogger {
+    class FileLogger {
 
-            public:
-
-
-                // If you can´t/dont-want-to use C++11, remove the "class" word after enum
-                enum class e_logType { LOG_ERROR, LOG_WARNING, LOG_INFO };
+        public:
 
 
-               // ctor (remove parameters if you don´t need them)
-               explicit FileLogger (const char *engine_version, const char *fname = "ige_log.txt")
-                       :   numWarnings (0U),
-                           numErrors (0U)
-              {
-
-                   myFile.open (fname);
-
-                   // Write the first lines
-                   if (myFile.is_open()) {
-                      myFile << "My Game Engine, version " << engine_version << std::endl;
-                      myFile << "Log file created" << std::endl << std::endl;
-                   } // if
-
-              }
+            // If you can´t/dont-want-to use C++11, remove the "class" word after enum
+            enum class e_logType { LOG_ERROR, LOG_WARNING, LOG_INFO };
 
 
-              // dtor
-              ~FileLogger () {
+            // ctor (remove parameters if you don´t need them)
+            explicit FileLogger (const char *engine_version, const char *fname = "ige_log.txt")
+                  :   numWarnings (0U),
+                      numErrors (0U)
+            {
 
-                 if (myFile.is_open()) {
-                     myFile << std::endl << std::endl;
+                myFile.open (fname);
+
+                // Write the first lines
+                if (myFile.is_open()) {
+                    myFile << "My Game Engine, version " << engine_version << std::endl;
+                    myFile << "Log file created" << std::endl << std::endl;
+                } // if
+
+            }
+
+
+            // dtor
+            ~FileLogger () {
+
+                if (myFile.is_open()) {
+                    myFile << std::endl << std::endl;
 
                     // Report number of errors and warnings
                     myFile << numWarnings << " warnings" << std::endl;
@@ -100,31 +101,33 @@ FileLogger.hpp:
             unsigned int            numWarnings;
             unsigned int            numErrors;
 
-        }; // class end
+    }; // class end
 
-    }  // namespace
+}  // namespace
 
 
-    #endif // FILELOGGER_HPP
-
+#endif // FILELOGGER_HPP
+```
 
 main.cpp:
 
-    #include "FileLogger.hpp"
+```cpp
+#include "FileLogger.hpp"
 
-    int main()  {
+int main() {
 
-        // Create object
-        ige::FileLogger myLog ("1.0.4.2", "testfile.txt");
+    // Create object
+    ige::FileLogger myLog ("1.0.4.2", "testfile.txt");
 
-        // Writing warnings or errors to file is very easy and C++ style
-        myLog << ige::FileLogger::e_logType::LOG_WARNING << "Hey! ... This is a warning message!";
-        myLog << ige::FileLogger::e_logType::LOG_ERROR << "WOW! Something really wrong is happening here!";
-        myLog << "This is just a simple text";
+    // Writing warnings or errors to file is very easy and C++ style
+    myLog << ige::FileLogger::e_logType::LOG_WARNING << "Hey! ... This is a warning message!";
+    myLog << ige::FileLogger::e_logType::LOG_ERROR << "WOW! Something really wrong is happening here!";
+    myLog << "This is just a simple text";
 
-        return 0;
+    return 0;
 
-    }
+}
+```
 
 The resulting file looks like this:
 

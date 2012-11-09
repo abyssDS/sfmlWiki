@@ -14,7 +14,7 @@ The first thing to do is to create some items to work with; this is using the no
 
 I'll now shed some light on the global variables:
 
-```
+```cpp
 int Slot[48] = {0};
 
 int Item1Have[3] = {0}; int Item3Have[3] = {0};
@@ -38,7 +38,8 @@ The rest are pretty self explanatory.
 ### **--- InventoryDisplay ---**
 
 This is the function to call when you press the inventory key:
-```
+
+```cpp
 if( (Input.GetMouseX() >= 545 && Input.GetMouseX() <= 567 && Input.GetMouseY() >= 165 && Input.GetMouseY() <= 197) || (Input.GetMouseX() >= 545 && Input.GetMouseX() <= 567 && Input.GetMouseY() >= 205 && Input.GetMouseY() <= 237) ||
             (Input.GetMouseX() >= 545 && Input.GetMouseX() <= 567 && Input.GetMouseY() >= 85 && Input.GetMouseY() <= 117) || (Input.GetMouseX() >= 545 && Input.GetMouseX() <= 567 && Input.GetMouseY() >= 125 && Input.GetMouseY() <= 157) ||
 
@@ -158,7 +159,7 @@ I'm not going to go through everything here (unless someone is confused), but lo
 
 Here is the way to add an item to the inventory. To actually add something to the inventory during the game, just call InventoryAdd(2) the number being the item.
 
-```
+```cpp
 int InventoryAdd(int ItemID)
 {
             int i = 0;
@@ -186,7 +187,7 @@ The way this works, is it declares some variables, then it going into the while 
 If a slot is available (lets say i = 2 so slot 3 is available, then it puts x and y to where slot 3 is, then it gets the ItemID, sets the position of the item, tells it that it's been added, puts in the slot it's been added to, fills the slot then ends the function with 'return 0'.
 
 ### **--- InventoryRemove ---**
-```
+```cpp
 int InventoryRemove(int ItemID)
 {
     if(ItemID == 1) {Item1Have[0] = 0; Slot[Item1Have[1]] = 0; Item1Have[1] = 0; return 0;}
@@ -198,7 +199,7 @@ int InventoryRemove(int ItemID)
 This then removes an item from the program supplying an ItemID when the function is called. It resets everything to tell the program that that slot is now free for another item to fill it's place.
 
 ### **--- InventoryUpdate ---**
-```
+```cpp
 int InventoryUpdate()
 {
     Health.SetText(convertInt(Stats[0]));
@@ -213,7 +214,7 @@ int InventoryUpdate()
 This is what updates the stats of the character when an item is equipped, as they are shown in the inventory screen. This makes sure that when an item is equipped, that it will show the new stats straight away.
 
 ### **--- InventoryEquip & InventoryUnequip ---**
-```
+```cpp
 int InventoryEquip(int ItemID)
 {
     if(ItemID == 1) { SwordEquipped = 1; InventoryRemove(1); Item1Have[2] = 1; Stats[5] += 1; InventoryUpdate(); }
@@ -223,7 +224,7 @@ int InventoryEquip(int ItemID)
 This will equip the certain item, in this case, a sword. It changes the variable SwordEquipped to 1, to tell that that slot is taken then it removes it from the inventory, changes the Item2Have[2] variable to show it's been equipped then gives the stat change and updates it!
 
 Whereas, the InventoryUnequip does the exact opposite:
-```
+```cpp
 int InventoryUnequip(int ItemID)
 {
     if(ItemID == 1) { SwordEquipped = 0; InventoryAdd(1); Item1Have[2] = 0; Stats[5] -= 1; InventoryUpdate(); }

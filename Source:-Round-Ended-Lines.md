@@ -47,7 +47,8 @@ private :
 ```
 #include "RoundendedLine.h"
 
-CRoundendedLine::CRoundendedLine(const sf::Vector2f& endPoint, const float width) : m_endPoint (endPoint), m_Width (width)
+CRoundendedLine::CRoundendedLine(const sf::Vector2f& endPoint, const float width)
+  : m_endPoint (endPoint), m_Width (width)
 {
     update();
 }

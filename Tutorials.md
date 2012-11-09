@@ -43,8 +43,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 * [C++] Play a video without sound using FFMpeg.
 
 ### Audio
-* [C++] [[Playing a sine wave|Tutorial:-Play-Sine-Wave]]
-* [OCaml] [[Playing a sine wave|Tutorial:-Play-Sine-Wave-(OCaml)]]
+* [C++] [[Playing a sine wave|Tutorial:-Play-Sine-Wave]] / [[(same in OCaml)|Tutorial:-Play-Sine-Wave-(OCaml)]]
 
 ### Reference Cards
 

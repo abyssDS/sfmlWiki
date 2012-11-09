@@ -8,10 +8,13 @@ enum RoundedCorners {
 	TR = 8,
 };
 
-sf::Shape RRectangle(float P1X, float P1Y, 
-			float P2X, float P2Y, 
-			float Radius, int Corners, 
-			const sf::Color& Col, float Outline = 1.f, const sf::Color& OutlineCol = Color::Cyan)
+sf::Shape RRectangle(
+		float P1X, float P1Y, 
+		float P2X, float P2Y, 
+		float Radius, int Corners, 
+		const sf::Color& Col,
+		float Outline = 1.f,
+		const sf::Color& OutlineCol = Color::Cyan)
 {
 	static const int NbSegments = 15;
 	static const float PI_HALF = 3.141592654f / 2.0f;

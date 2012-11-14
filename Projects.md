@@ -7,10 +7,13 @@ Welcome to the section dedicated to projects using/for SFML.
 ### Video
 * [C++] [sfeMovie](http://lucas.soltic.perso.luminy.univmed.fr/sfeMovie/): A C++ library that lets you play movies in SFML based applications.
 
+### UI (User Interface)
+* [C++] [SimpleButton](http://en.sfml-dev.org/forums/index.php?topic=9379.0): A C++ API that allows easy creation of Buttons and other GUI features.
+* [C++] [SFGUI](http://sfgui.sfml-dev.de/): A C++ library for adding graphical user interfaces to games and programs.
+
 ### Other extensions
 * [C++] [[Zoost & Zoom libraries|Project:-Zoost-and-Zoom]]: Geometric objects, customizable shapes, animation tools & light rendering.
 * [C++] [[Thor C++ Library|Project:-Thor-C++-Library]]: Provides pausable clocks, vector functions, particles, resource/event handling, triangulations, and more...
-* [C++] [SimpleButton](http://en.sfml-dev.org/forums/index.php?topic=9379.0): A C++ API that allows easy creation of Buttons and other GUI features.
 * [Ruby] [[GDE|Project:-Groogy's-Development-Environment]]: An environment for rbSFML that helps out with development.
 
 ### Physics

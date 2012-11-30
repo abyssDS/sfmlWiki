@@ -1,4 +1,4 @@
-This wiki page contains the class FPS which implements the following two functions for calculation the framerate:
+This wiki page contains the class FPS which implements the following two functions for calculation the framerate once per second:
 
 * FPS::update() - Must be called at the end of every frame. This calculates and resets values if needed.
 * FPS::getFPS() - Returns the current framerate as an `const unsigned int`.
@@ -42,4 +42,21 @@ void FPS::update()
 }
 
 #endif // FPS_HPP
+```
+-----------
+### Another example of an implementation that calculates the FPS on a per frame basis:
+```cpp
+float getFPS(const sf::Time& time) {
+     return (1000000.0f / time.asMicroseconds());
+}
+
+sf::Clock FPSClock;
+while(rungame) {
+    /*
+
+    Game logic goes here   
+
+    */
+    float fps = getFPS(FPSClock.restart());
+}
 ```

@@ -116,9 +116,38 @@ The exact name of the packages depend on each distribution. And don't forget to 
 SFML has also internal dependencies: Audio and Window depend on System, while Graphics depends on System and Window. In order to use the Graphics module, you must link with Graphics, Window, and System (the order of linkage matters with GCC).
 
 ### <a name="grl-version"/>What version of SFML should I use?
+
+The short answer: 2.0.
+
+The long answer:
+Officially, the released and stable version of SFML is still 1.6, and that is also the version that you are likely to find in many package managers. The reason is that most of them have policies dictating that they do not include software that is still in development because they need to guarantee to their users that it is in the most stable form it can be.
+This however is less applicable to SFML than it is to other more volatile projects that are developed rapidly and are indeed very unstable until officially released. SFML 2.0 has been under development for well over a year and has reached RC status. This means it is as good as released concerning stability and it's feature set and API probably won't change at all between now and release.
+So if you need to choose, definitely go for 2.0. It will save you a lot of headaches because 1.6 is not actively maintained anymore and if you start with 2.0 you can be sure that the migration to the release build will be as smooth as possible when it comes out.
+
 ### <a name="grl-changes"/>Is there a complete list with all the changes from SFML 1.6 to SFML 2.x?
+
+This non-exhaustive list can be used as a starting point: (http://en.sfml-dev.org/forums/index.php?topic=5343.0)
+It however does not contain all changes made between 1.6 and 2.0. It was written more than a year ago and since then a few major changes have been made including:
+
+* Rewrite of the graphics API
+* New sf::Time API
+* Removal of the default built-in Arial font
+* Replaced getWidth() and getHeight() with getSize()
+* Naming convention change
+
 ### <a name="grl-build"/>How do I build SFML?
+
+Laurent has provided tutorials with each version of SFML. The first part of these tutorials is aimed at getting started, which includes building SFML with CMake and your build tool of choice, as well as setting up your IDE (if you use one) for use with SFML.
+
+[1.6 tutorials](http://sfml-dev.org/tutorials/1.6/)
+[2.0 tutorials](http://sfml-dev.org/tutorials/2.0/)
+
 ### <a name="grl-nightly"/>Are there any nightly builds?
+
+There are no official nightly builds, however there is a thread on the forum where unofficial nightly builds are provided for certain platforms.
+
+[Link to the thread](http://en.sfml-dev.org/forums/index.php?topic=9513.0)
+
 ### <a name="grl-questions"/>Where can I ask questions?
 
 Post any questions in the [SFML forum](http://en.sfml-dev.org/forums/).
@@ -197,6 +226,9 @@ Have you:
 If you've checked all of those, and SFML still refuses to work, see [I found a bug!](#grl-bug).
 
 ### <a name="use-examples"/>Are there any example projects I can learn from?
+
+Examples of the usage of each module are provided with SFML itself if you download the full SDK version. If you want full projects that make use of many features of SFML at the same time your best bet is to check out the [projects forum](http://en.sfml-dev.org/forums/index.php?board=10.0). People frequently showcase what they are working on there for the community to see. Often they might provide the source code as well, so if you feel brave enough you can look in there if you find a certain project interesting.
+
 ### <a name="use-fuse"/>I want to fuse the libraries into one. (Not recommended)
 
 To fuse two libraries, you can use the ar.exe utility provided with MinGW. You'll also need a minimal Unix environment (like [CYGWIN](http://www.cygwin.com/)). The syntax is:
@@ -227,7 +259,21 @@ Here are the commands to together the external dependencies:
 ### <a name="prog-mmm"/>Why shouldn't I manually manage my memory?
 ### <a name="prog-smart"/>What are smart pointers?
 ### <a name="prog-global"/>Why shouldn't I use global variables?
+
+Usage of global variables is considered as bad programming practice. They might seem like an easy solution to your initial problem but they will become a headache later on when the project gets bigger or you are unaware of the implications of declaring something in global scope.
+
+One of the most dangerous things of declaring non-POD ([plain old data](http://en.wikipedia.org/wiki/Plain_old_data_structure)) objects in global scope is that you can never be sure when they are actually constructed and when they will be destroyed. This means that if they need to own resources you need to make sure they are available before the object is created, which can be tricky to do if that takes place before your main() code gets executed. Analogous to that, the object might get destroyed after your main() returns thus leaving resource destruction up to some self-clean-up mechanism or in the worst case to a resource manager that already got destroyed before main() returned. This leads to leaks and is very bad practice. Furthermore the initialization order and destruction order is not well-defined. It is only defined _within one translation unit_ as being dependant on the order of declaration, however you can't count on global variables from different translation units being constructed or destroyed in a specific order, it is pure luck here.
+
+Another problem with global variables is that sooner or later you are going to have so many of them that they will clog up your namespace. Unless you declare them in a separate namespace they will all be in the same giant one: the global one. If you happen to declare a local variable in one of your functions that happens to have the same name as the global one you are actually referring to, you will not notice the global variable get shadowed unless you have certain warnings switched on. Some people suggest using Hungarian notation to solve this problem but the modern demeanour tends to avoid Hungarian notation as well.
+
+There really isn't any reason to use global variables. Code using global variables can always be written without them and will never perform worse, most of the time performing better as a result of better memory usage.
+
 ### <a name="prog-insteadof-global"/>What should I use then instead of global variables?
+
+You should try to confine variables to the scope(s) where they are used. Construct and hold them in the object which is supposed to own them as well as manage their lifetime and pass them to other objects/functions using references/pointers. Avoid passing by value. Often you cannot copy objects and are thus not allowed to pass by value, other times copying the object can take much more time because temporary memory has to be allocated just for the call and freed after the function returns.
+
+If you happen to use a C++11 compliant compiler then you can be sure that many Standard Library objects you pass around will have move constructors defined which makes it less painful to "pass by value" since if certain conditions are met, the compiler will use the Rvalue reference version of certain functions to speed up execution by a substantial amount.
+
 ### <a name="prog-singleton"/>Why is the singleton pattern not a good one?
 
 ## <a name="development"/>Development with SFML
@@ -241,6 +287,15 @@ When your texture is moved from one memory place to another you have to update y
 
 ### <a name="dev-performance"/>My FPS count drops when drawing a lot of sprites, how do I get more performance?
 ### <a name="dev-image-texture"/>What is the difference between sf::Image and sf::Texture?
+
+In essence, there is no difference between the 2 data structures. The main question you have to ask yourself is not what the difference is, but where the data is stored.
+
+In the case of sf::Image, the image data is stored in client-side memory, meaning in your system RAM. In there it is just an array of bytes (4 per pixel) that make up the image you can see on your screen.
+
+In the case of sf::Texture, it is also image data, however this data resides in server-side memory, meaning in your graphics RAM next to your GPU. This memory is managed completely by OpenGL and the sf::Texture is merely a handle to that block of memory in graphics RAM. There are many forms of storage of textures but SFML uses the same layout for sf::Texture as it does for sf::Image namely quad-byte RGBA.
+
+You can convert freely between sf::Image and sf::Texture, however just keep in mind that the bus bandwidth is limited and doing this too often means you are transferring a lot of data between graphics RAM and system RAM leading to a slowdown of all graphics related operations.
+
 ### <a name="dev-vsync-framelimit"/>Should I use VSync, window.setFramerateLimit or something else?
 ### <a name="dev-xsprite"/>Should I use one sprite or x sprites to draw x textures?
 

@@ -11,6 +11,7 @@
 - [Are there any nightly builds?](#grl-nightly)
 - [Where can I ask questions?](#grl-questions)
 - [I found a bug!](#grl-bug)
+- [My computer crashes when I run my SFML program!](#grl-crash)
 - [I want to propose a new feature!](#grl-reqeust)
 
 **[Licensing](#licensing)**
@@ -158,6 +159,14 @@ Addtionally you also find people in the [inofficial IRC chat](http://en.sfml-dev
 Post in the forum of the package in question, and don't forget to provide a precise description of your problem, the version of SFML you're using, your system configuration, and compilable code, if necessary, or the logs of your compiler or linker.
 Also make sure that the bug hasn't already be reported (use the [search function](http://en.sfml-dev.org/forums/index.php?action=search)), confirmed (look on the [issue tracker](https://github.com/LaurentGomila/SFML/issues?page=1&state=open) or even resolved in the latest source (check also the [closed issues](https://github.com/LaurentGomila/SFML/issues?page=1&state=closed)).
 
+### <a name="grl-crash"/>My computer crashes when I run my SFML program!
+
+SFML was designed in a way that should not cause your computer to crash/freeze/hang/BSOD in any way. If it does exhibit such behaviour specifically when running your SFML program, it might be only indirectly because of SFML.
+
+If you are using unstable drivers (still in beta or off a development branch in your package manager) chances are that they are the root cause of the problem. The reason why they cause more problems with SFML than with other programs/games is mainly because OpenGL related bugs in drivers are given low priority over DirectX related bugs simply because the latter affect more games. You'll just have to be patient and wait for the relevant bug to get fixed or revert to an older, more stable driver.
+
+If you are not using unstable drivers, crashing might still be caused by overclocking (either self-performed or automatic) of your hardware. Try running everything at standard performance settings and see if that fixes the problem. If your hardware comes overclocked by default, search around the internet for other people who might be experiencing the same problems. If this is the case you should contact your retailer/card manufacturer as this is a hardware related issue and you won't be able to do much on your own.
+
 ### <a name="grl-reqeust"/>I want to propose a new feature!
 
 Before anything else, check the [road-map](https://github.com/LaurentGomila/SFML/issues/milestones) to see if the functionality has already been planned. If not, there is a [forum section](http://en.sfml-dev.org/forums/index.php?board=2.0) dedicated to feature requests. Please search before posting, and stick to the spirit of SFML as a multimedia and multi-platform library. So for example a XML parser, a database library or a platform-specific function is unlikely to be accepted.
@@ -170,13 +179,31 @@ Before anything else, check the [road-map](https://github.com/LaurentGomila/SFML
 SFML is under the [zlib/png license](http://www.opensource.org/licenses/zlib-license.php). You can use SFML for both open-source and proprietary project, including paid or commercial ones. If you use SFML in your projects, a credit or mention is appreciated, but is not required.
 
 ### <a name="lic-commercial"/>Can I use SFML in commercial applications?
+
+Yes, you may use SFML in commercial applications. You don't even have to mention that you used SFML in your application, but the zlib license states that if you do mention it, you are not allowed to state that you yourself are the author of SFML. You are also not allowed to modify SFML and represent it as being the original.
+
 ### <a name="lic-static"/>Can I link SFML statically?
+
+Yes, you can link SFML statically. This can be done in any operating system, although in Linux and Mac OS X it is recommended to only link dynamically unless you have special requirements.
+
+When linking statically, do not forget to specify the SFML_STATIC define on your command line.
+
 ### <a name="lic-examples"/>Can I use the code from the example directory?
+
+The code from the example directory is not marked as being provided under a separate license. As such it is also governed by the zlib/png license and you are free to do anything you want with the code as long as it complies to the license.
+
 ### <a name="lic-pay"/>Do I have to pay any license fees or royalties?
+
+The zlib/png license is a permissive free software license which means it has no provisions to monetize the software it covers. As such SFML can be used for free with no requirement to pay any fees or royalties to its author.
 
 ## <a name="using"/>Using SFML
 
 ### <a name="use-environment"/>How do I setup my development environment to work with SFML?
+
+This is covered quite thoroughly in the tutorials section for some of the most popular IDEs.
+
+Check out the Getting Started sections of the [tutorials](http://sfml-dev.org/tutorials/).
+
 ### <a name="use-gui-package"/>Does SFML have a GUI package?
 
 No, SFML does not have a GUI package, but you can essentially use any OpenGL-based GUI library. Here's a obviously incomplete list:
@@ -257,7 +284,17 @@ Here are the commands to together the external dependencies:
 
 ### <a name="prog-raii"/>What is RAII and why does it rock?
 ### <a name="prog-mmm"/>Why shouldn't I manually manage my memory?
+
+Nobody forces you to use automatic memory management, however in practice, the larger and more complex a project gets, the harder it is to keep track of such things as well. Generally it is a good idea to use automatic memory management because it frees you to dedicate more time to more important parts of your project. Not only that, it will be easier to debug and leaks will be nearly impossible.
+
+C++ has come a long way and in its latest incarnation, C++11, many new memory management facilities made it into the C++ STL. This lets you use these constructs without the need for external or self-written libraries.
+
 ### <a name="prog-smart"/>What are smart pointers?
+
+Smart pointers, as their name implies are pointers that are... well... smart :). Regular "raw pointers" are just values, merely an address in memory where an object is located. Unless you do something with those values, nothing is going to happen with the object, and it will sit there until you choose to free the corresponding memory block or close the program and destroy the virtual memory pages associated with it.
+
+Smart pointers on the other hand, do things with the values that they contain. They are no longer just values but objects that govern the memory they point to. This can help you to track how many pointers exist that point to a certain block of memory (shared_ptr) or to prevent you from having multiple pointers point at the same block of memory at the same time (unique_ptr). The best part is, if you let these smart pointers manage your memory for you, they will also take care of freeing it when they think it isn't used any more.
+
 ### <a name="prog-global"/>Why shouldn't I use global variables?
 
 Usage of global variables is considered as bad programming practice. They might seem like an easy solution to your initial problem but they will become a headache later on when the project gets bigger or you are unaware of the implications of declaring something in global scope.

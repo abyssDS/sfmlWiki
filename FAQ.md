@@ -416,7 +416,7 @@ Optionally you can also define the entry point on your own, which is not `int ma
 
 ### <a name="tr-lnx"/>Linux
 
-### <a name="tr-lnx-compile"/>Debian I can't compile the source code.
+### <a name="tr-lnx-compile"/>(Debian) I can't compile the source code.
 
 Before anything else, make sure that you've followed the [official tutorial](http://www.sfml-dev.org/tutorials/) and then check if the following packages have been installed:
 

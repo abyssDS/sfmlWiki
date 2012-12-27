@@ -459,6 +459,18 @@ You can use this simple script to toggle compiz on and off, if you're using meta
 ## <a name="others"/>Others
 
 ### <a name="or-projects"/>Are there any famous projects with SFML?
+
+As SFML is open source and has a permissive free software license game creators are not force to specify that they've used SFML in their games, thus it might well be that SFML has been used in bigger commercial projects. As for the known projects, there's a [dedicated page](Projects) on the SFML's wiki.
+
 ### <a name="or-thor"/>What exactly is Thor?
+
+Thor is an open-source and cross-platform library written in the programming language C++. It is an extension to SFML and comes with high-level features that base on SFML and that are supposed to help in daily C++ routine, especially with respect to graphics and game programming.
+
+The git repository is also hosted on [GitHub](https://github.com/Bromeon/Thor) and the official website can be found at: http://www.bromeon.ch/libraries/thor/
+
 ### <a name="or-distr"/>How can I distribute my game?
 ### <a name="or-upload"/>Where can I upload my game to?
+
+There are many possible places to share your game and game related data with the world wide web and their users. For SFML someone as created a website explicitly for sharing content related to SFML: http://www.sfmluploads.org/
+
+Another worth mentioning provider is [MediaFire](http://www.mediafire.com/). It's a simple and fast file sharing hoster.

@@ -370,7 +370,7 @@ You can convert freely between sf::Image and sf::Texture, however just keep in m
 A minimal code example is a source code which everyone can easily compile after a simple copy-paste in a single file (no extra .h, .hpp or .cpp files) and which is made only out of source code showing the bug.
 
 An example of minimal code:
-`
+```cpp
 #include <SFML/Graphics.hpp>
 
 int main() {
@@ -393,7 +393,7 @@ int main() {
 
 	return EXIT_SUCCESS;
 }
-`
+```
 
 See also [the rules](http://en.sfml-dev.org/forums/index.php?topic=5559.msg36368#msg36368) for further details.
 

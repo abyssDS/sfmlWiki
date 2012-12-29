@@ -368,6 +368,33 @@ You can convert freely between sf::Image and sf::Texture, however just keep in m
 ### <a name="tr-grl-minimal"/>What is a minimal code?
 
 A minimal code example is a source code which everyone can easily compile after a simple copy-paste in a single file (no extra .h, .hpp or .cpp files) and which is made only out of source code showing the bug.
+
+An example of minimal code:
+`
+#include <SFML/Graphics.hpp>
+
+int main() {
+	sf::RenderWindow window( sf::VideoMode(640, 480, 32), "Bug" );
+	
+	// Some bug specific code here...
+	
+	while( window.isOpen() ) {
+		sf::Event event;
+		while( window.pollEvent( event ) ) {
+			if( event.type == sf::Event::Closed ) {
+				window.close();
+			}
+		}
+		
+		// ... and here.
+		
+		window.display();
+	}
+
+	return EXIT_SUCCESS;
+}
+`
+
 See also [the rules](http://en.sfml-dev.org/forums/index.php?topic=5559.msg36368#msg36368) for further details.
 
 ### <a name="tr-grl-obtain-minimal"/>And how can I easily obtain this minimal code?

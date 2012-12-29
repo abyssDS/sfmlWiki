@@ -155,8 +155,8 @@ Post any questions you have regarding SFML in the [SFML forum](http://en.sfml-de
 
 Keep in mind that using SFML is not a very suitable way to learn the bare basics of C++ programming, and as such it is recommended that any questions regarding general C++ be asked in more adequate forums where people proficient in C++ can help you better.
 
-A basic C++ tutorial can be found at (http://www.cplusplus.com/doc/tutorial/).
-An online C++ reference can be found at (http://www.cplusplus.com/reference/).
+* A basic C++ tutorial can be found at (http://www.cplusplus.com/doc/tutorial/).
+* An online C++ reference can be found at (http://www.cplusplus.com/reference/).
 
 Addtionally you also find people in the [inofficial IRC chat](http://en.sfml-dev.org/forums/index.php?topic=2997.0).
 

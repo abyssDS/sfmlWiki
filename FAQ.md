@@ -242,6 +242,12 @@ You can convert freely between sf::Image and sf::Texture, however just keep in m
 
 ### <a name="graphics-xsprite"/>Should I use one sprite or x sprites to draw x textures?
 
+Generally, the less objects you have to draw, the faster your application will run. This is almost always true. If you can, you should try to group things that are always drawn together and draw them using a single sprite. This will save you a lot of additional processing time.
+
+What you should not do is only use a single sf::Sprite and keep binding different sf::Textures to it. Although you are only using a single sf::Sprite, you are still creating as many draw calls as if you would have an sf::Sprite for each sf::Texture. The overhead of rebinding an sf::Texture to the sf::Sprite many times during a frame will noticeably affect your performance.
+
+You can also try to perform rudimentary culling. Culling consists of not drawing things that you know cannot be seen anyway because they are entirely covered by something else. If this can be done in your application and you prevent a lot of unneeded draw calls, you will gain performance.
+
 ### <a name="graphics-bounds"/>What is the difference between LocalBounds and GlobalBounds?
 
 ### <a name="graphics-low-fps"/>My FPS is very low when running my application.

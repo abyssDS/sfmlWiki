@@ -24,6 +24,9 @@
 - [Should I use VSync, window.setFramerateLimit or something else?](#dev-vsync-framelimit)
 - [Should I use one sprite or x sprites to draw x textures?](#dev-xsprite)
 - [What is the difference between LocalBounds and GlobalBounds?](#dev-bounds)
+- [When I draw a sprite, I only see a black rectangle where it is supposed to be.](#blank-sprite)
+- [My FPS is very low when running my application.](#low-fps)
+- [RenderTextures don't work on my computer!](#broken-rendertexture)
 
 **[SFML Audio](#audio)**
 - [What audio formats does SFML support?](#use-audio-formats)

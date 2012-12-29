@@ -222,9 +222,9 @@ But keep in mind that not all variants of each format are supported.
 
 ### <a name="graphics-white-rect"/>Why do I get a white/black rectangle instead of my texture?
 
-This is due to a premature destruction of the sf::Texture. Indeed a sf::Sprite only references the external sf::Texture. You have to keep the sf::Texture “alive” as long as the sprite uses it. It can also be that you never gave the sprite a texture, hence you need to call `sprite.setTexture()`.
+This is due to a premature destruction of the sf::Texture. An sf::Sprite only holds a reference to the sf::Texture bound to it. You have to keep the sf::Texture “alive” as long as the sprite uses it. It can also be that you never bound a texture to the sprite, hence you need to call `setTexture()` with the initial texture it is to use.
 
-When your texture is moved from one memory place to another you have to update your sprite with `setTexture()` function).
+When your texture is relocated from one memory location to another you have to inform your sprite of this using its `setTexture()` function as well.
 
 ### <a name="graphics-image-texture"/>What is the difference between sf::Image and sf::Texture?
 

@@ -32,7 +32,7 @@
 - [What audio formats does SFML support?](#use-audio-formats)
 
 **[SFML Networking](#network)**
-- [How do I create <insert popular application type here>?](#create-network-app)
+- [How do I create &lt;insert popular application type here&gt;?](#create-network-app)
 - [Should I use TCP or UDP sockets?](#tcp-vs-udp)
 - [Should I use blocking or non-blocking sockets?](#blocking-non-blocking)
 - [How do selectors work?](#selectors)
@@ -44,7 +44,7 @@
 
 **[SFML System](#system)**
 - [Does SFML support Unicode?](#use-unicode)
-- [How do I convert from sf::String to <type> and vice-versa?](#string-convert)
+- [How do I convert from sf::String to &lt;type&gt; and vice-versa?](#string-convert)
 - [My program keeps crashing when I use threads!](#threads-crash)
 - [How do I use sf::Mutex?](#mutex)
 

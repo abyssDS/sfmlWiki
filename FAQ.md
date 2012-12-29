@@ -140,8 +140,8 @@ It however does not contain all changes made between 1.6 and 2.0. It was written
 
 Laurent has provided tutorials with each version of SFML. The first part of these tutorials is aimed at getting started, which includes building SFML with CMake and your build tool of choice, as well as setting up your IDE (if you use one) for use with SFML.
 
-[1.6 tutorials](http://sfml-dev.org/tutorials/1.6/)
-[2.0 tutorials](http://sfml-dev.org/tutorials/2.0/)
+* [1.6 tutorials](http://sfml-dev.org/tutorials/1.6/)
+* [2.0 tutorials](http://sfml-dev.org/tutorials/2.0/)
 
 ### <a name="grl-nightly"/>Are there any nightly builds?
 

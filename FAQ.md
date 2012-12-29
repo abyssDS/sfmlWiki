@@ -11,45 +11,43 @@
 - [Where can I ask questions?](#grl-questions)
 
 **[Building and Using SFML](#build-use)**
-- [How do I build SFML?](#grl-build)
-- [Are there any nightly builds?](#grl-nightly)
-- [How do I setup my development environment to work with SFML?](#use-environment)
-- [I want to fuse the libraries into one. (Not recommended)](#use-fuse)
+- [How do I build SFML?](#build-build)
+- [Are there any nightly builds?](#build-nightly)
+- [How do I setup my development environment to work with SFML?](#build-environment)
+- [I want to fuse the libraries into one. (Not recommended)](#build-fuse)
 
 **[SFML Graphics](#graphics)**
-- [What image formats does SFML support?](#use-image-formats)
-- [Why do I get a white rectangle instead of my texture?](#dev-white-rect)
-- [What is the difference between sf::Image and sf::Texture?](#dev-image-texture)
-- [My FPS count drops when drawing a lot of sprites, how do I get more performance?](#dev-performance)
-- [Should I use VSync, window.setFramerateLimit or something else?](#dev-vsync-framelimit)
-- [Should I use one sprite or x sprites to draw x textures?](#dev-xsprite)
-- [What is the difference between LocalBounds and GlobalBounds?](#dev-bounds)
-- [When I draw a sprite, I only see a black rectangle where it is supposed to be.](#blank-sprite)
-- [My FPS is very low when running my application.](#low-fps)
-- [RenderTextures don't work on my computer!](#broken-rendertexture)
+- [What image formats does SFML support?](#graphics-image-formats)
+- [Why do I get a white/black rectangle instead of my texture?](#graphics-white-rect)
+- [What is the difference between sf::Image and sf::Texture?](#graphics-image-texture)
+- [My FPS count drops when drawing a lot of sprites.](#graphics-sprites)
+- [Should I use VSync, window.setFramerateLimit or something else?](#graphics-vsync-framelimit)
+- [Should I use one sprite or x sprites to draw x textures?](#graphics-xsprite)
+- [What is the difference between LocalBounds and GlobalBounds?](#graphics-bounds)
+- [My FPS is very low when running my application.](#graphics-low-fps)
+- [RenderTextures don't work on my computer!](#graphics-broken-rendertexture)
 
 **[SFML Audio](#audio)**
-- [What audio formats does SFML support?](#use-audio-formats)
+- [What audio formats does SFML support?](#audio-formats)
 
 **[SFML Networking](#network)**
-- [How do I create &lt;insert popular application type here&gt;?](#create-network-app)
-- [Should I use TCP or UDP sockets?](#tcp-vs-udp)
-- [Should I use blocking or non-blocking sockets?](#blocking-non-blocking)
-- [How do selectors work?](#selectors)
-- [I can't connect to the other computer over the internet!](#internet-network)
+- [How do I create &lt;insert popular application type here&gt;?](#network-create-network-app)
+- [Should I use TCP or UDP sockets?](#network-tcp-vs-udp)
+- [Should I use blocking or non-blocking sockets?](#network-blocking-non-blocking)
+- [How do selectors work?](#network-selectors)
+- [I can't connect to the other computer over the internet!](#network-internet-network)
 
 **[SFML Window](#window)**
-- [How do I make my window transparent?](#transparent-window)
-- [What happened to getFrameTime()?](#get-frame-time)
+- [How do I make my window transparent?](#window-transparent-window)
+- [What happened to getFrameTime()?](#window-get-frame-time)
 
 **[SFML System](#system)**
-- [Does SFML support Unicode?](#use-unicode)
-- [How do I convert from sf::String to &lt;type&gt; and vice-versa?](#string-convert)
-- [My program keeps crashing when I use threads!](#threads-crash)
-- [How do I use sf::Mutex?](#mutex)
+- [Does SFML support Unicode?](#system-unicode)
+- [How do I convert from sf::String to &lt;type&gt; and vice-versa?](#system-string-convert)
+- [My program keeps crashing when I use threads!](#system-threads-crash)
+- [How do I use sf::Mutex?](#system-mutex)
 
 **[Programming in General](#programming)**
-
 - [What is RAII and why does it rock?](#prog-raii)
 - [Why shouldn't I manually manage my memory?](#prog-mmm)
 - [What are smart pointers?](#prog-smart)
@@ -58,11 +56,10 @@
 - [Why is the singleton pattern not a good one?](#prog-singleton)
 
 **[Troubleshooting](#trouble)**
-
 - [General](#tr-grl)
- - [I'm having trouble using SFML.](#use-trouble)
- - [My computer crashes when I run my SFML program!](#grl-crash)
- - [I found a bug!](#grl-bug)
+ - [I'm having trouble using SFML.](#tr-grl-trouble)
+ - [My computer crashes when I run my SFML program!](#tr-grl-crash)
+ - [I found a bug!](#grl-grl-bug)
  - [What is minimal code?](#tr-grl-minimal)
  - [And how can I easily obtain this minimal code?](#tr-grl-obtain-minimal)
 - [Code::Blocks](#tr-cb)
@@ -77,7 +74,6 @@
  - [There is no titlebar visible and/or artifacts from windows are visible.](#tr-lnx-titlebar)
 
 **[Licensing](#licensing)**
-
 - [What license does SFML have?](#lic-license)
 - [Can I use SFML in commercial applications?](#lic-commercial)
 - [Can I link SFML statically?](#lic-static)
@@ -85,17 +81,16 @@
 - [Do I have to pay any license fees or royalties?](#lic-pay)
 
 **[Libraries for SFML](#libraries)**
-- [Does SFML have a GUI package?](#use-gui-package)
-- [Can you interface SFML with a GUI library?](#use-gui-lib)
-- [Can I read video files with SFML?](#use-video)
-- [What exactly is Thor?](#or-thor)
+- [Does SFML have a GUI package?](#libraries-gui-package)
+- [Can you interface SFML with a GUI library?](#libraries-gui-lib)
+- [Can I read video files with SFML?](#libraries-video)
+- [What exactly is Thor?](#libraries-thor)
 
 **[Miscellaneous](#misc)**
-
-- [Are there any famous projects with SFML?](#or-projects)
-- [How can I distribute my game?](#or-distr)
-- [Where can I upload my game to?](#or-upload)
-- [Are there any example projects I can learn from?](#use-examples)
+- [Are there any famous projects with SFML?](#misc-projects)
+- [How can I distribute my game?](#misc-distr)
+- [Where can I upload my game to?](#misc-upload)
+- [Are there any example projects I can learn from?](#misc-examples)
 
 ---
 
@@ -157,18 +152,11 @@ It however does not contain all changes made between 1.6 and 2.0. It was written
 * Replaced getWidth() and getHeight() with getSize()
 * Naming convention change
 
-### <a name="grl-build"/>How do I build SFML?
+### <a name="grl-3d"/>Will/does SFML support 3D?
 
-Laurent has provided tutorials with each version of SFML. The first part of these tutorials is aimed at getting started, which includes building SFML with CMake and your build tool of choice, as well as setting up your IDE (if you use one) for use with SFML.
+### <a name="grl-reqeust"/>I want to propose a new feature!
 
-* [1.6 tutorials](http://sfml-dev.org/tutorials/1.6/)
-* [2.0 tutorials](http://sfml-dev.org/tutorials/2.0/)
-
-### <a name="grl-nightly"/>Are there any nightly builds?
-
-There are no official nightly builds, however there is a thread on the forum where unofficial nightly builds are provided for certain platforms.
-
-[Link to the thread](http://en.sfml-dev.org/forums/index.php?topic=9513.0)
+Before anything else, check the [road-map](https://github.com/LaurentGomila/SFML/issues/milestones) to see if the functionality has already been planned. If not, there is a [forum section](http://en.sfml-dev.org/forums/index.php?board=2.0) dedicated to feature requests. Please search before posting, and stick to the spirit of SFML as a multimedia and multi-platform library. So for example a XML parser, a database library or a platform-specific function is unlikely to be accepted.
 
 ### <a name="grl-questions"/>Where can I ask questions?
 
@@ -181,92 +169,28 @@ Keep in mind that using SFML is not a very suitable way to learn the bare basics
 
 Addtionally you also find people in the [inofficial IRC chat](http://en.sfml-dev.org/forums/index.php?topic=2997.0).
 
-### <a name="grl-bug"/>I found a bug!
+## <a name="build-use"/>Building and Using SFML
 
-Most of the time any unexpected behaviour is a result of misunderstanding how to use SFML. Out of many bug reports only few of them turn out to be real bugs **which are caused by SFML itself and nothing else**.
+### <a name="build-build"/>How do I build SFML?
 
-If you think you have found a bug and are still using SFML 1.6, note that support for 1.6 had ceased long ago. It is highly recommended to upgrade to 2.0. Any bug reports made for SFML 1.6 will be ignored unless they were carried over to 2.0 as well, however this is very unlikely. If you are using 2.0, try using the latest [nightly build](http://en.sfml-dev.org/forums/index.php?topic=9513.0). There are many things that have already been fixed between the RC which is available on the site and the latest development version.
+Laurent has provided tutorials with each version of SFML. The first part of these tutorials is aimed at getting started, which includes building SFML with CMake and your build tool of choice, as well as setting up your IDE (if you use one) for use with SFML.
 
-If the bug is still present in the latest SFML version, try to produce a [minimal compilable code example](#tr-grl-minimal) that displays the bug and nothing else. That way the developers and others can focus on why it is occurring.
+* [1.6 tutorials](http://sfml-dev.org/tutorials/1.6/)
+* [2.0 tutorials](http://sfml-dev.org/tutorials/2.0/)
 
-If you can reproduce what you think is a bug, if you have another computer at your disposal, try to run it there as well. If the bug does not occur there, try to reconfigure the corresponding hardware/software settings on the first PC. A lot of strange behaviour is a result of misconfigured/faulty software/drivers. **WARNING: Trying to report a bug that is a result of the usage of beta drivers is not a good idea. The source of the problem does not lie within the responsibility of the SFML developers and as such they can't do much to fix it themselves.**
+### <a name="build-nightly"/>Are there any nightly builds?
 
-When you are sure that the bug is a result of SFML internals and is platform independent, you can go ahead and post in the forum of the package in question, and don't forget to provide a precise description of your problem, the version of SFML you're using, your system configuration, and the compilable code, and if the situation requires, the logs of your compiler and/or linker.
-Also make sure that the bug hasn't already been reported (use the [search function](http://en.sfml-dev.org/forums/index.php?action=search)), confirmed (look on the [issue tracker](https://github.com/LaurentGomila/SFML/issues?page=1&state=open) or even resolved in the latest source (check also the [closed issues](https://github.com/LaurentGomila/SFML/issues?page=1&state=closed)).
+There are no official nightly builds, however there is a thread on the forum where unofficial nightly builds are provided for certain platforms.
 
-### <a name="grl-crash"/>My computer crashes when I run my SFML program!
+[Link to the thread](http://en.sfml-dev.org/forums/index.php?topic=9513.0)
 
-SFML was designed in a way that should not cause your computer to crash/freeze/hang/BSOD in any way. If it does exhibit such behaviour specifically when running your SFML program, it might be only indirectly because of SFML.
-
-If you are using unstable drivers (still in beta or off a development branch in your package manager) chances are that they are the root cause of the problem. The reason why they cause more problems with SFML than with other programs/games is mainly because OpenGL related bugs in drivers are given low priority over DirectX related bugs simply because the latter affect more games. You'll just have to be patient and wait for the relevant bug to get fixed or revert to an older, more stable driver.
-
-If you are not using unstable drivers, crashing might still be caused by overclocking (either self-performed or automatic) of your hardware. Try running everything at standard performance settings and see if that fixes the problem. If your hardware comes overclocked by default, search around the internet for other people who might be experiencing the same problems. If this is the case you should contact your retailer/card manufacturer as this is a hardware related issue and you won't be able to do much on your own.
-
-### <a name="grl-reqeust"/>I want to propose a new feature!
-
-Before anything else, check the [road-map](https://github.com/LaurentGomila/SFML/issues/milestones) to see if the functionality has already been planned. If not, there is a [forum section](http://en.sfml-dev.org/forums/index.php?board=2.0) dedicated to feature requests. Please search before posting, and stick to the spirit of SFML as a multimedia and multi-platform library. So for example a XML parser, a database library or a platform-specific function is unlikely to be accepted.
-
-## <a name="using"/>Using SFML
-
-### <a name="use-environment"/>How do I setup my development environment to work with SFML?
+### <a name="build-environment"/>How do I setup my development environment to work with SFML?
 
 This is covered quite thoroughly in the tutorials section for some of the most popular IDEs.
 
 Check out the Getting Started sections of the [tutorials](http://sfml-dev.org/tutorials/).
 
-### <a name="use-gui-package"/>Does SFML have a GUI package?
-
-No, SFML does not have a GUI package, but you can essentially use any OpenGL-based GUI library. Here's a obviously incomplete list:
-
-* [SFGUI](http://sfgui.sfml-dev.de/)
-* [GWEN](http://code.google.com/p/gwen/)
-* [TGUI](http://tgui.weebly.com/)
-* [CEGUI](http://www.cegui.org.uk/wiki/index.php/Main_Page)
-* [Guichan](https://code.google.com/p/guichan/)
-* [libRocket](http://librocket.com/)
-
-### <a name="use-gui-lib"/>Can you interface SFML with a GUI library?
-
-Yes, you can! See examples for Qt, wxWidgets, and the native Win32 and X11 APIs in the [official tutorials](http://www.sfml-dev.org/tutorials/).
-
-### <a name="use-video"/>Can I read video files with SFML?
-
-SFML does not have a video playback module, but one can easily connect FFMPEG or similar libraries with SFML. There even exists a maintained project from a SFML user called [sfeMovie](http://lucas.soltic.perso.luminy.univmed.fr/sfeMovie/).
-
-### <a name="use-audio-formats"/>What audio formats does SFML support?
-
-In addition to the formats supported by [libsndfile](http://www.mega-nerd.com/libsndfile/#Features) (wav, flac, aiff, au, raw, paf, svx, nist, voc, ircam, w64, mat4, mat5 pvf, htk, sds, avr, sd2, caf, wve, mpc2k, rf64) the Audio module is also capable of playing ogg files.
-Unfortunatly MP3 is covered by a license from Thompson Multimedia and thus support for it is not included in SFML. For more information regarding the MP3 license, see http://www.mp3licensing.com.
-
-### <a name="use-image-formats"/>What image formats does SFML support?
-
-SFML can load the following file formats: bmp, dds, jpg, png, tga, psd
-But keep in mind that not all variants of each format are supported.
-
-### <a name="use-unicode"/>Does SFML support Unicode?
-
-SFML supports the input and display of international characters, via the UTF-16 encoding. Input is provided via sf::Event::TextEntered, and display via sf::String.
-
-### <a name="use-trouble"/>I'm having trouble using SFML.
-
-First, make sure that you have followed the installation instructions in the [official tutorials](http://www.sfml-dev.org/tutorials/).
-
-Have you:
-
-* Provided the path to the SFML headers to your compiler?
-* Provided your text editor with the path to the SFML library?
-* Included the headers for the packages you're using? (“SFML/[capitalized name of module].hpp”)
-* Linked with the packages you're using? (See the dependencies section of this document)
-* On Windows, have you copied the libsndfile-1.dll and openal32.dll files (you can find them in the complete SDK) into the folder for executable, along with the DLLs for the packages you're using (and all of their dependencies)?
-* On Linux, have you installed the libraries (sudo make install in the SFML folder)?
-
-If you've checked all of those, and SFML still refuses to work, see [I found a bug!](#grl-bug).
-
-### <a name="use-examples"/>Are there any example projects I can learn from?
-
-Examples of the usage of each module are provided with SFML itself if you download the full SDK version. If you want full projects that make use of many features of SFML at the same time your best bet is to check out the [projects forum](http://en.sfml-dev.org/forums/index.php?board=10.0). People frequently showcase what they are working on there for the community to see. Often they might provide the source code as well, so if you feel brave enough you can look in there if you find a certain project interesting.
-
-### <a name="use-fuse"/>I want to fuse the libraries into one. (Not recommended)
+### <a name="build-fuse"/>I want to fuse the libraries into one. (Not recommended)
 
 To fuse two libraries, you can use the ar.exe utility provided with MinGW. You'll also need a minimal Unix environment (like [CYGWIN](http://www.cygwin.com/)). The syntax is:
 
@@ -289,7 +213,78 @@ Here are the commands to together the external dependencies:
     ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s-d.a && rm *.o && echo 'done'
     ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s.a && rm *.o && echo 'done'
 
-	
+## <a name="graphics"/>SFML Graphics
+
+### <a name="graphics-image-formats"/>What image formats does SFML support?
+
+SFML can load the following file formats: bmp, dds, jpg, png, tga, psd
+But keep in mind that not all variants of each format are supported.
+
+### <a name="graphics-white-rect"/>Why do I get a white rectangle instead of my texture?
+
+This is due to a premature destruction of the sf::Texture. Indeed a sf::Sprite only references the external sf::Texture. You have to keep the sf::Texture “alive” as long as the sprite uses it. It can also be that you never gave the sprite a texture, hence you need to call `sprite.setTexture()`.
+
+When your texture is moved from one memory place to another you have to update your sprite with `setTexture()` function).
+
+### <a name="graphics-image-texture"/>What is the difference between sf::Image and sf::Texture?
+
+In essence, there is no difference between the 2 data structures. The main question you have to ask yourself is not what the difference is, but where the data is stored.
+
+In the case of sf::Image, the image data is stored in client-side memory, meaning in your system RAM. In there it is just an array of bytes (4 per pixel) that make up the image you can see on your screen.
+
+In the case of sf::Texture, it is also image data, however this data resides in server-side memory, meaning in your graphics RAM next to your GPU. This memory is managed completely by OpenGL and the sf::Texture is merely a handle to that block of memory in graphics RAM. There are many forms of storage of textures but SFML uses the same layout for sf::Texture as it does for sf::Image namely quad-byte RGBA.
+
+You can convert freely between sf::Image and sf::Texture, however just keep in mind that the bus bandwidth is limited and doing this too often means you are transferring a lot of data between graphics RAM and system RAM leading to a slowdown of all graphics related operations.
+
+### <a name="graphics-sprites"/>My FPS count drops when drawing a lot of sprites.
+
+### <a name="graphics-vsync-framelimit"/>Should I use VSync, window.setFramerateLimit or something else?
+
+### <a name="graphics-xsprite"/>Should I use one sprite or x sprites to draw x textures?
+
+### <a name="graphics-bounds"/>What is the difference between LocalBounds and GlobalBounds?
+
+### <a name="graphics-low-fps"/>My FPS is very low when running my application.
+
+### <a name="graphics-broken-rendertexture"/>RenderTextures don't work on my computer!
+
+## <a name="audio"/>SFML Audio
+
+### <a name="audio-formats"/>What audio formats does SFML support?
+
+In addition to the formats supported by [libsndfile](http://www.mega-nerd.com/libsndfile/#Features) (wav, flac, aiff, au, raw, paf, svx, nist, voc, ircam, w64, mat4, mat5 pvf, htk, sds, avr, sd2, caf, wve, mpc2k, rf64) the Audio module is also capable of playing ogg files.
+Unfortunatly MP3 is covered by a license from Thompson Multimedia and thus support for it is not included in SFML. For more information regarding the MP3 license, see http://www.mp3licensing.com.
+
+## <a name="network"/>SFML Networking
+
+### <a name="network-create-network-app"/>How do I create &lt;insert popular application type here&gt;?
+
+### <a name="network-tcp-vs-udp"/>Should I use TCP or UDP sockets?
+
+### <a name="network-blocking-non-blocking"/>Should I use blocking or non-blocking sockets?
+
+### <a name="network-selectors"/>How do selectors work?
+
+### <a name="network-internet-network"/>I can't connect to the other computer over the internet!
+
+## <a name="window"/>SFML Window
+
+### <a name="window-transparent-window"/>How do I make my window transparent?
+
+### <a name="window-get-frame-time"/>What happened to getFrameTime()?
+
+## <a name="system"/>SFML System
+
+### <a name="system-unicode"/>Does SFML support Unicode?
+
+SFML supports the input and display of international characters, via the UTF-16 encoding. Input is provided via sf::Event::TextEntered, and display via sf::String.
+
+### <a name="system-string-convert"/>How do I convert from sf::String to &lt;type&gt; and vice-versa?
+
+### <a name="system-threads-crash"/>My program keeps crashing when I use threads!
+
+### <a name="system-mutex"/>How do I use sf::Mutex?
+
 ## <a name="programming"/>Programming in General
 
 ### <a name="prog-raii"/>What is RAII and why does it rock?
@@ -334,33 +329,46 @@ If you happen to use a C++11 compliant compiler then you can be sure that many S
 
 ### <a name="prog-singleton"/>Why is the singleton pattern not a good one?
 
-## <a name="development"/>Development with SFML
-
-### <a name="dev-bounds"/>What is the difference between LocalBounds and GlobalBounds?
-### <a name="dev-white-rect"/>Why do I get a white rectangle instead of my texture?
-
-This is due to a premature destruction of the sf::Texture. Indeed a sf::Sprite only references the external sf::Texture. You have to keep the sf::Texture “alive” as long as the sprite uses it. It can also be that you never gave the sprite a texture, hence you need to call `sprite.setTexture()`.
-
-When your texture is moved from one memory place to another you have to update your sprite with `setTexture()` function).
-
-### <a name="dev-performance"/>My FPS count drops when drawing a lot of sprites, how do I get more performance?
-### <a name="dev-image-texture"/>What is the difference between sf::Image and sf::Texture?
-
-In essence, there is no difference between the 2 data structures. The main question you have to ask yourself is not what the difference is, but where the data is stored.
-
-In the case of sf::Image, the image data is stored in client-side memory, meaning in your system RAM. In there it is just an array of bytes (4 per pixel) that make up the image you can see on your screen.
-
-In the case of sf::Texture, it is also image data, however this data resides in server-side memory, meaning in your graphics RAM next to your GPU. This memory is managed completely by OpenGL and the sf::Texture is merely a handle to that block of memory in graphics RAM. There are many forms of storage of textures but SFML uses the same layout for sf::Texture as it does for sf::Image namely quad-byte RGBA.
-
-You can convert freely between sf::Image and sf::Texture, however just keep in mind that the bus bandwidth is limited and doing this too often means you are transferring a lot of data between graphics RAM and system RAM leading to a slowdown of all graphics related operations.
-
-### <a name="dev-vsync-framelimit"/>Should I use VSync, window.setFramerateLimit or something else?
-### <a name="dev-xsprite"/>Should I use one sprite or x sprites to draw x textures?
-
-
 ## <a name="trouble"/>Troubleshooting
 
 ### <a name="tr-grl"/>General
+
+### <a name="tr-grl-trouble"/>I'm having trouble using SFML.
+
+First, make sure that you have followed the installation instructions in the [official tutorials](http://www.sfml-dev.org/tutorials/).
+
+Have you:
+
+* Provided the path to the SFML headers to your compiler?
+* Provided your text editor with the path to the SFML library?
+* Included the headers for the packages you're using? (“SFML/[capitalized name of module].hpp”)
+* Linked with the packages you're using? (See the dependencies section of this document)
+* On Windows, have you copied the libsndfile-1.dll and openal32.dll files (you can find them in the complete SDK) into the folder for executable, along with the DLLs for the packages you're using (and all of their dependencies)?
+* On Linux, have you installed the libraries (sudo make install in the SFML folder)?
+
+If you've checked all of those, and SFML still refuses to work, see [I found a bug!](#grl-bug).
+
+### <a name="tr-grl-crash"/>My computer crashes when I run my SFML program!
+
+SFML was designed in a way that should not cause your computer to crash/freeze/hang/BSOD in any way. If it does exhibit such behaviour specifically when running your SFML program, it might be only indirectly because of SFML.
+
+If you are using unstable drivers (still in beta or off a development branch in your package manager) chances are that they are the root cause of the problem. The reason why they cause more problems with SFML than with other programs/games is mainly because OpenGL related bugs in drivers are given low priority over DirectX related bugs simply because the latter affect more games. You'll just have to be patient and wait for the relevant bug to get fixed or revert to an older, more stable driver.
+
+If you are not using unstable drivers, crashing might still be caused by overclocking (either self-performed or automatic) of your hardware. Try running everything at standard performance settings and see if that fixes the problem. If your hardware comes overclocked by default, search around the internet for other people who might be experiencing the same problems. If this is the case you should contact your retailer/card manufacturer as this is a hardware related issue and you won't be able to do much on your own.
+
+### <a name="tr-grl-bug"/>I found a bug!
+
+Most of the time any unexpected behaviour is a result of misunderstanding how to use SFML. Out of many bug reports only few of them turn out to be real bugs **which are caused by SFML itself and nothing else**.
+
+If you think you have found a bug and are still using SFML 1.6, note that support for 1.6 had ceased long ago. It is highly recommended to upgrade to 2.0. Any bug reports made for SFML 1.6 will be ignored unless they were carried over to 2.0 as well, however this is very unlikely. If you are using 2.0, try using the latest [nightly build](http://en.sfml-dev.org/forums/index.php?topic=9513.0). There are many things that have already been fixed between the RC which is available on the site and the latest development version.
+
+If the bug is still present in the latest SFML version, try to produce a [minimal compilable code example](#tr-grl-minimal) that displays the bug and nothing else. That way the developers and others can focus on why it is occurring.
+
+If you can reproduce what you think is a bug, if you have another computer at your disposal, try to run it there as well. If the bug does not occur there, try to reconfigure the corresponding hardware/software settings on the first PC. A lot of strange behaviour is a result of misconfigured/faulty software/drivers. **WARNING: Trying to report a bug that is a result of the usage of beta drivers is not a good idea. The source of the problem does not lie within the responsibility of the SFML developers and as such they can't do much to fix it themselves.**
+
+When you are sure that the bug is a result of SFML internals and is platform independent, you can go ahead and post in the forum of the package in question, and don't forget to provide a precise description of your problem, the version of SFML you're using, your system configuration, and the compilable code, and if the situation requires, the logs of your compiler and/or linker.
+Also make sure that the bug hasn't already been reported (use the [search function](http://en.sfml-dev.org/forums/index.php?action=search)), confirmed (look on the [issue tracker](https://github.com/LaurentGomila/SFML/issues?page=1&state=open) or even resolved in the latest source (check also the [closed issues](https://github.com/LaurentGomila/SFML/issues?page=1&state=closed)).
+
 ### <a name="tr-grl-minimal"/>What is a minimal code?
 
 A minimal code example is a snippet of source code that is compilable with very little effort.
@@ -413,6 +421,7 @@ Side note: This technique will often help you troubleshoot the problem on your o
 ---
 
 ### <a name="tr-cb"/>Code::Blocks
+
 ### <a name="tr-cb-static-linker"/>I've recompiled the static version of SFML and I'm getting linker errors.
 
 MinGW does not include the external libraries when doing static compilation, so you must add them after compilation, or link them directly into your project.
@@ -524,21 +533,47 @@ The code from the example directory is not marked as being provided under a sepa
 
 The zlib/png license is a permissive free software license which means it has no provisions to monetize the software it covers. As such SFML can be used for free with no requirement to pay any fees or royalties to its author.
 
-## <a name="misc"/>Miscellaneous
+## <a name="libraries"/>Libraries for SFML
 
-### <a name="or-projects"/>Are there any famous projects with SFML?
+### <a name="libraries-gui-package"/>Does SFML have a GUI package?
 
-As SFML is open source and has a permissive free software license game creators are not force to specify that they've used SFML in their games, thus it might well be that SFML has been used in bigger commercial projects. As for the known projects, there's a [dedicated page](Projects) on the SFML's wiki.
+No, SFML does not have a GUI package, but you can essentially use any OpenGL-based GUI library. Here's a obviously incomplete list:
 
-### <a name="or-thor"/>What exactly is Thor?
+* [SFGUI](http://sfgui.sfml-dev.de/)
+* [GWEN](http://code.google.com/p/gwen/)
+* [TGUI](http://tgui.weebly.com/)
+* [CEGUI](http://www.cegui.org.uk/wiki/index.php/Main_Page)
+* [Guichan](https://code.google.com/p/guichan/)
+* [libRocket](http://librocket.com/)
+
+### <a name="libraries-gui-lib"/>Can you interface SFML with a GUI library?
+
+Yes, you can! See examples for Qt, wxWidgets, and the native Win32 and X11 APIs in the [official tutorials](http://www.sfml-dev.org/tutorials/).
+
+### <a name="libraries-video"/>Can I read video files with SFML?
+
+SFML does not have a video playback module, but one can easily connect FFMPEG or similar libraries with SFML. There even exists a maintained project from a SFML user called [sfeMovie](http://lucas.soltic.perso.luminy.univmed.fr/sfeMovie/).
+
+### <a name="libraries-thor"/>What exactly is Thor?
 
 Thor is an open-source and cross-platform library written in the programming language C++. It is an extension to SFML and comes with high-level features that base on SFML and that are supposed to help in daily C++ routine, especially with respect to graphics and game programming.
 
 The git repository is also hosted on [GitHub](https://github.com/Bromeon/Thor) and the official website can be found at: http://www.bromeon.ch/libraries/thor/
 
-### <a name="or-distr"/>How can I distribute my game?
-### <a name="or-upload"/>Where can I upload my game to?
+## <a name="misc"/>Miscellaneous
+
+### <a name="misc-projects"/>Are there any famous projects with SFML?
+
+As SFML is open source and has a permissive free software license game creators are not force to specify that they've used SFML in their games, thus it might well be that SFML has been used in bigger commercial projects. As for the known projects, there's a [dedicated page](Projects) on the SFML's wiki.
+
+### <a name="misc-distr"/>How can I distribute my game?
+
+### <a name="misc-upload"/>Where can I upload my game to?
 
 There are many possible places to share your game and game related data with the world wide web and their users. For SFML someone as created a website explicitly for sharing content related to SFML: http://www.sfmluploads.org/
 
 Another worth mentioning provider is [MediaFire](http://www.mediafire.com/). It's a simple and fast file sharing hoster.
+
+### <a name="misc-examples"/>Are there any example projects I can learn from?
+
+Examples of the usage of each module are provided with SFML itself if you download the full SDK version. If you want full projects that make use of many features of SFML at the same time your best bet is to check out the [projects forum](http://en.sfml-dev.org/forums/index.php?board=10.0). People frequently showcase what they are working on there for the community to see. Often they might provide the source code as well, so if you feel brave enough you can look in there if you find a certain project interesting.

@@ -259,6 +259,19 @@ Unfortunatly MP3 is covered by a license from Thompson Multimedia and thus suppo
 
 ### <a name="network-create-network-app"/>How do I create &lt;insert popular application type here&gt;?
 
+The first thing you need to do is understand how the underlying networking of said application works. Behind every complex looking application there is a simple system of how systems send data to each other and what kind of data they send.
+
+There are 2 kinds of topologies:
+
+* Client-Server
+* Client-Client (Peer-to-Peer)
+
+Client-Server is generally easier to set up and often achieves higher performance than Client-Client due to the fact that dedicated servers are already configured to handle a large amount of traffic from multiple connected systems. When running a server application you can also be sure that clients can not manipulate the game state (cheat) themselves unless they have direct access to the server and can execute things there (which requires logging in etc.).
+
+When running in a Client-Client configuration, the first thing to overcome is the initial connection establishment. Home/Office gateways/routers are mostly configured by default to not accept any incoming connection requests. As such none of the sides can establish a connection to the other. There is a way of overcoming this called [NAT hole punching](http://en.wikipedia.org/wiki/NAT_hole_punching), however this is beyond the scope of this FAQ. Care has to be taken to ensure that nobody is able to cheat in this topology. This is usually done by mirroring the game state across all involved systems and performing checks and synchronization at every game step.
+
+Once you have picked a suitable topology for your application, you can start to think about what kind of data you want to send between the systems. There is no general answer or recommendation for this as this is very application specific and you will have to rely on good judgement to make the right choices.
+
 ### <a name="network-tcp-vs-udp"/>Should I use TCP or UDP sockets?
 
 ### <a name="network-blocking-non-blocking"/>Should I use blocking or non-blocking sockets?
@@ -271,7 +284,19 @@ Unfortunatly MP3 is covered by a license from Thompson Multimedia and thus suppo
 
 ### <a name="window-transparent-window"/>How do I make my window transparent?
 
+Unfortunately SFML can't help you with this. The style and representation of the application window within your window manager/desktop environment is specific to the environment you are currently in. Because of this SFML cannot provide a uniform interface for controlling the representation of your application window.
+
+SFML does however provide sf::Window::getSystemHandle(). Using the handle you can do a bit of research and find out how to manipulate the window representation yourself using the functions of your window manager.
+
 ### <a name="window-get-frame-time"/>What happened to getFrameTime()?
+
+getFrameTime() was removed from SFML at the beginning of 2012. The reasoning for it can be found here: http://en.sfml-dev.org/forums/index.php?topic=6831.0
+
+Users have to now create an sf::Clock object and keep time themselves. This has more advantages than disadvantages including:
+
+* Correct time reporting (getFrameTime() reported the time spent **during the last frame**)
+* More control over between which points in your code the time is to be measured
+* More control over the precision required
 
 ## <a name="system"/>SFML System
 

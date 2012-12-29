@@ -220,7 +220,7 @@ Here are the commands to together the external dependencies:
 SFML can load the following file formats: bmp, dds, jpg, png, tga, psd
 But keep in mind that not all variants of each format are supported.
 
-### <a name="graphics-white-rect"/>Why do I get a white rectangle instead of my texture?
+### <a name="graphics-white-rect"/>Why do I get a white/black rectangle instead of my texture?
 
 This is due to a premature destruction of the sf::Texture. Indeed a sf::Sprite only references the external sf::Texture. You have to keep the sf::Texture “alive” as long as the sprite uses it. It can also be that you never gave the sprite a texture, hence you need to call `sprite.setTexture()`.
 

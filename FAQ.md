@@ -166,7 +166,7 @@ Most of the time any unexpected behaviour is a result of misunderstanding how to
 
 If you think you have found a bug and are still using SFML 1.6, note that support for 1.6 had ceased long ago. It is highly recommended to upgrade to 2.0. Any bug reports made for SFML 1.6 will be ignored unless they were carried over to 2.0 as well, however this is very unlikely. If you are using 2.0, try using the latest [nightly build](http://en.sfml-dev.org/forums/index.php?topic=9513.0). There are many things that have already been fixed between the RC which is available on the site and the latest development version.
 
-If the bug is still present in the latest SFML version, try to produce a minimal compilable code example that displays the bug and nothing else. That way the developers and others can focus on why it is occurring. Such an example should never have to be longer than 40 lines of code (including the header include lines) unless it only happens in very specific cases.
+If the bug is still present in the latest SFML version, try to produce a [minimal compilable code example](#tr-grl-minimal) that displays the bug and nothing else. That way the developers and others can focus on why it is occurring.
 
 If you can reproduce what you think is a bug, if you have another computer at your disposal, try to run it there as well. If the bug does not occur there, try to reconfigure the corresponding hardware/software settings on the first PC. A lot of strange behaviour is a result of misconfigured/faulty software/drivers. **WARNING: Trying to report a bug that is a result of the usage of beta drivers is not a good idea. The source of the problem does not lie within the responsibility of the SFML developers and as such they can't do much to fix it themselves.**
 
@@ -367,7 +367,14 @@ You can convert freely between sf::Image and sf::Texture, however just keep in m
 ### <a name="tr-grl"/>General
 ### <a name="tr-grl-minimal"/>What is a minimal code?
 
-A minimal code example is a source code which everyone can easily compile after a simple copy-paste in a single file (no extra .h, .hpp or .cpp files) and which is made only out of source code showing the bug.
+A minimal code example is a snippet of source code that is compilable with very little effort.
+
+This implies that:
+* it consists of a single file (no extra .h, .hpp or .cpp files)
+* there are no special compiler/linker options that need to be set
+* the provided code is specific to the matter at hand and does not do more than it needs to
+
+Such an example should never have to be longer than 40 lines of code (including the header include lines which of course have to be provided as well) unless it only happens in very specific cases.
 
 An example of minimal code:
 ```cpp
@@ -401,10 +408,11 @@ See also [the rules](http://en.sfml-dev.org/forums/index.php?topic=5559.msg36368
 
 Easy :
 
-* Create a new `main()` function with all the code
-* Delete line by line which are not relevant to the actual problem and try to compile to see if the bug is always present or not
+* Create a separate sandbox project with a single file consisting of a `main()` function
+* Copy and paste your code into the body of the `main()` in such a way that it can compile
+* One by one delete all lines which are not relevant to the actual problem and try to compile after every deletion to see if the problem still persists
 
-Side note: This technique will often help you discover the bug on your own.
+Side note: This technique will often help you troubleshoot the problem on your own.
 
 ---
 

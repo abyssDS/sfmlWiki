@@ -46,6 +46,7 @@
 - [How do I convert from sf::String to &lt;type&gt; and vice-versa?](#system-string-convert)
 - [My program keeps crashing when I use threads!](#system-threads-crash)
 - [How do I use sf::Mutex?](#system-mutex)
+- [Why can't I store my sf::Thread in an STL container?](#system-thread-container)
 
 **[Programming in General](#programming)**
 - [What is RAII and why does it rock?](#prog-raii)
@@ -315,6 +316,16 @@ SFML supports the input and display of international characters, via the UTF-16 
 ### <a name="system-threads-crash"/>My program keeps crashing when I use threads!
 
 ### <a name="system-mutex"/>How do I use sf::Mutex?
+
+### <a name="system-thread-container"/>Why can't I store my sf::Thread in an STL container?
+
+sf::Thread inherits from sf::NonCopyable meaning you cannot copy or assign an sf::Thread. This is however a requirement to use a data type with an STL container.
+
+You might be wondering how it would still be possible to store multiple threads in an STL container if you are trying to implement some sort of thread pool. The answer is simple: instead of storing instances, store pointers to the sf::Threads.
+
+The sf::NonCopyable restrictions can only apply to instances of an sf::Thread. When copying pointers, the copy constructor or assignment operator of a class are not invoked. As such it is perfectly legal to copy and pass pointers around.
+
+Since working with raw pointers is something you want to avoid in modern C++, you can use [smart pointers](#prog-smart) to great extent in combination with this technique.
 
 ## <a name="programming"/>Programming in General
 

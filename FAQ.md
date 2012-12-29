@@ -1,39 +1,49 @@
 # Frequently asked questions (FAQ)
 **[General](#general)**
-
 - [What is SFML?](#grl-whatis)
 - [On which platforms is SFML currently available?](#grl-platforms)
 - [Which programming languages are supported by SFML?](#grl-languages)
 - [What dependencies does SFML have?](#grl-dependencies)
 - [What version of SFML should I use?](#grl-version)
 - [Is there a complete list with all the changes from SFML 1.6 to SFML 2.x?](#grl-changes)
+- [Will/does SFML support 3D?](#grl-3d)
+- [I want to propose a new feature!](#grl-reqeust)
+- [Where can I ask questions?](#grl-questions)
+
+**[Building and Using SFML](#build-use)**
 - [How do I build SFML?](#grl-build)
 - [Are there any nightly builds?](#grl-nightly)
-- [Where can I ask questions?](#grl-questions)
-- [I found a bug!](#grl-bug)
-- [My computer crashes when I run my SFML program!](#grl-crash)
-- [I want to propose a new feature!](#grl-reqeust)
-
-**[Licensing](#licensing)**
-
-- [What license does SFML have?](#lic-license)
-- [Can I use SFML in commercial applications?](#lic-commercial)
-- [Can I link SFML statically?](#lic-static)
-- [Can I use the code from the example directory?](#lic-examples)
-- [Do I have to pay any license fees or royalties?](#lic-pay)
-
-**[Using SFML](#using)**
-
 - [How do I setup my development environment to work with SFML?](#use-environment)
-- [Does SFML have a GUI package?](#use-gui-package)
-- [Can you interface SFML with a GUI library?](#use-gui-lib)
-- [Can I read video files with SFML?](#use-video)
-- [What audio formats does SFML support?](#use-audio-formats)
-- [What image formats does SFML support?](#use-image-formats)
-- [Does SFML support Unicode?](#use-unicode)
-- [I'm having trouble using SFML.](#use-trouble)
-- [Are there any example projects I can learn from?](#use-examples)
 - [I want to fuse the libraries into one. (Not recommended)](#use-fuse)
+
+**[SFML Graphics](#graphics)**
+- [What image formats does SFML support?](#use-image-formats)
+- [Why do I get a white rectangle instead of my texture?](#dev-white-rect)
+- [What is the difference between sf::Image and sf::Texture?](#dev-image-texture)
+- [My FPS count drops when drawing a lot of sprites, how do I get more performance?](#dev-performance)
+- [Should I use VSync, window.setFramerateLimit or something else?](#dev-vsync-framelimit)
+- [Should I use one sprite or x sprites to draw x textures?](#dev-xsprite)
+- [What is the difference between LocalBounds and GlobalBounds?](#dev-bounds)
+
+**[SFML Audio](#audio)**
+- [What audio formats does SFML support?](#use-audio-formats)
+
+**[SFML Networking](#network)**
+- [How do I create <insert popular application type here>?](#create-network-app)
+- [Should I use TCP or UDP sockets?](#tcp-vs-udp)
+- [Should I use blocking or non-blocking sockets?](#blocking-non-blocking)
+- [How do selectors work?](#selectors)
+- [I can't connect to the other computer over the internet!](#internet-network)
+
+**[SFML Window](#window)**
+- [How do I make my window transparent?](#transparent-window)
+- [What happened to getFrameTime()?](#get-frame-time)
+
+**[SFML System](#system)**
+- [Does SFML support Unicode?](#use-unicode)
+- [How do I convert from sf::String to <type> and vice-versa?](#string-convert)
+- [My program keeps crashing when I use threads!](#threads-crash)
+- [How do I use sf::Mutex?](#mutex)
 
 **[Programming in General](#programming)**
 
@@ -44,19 +54,13 @@
 - [What should I use then instead of global variables?](#prog-insteadof-global)
 - [Why is the singleton pattern not a good one?](#prog-singleton)
 
-**[Development with SFML](#development)**
-
-- [What is the difference between LocalBounds and GlobalBounds?](#dev-bounds)
-- [Why do I get a white rectangle instead of my texture?](#dev-white-rect)
-- [My FPS count drops when drawing a lot of sprites, how do I get more performance?](#dev-performance)
-- [What is the difference between sf::Image and sf::Texture?](#dev-image-texture)
-- [Should I use VSync, window.setFramerateLimit or something else?](#dev-vsync-framelimit)
-- [Should I use one sprite or x sprites to draw x textures?](#dev-xsprite)
-
 **[Troubleshooting](#trouble)**
 
 - [General](#tr-grl)
- - [What is a minimal code?](#tr-grl-minimal)
+ - [I'm having trouble using SFML.](#use-trouble)
+ - [My computer crashes when I run my SFML program!](#grl-crash)
+ - [I found a bug!](#grl-bug)
+ - [What is minimal code?](#tr-grl-minimal)
  - [And how can I easily obtain this minimal code?](#tr-grl-obtain-minimal)
 - [Code::Blocks](#tr-cb)
  - [I've recompiled the static version of SFML and I'm getting linker errors.](#tr-cb-static-linker)
@@ -69,12 +73,26 @@
  - [(Debian) I can't compile the source code.](#tr-lnx-compile)
  - [There is no titlebar visible and/or artifacts from windows are visible.](#tr-lnx-titlebar)
 
-**[Others](#others)**
+**[Licensing](#licensing)**
+
+- [What license does SFML have?](#lic-license)
+- [Can I use SFML in commercial applications?](#lic-commercial)
+- [Can I link SFML statically?](#lic-static)
+- [Can I use the code from the example directory?](#lic-examples)
+- [Do I have to pay any license fees or royalties?](#lic-pay)
+
+**[Libraries for SFML](#libraries)**
+- [Does SFML have a GUI package?](#use-gui-package)
+- [Can you interface SFML with a GUI library?](#use-gui-lib)
+- [Can I read video files with SFML?](#use-video)
+- [What exactly is Thor?](#or-thor)
+
+**[Miscellaneous](#misc)**
 
 - [Are there any famous projects with SFML?](#or-projects)
-- [What exactly is Thor?](#or-thor)
 - [How can I distribute my game?](#or-distr)
 - [Where can I upload my game to?](#or-upload)
+- [Are there any example projects I can learn from?](#use-examples)
 
 ---
 
@@ -184,31 +202,6 @@ If you are not using unstable drivers, crashing might still be caused by overclo
 ### <a name="grl-reqeust"/>I want to propose a new feature!
 
 Before anything else, check the [road-map](https://github.com/LaurentGomila/SFML/issues/milestones) to see if the functionality has already been planned. If not, there is a [forum section](http://en.sfml-dev.org/forums/index.php?board=2.0) dedicated to feature requests. Please search before posting, and stick to the spirit of SFML as a multimedia and multi-platform library. So for example a XML parser, a database library or a platform-specific function is unlikely to be accepted.
-
-
-## <a name="licensing"/>Licensing
-
-### <a name="lic-license"/>What license does SFML have?
-
-SFML is under the [zlib/png license](http://www.opensource.org/licenses/zlib-license.php). You can use SFML for both open-source and proprietary project, including paid or commercial ones. If you use SFML in your projects, a credit or mention is appreciated, but is not required.
-
-### <a name="lic-commercial"/>Can I use SFML in commercial applications?
-
-Yes, you may use SFML in commercial applications. You don't even have to mention that you used SFML in your application, but the zlib license states that if you do mention it, you are not allowed to state that you yourself are the author of SFML. You are also not allowed to modify SFML and represent it as being the original.
-
-### <a name="lic-static"/>Can I link SFML statically?
-
-Yes, you can link SFML statically. This can be done in any operating system, although in Linux and Mac OS X it is recommended to only link dynamically unless you have special requirements.
-
-When linking statically, do not forget to specify the SFML_STATIC define on your command line.
-
-### <a name="lic-examples"/>Can I use the code from the example directory?
-
-The code from the example directory is not marked as being provided under a separate license. As such it is also governed by the zlib/png license and you are free to do anything you want with the code as long as it complies to the license.
-
-### <a name="lic-pay"/>Do I have to pay any license fees or royalties?
-
-The zlib/png license is a permissive free software license which means it has no provisions to monetize the software it covers. As such SFML can be used for free with no requirement to pay any fees or royalties to its author.
 
 ## <a name="using"/>Using SFML
 
@@ -504,8 +497,31 @@ You can use this simple script to toggle compiz on and off, if you're using meta
     fi
 ```
 
+## <a name="licensing"/>Licensing
 
-## <a name="others"/>Others
+### <a name="lic-license"/>What license does SFML have?
+
+SFML is under the [zlib/png license](http://www.opensource.org/licenses/zlib-license.php). You can use SFML for both open-source and proprietary project, including paid or commercial ones. If you use SFML in your projects, a credit or mention is appreciated, but is not required.
+
+### <a name="lic-commercial"/>Can I use SFML in commercial applications?
+
+Yes, you may use SFML in commercial applications. You don't even have to mention that you used SFML in your application, but the zlib license states that if you do mention it, you are not allowed to state that you yourself are the author of SFML. You are also not allowed to modify SFML and represent it as being the original.
+
+### <a name="lic-static"/>Can I link SFML statically?
+
+Yes, you can link SFML statically. This can be done in any operating system, although in Linux and Mac OS X it is recommended to only link dynamically unless you have special requirements.
+
+When linking statically, do not forget to specify the SFML_STATIC define on your command line.
+
+### <a name="lic-examples"/>Can I use the code from the example directory?
+
+The code from the example directory is not marked as being provided under a separate license. As such it is also governed by the zlib/png license and you are free to do anything you want with the code as long as it complies to the license.
+
+### <a name="lic-pay"/>Do I have to pay any license fees or royalties?
+
+The zlib/png license is a permissive free software license which means it has no provisions to monetize the software it covers. As such SFML can be used for free with no requirement to pay any fees or royalties to its author.
+
+## <a name="misc"/>Miscellaneous
 
 ### <a name="or-projects"/>Are there any famous projects with SFML?
 

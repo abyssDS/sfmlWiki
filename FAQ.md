@@ -505,8 +505,13 @@ In Windows, if you compile your project, you will have a console that attaches i
 * In Code::Blocks, go to the project options (Project Menu -> Properties). In the Build targets tab, select "GUI Application" from the type drop-down list.
 * In Visual Studio, go to the project options (Project Menu -> Properties). In the tree on the left, expand the "Configuration properties" tree and expand the "Linker" sub-tree. Select "System" from the sub-tree and, in the SubSystem field, select "Windows (/SUBSYSTEM:WINDOWS)" from the drop-down list.
 
-To maintain a portable entry point (`main()`), you can link your program against the small sfml-main.lib library.
-Optionally you can also define the entry point on your own, which is not `int main(void)` or `int main(int argc, char** argv)`, but `int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszArgument, int nCmdShow)`.
+To maintain a portable entry point (`int main()` function), you can link your program against the small sfml-main.lib library.
+
+Alternatively to hide the console, you can also define your own Windows entry point for graphical applications.
+
+`int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszArgument, int nCmdShow)`
+
+Replace your `int main()` or `int main(int argc, char** argv)` with this function and it will be called by the operating system when your program is executed just like the classical `int main()` function.
 
 ---
 

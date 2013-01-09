@@ -505,7 +505,7 @@ In Windows, if you compile your project, you will have a console that attaches i
 * In Code::Blocks, go to the project options (Project Menu -> Properties). In the Build targets tab, select "GUI Application" from the type drop-down list.
 * In Visual Studio, go to the project options (Project Menu -> Properties). In the tree on the left, expand the "Configuration properties" tree and expand the "Linker" sub-tree. Select "System" from the sub-tree and, in the SubSystem field, select "Windows (/SUBSYSTEM:WINDOWS)" from the drop-down list.
 
-To maintain a portable entry point (`int main()` function), you can link your program against the small sfml-main.lib library.
+To maintain a portable entry point (`int main()` function), you can link your program against the small sfml-main.lib library in the case of Visual Studio or libsfml-main.a in the case of Code::Blocks/MinGW.
 
 Alternatively to hide the console, you can also define your own Windows entry point for graphical applications.
 

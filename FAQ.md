@@ -509,7 +509,9 @@ To maintain a portable entry point (`int main()` function), you can link your pr
 
 Alternatively to hide the console, you can also define your own Windows entry point for graphical applications.
 
-`int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszArgument, int nCmdShow)`
+```cpp
+int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszArgument, int nCmdShow)
+```
 
 Replace your `int main()` or `int main(int argc, char** argv)` with this function and it will be called by the operating system when your program is executed just like the classical `int main()` function.
 

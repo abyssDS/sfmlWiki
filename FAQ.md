@@ -502,8 +502,8 @@ If you link with the DLL versions, you must copy the required DLLs beside your e
 
 In Windows, if you compile your project, you will have a console that attaches itself behind your window. To avoid this, you must create a Console project, and then:
 
-* In Code::Blocks, go to the project options (Project ? Properties) and in the Build targets tab, selection the GUI Application type.
-* In Visual Studio, go to the project options (Project ? Properties) In the tree on the left, go to the “Configuration properties/Linker/System” and, in SubSystem field, select “Windows (/SUBSYSTEM:WINDOWS)”.
+* In Code::Blocks, go to the project options (Project Menu -> Properties). In the Build targets tab, select "GUI Application" from the type drop-down list.
+* In Visual Studio, go to the project options (Project Menu -> Properties). In the tree on the left, expand the "Configuration properties" tree and expand the "Linker" sub-tree. Select "System" from the sub-tree and, in the SubSystem field, select "Windows (/SUBSYSTEM:WINDOWS)" from the drop-down list.
 
 To maintain a portable entry point (`main()`), you can link your program against the small sfml-main.lib library.
 Optionally you can also define the entry point on your own, which is not `int main(void)` or `int main(int argc, char** argv)`, but `int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszArgument, int nCmdShow)`.

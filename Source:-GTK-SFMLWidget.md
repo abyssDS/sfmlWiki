@@ -105,7 +105,6 @@ public:
 
 
 SFMLWidget::SFMLWidget(sf::VideoMode mode, int size_request)
-    : renderWindow(mode, "")
 {
     if(size_request<=0)
         size_request = std::max<int>(1, std::min<int>(mode.width, mode.height) / 2);

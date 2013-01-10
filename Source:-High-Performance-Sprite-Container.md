@@ -431,5 +431,54 @@ float AltSpriteHolder::getRotation(const unsigned index) const
 
 ```
 
+**Sample Program**
+
+
+```cpp
+#include "AltSpriteHolder.hpp"
+#include <SFML/Graphics.hpp> ///Just in case.
+
+sf::RenderWindow window(sf::VideoMode(1280, 800, 32), "Bullet Testing", sf::Style::Fullscreen);
+    unsigned MaxNum = 100;
+    AltSpriteHolder ASH(MaxNum);
+    sf::Event event;
+    sf::Texture T;
+    if(!T.loadFromFile("C:/Users/Carlos/Desktop/Sprites/White Mana.png")) ///Change the path as needed.
+        return -1;
+    sf::Sprite M(T);
+
+    ASH.setTexture(T);
+    std::vector<PolarVector> PolVec;
+
+    float Radius = 400;
+
+    float Calc = (2*Pi)/MaxNum;
+    for(unsigned i = 0; i < MaxNum; ++i)
+    {
+        PolVec.push_back(PolarVector(Radius, i*Calc));
+        ASH.setPosition(i, PolVec[i].TurnToRectangular());
+    }
+
+    ASH.globalMove(sf::Vector2f(400.f, 400.f));
+    window.setVerticalSyncEnabled(true);
+    while (window.isOpen())
+    {
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        ASH.globalRotateAroundSelf(1.f);
+
+        window.draw(ASH);
+        window.display();
+
+        while (window.pollEvent(event))
+        { if (event.key.code == sf::Keyboard::Escape) window.close(); }
+
+    }
+    return 0;
+
+}
+
+```
+
 If you have any doubts or bugs to report PM me in the SFML forums (masskiller).
 

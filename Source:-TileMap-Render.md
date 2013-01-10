@@ -1,9 +1,4 @@
-Language: C#
-
-Tilemap renderer based on vertex array. It is:
-* CPU effective: it updates vertices only when it is necessary
-* GPU effective: it draws only visible quads
-* RAM effective: it stores only visible vertices
+Optimized SFML.Net tilemap renderer(based on vertex array). 
 
 Check MinimalTest class below to see how to use it with your game.
 

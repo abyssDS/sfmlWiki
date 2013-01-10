@@ -33,7 +33,11 @@ class PolarVector
         PolarVector(float radius, float angle);
 
         sf::Vector2f TurnToRectangular() const;
+  private:
         static const float EPSILON;
+
+        friend bool operator ==(const PolarVector& left, const PolarVector& right);
+        friend bool operator !=(const PolarVector& left, const PolarVector& right);
 };
 
 PolarVector TurnToPolar(const sf::Vector2f& point);

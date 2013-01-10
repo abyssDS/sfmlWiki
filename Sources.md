@@ -18,6 +18,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Drawing Color Gradient|Source:-Color-Gradient]] : Draw and manage color gradient easily with this class
 * [C++] [[Draw Rounded Rectangle|Source:-Draw-Rounded-Rectangle]] 
 * [C++] [[Tile Map with VertexArrays|Source:-TileMap]] : Load, cull, texture and display quads as tiles
+* [C++] [[Higher Performance Sprite Container|Source:-High-Performance-Sprite-Container]] : Both a faster way to use many sprites with the same texture and a shortcut container to make life easier. (by masskiller)
 
 ## Network
 * [C++] [[Simple chat example using sf::TcpSocket|Source:-Network-Chat-Example]]

@@ -10,6 +10,8 @@ As a side-note: This code uses my polar vector class to power rotations, I will 
 
 Also, this container doesn't yet use the recently modified version of sf::Rect, so behavior may be undefined if you just compiled sources under that change. I might change that soon, for now be warned.
 
+This code is under public domain so feel free to use it however you like.
+
 Without further ado I present the code:
 
 ```cpp

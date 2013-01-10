@@ -37,7 +37,6 @@ class PolarVector
         static const float EPSILON;
 
         friend bool operator ==(const PolarVector& left, const PolarVector& right);
-        friend bool operator !=(const PolarVector& left, const PolarVector& right);
 };
 
 PolarVector TurnToPolar(const sf::Vector2f& point);
@@ -78,11 +77,7 @@ bool operator ==(const PolarVector& left, const PolarVector& right)
 }
 
 bool operator !=(const PolarVector& left, const PolarVector& right)
-{
-  float diffR = left.r - right.r;
-  float diffA = left.t - right.t;
-  return !((diffR <= PolarVector::EPSILON) && (diffA <= PolarVector::EPSILON));
-}
+{ return !(left == right); }
 
 PolarVector TurnToPolar(const sf::Vector2f& point)
 {
@@ -235,12 +230,14 @@ AltSpriteHolder::~AltSpriteHolder() {}
 AltSpriteHolder::AltSpriteHolder(const AltSpriteHolder& other)
 {
     //copy ctor
+    ///Sorry for the inconvenience, will be implemented soon.
 }
 
 AltSpriteHolder& AltSpriteHolder::operator=(const AltSpriteHolder& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
     //assignment operator
+    ///Sorry for the inconvenience, will be implemented soon.
     return *this;
 }
 
@@ -278,12 +275,9 @@ void AltSpriteHolder::updateTexCoords(const unsigned index)
 
     unsigned I = index * 4;
 
-    VertexHolder[I].texCoords = sf::Vector2f(left, top);
-    ++I;
-    VertexHolder[I].texCoords = sf::Vector2f(left, bottom);
-    ++I;
-    VertexHolder[I].texCoords = sf::Vector2f(right, bottom);
-    ++I;
+    VertexHolder[I++].texCoords = sf::Vector2f(left, top);
+    VertexHolder[I++].texCoords = sf::Vector2f(left, bottom);
+    VertexHolder[I++].texCoords = sf::Vector2f(right, bottom);
     VertexHolder[I].texCoords = sf::Vector2f(right, top);
 }
 
@@ -295,12 +289,9 @@ void AltSpriteHolder::updateVertexCoords(const unsigned index, const bool Reset)
 
     unsigned I = index * 4;
 
-    VertexHolder[I].position = sf::Vector2f(0, 0);
-    ++I;
-    VertexHolder[I].position = sf::Vector2f(0, S.y);
-    ++I;
-    VertexHolder[I].position = sf::Vector2f(S.x, S.y);
-    ++I;
+    VertexHolder[I++].position = sf::Vector2f(0, 0);
+    VertexHolder[I++].position = sf::Vector2f(0, S.y);
+    VertexHolder[I++].position = sf::Vector2f(S.x, S.y);
     VertexHolder[I].position = sf::Vector2f(S.x, 0);
 
     if(Reset)

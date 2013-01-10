@@ -13,10 +13,11 @@ Also, this container doesn't yet use the recently modified version of sf::Rect, 
 Without further ado I present the code:
 
 ```cpp
+#ifndef POLARVECTOR_HPP
+#define POLARVECTOR_HPP
+
 ///Polar Vector class
 #include <SFML/System/Vector2.hpp>
-
-#pragma once
 
 ///The class uses radians as angles, where r is the radius and t is the angle.
 
@@ -30,6 +31,7 @@ class PolarVector
         PolarVector(float radius, float angle);
 
         sf::Vector2f TurnToRectangular() const;
+        static const float EPSILON;
 };
 
 PolarVector TurnToPolar(const sf::Vector2f& point);
@@ -38,12 +40,14 @@ bool operator ==(const PolarVector& left, const PolarVector& right);
 
 bool operator !=(const PolarVector& left, const PolarVector& right);
 
+#endif // POLARVECTOR_HPP
+
 ///.cpp
 
 #include "PolarVector.hpp"
 #include <cmath>
 
-#define EPSILON 0.0001
+const float PolarVector::EPSILON = 0.0001;
 
 PolarVector::PolarVector()
   :r(0.0), t(0.0)
@@ -64,14 +68,14 @@ bool operator ==(const PolarVector& left, const PolarVector& right)
 {
   float diffR = left.r - right.r;
   float diffA = left.t - right.t;
-  return ((diffR <= EPSILON) && (diffA <= EPSILON));
+  return ((diffR <= PolarVector::EPSILON) && (diffA <= PolarVector::EPSILON));
 }
 
 bool operator !=(const PolarVector& left, const PolarVector& right)
 {
   float diffR = left.r - right.r;
   float diffA = left.t - right.t;
-  return !((diffR <= EPSILON) && (diffA <= EPSILON));
+  return !((diffR <= PolarVector::EPSILON) && (diffA <= PolarVector::EPSILON));
 }
 
 PolarVector TurnToPolar(const sf::Vector2f& point)
@@ -220,14 +224,7 @@ AltSpriteHolder::AltSpriteHolder(sf::Texture& T, const unsigned amount)
     }
 }
 
-AltSpriteHolder::~AltSpriteHolder()
-{
-    VertexHolder.clear();
-    PositionHolder.clear();
-    ScaleHolder.clear();
-    AngleHolder.clear();
-    TexRectHolder.clear();
-}
+AltSpriteHolder::~AltSpriteHolder() {}
 
 AltSpriteHolder::AltSpriteHolder(const AltSpriteHolder& other)
 {

@@ -15,6 +15,7 @@
 - [Are there any nightly builds?](#build-nightly)
 - [How do I setup my development environment to work with SFML?](#build-environment)
 - [I want to fuse the libraries into one. (Not recommended)](#build-fuse)
+- [What and how do I link to use SFML?](#build-link)
 
 **[SFML Graphics](#graphics)**
 - [What image formats does SFML support?](#graphics-image-formats)
@@ -59,6 +60,7 @@
 **[Troubleshooting](#trouble)**
 - [General](#tr-grl)
  - [I'm having trouble using SFML.](#tr-grl-trouble)
+ - [I keep getting "undefined reference to &lt;some strange thing that looks like an SFML function&gt;"!](#tr-grl-undefined-ref)
  - [My computer crashes when I run my SFML program!](#tr-grl-crash)
  - [I found a bug!](#grl-grl-bug)
  - [What is minimal code?](#tr-grl-minimal)
@@ -213,6 +215,43 @@ Here are the commands to together the external dependencies:
     ar xv libopenal32.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s.a && rm *.o && echo 'done'
     ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s-d.a && rm *.o && echo 'done'
     ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s.a && rm *.o && echo 'done'
+
+### <a name="build-link"/>What and how do I link to use SFML?
+
+When you want to use SFML, you need to link to the library files that provide the functionality you make use of in your application.
+
+SFML is divided into 5 modules:
+
+* **System** _provided by sfml-system_
+* **Window** _provided by sfml-window_
+* **Graphics** _provided by sfml-graphics_
+* **Audio** _provided by sfml-audio_
+* **Network** _provided by sfml-network_
+
+Be aware that the modules have interdependencies on each other. For instance, if you plan on using the Graphics module, you will also have to link against the Window and System modules as well.
+
+Dependencies:
+
+* **System** does not depend on anything and can be used by itself.
+* **Window** depends on **System**.
+* **Graphics** depends on **Window** and **System**.
+* **Audio** depends on **System**.
+* **Network** depends on **System**.
+
+As you can see you will always have to link against sfml-system, no matter what you do.
+
+Be aware that some linkers are sensitive to the order in which you specify libraries to link against.
+
+GCC (which implies MinGW as well) requires that the dependees (libraries that others depend on) are specified after the dependers (libraries that depend on others).
+
+An example of a GCC command line linking all modules would be as follows:
+```
+g++ main.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-network -lsfml-system
+```
+
+This is explained as well in [this forum post](http://en.sfml-dev.org/forums/index.php?topic=8518.msg57257#msg57257).
+
+In Code::Blocks, you would have to make sure the dependees are under the dependers in the list of libraries to link against.
 
 ## <a name="graphics"/>SFML Graphics
 
@@ -389,6 +428,10 @@ Have you:
 * On Linux, have you installed the libraries (sudo make install in the SFML folder)?
 
 If you've checked all of those, and SFML still refuses to work, see [I found a bug!](#grl-bug).
+
+### <a name="tr-grl-undefined-ref"/>I keep getting "undefined reference to &lt;some strange thing that looks like an SFML function&gt;" errors!
+
+See [What and how do I link to use SFML?](#build-link)
 
 ### <a name="tr-grl-crash"/>My computer crashes when I run my SFML program!
 

@@ -13,6 +13,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C#] [[SpriteAnimated|Source:-Sprite-Animated]] : A C# version of animated sprite class.
 
 ##Drawables
+* [C++] [[AnimatedSprite|Source:-AnimatedSprite]] : A class that provides an easy interface to Animations and follow the design of sf::Sprite (by Foaly)
 * [C++] [[Round Ended Lines|Source:-Round-Ended-Lines]] : A class that renders round ended Lines (by Foaly)
 * [C++] [[Drawable Line Shape|Source:-Drawable-Line-Shape]]: A drawable-derived fast-rendering class for shapes made of lines
 * [C++] [[Drawing Color Gradient|Source:-Color-Gradient]] : Draw and manage color gradient easily with this class

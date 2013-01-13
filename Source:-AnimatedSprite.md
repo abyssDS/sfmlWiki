@@ -29,10 +29,10 @@ int main()
     // push frames
     Animation walkingAnimation;
     walkingAnimation.setSpriteSheet(texture);
-    walkingAnimation.pushBackFrame(sf::IntRect(0, 0, 53, 95));
-    walkingAnimation.pushBackFrame(sf::IntRect(53, 0, 57, 97));
-    walkingAnimation.pushBackFrame(sf::IntRect(0, 0, 53, 95));
-    walkingAnimation.pushBackFrame(sf::IntRect(110, 0, 57, 97));
+    walkingAnimation.addFrame(sf::IntRect(0, 0, 53, 95));
+    walkingAnimation.addFrame(sf::IntRect(53, 0, 57, 97));
+    walkingAnimation.addFrame(sf::IntRect(0, 0, 53, 95));
+    walkingAnimation.addFrame(sf::IntRect(110, 0, 57, 97));
 
     // set up AnimatesSprite
     AnimatedSprite animatedSprite(sf::seconds(0.2));
@@ -89,7 +89,7 @@ class Animation
 public:
     Animation();
 
-    void pushBackFrame(sf::IntRect rect);
+    void addFrame(sf::IntRect rect);
     void setSpriteSheet(sf::Texture& texture);
     const sf::Texture* getSpriteSheet() const;
     std::size_t getSize();
@@ -111,7 +111,7 @@ Animation::Animation() : m_texture(NULL)
 
 }
 
-void Animation::pushBackFrame(sf::IntRect rect)
+void Animation::addFrame(sf::IntRect rect)
 {
     m_frames.push_back(rect);
 }

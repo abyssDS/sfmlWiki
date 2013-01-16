@@ -278,6 +278,14 @@ You can convert freely between sf::Image and sf::Texture, however just keep in m
 
 ### <a name="graphics-sprites"/>My FPS count drops when drawing a lot of sprites.
 
+This may happen due to many reasons, some may depend on the code and circumstances, but a possible bottle-neck is the amount of draw calls. When using a lot of sf::Sprites you need to make an equal amount of draw calls to make them show. 
+
+As each draw call changes the RenderTarget it can become slow to modify it in n-amount of loops and calls when it would be most efficient to do it in just one, the reason SFML doesn't work like this is that it would limit what you can do with sf::Sprite and would force the usage of a single texture in cases where this might not be desirable or even possible due to GPU limitations. 
+
+In order to raise FPS in this circumstance there is no choice other than using bare sf::Vertex/sf::VertexArray or finding another way to achieve the same effect. These on their own however won't be magical and a wrapper will most likely help do the desired render in a nice looking notation.
+
+In the wiki's source codes you can find some classes used for fast rendering in some cases such as Tile-Map renderers or containers for transformable sprites that use the same texture.
+
 ### <a name="graphics-vsync-framelimit"/>Should I use VSync, window.setFramerateLimit or something else?
 
 ### <a name="graphics-xsprite"/>Should I use one sprite or x sprites to draw x textures?

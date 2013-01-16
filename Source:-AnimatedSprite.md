@@ -78,8 +78,6 @@ int main()
 #ifndef ANIMATION_INCLUDE
 #define ANIMATION_INCLUDE
 
-// Class written by Foaly
-
 #include <vector>
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/Texture.hpp>
@@ -90,10 +88,10 @@ public:
     Animation();
 
     void addFrame(sf::IntRect rect);
-    void setSpriteSheet(sf::Texture& texture);
+    void setSpriteSheet(const sf::Texture& texture);
     const sf::Texture* getSpriteSheet() const;
-    std::size_t getSize();
-    sf::IntRect& getFrame(const std::size_t n);
+    std::size_t getSize() const;
+    const sf::IntRect& getFrame(std::size_t n) const;
 
 private:
     std::vector<sf::IntRect> m_frames;
@@ -116,7 +114,7 @@ void Animation::addFrame(sf::IntRect rect)
     m_frames.push_back(rect);
 }
 
-void Animation::setSpriteSheet(sf::Texture& texture)
+void Animation::setSpriteSheet(const sf::Texture& texture)
 {
     m_texture = &texture;
 }
@@ -126,24 +124,21 @@ const sf::Texture* Animation::getSpriteSheet() const
     return m_texture;
 }
 
-std::size_t Animation::getSize()
+std::size_t Animation::getSize() const
 {
     return m_frames.size();
 }
 
-sf::IntRect& Animation::getFrame(const std::size_t n)
+const sf::IntRect& Animation::getFrame(std::size_t n) const
 {
     return m_frames[n];
 }
-
 ```
 
 ### AnimatedSprite.hpp
 ```cpp
 #ifndef ANIMATEDSPRITE_INCLUDE
 #define ANIMATEDSPRITE_INCLUDE
-
-// Class written by Foaly
 
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/System/Time.hpp>
@@ -159,7 +154,7 @@ public:
     AnimatedSprite(sf::Time frameTime = sf::seconds(0.2), bool paused = false, bool looped = true);
 
     void update(sf::Time deltaTime);
-    void setAnimation(Animation& animation);
+    void setAnimation(const Animation& animation);
     void setFrameTime(sf::Time time);
     void play();
     void pause();
@@ -171,11 +166,10 @@ public:
     bool isLooped() const;
     bool isPlaying() const;
     sf::Time getFrameTime() const;
-
-
+    void setFrame(std::size_t newFrame, bool resetTime = true);
 
 private:
-    Animation* m_animation;
+    const Animation* m_animation;
     sf::Time m_frameTime;
     sf::Time m_currentTime;
     std::size_t m_currentFrame;
@@ -196,15 +190,17 @@ private:
 #include "AnimatedSprite.hpp"
 
 AnimatedSprite::AnimatedSprite(sf::Time frameTime, bool paused, bool looped) :
-    m_animation(NULL), m_currentFrame(0), m_isPaused(paused), m_isLooped(looped), m_texture(NULL)
+    m_animation(NULL), m_frameTime(frameTime), m_currentFrame(0), m_isPaused(paused), m_isLooped(looped), m_texture(NULL)
 {
-    m_frameTime = frameTime;
+
 }
 
-void AnimatedSprite::setAnimation(Animation& animation)
+void AnimatedSprite::setAnimation(const Animation& animation)
 {
     m_animation = &animation;
     m_texture = m_animation->getSpriteSheet();
+    m_currentFrame = 0;
+    setFrame(m_currentFrame);
 }
 
 void AnimatedSprite::play()
@@ -240,6 +236,7 @@ void AnimatedSprite::setColor(const sf::Color& color)
     m_vertices[2].color = color;
     m_vertices[3].color = color;
 }
+
 sf::FloatRect AnimatedSprite::getLocalBounds() const
 {
     sf::IntRect rect = m_animation->getFrame(m_currentFrame);
@@ -270,6 +267,32 @@ sf::Time AnimatedSprite::getFrameTime() const
     return m_frameTime;
 }
 
+void AnimatedSprite::setFrame(std::size_t newFrame, bool resetTime)
+{
+    if(m_animation)
+    {
+        //calculate new vertex positions and texture coordiantes
+        sf::IntRect rect = m_animation->getFrame(m_currentFrame);
+
+        m_vertices[0].position = sf::Vector2f(0, 0);
+        m_vertices[1].position = sf::Vector2f(0, rect.height);
+        m_vertices[2].position = sf::Vector2f(rect.width, rect.height);
+        m_vertices[3].position = sf::Vector2f(rect.width, 0);
+
+        float left = static_cast<float>(rect.left) + 0.0001;
+        float right = left + rect.width;
+        float top = static_cast<float>(rect.top);
+        float bottom = top + rect.height;
+
+        m_vertices[0].texCoords = sf::Vector2f(left, top);
+        m_vertices[1].texCoords = sf::Vector2f(left, bottom);
+        m_vertices[2].texCoords = sf::Vector2f(right, bottom);
+        m_vertices[3].texCoords = sf::Vector2f(right, top);
+    }
+
+    if(resetTime)
+        m_currentTime = sf::Time::Zero;
+}
 
 void AnimatedSprite::update(sf::Time deltaTime)
 {
@@ -300,23 +323,8 @@ void AnimatedSprite::update(sf::Time deltaTime)
 
             }
 
-            //calculate new vertex positions and texture coordiantes
-            sf::IntRect rect = m_animation->getFrame(m_currentFrame);
-
-            m_vertices[0].position = sf::Vector2f(0, 0);
-            m_vertices[1].position = sf::Vector2f(0, rect.height);
-            m_vertices[2].position = sf::Vector2f(rect.width, rect.height);
-            m_vertices[3].position = sf::Vector2f(rect.width, 0);
-
-            float left = static_cast<float>(rect.left);
-            float right = left + rect.width;
-            float top = static_cast<float>(rect.top);
-            float bottom = top + rect.height;
-
-            m_vertices[0].texCoords = sf::Vector2f(left, top);
-            m_vertices[1].texCoords = sf::Vector2f(left, bottom);
-            m_vertices[2].texCoords = sf::Vector2f(right, bottom);
-            m_vertices[3].texCoords = sf::Vector2f(right, top);
+            // set the current frame, not reseting the time
+            setFrame(m_currentFrame, false);
         }
     }
 }
@@ -330,4 +338,5 @@ void AnimatedSprite::draw(sf::RenderTarget& target, sf::RenderStates states) con
         target.draw(m_vertices, 4, sf::Quads, states);
     }
 }
+
 ```

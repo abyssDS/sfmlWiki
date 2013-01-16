@@ -3,7 +3,7 @@
 ## Summary 
 This is a class for SFML 2 that provides a easy interface to animate Sprites. The design closely follows the design of the sf::Sprite class.
 
-Class written by Foaly. You can use it in any way you want. Just a little note that the class was written by me would be nice :)
+Both classes are written by Foaly. They are under the zlib/libpng license (the same that SFML uses). I would be nice if you name in the credits of your project :)
 
 ##Usage
 The usage is quiet simple. First you create a Animation. The Animation class is essentially a std::vector of sf::IntRect and a sf::Texture reference. So you have to provide a Spritesheet and push back your intrects. Then you create a AnimatedSprite object and provide it with a Animation. The AnimatedSprite class inherits from both sf::Drawable and sf::Transfomable, so it behaves much like a regular sprite. The only thing you have to do is to call the update(sf::Time deltaTime) member on every iteration with the time passed since the last iteration (this also allows you to do effects like slow motion without changing the frame time). Of course the AnimatedSprite class also provides members to pause, stop and play the Animation.
@@ -75,6 +75,29 @@ int main()
 ##Source
 ### Animation.hpp
 ```cpp
+////////////////////////////////////////////////////////////
+//
+// Copyright (C) 2013 Maximilian Wagenbach (aka. Foaly) (foaly.f@web.de)
+//
+// This software is provided 'as-is', without any express or implied warranty.
+// In no event will the authors be held liable for any damages arising from the use of this software.
+//
+// Permission is granted to anyone to use this software for any purpose,
+// including commercial applications, and to alter it and redistribute it freely,
+// subject to the following restrictions:
+//
+// 1. The origin of this software must not be misrepresented;
+// you must not claim that you wrote the original software.
+// If you use this software in a product, an acknowledgment
+// in the product documentation would be appreciated but is not required.
+//
+// 2. Altered source versions must be plainly marked as such,
+// and must not be misrepresented as being the original software.
+//
+// 3. This notice may not be removed or altered from any source distribution.
+//
+////////////////////////////////////////////////////////////
+
 #ifndef ANIMATION_INCLUDE
 #define ANIMATION_INCLUDE
 
@@ -102,6 +125,29 @@ private:
 ```
 ### Animation.cpp
 ```cpp
+////////////////////////////////////////////////////////////
+//
+// Copyright (C) 2013 Maximilian Wagenbach (aka. Foaly) (foaly.f@web.de)
+//
+// This software is provided 'as-is', without any express or implied warranty.
+// In no event will the authors be held liable for any damages arising from the use of this software.
+//
+// Permission is granted to anyone to use this software for any purpose,
+// including commercial applications, and to alter it and redistribute it freely,
+// subject to the following restrictions:
+//
+// 1. The origin of this software must not be misrepresented;
+// you must not claim that you wrote the original software.
+// If you use this software in a product, an acknowledgment
+// in the product documentation would be appreciated but is not required.
+//
+// 2. Altered source versions must be plainly marked as such,
+// and must not be misrepresented as being the original software.
+//
+// 3. This notice may not be removed or altered from any source distribution.
+//
+////////////////////////////////////////////////////////////
+
 #include "Animation.hpp"
 
 Animation::Animation() : m_texture(NULL)
@@ -137,6 +183,29 @@ const sf::IntRect& Animation::getFrame(std::size_t n) const
 
 ### AnimatedSprite.hpp
 ```cpp
+////////////////////////////////////////////////////////////
+//
+// Copyright (C) 2013 Maximilian Wagenbach (aka. Foaly) (foaly.f@web.de)
+//
+// This software is provided 'as-is', without any express or implied warranty.
+// In no event will the authors be held liable for any damages arising from the use of this software.
+//
+// Permission is granted to anyone to use this software for any purpose,
+// including commercial applications, and to alter it and redistribute it freely,
+// subject to the following restrictions:
+//
+// 1. The origin of this software must not be misrepresented;
+// you must not claim that you wrote the original software.
+// If you use this software in a product, an acknowledgment
+// in the product documentation would be appreciated but is not required.
+//
+// 2. Altered source versions must be plainly marked as such,
+// and must not be misrepresented as being the original software.
+//
+// 3. This notice may not be removed or altered from any source distribution.
+//
+////////////////////////////////////////////////////////////
+
 #ifndef ANIMATEDSPRITE_INCLUDE
 #define ANIMATEDSPRITE_INCLUDE
 
@@ -187,6 +256,29 @@ private:
 
 ### AnimatedSprite.cpp
 ```cpp
+////////////////////////////////////////////////////////////
+//
+// Copyright (C) 2013 Maximilian Wagenbach (aka. Foaly) (foaly.f@web.de)
+//
+// This software is provided 'as-is', without any express or implied warranty.
+// In no event will the authors be held liable for any damages arising from the use of this software.
+//
+// Permission is granted to anyone to use this software for any purpose,
+// including commercial applications, and to alter it and redistribute it freely,
+// subject to the following restrictions:
+//
+// 1. The origin of this software must not be misrepresented;
+// you must not claim that you wrote the original software.
+// If you use this software in a product, an acknowledgment
+// in the product documentation would be appreciated but is not required.
+//
+// 2. Altered source versions must be plainly marked as such,
+// and must not be misrepresented as being the original software.
+//
+// 3. This notice may not be removed or altered from any source distribution.
+//
+////////////////////////////////////////////////////////////
+
 #include "AnimatedSprite.hpp"
 
 AnimatedSprite::AnimatedSprite(sf::Time frameTime, bool paused, bool looped) :

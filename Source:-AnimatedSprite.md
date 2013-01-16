@@ -220,7 +220,7 @@ const sf::IntRect& Animation::getFrame(std::size_t n) const
 class AnimatedSprite : public sf::Drawable, public sf::Transformable
 {
 public:
-    AnimatedSprite(sf::Time frameTime = sf::seconds(0.2), bool paused = false, bool looped = true);
+    explicit AnimatedSprite(sf::Time frameTime = sf::seconds(0.2), bool paused = false, bool looped = true);
 
     void update(sf::Time deltaTime);
     void setAnimation(const Animation& animation);

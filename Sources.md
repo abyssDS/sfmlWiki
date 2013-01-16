@@ -36,7 +36,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[wxScrolledSFMLWindow|Source:-wxScrolledSFMLWindow]] (by TricksterGuy) : Integrates an SFML window onto a scrolled wxWindow
 * [C++] [[PhysFS|Source:-SFML-PhysFS]] : A class that adapts PhysFS to SFML with a custom sf::InputStream
 * [C++] [[LoadImageFromResource|Source:-Load-Image-From-Resource]] : An example of how to load data from a resource (.rc) into sf::Image.
-* [C++] [[Loading Images in a Thread|Source:-Loading-Images-in-a-Thread]] : An example of how to load images in a background thread.
+* [C++] [[Loading Images in a Thread|Source:-Loading-Images-in-a-Thread]] : An example of how to load images in a background thread. (with boost)
 * [C++] [[Verlet physic|Source:-Verlet-Physic]] : A simple example of physic circle body in space.
 * [C++] [[Settings Parser|Source:-Settings-Parser]] : Simple class for reading and writing settings in text file. (by cristaloleg)
 * [C++] [[HSL Color|Source:-HSL-Color]] : A class for working with HSL and converting to and from RGB. (by masskiller)

@@ -8,8 +8,6 @@ This container is useful not only for increasing your performances (even if just
 
 As a side-note: This code uses my polar vector class to power rotations, I will include the code of it here, but you can perfectly use Thor's polar vectors or even your own, it's not that hard to modify. 
 
-Also, this container doesn't yet use the recently modified version of sf::Rect, so behavior may be undefined if you just compiled sources under that change. I might change that soon, for now be warned.
-
 This code is under public domain so feel free to use it however you like.
 
 Without further ado I present the code:
@@ -229,15 +227,27 @@ AltSpriteHolder::~AltSpriteHolder() {}
 
 AltSpriteHolder::AltSpriteHolder(const AltSpriteHolder& other)
 {
-    //copy ctor
-    ///Sorry for the inconvenience, will be implemented soon.
+    Quantity = other.Quantity;
+    Tex = other.Tex;
+    VertexHolder = other.VertexHolder;
+    AngleHolder = other.AngleHolder;
+    PositionHolder = other.PositionHolder;
+    ScaleHolder = other.ScaleHolder;
+    TexRectHolder = other.TexRectHolder;
+    hasTexture = other. hasTexture;
 }
 
 AltSpriteHolder& AltSpriteHolder::operator=(const AltSpriteHolder& rhs)
 {
     if (this == &rhs) return *this; // handle self assignment
-    //assignment operator
-    ///Sorry for the inconvenience, will be implemented soon.
+    Quantity = rhs.Quantity;
+    Tex = rhs.Tex;
+    VertexHolder = rhs.VertexHolder;
+    AngleHolder = rhs.AngleHolder;
+    PositionHolder = rhs.PositionHolder;
+    ScaleHolder = rhs.ScaleHolder;
+    TexRectHolder = rhs.TexRectHolder;
+    hasTexture = rhs. hasTexture;
     return *this;
 }
 

@@ -219,8 +219,8 @@ AltSpriteHolder::AltSpriteHolder(sf::Texture& T, const unsigned amount)
         PositionHolder.push_back(sf::Vector2f(0, 0));
         ScaleHolder.push_back(sf::Vector2f(1.f, 1.f));
         AngleHolder.push_back(0.f);
-    }
-    setTextureRect(i, sf::IntRect(0, 0, Tex->getSize().x, Tex->getSize().y));
+        setTextureRect(i, sf::IntRect(0, 0, Tex->getSize().x, Tex->getSize().y));
+    }  
 }
 
 AltSpriteHolder::~AltSpriteHolder() {}

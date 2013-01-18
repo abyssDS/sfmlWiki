@@ -6,7 +6,9 @@ That's the purpose of this container, while each transformation is a little slow
 
 This container is useful not only for increasing your performances (even if just slightly in some cases), but also as a shortcut, it has shortcut functions such as all "global" transformations that affect the entire container with the values given to the function. Something also worth mentioning is the function "rotateAroundSelf" which is a shortcut that allows your "sprites" to rotate around their center.
 
-As a side-note: This code uses my polar vector class to power rotations, I will include the code of it here, but you can perfectly use Thor's polar vectors or even your own, it's not that hard to modify. 
+As a side-note: This code uses my polar vector class to power rotations, I will include the code of it here, but you can perfectly use Thor's polar vectors or even your own, it's not that hard to modify.
+
+I'll be adding a proper documentation and some new features to the class soon. Mainly the adding of a few functions I think are missing and taking out some others that have no place, maybe some more optimizations. 
 
 This code is under public domain so feel free to use it however you like.
 

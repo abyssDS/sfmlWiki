@@ -114,9 +114,9 @@ My code was focused on the usage I will give to my game, which only requires arb
         else { arg2 = ( L + S ) - ( S * L ); }
         arg1 = 2 * L - arg2;
     
-        sf::Uint8 r =( 255 * HueToRGB( arg1, arg2, (H + (float)1/3 ) ) );
+        sf::Uint8 r =( 255 * HueToRGB( arg1, arg2, (H + 1.f/3.f ) ) );
         sf::Uint8 g =( 255 * HueToRGB( arg1, arg2, H ) );
-        sf::Uint8 b =( 255 * HueToRGB( arg1, arg2, (H - (float)1/3 ) ) );
+        sf::Uint8 b =( 255 * HueToRGB( arg1, arg2, (H - 1.f/3.f ) ) );
             
         sf::Color C(r,g,b);
         return C;

@@ -36,4 +36,6 @@ Welcome to the section dedicated to projects using/for SFML.
 
 ## Video Games
 
+* [C++] [Harvest : Massive Encounter](http://www.oxeyegames.com/harvest/): Tower Defense Real Time strategy game
+* [C++] [MechCommander 2](https://github.com/avarisclari/MechCommander2): Port of the Open Source strategy game.
 * [C++] [Metroid Prime : Némésis](http://metroidprime4.xooit.fr/index.php): 2D fangame following the famous Metroid Prime 3.

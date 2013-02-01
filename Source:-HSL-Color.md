@@ -97,19 +97,20 @@ My code was focused on the usage I will give to my game, which only requires arb
     sf::Color HSL::TurnToRGB()
     {
       /// Reconvert to range [0,1]
-      float H = (float)Hue / 360;
-      float S = (float)Saturation / 100;
-      float L = (float)Luminance / 100;
+      float H = static_cast<float>(Hue / 360);
+      float S = static_cast<float>(Saturation / 100);
+      float L = static_cast<float>(Luminance / 100);
       float arg1, arg2;
     
-      if (S <= EPSILON)  /// float comparison annoyance.
+      /// float comparison annoyance, you need to define your own EPSILON of float difference.
+      if (S <= EPSILON)  
       {
         sf::Color C(L*255, L*255, L*255);
         return C;
       }
       else
       {
-        if ( L < 0.5 ) { arg2 = L * ( 1 + S ); }
+        if ( L < 0.5f ) { arg2 = L * ( 1 + S ); }
         else { arg2 = ( L + S ) - ( S * L ); }
         arg1 = 2 * L - arg2;
     
@@ -136,9 +137,9 @@ My code was focused on the usage I will give to my game, which only requires arb
     { return HSL(0, 0, 0); }  /// Saturation 100%, Luminance 0%
 
     float R, G, B;
-    R = (float)C.r/255;  /// You need that cast there. period.
-    G = (float)C.g/255;
-    B = (float)C.b/255;
+    R = static_cast<float>(C.r/255);  /// You need that cast there. period.
+    G = static_cast<float>(C.g/255);
+    B = static_cast<float>(C.b/255);
 
     /// Non trivial cases.
     float max, min, l, s;

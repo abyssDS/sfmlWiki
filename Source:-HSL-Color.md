@@ -19,183 +19,198 @@ HSL allows a good coloring system and is perhaps more intuitive than RGB once yo
 
 Colorizing is a magnificent tool granted by HSL. Why? Because all you have to do is change the hue of a color and it shifts entirely according to it's saturation and brightness, meaning you can change a shaded green mountain to a blue one with just that shift in every pixel of the image.
 
-My approach when coding HSL was to colorize grayscale images for my game. I found it dumb to have an image for every color I wanted, and I dislike having to use a big image where everything is lumped in and I have to go through the dimensions of each individual image just to take it out. What I did was use a single grayscale image and colorize it through this method. With this comes a not so obvious problem, which is that grayscale colors have no saturation, so even if you change the hue of the pixel you will get a grayscale image. 
+There's many uses to HSL in general, from colorizing grayscale images to colored ones, shifting the overall hue, making a colorful image a grayscale one and so on.
 
-The problem is fixed by adding a fixed saturation to them. The gray pixels have no saturation of their own, but they do have Brightness which defines how close they are to either black or white. Taking that into account you can take an image and colorize it and know that it's shades will remain even if it is a grayscale image.
+After the rework, the code works for many use cases now, not just simple images or color code checking. There will be some fixing to make it even more accurate for the purpose of image handling, so this fix-up will be temporary unless I find no other way to make it better, feel free to use it for image handling or whatever you may like.
 
-My code was focused on the usage I will give to my game, which only requires arbitrary precision, therefore I used int as component for the three numbers required by HSL. If you want more precision you can change them to float. However I _do not_ guarantee that it will work correctly. If you want it to work with greater precision and it doesn't work right out the box, you're on your own. Usually the offset in color conversion is not something you can actually perceive so it's usually fine that way.
+Hue shifting doesn't work as well as photoshop's just yet, but it now actually produces a nice looking image when setting upon a complex image with tons of colors. All the annoying pixel artifacts are gone.
 
 ```cpp
-  struct HSL
-  { 
-    int Hue;
-    int Saturation;
-    int Luminance;
+#ifndef HSL_COLOR
+#define HSL_COLOR
+
+#include <SFML/Graphics/Color.hpp>
+#include <algorithm>
+#include <cmath>
+
+struct HSL
+{
+    double Hue;
+    double Saturation;
+    double Luminance;
 
     HSL();
     HSL(int H, int S, int L);
 
     sf::Color TurnToRGB();
 
-  private:
-    float HueToRGB(float arg1, float arg2, float H);
-  };
+    private:
 
-    HSL TurnToHSL(const sf::Color& C);
+    double HueToRGB(double arg1, double arg2, double H);
 
-    /// That's the header, next up is the cpp.
+};
 
-    HSL::HSL()
-    :Hue(0)
-    ,Saturation(0)
-    ,Luminance(0)
-    {}
+HSL TurnToHSL(const sf::Color& C);
 
-    HSL::HSL(int H, int S, int L)
-    {  
-    /** Standard used range is (360, 100, 100), you may change it if you like.
-     *  In the given case you have to make all the proper changes to the convert function.    
-     */
-        /// Range control for Hue.
-        if (H <= 360 && H >= 0) {Hue = H;}
-        else
-        {
-          if(H > 360) { Hue = H%360; }
-          else if(H < 0 && H > -360) { Hue = -H; }
-          else if(H < 0 && H < -360) { Hue = -(H % 360); }
-        }
+#endif // HSL_COLOR
 
-        /// Range control for Saturation.
-        if (S <= 100 && S >= 0) {Saturation = S;}
-        else
-        {
-          if(S > 100) { Saturation = S%100;}
-          else if(S < 0 && S > -100) { Saturation = -S; }
-          else if(S < 0 && S < -100) { Saturation = -(S % 100); }
-        }
 
-        /// Range control for Luminance
-        if (L <= 100 && L >= 0) {Luminance = L;}
-        else
-        {
-          if(L > 100) { Luminance = L % 100;}
-          if(L < 0 && L > -100) { Luminance = -L; }
-          if(L < 0 && L < -100) { Luminance = -(L % 100); }
-        }
+/// That's the header, next up is the cpp.
+
+#include "HSL.hpp"
+const double D_EPSILON = 0.00000000000001; 
+///Feel free to move this to your constants .h file or use it as a static constant if you don't like it here.
+
+HSL::HSL() :Hue(0) ,Saturation(0) ,Luminance(0) {}
+
+HSL::HSL(int H, int S, int L)
+{
+    ///Range control for Hue.
+    if (H <= 360 && H >= 0) {Hue = H;}
+    else
+    {
+    if(H > 360) { Hue = H%360; }
+    else if(H < 0 && H > -360) { Hue = -H; }
+    else if(H < 0 && H < -360) { Hue = -(H%360); }
     }
 
-    float HSL::HueToRGB(float arg1, float arg2, float H)
+    ///Range control for Saturation.
+    if (S <= 100 && S >= 0) {Saturation = S;}
+    else
     {
-      if ( H < 0 ) H += 1;
-      if ( H > 1 ) H -= 1;
-      if ( ( 6 * H ) < 1 ) { return (arg1 + ( arg2 - arg1 ) * 6 * H); }
-      if ( ( 2 * H ) < 1 ) { return arg2; }
-      if ( ( 3 * H ) < 2 ) { return ( arg1 + ( arg2 - arg1 ) * ( ( 2 / 3 ) - H ) * 6 ); }
-      return arg1;
+    if(S > 100) { Saturation = S%100;}
+    else if(S < 0 && S > -100) { Saturation = -S; }
+    else if(S < 0 && S < -100) { Saturation = -(S%100); }
     }
 
-    sf::Color HSL::TurnToRGB()
+    ///Range control for Luminance
+    if (L <= 100 && L >= 0) {Luminance = L;}
+    else
     {
-      /// Reconvert to range [0,1]
-      float H = static_cast<float>(Hue / 360);
-      float S = static_cast<float>(Saturation / 100);
-      float L = static_cast<float>(Luminance / 100);
-      float arg1, arg2;
-    
-      /// float comparison annoyance, you need to define your own EPSILON of float difference.
-      if (S <= EPSILON)  
-      {
+    if(L > 100) { Luminance = L%100;}
+    if(L < 0 && L > -100) { Luminance = -L; }
+    if(L < 0 && L < -100) { Luminance = -(L%100); }
+    }
+
+}
+
+double HSL::HueToRGB(double arg1, double arg2, double H)
+{
+   if ( H < 0 ) H += 1;
+   if ( H > 1 ) H -= 1;
+   if ( ( 6 * H ) < 1 ) { return (arg1 + ( arg2 - arg1 ) * 6 * H); }
+   if ( ( 2 * H ) < 1 ) { return arg2; }
+   if ( ( 3 * H ) < 2 ) { return ( arg1 + ( arg2 - arg1 ) * ( ( 2.0 / 3.0 ) - H ) * 6 ); }
+   return arg1;
+}
+
+sf::Color HSL::TurnToRGB()
+{
+    ///Reconvert to range [0,1]
+    double H = Hue/360.0;
+    double S = Saturation/100.0;
+    double L = Luminance/100.0;
+
+    float arg1, arg2;
+
+    if (S <= D_EPSILON)
+    {
         sf::Color C(L*255, L*255, L*255);
         return C;
-      }
-      else
-      {
-        if ( L < 0.5f ) { arg2 = L * ( 1 + S ); }
-        else { arg2 = ( L + S ) - ( S * L ); }
-        arg1 = 2 * L - arg2;
-    
-        sf::Uint8 r =( 255 * HueToRGB( arg1, arg2, (H + 1.f/3.f ) ) );
-        sf::Uint8 g =( 255 * HueToRGB( arg1, arg2, H ) );
-        sf::Uint8 b =( 255 * HueToRGB( arg1, arg2, (H - 1.f/3.f ) ) );
-            
-        sf::Color C(r,g,b);
-        return C;
-      }
-    }
-
-  HSL TurnToHSL(const sf::Color& C)
-  {
-    /// Trivial cases
-    /** Note that you can add more than these, like one for each of the basic colors,
-        but that's up to you and how you wish to use the class. */
-
-    if(C == sf::Color::White)
-    { return HSL(0, 0, 100); } 
-    /// Even if these colors had hue, as they have no saturation they'd remain the same
-
-    if(C == sf::Color::Black)
-    { return HSL(0, 0, 0); }  /// Saturation 100%, Luminance 0%
-
-    float R, G, B;
-    R = static_cast<float>(C.r/255);  /// You need that cast there. period.
-    G = static_cast<float>(C.g/255);
-    B = static_cast<float>(C.b/255);
-
-    /// Non trivial cases.
-    float max, min, l, s;
-
-    /// Maximum
-    max = std::max(std::max(R,G),B);
-
-    /// Minimum
-    min = std::min(std::min(R,G),B);
-
-    HSL A;
-    l = ((max + min)/2);  /// Lightness/Luminance calculation.
-
-    if (max - min <= EPSILON )  ///EPSILON is a macro for 0.0001 or however precision you want.
-    ///Needed for the closest thing to an equality comparison between floats.
-    {
-      A.Hue = 0;
-      A.Saturation = 0;
     }
     else
     {
-      float diff = max - min;
+        if ( L < 0.5 ) { arg2 = L * ( 1 + S ); }
+        else { arg2 = ( L + S ) - ( S * L ); }
+        arg1 = 2 * L - arg2;
 
-      if(A.Luminance < .5)
-      { s = diff/(max + min); }
-      else
-      { s = diff/(2 - max - min); }
-
-      float diffR = ( (( max - R ) * 60) + (diff/2) ) / diff;
-      float diffG = ( (( max - G ) * 60) + (diff/2) ) / diff;
-      float diffB = ( (( max - B ) * 60) + (diff/2) ) / diff;
-    
-      /** 60 and 360 are values that can vary.
-        * It depends if you want the range in 360 or anything other than that.  
-        * If you change the value then it must be a multiple of six. 360/6 = 60.
-        * That's where the 60 comes from.
-        * The values below are just the range you want the hue in. 
-        */
-      if (max - R <= EPSILON) { A.Hue = diffB - diffG; }
-      else if ( max - G <= EPSILON ) { A.Hue = (1*360)/3 + (diffR - diffB); }
-      else if ( max - B <= EPSILON ) { A.Hue = (2*360)/3 + (diffG - diffR); }
-    
-      if (A.Hue < 0) { A.Hue += 360; }
-      else if(A.Hue > 360) { A.Hue -= 360; }
-    
-      s *= 100; 
-      /** Saturation and lightness are given in a [0 , 1] interval. 
-        * Needed to get it in the right percentage.     
-        * Then again, up to you, you may change it if you want. */
+        sf::Uint8 r =( 255 * HueToRGB( arg1, arg2, (H + 1.0/3.0 ) ) );
+        sf::Uint8 g =( 255 * HueToRGB( arg1, arg2, H ) );
+        sf::Uint8 b =( 255 * HueToRGB( arg1, arg2, (H - 1.0/3.0 ) ) );
+        sf::Color C(r,g,b);
+        return C;
     }
-    
+
+}
+
+HSL TurnToHSL(const sf::Color& C)
+{
+    ///Trivial cases.
+    if(C == sf::Color::White)
+    { return HSL(0, 0, 100); }
+
+    if(C == sf::Color::Black)
+    { return HSL(0, 0, 0); } 
+
+    if(C == sf::Color::Red)
+    { return HSL(0, 100, 50); }
+
+    if(C == sf::Color::Yellow)
+    { return HSL(60, 100, 50); }
+
+    if(C == sf::Color::Green)
+    { return HSL(120, 100, 50); }
+
+    if(C == sf::Color::Cyan)
+    { return HSL(180, 100, 50); }
+
+    if(C == sf::Color::Blue)
+    { return HSL(240, 100, 50); }
+
+    if(C == sf::Color::Cyan)
+    { return HSL(300, 100, 50); }
+
+    double R, G, B;
+    R = C.r/255.0;
+    G = C.g/255.0;
+    B = C.b/255.0;
+    ///Casos no triviales.
+    double max, min, l, s;
+
+    ///Maximos
+    max = std::max(std::max(R,G),B);
+
+    ///Minimos
+    min = std::min(std::min(R,G),B);
+
+
+    HSL A;
+    l = ((max + min)/2.0);
+
+    if (max - min <= D_EPSILON )
+    {
+        A.Hue = 0;
+        A.Saturation = 0;
+    }
+    else
+    {
+        double diff = max - min;
+
+        if(A.Luminance < 0.5)
+        { s = diff/(max + min); }
+    else
+    { s = diff/(2 - max - min); }
+
+	double diffR = ( (( max - R ) * 60) + (diff/2.0) ) / diff;
+	double diffG = ( (( max - G ) * 60) + (diff/2.0) ) / diff;
+	double diffB = ( (( max - B ) * 60) + (diff/2.0) ) / diff;
+
+
+    if (max - R <= D_EPSILON) { A.Hue = diffB - diffG; }
+    else if ( max - G <= D_EPSILON ) { A.Hue = (1*360)/3.0 + (diffR - diffB); }
+    else if ( max - B <= D_EPSILON ) { A.Hue = (2*360)/3.0 + (diffG - diffR); }
+
+    if (A.Hue <= 0 || A.Hue >= 360) { fmod(A.Hue, 360); }
+
+    s *= 100;
+    }
+
     l *= 100;
     A.Saturation = s;
     A.Luminance = l;
     return A;
-  }
+}
+
 ```
 
 I think that all that remains is the '=' operator, but it follows the same syntax the constructor does, all you have to do is use the same logic to it.

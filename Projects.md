@@ -8,7 +8,6 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [sfeMovie](https://github.com/Yalir/sfeMovie): A C++ library that lets you play movies in SFML based applications.
 
 ### UI (User Interface)
-* [C++] [SimpleButton](http://en.sfml-dev.org/forums/index.php?topic=9379.0): A C++ API that allows easy creation of Buttons and other GUI features.
 * [C++] [SFGUI](http://sfgui.sfml-dev.de/): A C++ library for adding graphical user interfaces to games and programs.
 
 ### Other extensions

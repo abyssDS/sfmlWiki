@@ -80,6 +80,6 @@ int main() {
 }
 ```
 
-(this code sample is also [[available in OCaml|Tutorialplaysine-ocaml]])
+(this code sample is also [[available in OCaml|Tutorial:-Play-Sine-Wave-(OCaml)]])
 
 Now try to get this playing the US dial tone. Here's a hint: it's made up of the frequencies 350hz and 440hz. Sine waves are added when combined.

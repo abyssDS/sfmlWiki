@@ -644,7 +644,7 @@ The zlib/png license is a permissive free software license which means it has no
 No, SFML does not have a GUI package, but you can essentially use any OpenGL-based GUI library. Here's a obviously incomplete list:
 
 * [SFGUI](http://sfgui.sfml-dev.de/)
-* [GWEN](http://code.google.com/p/gwen/)
+* [GWEN](https://github.com/garrynewman/GWEN)
 * [TGUI](http://tgui.weebly.com/)
 * [CEGUI](http://www.cegui.org.uk/wiki/index.php/Main_Page)
 * [Guichan](https://code.google.com/p/guichan/)

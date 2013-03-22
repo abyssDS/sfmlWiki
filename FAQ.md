@@ -350,6 +350,32 @@ If you are developing your first networked application, stick with TCP as long a
 
 ### <a name="network-internet-network"/>I can't connect to the other computer over the internet!
 
+This is probably one of the hardest "problems" to solve, as the number of error sources is quite high (up to the point where you aren't even responsible for the error yourself).
+
+Since there is no general solution to this problem, here is a list of things you can check:
+
+1. Make sure that it isn't just a programming error. Read the documentation and assure that what you are trying to achieve is reflected in your code.
+
+2. Make sure that the addresses you use are correct. There are 3 ways you can identify an endpoint.
+Obviously if you want to address an endpoint that isn't part of your local network you can not use the first option.
+    * By private address e.g. 192.168.1.1 (192.168.*.*, 10.*.*.* and 172.16.*.* to 172.31.*.* are all private networks)
+    * By public address e.g. 123.123.123.123
+    * By FQDN (Fully-Qualified Domain Name) e.g. www.sfml-dev.org (www is the _hostname_ and sfml-dev.org is the _domain name_)
+
+3. Make sure that data transmission is not hindered by anything in the networking infrastructure (routers, firewalls etc.), if you are not sure about this, it most likely means that the port you are trying to use is either closed or not configured to be forwarded behind a NAT.
+
+4. Make sure that data is really being sent and received by the hosts independent of your application. It might occur that you try to send data within your application, SFML doesn't report an error, but the operating system refuses to transmit it. To check if this problem exists, it is recommended that you install some form of packet capturing software such as [WireShark](www.wireshark.org) on both systems.
+
+5. Make sure that the data leaves the local network over the router. There is a possibility that the router blocks outgoing data as well.
+
+6. Make sure that the data arrives at the destination network router and is properly forwarded. If you are sure that the data leaves the origin network but never arrives at the destination network, try using a different port. Some ISPs have policies that block traffic from certain software and because they are not interested in using a better filtering mechanism, they decide to block the whole port instead of only traffic that really stems from the specific software. If you happen to use one of those ports, you are unlucky and should just try another.
+
+7. If you are sure that the port you use isn't blocked, in very very rare cases it might be an error somewhere on the way from the source the the destination within some ISPs network. If this is really the case, you are as good as out of luck and should just try again at another time or be prepared to make a lot of phone calls with a lot of uninterested people.
+
+8. If the ISP assures you that there is nothing wrong with their network, you must always take this with a pinch of salt because unless they contractually bind themselves to what they say, it might have been just to make you end the call.
+
+9. When all else fails, you can always come to the SFML forum and ask for help there.
+
 ## <a name="window"/>SFML Window
 
 ### <a name="window-transparent-window"/>How do I make my window transparent?

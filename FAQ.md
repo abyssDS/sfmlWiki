@@ -555,10 +555,12 @@ If you link with the DLL versions, you must copy the required DLLs beside your e
 
 ### <a name="tr-win-console"/>Why does a console attach itself to my project?
 
-In Windows, if you compile your project, you will have a console that attaches itself behind your window. To avoid this, you must create a Console project, and then:
+In Windows, if you compile your project, you will have a console that attaches itself behind your window. To avoid this, you must create a the correct type of project or change its type after creation. Many IDEs have options allowing you to choose whether you want to create a console or a GUI application. It is however recommended to create an empty project and manually set its type afterwards. This ensures that nothing else is set automatically that might cause strange behaviour later on.
 
-* In Code::Blocks, go to the project options (Project Menu -> Properties). In the Build targets tab, select "GUI Application" from the type drop-down list.
-* In Visual Studio, go to the project options (Project Menu -> Properties). In the tree on the left, expand the "Configuration properties" tree and expand the "Linker" sub-tree. Select "System" from the sub-tree and, in the SubSystem field, select "Windows (/SUBSYSTEM:WINDOWS)" from the drop-down list.
+If you have already created the console project or created an empty one:
+
+* In Code::Blocks, open the project options (Project Menu -> Properties). In the Build targets tab, select the build target you wish to change on the left (most of the time only Debug and Release exist) and change its type option in the drop-down list on the right side from "Console application" to "GUI application".
+* In Visual Studio, go to the project options (Project Menu -> Properties). In the tree on the left, expand the "Configuration properties" tree and expand the "Linker" sub-tree. Select "System" from the sub-tree, and in the SubSystem field on the right side change "Console (/SUBSYSTEM:CONSOLE)" to "Windows (/SUBSYSTEM:WINDOWS)" by clicking on the field and using the drop-down list.
 
 To maintain a portable entry point (`int main()` function), you can link your program against the small sfml-main.lib library in the case of Visual Studio or libsfml-main.a in the case of Code::Blocks/MinGW.
 

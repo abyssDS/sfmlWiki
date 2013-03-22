@@ -364,6 +364,28 @@ SFML supports the input and display of international characters, via the UTF-16 
 
 ### <a name="system-string-convert"/>How do I convert from sf::String to &lt;type&gt; and vice-versa?
 
+For conversions to `sf::String`, you can just construct the `sf::String` directly from whatever object you already have. 
+```cpp
+sf::String sfml_string( cpp_string );
+```
+There are enough constructors that take care of implicit conversion from all standard C++ string types. If you want to see what these look like, take a look in the [`sf::String` documentation](http://sfml-dev.org/documentation/2.0/classsf_1_1String.php). If you want to convert from a non-C++ string to `sf::String`, it is recommended to first convert to a C++ string and then to an `sf::String`. Since any library using custom string types should provide support for this, this shouldn't be problematic.
+
+For conversions from `sf::String` to any other custom string type, it is also recommended to first convert to a C++ string then from C++ string to that type.
+
+`sf::String` supports implicit conversion to `std::string` and `std::wstring`, so things like
+```cpp
+std::cout << sfml_string << std::endl;
+cpp_string += sfml_string;
+std::size_t pos = cpp_string.find( sfml_string );
+```
+are all valid. Additionally, if implicit conversion isn't something that comforts you, you can explicitly call `.toAnsiString()` or `.toWideString()` to convert to the corresponding types.
+
+Because internally `sf::String` stores its data in a `std::basic_string<sf::Uint32>`, conversions to this type (which is a C++ string type) are lossless. Ironically however, conversion to this type is not supported directly by `sf::String` and one has to perform it via iterators as such:
+```cpp
+std::basic_string<sf::Uint32> basic_uint32_string( sfml_string.begin(), sfml_string.end() );
+```
+Once you have a `std::basic_string<sf::Uint32>` you can use all of the same functionality as `std::string` since `std::string` is just a typedef for `std::basic_string<char>`.
+
 ### <a name="system-threads-crash"/>My program keeps crashing when I use threads!
 
 ### <a name="system-mutex"/>How do I use sf::Mutex?

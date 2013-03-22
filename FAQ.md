@@ -34,8 +34,7 @@
 **[SFML Networking](#network)**
 - [How do I create &lt;insert popular application type here&gt;?](#network-create-network-app)
 - [Should I use TCP or UDP sockets?](#network-tcp-vs-udp)
-- [Should I use blocking or non-blocking sockets?](#network-blocking-non-blocking)
-- [How do selectors work?](#network-selectors)
+- [Should I use blocking or non-blocking sockets? And how do selectors work?](#network-blocking-non-blocking-selectors)
 - [I can't connect to the other computer over the internet!](#network-internet-network)
 
 **[SFML Window](#window)**
@@ -344,9 +343,19 @@ Well... If you implement your own reliable transport protocol on top of UDP, you
 
 If you are developing your first networked application, stick with TCP as long as you can. Bandwidth and latency issues will not be your biggest concern until you are sure you can make money off it. Once that time comes, you will have gained so much experience that the decision will be trivial.
 
-### <a name="network-blocking-non-blocking"/>Should I use blocking or non-blocking sockets?
+### <a name="network-blocking-non-blocking-selectors"/>Should I use blocking or non-blocking sockets? And how do selectors work?
 
-### <a name="network-selectors"/>How do selectors work?
+It depends on what kind of an application you are developing and what your preference is. If you are just beginning to learn network programming, you can use blocking sockets when writing your first echo server (a server that waits for data to be received and instantly sends back a response). In this case the server does not do anything else but reply to incoming data and as such can block as much as it wants.
+
+If, however, the server has other duties as well, such as updating an internal state every frame, blocking the state update thread must be avoided at all costs. This means, either you block in a separate thread, you call blocking operations **when you know they should not block** using selectors or you just use non-blocking sockets.
+
+Because creating a separate thread for each blocking socket can result in a large amount of threads created, this method is not recommended unless you are sure that the number of expected connections stays manageable.
+
+Using non-blocking sockets might seem the easiest at first, but one must consider that every time you poll the socket for new data, you are making numerous operating system calls which means a lot of overhead just to determine if the socket could be read or not. Even at a moderate number of sockets, this can become quite expensive. This is why selectors exist.
+
+To solve the previous problem, operating systems provide methods of polling a large number of resources for their readiness simultaneously or at least in a very efficient manner. The principle idea is that you tell the operating system which resources you want to monitor and it sets the respective field within the selector when that resource becomes ready. That way you only have to check if the field is set, and the operating system only sets the field when something really does happen thus resulting in a very efficient way of checking for readiness. The `sf::SocketSelector` in SFML wraps all this functionality. You can ask the selector if a socket is ready and it will perform all the low level operations for you.
+
+The most universal choice is using selectors and blocking sockets, as they are suitable for any scenario with little to no drawbacks. Many high performance applications still use selectors nowadays although there newer ways are constantly being developed to do the same which are just a bit more efficient.
 
 ### <a name="network-internet-network"/>I can't connect to the other computer over the internet!
 

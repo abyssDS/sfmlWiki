@@ -397,7 +397,7 @@ SFML does however provide sf::Window::getSystemHandle(). Using the handle you ca
 
 getFrameTime() was removed from SFML at the beginning of 2012. The reasoning for it can be found here: http://en.sfml-dev.org/forums/index.php?topic=6831.0
 
-Users have to now create an sf::Clock object and keep time themselves. This has more advantages than disadvantages including:
+Users have to create an sf::Clock object now and keep time themselves. This has more advantages than disadvantages including:
 
 * Correct time reporting (getFrameTime() reported the time spent **during the last frame**)
 * More control over between which points in your code the time is to be measured
@@ -407,7 +407,7 @@ Users have to now create an sf::Clock object and keep time themselves. This has 
 
 ### <a name="system-unicode"/>Does SFML support Unicode?
 
-SFML supports the input and display of international characters, via the UTF-16 encoding. Input is provided via sf::Event::TextEntered, and display via sf::String.
+SFML supports the input and display of international characters, via the UTF-16 encoding. Input is provided via sf::Event::TextEntered as sf::String and can be display with sf::Text.
 
 ### <a name="system-string-convert"/>How do I convert from sf::String to &lt;type&gt; and vice-versa?
 
@@ -533,7 +533,7 @@ If the bug is still present in the latest SFML version, try to produce a [minima
 If you can reproduce what you think is a bug, if you have another computer at your disposal, try to run it there as well. If the bug does not occur there, try to reconfigure the corresponding hardware/software settings on the first PC. A lot of strange behaviour is a result of misconfigured/faulty software/drivers. **WARNING: Trying to report a bug that is a result of the usage of beta drivers is not a good idea. The source of the problem does not lie within the responsibility of the SFML developers and as such they can't do much to fix it themselves.**
 
 When you are sure that the bug is a result of SFML internals and is platform independent, you can go ahead and post in the forum of the package in question, and don't forget to provide a precise description of your problem, the version of SFML you're using, your system configuration, and the compilable code, and if the situation requires, the logs of your compiler and/or linker.
-Also make sure that the bug hasn't already been reported (use the [search function](http://en.sfml-dev.org/forums/index.php?action=search)), confirmed (look on the [issue tracker](https://github.com/LaurentGomila/SFML/issues?page=1&state=open) or even resolved in the latest source (check also the [closed issues](https://github.com/LaurentGomila/SFML/issues?page=1&state=closed)).
+Also make sure that the bug hasn't already been reported (use the [search function](http://en.sfml-dev.org/forums/index.php?action=search)), confirmed (look on the [issue tracker](https://github.com/LaurentGomila/SFML/issues?page=1&state=open)) or even resolved in the latest source (check also the [closed issues](https://github.com/LaurentGomila/SFML/issues?page=1&state=closed)).
 
 ### <a name="tr-grl-minimal"/>What is a minimal code?
 
@@ -588,16 +588,12 @@ Side note: This technique will often help you troubleshoot the problem on your o
 
 ### <a name="tr-cb"/>Code::Blocks
 
-### <a name="tr-cb-static-linker"/>I've recompiled the static version of SFML and I'm getting linker errors.
-
-MinGW does not include the external libraries when doing static compilation, so you must add them after compilation, or link them directly into your project.
-
 ### <a name="tr-cb-linker"/>I'm getting linker errors.
 
 With MinGW, you must link the libraries in a precise order: if libX depends on libY, libX MUST be linked before libY. For example, if you use the Graphics and Audio modules, the correct linking order would be the following: sfml-audio, sfml-graphics, sfml-window, sfml-system.
 
 If you use the dynamic versions of the SFML 1.6 libraries, you must also define the SFML_DYNAMIC symbol in the options for your project.
-If you use the static verions of the SFML 2.0 libraries, you must also define the SFML_STATIC symbol in the options for your project.
+If you use the static version of the SFML 2.0 libraries, you must also define the SFML_STATIC symbol in the options for your project.
 For more details, see the installation tutorial for Code::Blocks.
 
 ---
@@ -624,7 +620,7 @@ If you link with the DLL versions, you must copy the required DLLs beside your e
 
 ### <a name="tr-win-console"/>Why does a console attach itself to my project?
 
-In Windows, if you compile your project, you will have a console that attaches itself behind your window. To avoid this, you must create a the correct type of project or change its type after creation. Many IDEs have options allowing you to choose whether you want to create a console or a GUI application. It is however recommended to create an empty project and manually set its type afterwards. This ensures that nothing else is set automatically that might cause strange behaviour later on.
+In Windows, if you compile your project, you will have a console that attaches itself behind your window. To avoid this, you must create the correct type of project or change its type after creation. Many IDEs have options allowing you to choose whether you want to create a console or a GUI application. It is however recommended to create an empty project and manually set its type afterwards. This ensures that nothing else is set automatically that might cause strange behaviour later on.
 
 If you have already created the console project or created an empty one:
 
@@ -660,13 +656,7 @@ Before anything else, make sure that you've followed the [official tutorial](htt
 * libxrandr-dev
 * libxrandr2-dbg
 
-If you're compiling version 1.3, you must add
-```cpp
-    #include <string.h>
-```
-in Packet.hpp in the Network module, and SoundFileDefault.cpp in Audio.
-
-If you're using the git version, remember to do a make clean before compilation to avoid any problems.
+Though the library names might vary, especially regarding the version number.
 
 ### <a name="tr-lnx-titlebar"/>There is no titlebar visible and/or artifacts from windows are visible.
 
@@ -688,7 +678,7 @@ You can use this simple script to toggle compiz on and off, if you're using meta
 
 ### <a name="lic-license"/>What license does SFML have?
 
-SFML is under the [zlib/png license](http://www.opensource.org/licenses/zlib-license.php). You can use SFML for both open-source and proprietary project, including paid or commercial ones. If you use SFML in your projects, a credit or mention is appreciated, but is not required.
+SFML is under the [zlib/png license](http://www.opensource.org/licenses/zlib-license.php). You can use SFML for both open-source and proprietary projects, including paid or commercial ones. If you use SFML in your projects, a credit or mention is appreciated, but is not required.
 
 ### <a name="lic-commercial"/>Can I use SFML in commercial applications?
 
@@ -739,7 +729,7 @@ The git repository is also hosted on [GitHub](https://github.com/Bromeon/Thor) a
 
 ### <a name="misc-projects"/>Are there any famous projects with SFML?
 
-As SFML is open source and has a permissive free software license game creators are not force to specify that they've used SFML in their games, thus it might well be that SFML has been used in bigger commercial projects. As for the known projects, there's a [dedicated page](Projects) on the SFML's wiki.
+As SFML is open source and has a permissive free software license, game creators are not forced to specify that they've used SFML in their games, thus it might well be that SFML has been used in bigger commercial projects, we don't know of. As for the known projects, there's a [dedicated page](Projects) on the SFML's wiki.
 
 ### <a name="misc-distr"/>How can I distribute my game?
 

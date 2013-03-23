@@ -1,6 +1,6 @@
 ## Welcome
 
-This wiki is written by SFML users, for SFML users. It gathers all the external contributions about SFML: tutorials, source codes, projects, tips and tricks, etc.
+This wiki is written by SFML users, for SFML users. It gathers all the external contributions about SFML: tutorials, source code, projects, tips and tricks, etc.
 
 You are encouraged to come and share all kind of personal contributions: new pages, improvements to existing pages, or even simple corrections.
 

@@ -8,7 +8,7 @@ You are encouraged to come and share all kind of personal contributions: new pag
 
 * [[Tutorials]]
 
-* [[Source codes|Sources]]
+* [[Source code|Sources]]
 
 * [[Projects]]
 

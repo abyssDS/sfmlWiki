@@ -34,7 +34,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Smart Resource Manager|Source:-Smart-ResourceManager]] : Generic resource manager which keeps track of it's references. (by Groogy)
 * [C++] [[sftools::Chronometer|Source:-Chronometer]] : This class provides the basic mechanism of a chronometer.
 * [C++] [[FPS|Source:-FPS]] : A class that simplifies frame rate calculation.
-* [C++] [[FrameClock|Source:FrameClock]] : A class to track various frame time statistics.
+* [C++] [[FrameClock|Source:-FrameClock]] : A class to track various frame time statistics.
 * [C++] [[wxScrolledSFMLWindow|Source:-wxScrolledSFMLWindow]] (by TricksterGuy) : Integrates an SFML window onto a scrolled wxWindow
 * [C++] [[PhysFS|Source:-SFML-PhysFS]] : A class that adapts PhysFS to SFML with a custom sf::InputStream
 * [C++] [[LoadImageFromResource|Source:-Load-Image-From-Resource]] : An example of how to load data from a resource (.rc) into sf::Image.

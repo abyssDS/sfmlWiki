@@ -426,6 +426,7 @@ private:
 
 #include <SFML/Graphics.hpp>
 #include "FrameClock.h"
+#include "ClockHUD.h"
 
 int main()
 {

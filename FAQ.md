@@ -152,7 +152,7 @@ It however does not contain all changes made between 1.6 and 2.0. It was written
 * New sf::Time API
 * Removal of the default built-in Arial font
 * Replaced getWidth() and getHeight() with getSize()
-* Naming convention change
+* Naming convention change (further details and rationale [here](http://en.sfml-dev.org/forums/index.php?topic=6709.0))
 
 ### <a name="grl-3d"/>Will/does SFML support 3D?
 

@@ -5,6 +5,10 @@
 class PhysicsStream : public sf::InputStream
 {
 public:
+	bool isOpen()const
+	{
+	      return (m_File!=0x0);
+	}
 	void open(const char * filename)
 	{
 	      close();

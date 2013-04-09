@@ -79,7 +79,7 @@ public:
     }
 
 private:
-    PHYSFS_File * m_File;
+    PHYSFS_File* m_File;
 
 };
 ```

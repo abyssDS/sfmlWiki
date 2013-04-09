@@ -20,7 +20,7 @@ public:
 	}
 	PhysicsStream(const char * filename=0x0):m_File(0x0)
 	{
-	  if(filename) open(filename);
+	      if(filename) open(filename);
 	}
 	virtual ~PhysicsStream()
 	{

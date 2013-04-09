@@ -82,7 +82,9 @@ private:
     PHYSFS_File * m_File;
 
 };
+```
 
+```
 int main (int argc, char* argv[])
 {
     // Initialize PhysicsFS and define a search path.

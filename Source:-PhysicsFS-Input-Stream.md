@@ -9,10 +9,11 @@ public:
 	{
 	      return (m_File!=0x0);
 	}
-	void open(const char * filename)
+	bool open(const char * filename)
 	{
 	      close();
 	      m_File=PHYSFS_openRead(filename);
+	      return isOpen();
 	}
 	void close()
 	{

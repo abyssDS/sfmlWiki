@@ -43,6 +43,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Settings Parser|Source:-Settings-Parser]] : Simple class for reading and writing settings in text file. (by cristaloleg)
 * [C++] [[HSL Color|Source:-HSL-Color]] : A class for working with HSL and converting to and from RGB. (by masskiller)
 * [C++] [[Simple and elegant File Logger|Source:-Simple-File-Logger-(by-mateandmetal)]] (by mateandmetal)
+* [C++] [[Loading resources using PhysFS|Source:-PhysicsFS-Input-Stream]]
 
 ## Audio
 * [C++] [[MP3 Player|Source:-MP3-Player]] : Class inspired sf:: Music for playing mp3 file using the library mpg123

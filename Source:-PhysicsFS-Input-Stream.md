@@ -5,10 +5,22 @@
 class PhysicsStream : public sf::InputStream
 {
 public:
-	PhysicsStream(PHYSFS_File * file):m_File(file){}
+	void open(const char * filename)
+	{
+	      close();
+	      m_File=PHYSFS_openRead(filename);
+	}
+	void close()
+	{
+	      if(m_File) PHYSFS_close(m_File);
+	}
+	PhysicsStream(const char * filename=0x0):m_File(0x0)
+	{
+	  if(filename) open(filename);
+	}
 	virtual ~PhysicsStream()
 	{
-		if(m_File) PHYSFS_close(m_File);
+		close();
 	}
 	virtual sf::Int64 read(void* data, sf::Int64 size)
 	{
@@ -42,7 +54,8 @@ int main(int argc,char * argv[])
 {
 	PHYSFS_init(argv[0]);
 	PHYSFS_addToSearchPath("MyWonderfulArchive.7z",1);
-	PhysicsStream wonderfullStream(PHYSFS_openRead("MyWonderfulPictureInArchive.png"));
+	PhysicsStream wonderfullStream;
+	wonderfullStream.open("MyWonderfulPictureInArchive.png");
 	sf::Texture tex;
 	tex.loadFromStream(wonderfullStream);
 	sf::Sprite sprite(tex);

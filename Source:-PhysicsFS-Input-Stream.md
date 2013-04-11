@@ -35,6 +35,7 @@ public:
     {
         if (isOpen())
             PHYSFS_close(m_File);
+        m_File=0x0;
     }
 
     virtual sf::Int64 read(void* data, sf::Int64 size)

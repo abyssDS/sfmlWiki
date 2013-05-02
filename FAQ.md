@@ -136,12 +136,7 @@ SFML has also internal dependencies: Audio and Window depend on System, while Gr
 
 ### <a name="grl-version"/>What version of SFML should I use?
 
-The short answer: 2.0.
-
-The long answer:
-Officially, the released and stable version of SFML is still 1.6, and that is also the version that you are likely to find in many package managers. The reason is that most of them have policies dictating that they do not include software that is still in development because they need to guarantee to their users that it is in the most stable form it can be.
-This however is less applicable to SFML than it is to other more volatile projects that are developed rapidly and are indeed very unstable until officially released. SFML 2.0 has been under development for well over a year and has reached RC status. This means it is as good as released concerning stability and it's feature set and API probably won't change at all between now and release.
-So if you need to choose, definitely go for 2.0. It will save you a lot of headaches because 1.6 is not actively maintained anymore and if you start with 2.0 you can be sure that the migration to the release build will be as smooth as possible when it comes out.
+Go for 2.0. It will save you a lot of headaches because 1.6 is not actively maintained anymore.
 
 ### <a name="grl-changes"/>Is there a complete list with all the changes from SFML 1.6 to SFML 2.x?
 

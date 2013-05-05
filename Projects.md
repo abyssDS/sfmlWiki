@@ -13,6 +13,7 @@ Welcome to the section dedicated to projects using/for SFML.
 ### Other extensions
 * [C++] [[Zoost & Zoom libraries|Project:-Zoost-and-Zoom]]: Geometric objects, customizable shapes, animation tools & light rendering.
 * [C++] [[Thor C++ Library|Project:-Thor-C++-Library]]: Provides pausable clocks, vector functions, particles, resource/event handling, triangulations, and more...
+* [C++] [BZeps-SFML-Snippets](https://github.com/BarrensZeppelin/BZeps-SFML-Snippets): Particle System, Animation & Tileset support and other good stuffs. Currently in development, any help/pull requests greatly appreciated!
 * [Ruby] [[GDE|Project:-Groogy's-Development-Environment]]: An environment for rbSFML that helps out with development.
 
 ### Physics

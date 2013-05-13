@@ -8,6 +8,7 @@
 - [Is there a complete list with all the changes from SFML 1.6 to SFML 2.x?](#grl-changes)
 - [Will/does SFML support 3D?](#grl-3d)
 - [I want to propose a new feature!](#grl-reqeust)
+- [Is using SFML a good way to learn to program (in C++)?](#grl-learn)
 - [Where can I ask questions?](#grl-questions)
 
 **[Building and Using SFML](#build-use)**
@@ -158,6 +159,52 @@ The previous statement is recommendable only if you have a minimal use for 3D, a
 ### <a name="grl-reqeust"/>I want to propose a new feature!
 
 Before anything else, check the [road-map](https://github.com/LaurentGomila/SFML/issues/milestones) to see if the functionality has already been planned. If not, there is a [forum section](http://en.sfml-dev.org/forums/index.php?board=2.0) dedicated to feature requests. Please search before posting, and stick to the spirit of SFML as a multimedia and multi-platform library. So for example a XML parser, a database library or a platform-specific function is unlikely to be accepted.
+
+### <a name="grl-learn"/>Is using SFML a good way to learn to program (in C++)?
+
+In general, you can learn to program any way you want. The question is: what is the most **effective** way to learn to program? The unanimous answer to this question is, don't start with SFML if you are trying to grasp the basic language features of C++. SFML makes use of basic as well as advanced features of the C++ language. You might be able to achieve something in your first hours of C++ and SFML but whether it is usable and maintainable is another question. It is probable that you would have learned more and faster if you just stuck to the standard libraries C++ already provides. This allows you to focus on learning the language and not the SFML API at the same time. There are many good examples of text-based games made using just stdin and stdout.
+
+Where you learn to program (in C++) from is also totally up to you. However it is recommended to always take examples/tutorials available on the internet with a pinch of salt. They might contain bad habits of the writer which are not apparent to a newcomer. The safest way to learn to program is probably accompanied by a book written by a reputable author who is actively involved in the development of the language. This ensures that they grasp the important aspects of the language and can teach you to program effectively as well. Contrary to what many newcomers believe, C++ is still evolving and has done so even more over the last years with the standardization of C++11. Learning from an older book or internet source might therefore not teach you all the aspects of the language there are. It is therefore recommended that you actively seek to learn about these new features on your own after you have grasped the basics.
+
+If you are unsure when you might consider yourself ready for SFML, here is a checklist of language features that are highly recommended to know when using SFML.
+
+Basics, required to program with SFML:
+* Compiling, building
+* Basic program structure (main(), header includes ...)
+* Basic data types
+* Composite data types
+* Control structures (if, for, while ...)
+* Basic functions, function signatures
+* Function parameter passing
+* Classes and general OOP
+* STL - Standard Template Library
+* Dynamic memory allocation, pointers
+* Type casting
+* Advanced OOP, inheritance, polymorphism
+* Advanced program structure, header files, linking
+* **Debugging techniques** This is important to be able to help yourself when the situation arises.
+
+Advanced concepts, not all required to program with SFML but good to know:
+* Templates
+* Operator overloading
+* Namespaces
+* Move semantics and other C++11 features
+* Metaprogramming
+
+Maintenance/productivity related skills, also not required but good to know:
+* Profiling
+* Optimization techniques, compiler optimization opportunities
+* Coding conventions
+* Refactoring techniques
+* Library writing
+* Cross-platform build tools
+* SCM such as git, SVN or Hg
+
+Deeper understanding, good to know to understand what is happening "behind the scenes":
+* Graphics pipeline, OpenGL
+* Networking, TCP, UDP
+* Audio knowledge, sample rate, attenuation, wave characteristics
+* Operating system knowledge (not only for a single operating system)
 
 ### <a name="grl-questions"/>Where can I ask questions?
 

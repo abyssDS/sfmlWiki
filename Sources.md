@@ -5,6 +5,7 @@ Welcome to the section dedicated to external source codes for SFML.
 ## Game Engines
 * [C++] [[Basic Game Engine Source|Source:-Basic-Game-Engine]] (from tutorial [[Basic Game Engine|Tutorial:-Basic-Game-Engine]])
 * [C++] [[Simple Collision Detection|Source:-Simple-Collision-Detection]]: A Static Class implementing Circle, BoundingBox and PixelPerfect collision detection.
+* [C++] [[Simple Collision Detection for SFML 2|Source:-Simple-Collision-Detection-for-SFML-2]]: The same class for SFML 2
 * [C++] [[gtkmm SFMLWidget|Source:-GTK-SFMLWidget]] : A class to integrate SFML into a gtkmm interface
 * [C++] [[Sprite Sheet|Source:-Sprite-Sheets]] : A class to handle sprite sheet and simple animations.
 * [C++] [[Masking using Sprites, Shapes or Strings|Source:-Masking-Alpha-Blending]] : Masking using Sprites, Shapes or Strings, and the Alpha Channel (by TurboLento)

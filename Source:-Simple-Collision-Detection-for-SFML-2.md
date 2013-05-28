@@ -198,34 +198,38 @@ namespace Collision
 		return true;
 	}
 
-	bool CircleTest(const sf::Sprite& Object1, const sf::Sprite& Object2) {
-		float Radius1 = (Object1.getLocalBounds().width*Object1.getScale().x + Object1.getLocalBounds().height*Object1.getScale().y) / 4;
-		float Radius2 = (Object2.getLocalBounds().width*Object2.getScale().x + Object2.getLocalBounds().height*Object2.getScale().y) / 4;
-		float xd = Object1.getPosition().x - Object2.getPosition().x;
-		float yd = Object1.getPosition().y - Object2.getPosition().y;
- 
-		return (xd * xd + yd * yd <= (Radius1 + Radius2)*(Radius1 + Radius2));
+	sf::Vector2f GetSpriteCenter (const sf::Sprite& Object)
+	{
+		sf::FloatRect AABB = Object.getGlobalBounds();
+		return sf::Vector2f (AABB.left+AABB.width/2.f, AABB.top+AABB.height/2.f);
 	}
 
-	//From Rotated Rectangles Collision Detection, Oren Becker, 2001
-	bool BoundingBoxTest(const sf::Sprite& Object1, const sf::Sprite& Object2) {
+	sf::Vector2f GetSpriteSize (const sf::Sprite& Object)
+	{
+		sf::IntRect OriginalSize = Object.getTextureRect();
+		sf::Vector2f Scale = Object.getScale();
+		return sf::Vector2f (OriginalSize.width*Scale.x, OriginalSize.height*Scale.y);
+	}
 
+	bool CircleTest(const sf::Sprite& Object1, const sf::Sprite& Object2) {
+		sf::Vector2f Obj1Size = GetSpriteSize(Object1);
+		sf::Vector2f Obj2Size = GetSpriteSize(Object2);
+		float Radius1 = (Obj1Size.x + Obj1Size.y) / 4;
+		float Radius2 = (Obj2Size.x + Obj2Size.y) / 4;
+
+		sf::Vector2f Distance = GetSpriteCenter(Object1)-GetSpriteCenter(Object2);
+
+		return (Distance.x * Distance.x + Distance.y * Distance.y <= (Radius1 + Radius2) * (Radius1 + Radius2));
+	}
+
+	bool BoundingBoxTest(const sf::Sprite& Object1, const sf::Sprite& Object2) {
 		sf::Vector2f A, B, C, BL, TR;
-		sf::Vector2f HalfSize1 (Object1.getLocalBounds().width/2, Object1.getLocalBounds().height/2);
-		sf::Vector2f HalfSize2 (Object2.getLocalBounds().width/2, Object2.getLocalBounds().height/2);
-	
-		sf::Transformable O1(Object1);
-		O1.setOrigin(HalfSize1);
-		HalfSize1.x *= O1.getScale().x;
-		HalfSize1.y *= O1.getScale().y;
-		sf::Transformable O2(Object2);
-		O2.setOrigin(HalfSize2);
-		HalfSize2.x *= O2.getScale().x;
-		HalfSize2.y *= O2.getScale().y;
+		sf::Vector2f HalfSize1 = GetSpriteSize(Object1)/2.f;
+		sf::Vector2f HalfSize2 = GetSpriteSize(Object2)/2.f;
 
 		//Get the Angle we're working on
 		const double RadToDeg = 3.14159265358979323846/180.0;
-		float Angle = O1.getRotation() - O2.getRotation();
+		float Angle = Object1.getRotation() - Object2.getRotation();
 		float CosA = cos(Angle * RadToDeg);
 		float SinA = sin(Angle * RadToDeg);
  
@@ -233,9 +237,9 @@ namespace Collision
  
 		//Normalise the Center of Object2 so its axis aligned an represented in
 		//relation to Object 1
-		C = O2.getPosition() - O1.getPosition();
+		C = GetSpriteCenter(Object2) - GetSpriteCenter(Object1);
  
-		float O2Rot = O2.getRotation() * RadToDeg;
+		float O2Rot = Object2.getRotation() * RadToDeg;
 		float temp = C.x;
 		C.x = temp * cos(O2Rot) + C.y * sin(O2Rot);
 		C.y = -temp * sin(O2Rot) + C.y * cos(O2Rot);

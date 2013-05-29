@@ -18,7 +18,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Round Ended Lines|Source:-Round-Ended-Lines]] : A class that renders round ended Lines (by Foaly)
 * [C++] [[Drawable Line Shape|Source:-Drawable-Line-Shape]]: A drawable-derived fast-rendering class for shapes made of lines
 * [C++] [[Drawing Color Gradient|Source:-Color-Gradient]] : Draw and manage color gradient easily with this class
-* [C++] [[Draw Rounded Rectangle|Source:-Draw-Rounded-Rectangle]] 
+* [C++] [[Draw Rounded Rectangle|Source:-Draw-Rounded-Rectangle]] : A class that renders rounded rectangles
 * [C++] [[Tile Map with VertexArrays|Source:-TileMap]] : Load, cull, texture and display quads as tiles
 * [C++] [[Higher Performance Sprite Container|Source:-High-Performance-Sprite-Container]] : Both a faster way to use many sprites with the same texture and a shortcut container to make life easier. (by masskiller)
 * [C#/C++] [[TileMap renderer|Source:-TileMap-Render]] : efficient tilemap drawing

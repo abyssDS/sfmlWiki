@@ -3,7 +3,7 @@
 Welcome to the section dedicated to external tutorials about SFML. Don't forget that [official tutorials](http://www.sfml-dev.org/tutorials.php) are still available on the main site.
 
 ### Online Video Tutorials
-* [CodingMadeEasy beginners SFML youtube series](http://www.youtube.com/playlist?list=PL0249162D5D6FA5D1)
+* [CodingMadeEasy beginners SFML youtube series](http://www.youtube.com/playlist?list=PLHJE4y54mpC5j_x90UkuoMZOdmmL9-_rg)
 * [CodingMadeEasy SFML platformer youtube series](http://www.youtube.com/playlist?list=PLCB3138ADCE90F2EC)
 
 ### Configuration

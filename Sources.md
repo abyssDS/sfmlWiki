@@ -6,46 +6,47 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Basic Game Engine Source|Source:-Basic-Game-Engine]] (from tutorial [[Basic Game Engine|Tutorial:-Basic-Game-Engine]])
 * [C++] [[Simple Collision Detection|Source:-Simple-Collision-Detection]]: A Static Class implementing Circle, BoundingBox and PixelPerfect collision detection.
 * [C++] [[Simple Collision Detection for SFML 2|Source:-Simple-Collision-Detection-for-SFML-2]]: The same class for SFML 2
-* [C++] [[gtkmm SFMLWidget|Source:-GTK-SFMLWidget]] : A class to integrate SFML into a gtkmm interface
-* [C++] [[Sprite Sheet|Source:-Sprite-Sheets]] : A class to handle sprite sheet and simple animations.
-* [C++] [[Masking using Sprites, Shapes or Strings|Source:-Masking-Alpha-Blending]] : Masking using Sprites, Shapes or Strings, and the Alpha Channel (by TurboLento)
-* [C++] [[Particle System|Source:-Particle-System]] : Enjoy colorful pixel explosions in your own home today!
-* [Ruby] [[Ruby Light Manager|Source:-Ruby-Light-Manager]] : Add lighting to your 2D game (by Groogy)
-* [C#] [[SpriteAnimated|Source:-Sprite-Animated]] : A C# version of animated sprite class.
+* [C++] [[gtkmm SFMLWidget|Source:-GTK-SFMLWidget]]: A class to integrate SFML into a gtkmm interface
+* [C++] [[Sprite Sheet|Source:-Sprite-Sheets]]: A class to handle sprite sheet and simple animations.
+* [C++] [[Masking using Sprites, Shapes or Strings|Source:-Masking-Alpha-Blending]]: Masking using Sprites, Shapes or Strings, and the Alpha Channel (by TurboLento)
+* [C++] [[Particle System|Source:-Particle-System]]: Enjoy colorful pixel explosions in your own home today!
+* [Ruby] [[Ruby Light Manager|Source:-Ruby-Light-Manager]]: Add lighting to your 2D game (by Groogy)
+* [C#] [[SpriteAnimated|Source:-Sprite-Animated]]: A C# version of animated sprite class.
 
 ##Drawables
-* [C++] [[AnimatedSprite|Source:-AnimatedSprite]] : A class that provides an easy interface to Animations and follow the design of sf::Sprite (by Foaly)
-* [C++] [[Round Ended Lines|Source:-Round-Ended-Lines]] : A class that renders round ended Lines (by Foaly)
+* [C++] [[AnimatedSprite|Source:-AnimatedSprite]]: A class that provides an easy interface to Animations and follow the design of sf::Sprite (by Foaly)
+* [C++] [[Round Ended Lines|Source:-Round-Ended-Lines]]: A class that renders round ended Lines (by Foaly)
 * [C++] [[Drawable Line Shape|Source:-Drawable-Line-Shape]]: A drawable-derived fast-rendering class for shapes made of lines
-* [C++] [[Drawing Color Gradient|Source:-Color-Gradient]] : Draw and manage color gradient easily with this class
-* [C++] [[Draw Rounded Rectangle|Source:-Draw-Rounded-Rectangle]] : A class that renders rounded rectangles
-* [C++] [[Tile Map with VertexArrays|Source:-TileMap]] : Load, cull, texture and display quads as tiles
-* [C++] [[Higher Performance Sprite Container|Source:-High-Performance-Sprite-Container]] : Both a faster way to use many sprites with the same texture and a shortcut container to make life easier. (by masskiller)
-* [C#/C++] [[TileMap renderer|Source:-TileMap-Render]] : efficient tilemap drawing
-* [C++] [[Shader Tile Map|Source:-ShaderTileMap]] : tile map drawing using one texture as data and other as graphics and swapping data pixels for graphic pixels using glsl fragment shader
+* [C++] [[Drawing Color Gradient|Source:-Color-Gradient]]: Draw and manage color gradient easily with this class
+* [C++] [[Draw Rounded Rectangle|Source:-Draw-Rounded-Rectangle]]: A class that renders rounded rectangles
+* [C++] [[Tile Map with VertexArrays|Source:-TileMap]]: Load, cull, texture and display quads as tiles
+* [C++] [[Higher Performance Sprite Container|Source:-High-Performance-Sprite-Container]]: Both a faster way to use many sprites with the same texture and a shortcut container to make life easier. (by masskiller)
+* [C#/C++] [[TileMap renderer|Source:-TileMap-Render]]: efficient tilemap drawing
+* [C++] [[Shader Tile Map|Source:-ShaderTileMap]]: tile map drawing using one texture as data and other as graphics and swapping data pixels for graphic pixels using glsl fragment shader
 
 ## Network
 * [C++] [[Simple chat example using sf::TcpSocket|Source:-Network-Chat-Example]]
 
 ## GUI
-* [C++] [[RichText|Source:-RichText]] : Class to handle rich text. (by Panithadrum)
-* [C++] [[Fader|Source:-Fader]] : Class to facilitate fading. (by cire)
+* [C++] [[RichText|Source:-RichText]]: Class to handle rich text. (by Panithadrum)
+* [C++] [[Fader|Source:-Fader]]: Class to facilitate fading. (by cire)
 
 ## Miscellaneous
-* [C++] [[Smart Resource Manager|Source:-Smart-ResourceManager]] : Generic resource manager which keeps track of it's references. (by Groogy)
-* [C++] [[sftools::Chronometer|Source:-Chronometer]] : This class provides the basic mechanism of a chronometer.
-* [C++] [[FPS|Source:-FPS]] : A class that simplifies frame rate calculation.
-* [C++] [[FrameClock|Source:-FrameClock]] : A class to track various frame time statistics.
+* [C++] [[Smart Resource Manager|Source:-Smart-ResourceManager]]: Generic resource manager which keeps track of it's references. (by Groogy)
+* [C++] [[sftools::Chronometer|Source:-Chronometer]]: This class provides the basic mechanism of a chronometer.
+* [C++] [[FPS|Source:-FPS]]: A class that simplifies frame rate calculation.
+* [C++] [[FrameClock|Source:-FrameClock]]: A class to track various frame time statistics.
 * [C++] [[wxScrolledSFMLWindow|Source:-wxScrolledSFMLWindow]] (by TricksterGuy) : Integrates an SFML window onto a scrolled wxWindow
-* [C++] [[PhysFS|Source:-SFML-PhysFS]] : A class that adapts PhysFS to SFML with a custom sf::InputStream
-* [C++] [[LoadImageFromResource|Source:-Load-Image-From-Resource]] : An example of how to load data from a resource (.rc) into sf::Image.
-* [C++] [[Loading Images in a Thread|Source:-Loading-Images-in-a-Thread]] : An example of how to load images in a background thread. (with boost)
-* [C++] [[Verlet physic|Source:-Verlet-Physic]] : A simple example of physic circle body in space.
-* [C++] [[Settings Parser|Source:-Settings-Parser]] : Simple class for reading and writing settings in text file. (by cristaloleg)
-* [C++] [[HSL Color|Source:-HSL-Color]] : A class for working with HSL and converting to and from RGB. (by masskiller)
+* [C++] [[PhysFS|Source:-SFML-PhysFS]]: A class that adapts PhysFS to SFML with a custom sf::InputStream
+* [C++] [[LoadImageFromResource|Source:-Load-Image-From-Resource]]: An example of how to load data from a resource (.rc) into sf::Image.
+* [C++] [[Loading Images in a Thread|Source:-Loading-Images-in-a-Thread]]: An example of how to load images in a background thread. (with boost)
+* [C++] [[Verlet physic|Source:-Verlet-Physic]]: A simple example of physic circle body in space.
+* [C++] [[Settings Parser|Source:-Settings-Parser]]: Simple class for reading and writing settings in text file. (by cristaloleg)
+* [C++] [[HSL Color|Source:-HSL-Color]]: A class for working with HSL and converting to and from RGB. (by masskiller)
 * [C++] [[Simple and elegant File Logger|Source:-Simple-File-Logger-(by-mateandmetal)]] (by mateandmetal)
 * [C++] [[Loading resources using PhysFS|Source:-PhysicsFS-Input-Stream]]
+* [C++] [[Calculating points of a Cubic Bézier Curve|Source:-Cubic-Bezier-Curve]] Allows drawing of a smooth curve approximation based on four points.
 
 ## Audio
-* [C++] [[MP3 Player|Source:-MP3-Player]] : Class inspired sf:: Music for playing mp3 file using the library mpg123
-* [C++] [[Audio Player|Source:-Audio-Player]] : Class inspired sf:: Music for playing audio file using the library ffmpeg
+* [C++] [[MP3 Player|Source:-MP3-Player]]: Class inspired sf:: Music for playing mp3 file using the library mpg123
+* [C++] [[Audio Player|Source:-Audio-Player]]: Class inspired sf:: Music for playing audio file using the library ffmpeg

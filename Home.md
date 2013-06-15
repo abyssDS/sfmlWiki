@@ -23,9 +23,3 @@ Have a nice reading, and thank you for your contribution!
 ## Licensing
 
 After a community poll decision every source code on this wiki is under the [Public Domain License](https://en.wikipedia.org/wiki/Public_domain_software), unless the author of the source code specified a different license. In that case the source code is under the license the author specified.
-
-## Old wiki
-
-This wiki is new, and all the pages from the previous one haven't been copied yet. You can still access it at this address:
-
-<http://www.sfml-dev.org/wiki/>

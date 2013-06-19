@@ -20,17 +20,11 @@ struct KeyEvent;
 
 Member functions have the first letter of the first word lower case. This applies to both static and non-static member functions.
 **Example:**
-```cpp
-
-```
 
 ### Non-member Functions
 
 Non-member functions follow the same conventions as member functions: the first letter of the first word is lower case. This applies to both publicly accessible non-member functions, as well as functions within an unnamed namespace.
 **Example:**
-```cpp
-
-```
 
 ### Enumerations
 
@@ -145,9 +139,6 @@ enum
 
 Access modifiers (`public`, `protected`, and `private`) are dedented. *Note that there is a space between the access modifier and the colon*.
 **Example:**
-```cpp
-
-```
 
 # Misc
 

@@ -53,7 +53,8 @@ enum Axis
 
 ### Acronyms and Abbreviations
 
-Acronyms and Abbreviations are treated as a single word, and as such all letters are lower case (except the first letter, which may be upper case or lower case depending on the identifier using the acronym or abbreviation). Example:
+Acronyms and Abbreviations are treated as a single word, and as such all letters are lower case (except the first letter, which may be upper case or lower case depending on the identifier using the acronym or abbreviation).
+**Example:**
 ```cpp
 enum Axis
 {
@@ -85,7 +86,6 @@ Macros are written ALL_CAPS with words separated by underscores.
 ### Namespaces
 
 Namespaces are lower case and are as short as possible while still being obvious what they stand for.
-
 **Example:**
 ```cpp
 namespace sf // Namespace containing all of SFML
@@ -96,17 +96,17 @@ namespace priv // Namespace containing private implementation functionality for 
 }
 ```
 
+
+
 # Comments
 
 ## Doxygen
 
 ## In-code Documentation
 
-# Indentation and Bracing
+# Indentation, and Bracing, and Line Breaks
 
-## Bracing
 
-Braces are always on their own line.
 
 ## Indentation
 
@@ -140,8 +140,48 @@ enum
 Access modifiers (`public`, `protected`, and `private`) are dedented. *Note that there is a space between the access modifier and the colon*.
 **Example:**
 
+## Bracing and Line Breaks
+
+Braces are always on their own line.
+**Example:**
+
+### General Bracing
+
+### `if` statements
+
+### Switches
+
+
+
+# Files
+
+## Organization
+
+## Capitalization
+
+## Header File Layout
+
+## Source File Layout
+
+
+
 # Misc
 
 ## Trailing Whitespace
 
 Remove trailing whitespace. This includes whitespace appearing on a blank line.
+
+## Native Types vs Typedefs
+
+## Properly Exporting/Importing the API Symbols
+
+Each part of the public API is prefixed with a macro associating it with its module and properly exporting and importing the API symbols. These macros are: `SFML_AUDIO_API `, `SFML_GRAPHICS_API `, `SFML_NETWORK_API`, `SFML_SYSTEM_API`, and `SFML_WINDOW_API`.
+**Example:**
+```cpp
+// From the Network module
+class SFML_NETWORK_API IpAddress
+{
+}
+
+SFML_NETWORK_API bool operator !=(const IpAddress& left, const IpAddress& right);
+```

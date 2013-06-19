@@ -127,7 +127,12 @@ SFML uses 4 spaces for indentation, no tabs.
 Align statements and expressions that form logical groups.
 **Example:**
 ```cpp
-
+enum
+{
+    Count       = 8, // Aligned at =
+    ButtonCount = 32,
+    AxisCount   = 8
+};
 ```
 
 ### Inside of a Namespace

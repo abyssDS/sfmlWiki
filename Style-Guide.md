@@ -138,7 +138,8 @@ Align statements and expressions that form logical groups.
 
 ### Access Modifiers
 
-Access modifiers (`public`, `protected`, and `private`) are dedented. *Note that there is a space between the access modifier and the colon*. **Example:**
+Access modifiers (`public`, `protected`, and `private`) are dedented. *Note that there is a space between the access modifier and the colon*.
+**Example:**
 ```cpp
 
 ```

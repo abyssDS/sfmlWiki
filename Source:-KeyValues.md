@@ -25,6 +25,7 @@ Speed=10.f
 int main(int argc, const char * argv[])
 {
     KeyValue keyValue;
+    keyValue.LoadFromFile("test.txt");
     int Height = keyValue.GetInt("height");
     int Width = keyValue.GetInt("width");
     

@@ -10,10 +10,6 @@ Feel free to use it or change it =)
 height=800
 width=600
 
-; npc pos
-PosX=10
-PosY=25
-
 ; button label
 LabelName=StuffAndThaaaangs
 

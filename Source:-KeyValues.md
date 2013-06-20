@@ -34,6 +34,7 @@ int main(int argc, const char * argv[])
     float PlayerSpeed = keyValue.GetFloat("Speed");
     
     KeyValue SaveValue;
+    SaveValue.SaveToFile("test.txt");
     SaveValue.SetString("Key", "Name");
     SaveValue.SetInt("PosX", 50);
     SaveValue.SetInt("PosY", 50);

@@ -46,6 +46,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Simple and elegant File Logger|Source:-Simple-File-Logger-(by-mateandmetal)]] (by mateandmetal)
 * [C++] [[Loading resources using PhysFS|Source:-PhysicsFS-Input-Stream]]
 * [C++] [[Calculating points of a Cubic Bézier Curve|Source:-Cubic-Bezier-Curve]] Allows drawing of a smooth curve approximation based on four points.
+* [C++] [[KeyValues|Source:-KeyValues]] Simple parser class
 
 ## Audio
 * [C++] [[MP3 Player|Source:-MP3-Player]]: Class inspired sf:: Music for playing mp3 file using the library mpg123

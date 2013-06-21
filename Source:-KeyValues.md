@@ -18,7 +18,7 @@ Speed=10.f
 
 ```
 
-### Using example
+### Simple using example
 
 ```c++
 

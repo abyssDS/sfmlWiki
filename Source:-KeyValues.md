@@ -1,6 +1,8 @@
 This is a simple class for write and read settings or for other stuff.
 Feel free to use it or change it =)
 
+Note: This requires C++11 support.
+
 ### Simple file to parse
 
 ```text

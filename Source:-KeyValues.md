@@ -83,6 +83,8 @@ private:
     void ExtractKey(std::string &key, std::size_t pos, const std::string &line);
     void ExtractValue(std::string &value, std::size_t pos, const std::string &line);
     bool KeyExist(const std::string &key) const;
+    void RemoveComment(std::string &line) const;
+    bool OnlyWhiteSpace(const std::string &line) const;
     std::map<std::string, std::string> m_Keys;
 };
 
@@ -139,9 +141,10 @@ void KeyValue::LoadFromFile(const std::string &filename)
             temp.erase(0, temp.find_first_not_of("\t "));
             std::size_t pos = temp.find('=');
             
-            if (temp.find(';') != std::string::npos)
+            RemoveComment(temp);
+            if(OnlyWhiteSpace(temp))
                 continue;
-            
+
             ExtractKey(key, pos, temp);
             ExtractValue(value, pos, temp);
         
@@ -265,6 +268,21 @@ void KeyValue::ExtractValue(std::string &value, std::size_t pos, const std::stri
 bool KeyValue::KeyExist(const std::string &key) const
 {
     return m_Keys.find(key) != m_Keys.end();
+}
+
+//---------------------------------------------------------
+//---------------------------------------------------------
+void KeyValue::RemoveComment(std::string &line) const
+{
+    if(line.find(';') != line.npos)
+        line.erase(line.find(';'));
+}
+
+//---------------------------------------------------------
+//---------------------------------------------------------
+bool KeyValue::OnlyWhiteSpace(const std::string &line) const
+{
+    return (line.find_first_not_of(' ') == line.npos);
 }
 
 ```

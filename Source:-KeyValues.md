@@ -26,19 +26,17 @@ int main(int argc, const char * argv[])
 {
     KeyValue keyValue;
     keyValue.LoadFromFile("test.txt");
-    int Height = keyValue.GetInt("height");
-    int Width = keyValue.GetInt("width");
+    int height = keyValue.GetInt("height");
+    int width = keyValue.GetInt("width");
+    std::string buttonName = keyValue.GetString("LabelName");
+    float playerSpeed = keyValue.GetFloat("Speed");
     
-    std::string ButtonName = keyValue.GetString("LabelName");
-    
-    float PlayerSpeed = keyValue.GetFloat("Speed");
-    
-    KeyValue SaveValue;
-    SaveValue.SaveToFile("test.txt");
-    SaveValue.SetString("Key", "Name");
-    SaveValue.SetInt("PosX", 50);
-    SaveValue.SetInt("PosY", 50);
-    SaveValue.SetFloat("Speed", 125.f);
+    KeyValue saveValue;
+    saveValue.SetString("Key", "Name");
+    saveValue.SetInt("PosX", 50);
+    saveValue.SetInt("PosY", 50);
+    saveValue.SetFloat("Speed", 125.f);
+    saveValue.SaveToFile("test.txt");
 }
 
 ```
@@ -71,8 +69,8 @@ public:
     void LoadFromFile(const std::string &filename);
     void SaveToFile(const std::string &filename);
     
-    void SetString(const std::string &key,const std::string &value);
-    void SetInt(const std::string &key,int value);
+    void SetString(const std::string &key, const std::string &value);
+    void SetInt(const std::string &key, int value);
     void SetFloat(const std::string &key, float value);
     
     std::string GetString(const std::string &key);
@@ -80,10 +78,10 @@ public:
     float GetFloat(const std::string &key);
     
 private:
-    void ExtractKey(std::string &key,std::size_t Pos,const std::string &line);
-    void ExtractValue(std::string &value,std::size_t Pos,const std::string &line);
+    void ExtractKey(std::string &key, std::size_t pos, const std::string &line);
+    void ExtractValue(std::string &value, std::size_t pos, const std::string &line);
     bool KeyExist(const std::string &key) const;
-    std::map<std::string,std::string> m_Keys;
+    std::map<std::string, std::string> m_Keys;
 };
 
 #endif
@@ -127,35 +125,34 @@ void KeyValue::LoadFromFile(const std::string &filename)
     
     std::string line;
     std::size_t lineNo = 0;
-    std::string Key,Value;
+    std::string key, value;
     
-    if(file.is_open())
+    if (file.is_open())
     {
-        while (std::getline(file,line))
+        while (std::getline(file, line))
         {
             lineNo++;
             std::string temp = line;
             
-            temp.erase(0,temp.find_first_not_of("\t "));
-            std::size_t Pos = temp.find('=');
+            temp.erase(0, temp.find_first_not_of("\t "));
+            std::size_t pos = temp.find('=');
             
-            if(temp.find(';') != std::string::npos)
+            if (temp.find(';') != std::string::npos)
                 continue;
             
-            ExtractKey(Key, Pos, temp);
-            ExtractValue(Value, Pos, temp);
+            ExtractKey(key, pos, temp);
+            ExtractValue(value, pos, temp);
         
-            if(!KeyExist(Key))
-                m_Keys[Key] = Value;
+            if (!KeyExist(key))
+                m_Keys[key] = value;
             else
-                std::cout<<Key<<" already exists."<<std::endl;
+                std::cerr << key << " already exists." << std::endl;
         }
     }
     else
     {
-        std::cout<<"KeyValues: File "<<filename<<" couldn't be found!\n";
+        std::cerr << "KeyValues: File " << filename << " couldn't be found!\n";
     }
-    file.close();
 }
 
 //---------------------------------------------------------
@@ -167,14 +164,14 @@ void KeyValue::SaveToFile(const std::string &filename)
     
     if(file.is_open())
     {
-        for(std::map<std::string,std::string>::iterator it = m_Keys.begin(); it != m_Keys.end(); ++it)
+        for (std::map<std::string, std::string>::iterator it = m_Keys.begin(); it != m_Keys.end(); ++it)
         {
-            file<<(*it).first<<"="<<(*it).second<<std::endl;
+            file << it->first << "=" << it->second << std::endl;
         }
     }
     else
     {
-        std::cout<<"KeyValues: File "<<filename<<" couldn't be found!\n";
+        std::cerr << "KeyValues: File " << filename << " couldn't be found!" << std::endl;
     }
     
     file.close();
@@ -182,12 +179,12 @@ void KeyValue::SaveToFile(const std::string &filename)
 
 //---------------------------------------------------------
 //---------------------------------------------------------
-void KeyValue::SetString(const std::string &key,const std::string &value)
+void KeyValue::SetString(const std::string &key, const std::string &value)
 {
     if (!KeyExist(key))
         m_Keys[key] = value;
     else
-        std::cout<<key<<" already exists."<<std::endl;
+        std::cerr << key << " already exists." << std::endl;
 }
 
 //---------------------------------------------------------
@@ -197,7 +194,7 @@ void KeyValue::SetInt(const std::string &key, int value)
     if (!KeyExist(key))
         m_Keys[key] = std::to_string(value);
     else
-        std::cout<<key<<" already exists."<<std::endl;
+        std::cerr << key << " already exists." << std::endl;
 }
 
 //---------------------------------------------------------
@@ -207,16 +204,16 @@ void KeyValue::SetFloat(const std::string &key, float value)
     if (!KeyExist(key))
         m_Keys[key] = std::to_string(value);
     else
-        std::cout<<key<<" already exists."<<std::endl;
+        std::cerr << key << " already exists." << std::endl;
 }
 
 //---------------------------------------------------------
 //---------------------------------------------------------
 std::string KeyValue::GetString(const std::string &key)
 {
-    std::map<std::string,std::string>::iterator it = m_Keys.find(key);
-    if(it != m_Keys.end())
-        return (*it).second;
+    std::map<std::string, std::string>::iterator it = m_Keys.find(key);
+    if (it != m_Keys.end())
+        return it->second;
     else
         return "";
 }
@@ -225,13 +222,9 @@ std::string KeyValue::GetString(const std::string &key)
 //---------------------------------------------------------
 int KeyValue::GetInt(const std::string &key)
 {
-    std::map<std::string,std::string>::iterator it = m_Keys.find(key);
-    int temp;
-    if(it != m_Keys.end())
-    {
-        temp = std::stoi((*it).second);
-        return temp;
-    }
+    std::map<std::string, std::string>::iterator it = m_Keys.find(key);
+    if (it != m_Keys.end())
+        return std::stoi(it->second);
     else
         return 0;
 }
@@ -240,32 +233,28 @@ int KeyValue::GetInt(const std::string &key)
 //---------------------------------------------------------
 float KeyValue::GetFloat(const std::string &key)
 {
-    std::map<std::string,std::string>::iterator it = m_Keys.find(key);
-    float temp;
-    if(it != m_Keys.end())
-    {
-        temp = std::stof((*it).second);
-        return temp;
-    }
+    std::map<std::string, std::string>::iterator it = m_Keys.find(key);
+    if (it != m_Keys.end())
+        return std::stof(it->second);
     else
         return 0.0f;
 }
 
 //---------------------------------------------------------
 //---------------------------------------------------------
-void KeyValue::ExtractKey(std::string &key, std::size_t Pos, const std::string &line)
+void KeyValue::ExtractKey(std::string &key, std::size_t pos, const std::string &line)
 {
-    key = line.substr(0,Pos);
-    if(key.find('\t') != line.npos || key.find(' ') != line.npos)
+    key = line.substr(0, pos);
+    if (key.find('\t') != line.npos || key.find(' ') != line.npos)
         key.erase(key.find_first_of("\t "));
 }
 
 //---------------------------------------------------------
 //---------------------------------------------------------
-void KeyValue::ExtractValue(std::string &value, std::size_t Pos, const std::string &line)
+void KeyValue::ExtractValue(std::string &value, std::size_t pos, const std::string &line)
 {
-    value = line.substr(Pos + 1);
-    value.erase(0,value.find_first_not_of("\t "));
+    value = line.substr(pos + 1);
+    value.erase(0, value.find_first_not_of("\t "));
     value.erase(value.find_last_not_of("\t ") + 1);
 }
 

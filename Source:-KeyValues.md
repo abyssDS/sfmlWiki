@@ -20,7 +20,7 @@ Speed=10.f
 
 ### Using example
 
-```
+```c++
 
 int main(int argc, const char * argv[])
 {
@@ -46,7 +46,7 @@ int main(int argc, const char * argv[])
 
 ### KeyValues.h
 
-```
+```c++
 
 //
 //  KeyValues.h
@@ -92,7 +92,7 @@ private:
 
 ### KeyValues.cpp
 
-```
+```c++
 
 //
 //  KeyValues.cpp

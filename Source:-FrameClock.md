@@ -2,10 +2,10 @@
   <img src="http://i.imgur.com/08iroFJ.png" alt="Frame statistics."/>
 </p>
 ## Overview
-'FrameClock' is a utility class designed to keep track of various fame-rate related statistics. At its most basic, 'FrameClock' could be used as an 'sf::Clock' replacement for measuring the elapsed time during some specified unit of execution (typically a frame). However, the real utility of 'FrameClock' lies in its ability to track statistics such as the average frame rate over a user specified number of frames.
+'FrameClock' is a utility class designed to keep track of various fame-rate related statistics. At its most basic, FrameClock could be used as an 'sf::Clock' replacement for measuring the elapsed time during some specified unit of execution (typically a frame). However, the real utility of FrameClock lies in its ability to track statistics such as the average frame rate over a user specified number of frames.
 
 ## Features
-Over successive calls to matched `FrameClock::beginFrame/endFrame` pairs, 'FrameClock' keeps track of:
+Over successive calls to matched `FrameClock::beginFrame/endFrame` pairs, FrameClock keeps track of:
  * total number of frames;
  * total frame time;
  * current frame time;
@@ -18,9 +18,9 @@ Over successive calls to matched `FrameClock::beginFrame/endFrame` pairs, 'Frame
  * average frames per second over a user specified number of frames (called sample depth).
 
 ## Basic usage
-The 'FrameClock' class provides two member functions `beginFrame` and `endFrame`, to be called at the beginning and end, respectively, of each new frame (or whatever unit of execution is to be measured). The time elapsed during the last sampled frame (i.e. between a `beginFrame/endFrame` pair) can be obtained with the member function `getLastFrameTime`. The frame frequency can be obtained with the member function `getFramesPerSecond`.
+The FrameClock class provides two member functions `beginFrame` and `endFrame`, to be called at the beginning and end, respectively, of each new frame (or whatever unit of execution is to be measured). The time elapsed during the last sampled frame (i.e. between a `beginFrame/endFrame` pair) can be obtained with the member function `getLastFrameTime`. The frame frequency can be obtained with the member function `getFramesPerSecond`.
 
-A game loop employing 'FrameClock' to measure frame time and calculate the frames per second might look something like this:
+A game loop employing FrameClock to measure frame time and calculate the frames per second might look something like this:
 ```cpp
 sfx::FrameClock clock;
 
@@ -35,10 +35,10 @@ while (gameIsRunning)
 }
 ```
 
-Note that the 'FrameClock' class lives in the namespace `sfx`.
+Note that the FrameClock class lives in the namespace `sfx`.
 
 ## Measuring the average
-Instantaneous frame rate changes often look erratic when printed to the screen and are, in fact, a poor measure of overall performance. It might be more instructive (and less visually jarring) to sample a number of successive frames and then calculate the average over those frames. 'FrameClock' tracks both the average frames per second and the average frame duration over a user specified number of sample frames. The number of frame to sample (called 'sample depth') can be specified as either a constructor argument or with the member function `setSampleDepth`, and obtained with the member function `getSampleDepth`. The average frames per second and average frame duration over the latest 'sample depth' number of frames can be obtained with the member functions `getAverageFramesPerSecond` and `getAverageFrameTime`, respectively.
+Instantaneous frame rate changes often look erratic when printed to the screen and are, in fact, a poor measure of overall performance. It might be more instructive (and less visually jarring) to sample a number of successive frames and then calculate the average over those frames. FrameClock tracks both the average frames per second and the average frame duration over a user specified number of sample frames. The number of frame to sample (called 'sample depth') can be specified as either a constructor argument or with the member function `setSampleDepth`, and obtained with the member function `getSampleDepth`. The average frames per second and average frame duration over the latest 'sample depth' number of frames can be obtained with the member functions `getAverageFramesPerSecond` and `getAverageFrameTime`, respectively.
 
 ```cpp
 sfx::FrameClock clock;
@@ -323,7 +323,7 @@ namespace sfx
 #endif	// FRAMECLOCK_H_INCLUDED
 ```
 ## Example
-Because the 'FrameClock' class does not concern itself with the details of how and/or when its values are rendered to the screen, a simple example of how this might be achieved is presented below. The example is split across two files, 'ClockHUD.h' and a driver file 'Example.cpp':
+Because the FrameClock class does not concern itself with the details of how and/or when its values are rendered to the screen, a simple example of how this might be achieved is presented below. The example is split across two files, 'ClockHUD.h' and a driver file 'Example.cpp':
 
 'ClockHUD.h' contains a single class, 'ClockHUD', which derives from 'sf::Drawable' and takes as constructor arguments an 'sf::Font' instance and a 'sfx::FrameClock' instance. When passed to `sf::RenderTarget::draw`, an instance of 'ClockHUD' will render colour coded frame statistics to the upper left hand corner of the target. Note however that 'ClockHUD.h' is for example only, and should not be considered production ready.
 

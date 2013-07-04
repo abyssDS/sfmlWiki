@@ -15,12 +15,13 @@ Welcome to the section dedicated to external source codes for SFML.
 
 ##Drawables
 * [C++] [[AnimatedSprite|Source:-AnimatedSprite]]: A class that provides an easy interface to Animations and follow the design of sf::Sprite (by Foaly)
-* [C++] [[Round Ended Lines|Source:-Round-Ended-Lines]]: A class that renders round ended Lines (by Foaly)
+* [C#] [[CurvedText class|Source:-CurvedText]]: Draws circularly arranged text and implements most of SFML.Graphics.Text's interface.
+* [C++] [[Higher Performance Sprite Container|Source:-High-Performance-Sprite-Container]]: Both a faster way to use many sprites with the same texture and a shortcut container to make life easier. (by masskiller)
 * [C++] [[Drawable Line Shape|Source:-Drawable-Line-Shape]]: A drawable-derived fast-rendering class for shapes made of lines
 * [C++] [[Drawing Color Gradient|Source:-Color-Gradient]]: Draw and manage color gradient easily with this class
 * [C++] [[Draw Rounded Rectangle|Source:-Draw-Rounded-Rectangle]]: A class that renders rounded rectangles
+* [C++] [[Round Ended Lines|Source:-Round-Ended-Lines]]: A class that renders round ended Lines (by Foaly)
 * [C++] [[Tile Map with VertexArrays|Source:-TileMap]]: Load, cull, texture and display quads as tiles
-* [C++] [[Higher Performance Sprite Container|Source:-High-Performance-Sprite-Container]]: Both a faster way to use many sprites with the same texture and a shortcut container to make life easier. (by masskiller)
 * [C#/C++] [[TileMap renderer|Source:-TileMap-Render]]: efficient tilemap drawing
 * [C++] [[Shader Tile Map|Source:-ShaderTileMap]]: tile map drawing using one texture as data and other as graphics and swapping data pixels for graphic pixels using glsl fragment shader
 

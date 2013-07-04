@@ -27,9 +27,10 @@ Roughly, the same way as [sf::Text](https://github.com/LaurentGomila/SFML/blob/m
             bottomRight = transform.TransformPoint(bottomRight);
 ```
 
-###Known bugs
+###Known bugs & limitations
 
  * `Centered` does not work as expected for multi-line text.
+ * Just like `SFML.Graphics.Text` changing the displayed string or geometry of the Text is an expensive operation.
 
 Full code below. Please let me know [through the forums](http://en.sfml-dev.org/forums/index.php?topic=12100.0) if you find any bugs or improve the class.
 ```c#

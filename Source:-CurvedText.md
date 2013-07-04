@@ -58,6 +58,7 @@ public class CurvedText : Transformable, Drawable
         CharacterSize = charSize;
         Radius = radius;
         Spacing = 0;
+        Color = Color.Black;
         Font = font;
     }
 
@@ -150,7 +151,7 @@ public class CurvedText : Transformable, Drawable
         centerTransform = Transform.Identity;
         centerTransform.Rotate(-angleCovered / 2f, 0, Radius);
         centerTransform.Translate(0, -Radius / 2f);
-
+        Color = color;
     }
 
     public float Radius

@@ -82,7 +82,7 @@ public class CurvedText : Transformable, Drawable
         float previousX = 0;
         float x = 0;
         float y = CharacterSize;
-        char previousChar = '\0';
+        char previousChar = '\\0';
         float angleCovered = 0;
 
         Transform transform = Transform.Identity;

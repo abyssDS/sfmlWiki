@@ -1,4 +1,4 @@
-# Sourdce Codes
+# Source Codes
 
 Welcome to the section dedicated to external source codes for SFML.
 
@@ -20,6 +20,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Drawable Line Shape|Source:-Drawable-Line-Shape]]: A drawable-derived fast-rendering class for shapes made of lines
 * [C++] [[Drawing Color Gradient|Source:-Color-Gradient]]: Draw and manage color gradient easily with this class
 * [C++] [[Draw Rounded Rectangle|Source:-Draw-Rounded-Rectangle]]: A class that renders rounded rectangles
+* [C#] [[Line with Thickness|Source:-Line-with-Thickness]]: _Lines_ or _LinesStrip_ `VertexArray`s always draw 1 pixel lines. This is a method to generate a _TrianglesStrip_ representing a line along a set of points (e.g a Polygon).
 * [C++] [[Round Ended Lines|Source:-Round-Ended-Lines]]: A class that renders round ended Lines (by Foaly)
 * [C++] [[Tile Map with VertexArrays|Source:-TileMap]]: Load, cull, texture and display quads as tiles
 * [C#/C++] [[TileMap renderer|Source:-TileMap-Render]]: efficient tilemap drawing

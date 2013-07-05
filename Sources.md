@@ -32,6 +32,7 @@ Welcome to the section dedicated to external source codes for SFML.
 ## GUI
 * [C++] [[RichText|Source:-RichText]]: Class to handle rich text. (by Panithadrum)
 * [C++] [[Fader|Source:-Fader]]: Class to facilitate fading. (by cire)
+* [C#] [[GTK DrawingArea Integration|Source:-GTK-Integeration]]: Use a GTK (sharp) DrawingArea as your render target.
 
 ## Miscellaneous
 * [C++] [[Smart Resource Manager|Source:-Smart-ResourceManager]]: Generic resource manager which keeps track of it's references. (by Groogy)

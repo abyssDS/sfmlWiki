@@ -4,7 +4,7 @@
  * Sharp corners might look bad, depending on your application. One option is to replace
 `d *= thickness / 2f / dot;` with e.g `d *= thickness / 2f / (float)Math.Max(.8, dot);`. This will make the line thinner in sharp angles. A better option would be to implement flat or (harder) rounded miter joints.
 
-``` c#
+``` csharp
 VertexArray GenerateTrianglesStrip(List<Vector2f> points, Color color, float thickness)
 {
 	var array = new VertexArray(PrimitiveType.TrianglesStrip);
@@ -28,7 +28,7 @@ VertexArray GenerateTrianglesStrip(List<Vector2f> points, Color color, float thi
 ##SFML Extensions
 
 The code above uses the following extensions to Vector2f:
-``` cs
+``` csharp
 public static float GetMagnitude(this Vector2f v)
 {
 	return (float)Math.Sqrt(v.X * v.X + v.Y * v.Y);

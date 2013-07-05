@@ -178,10 +178,7 @@ namespace Pax.Client
 
 		public SFML.Window.Vector2u Size
 		{
-			get
-			{
-				return Window.Size;
-			}
+			get { return Window.Size; }
 		}
 
 		public View DefaultView

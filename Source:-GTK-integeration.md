@@ -1,6 +1,6 @@
 This class works as a "bridge" between GTK and SFML: It acts both as a GTK Widget, i.e. it can be put into TopLevelWindows or other containers, and as a SFML RenderTarget, that is, you can draw to it. I find it easiest to derive a class from this for each game scene. Use SFML's event system to handle clicks and key presses. The code below includes a sample mouse press event.
 
-Note that there are other ways to use SFML with GTK (e.g passing a DrawingArea's Handle to the SFML Window constructor), but this is the best, IMO, and the only one that I have found that works with AA under Linux. (Since SFML 2.1)
+Note that there are [other ways](Source:-GTK-SFMLWidget) to use SFML with GTK (e.g passing a DrawingArea's Handle to the SFML Window constructor), but this is the best, IMO, and the only one that I have found that works with AA under Linux. (Since SFML 2.1)
 
 ```c#
 //
@@ -28,50 +28,60 @@ using System;
 using SFML.Graphics;
 using SFML.Window;
 
-namespace <Your Namespace Here>
+namespace Pax.Client
 {
-	public abstract class SFMLWidget : Gtk.Socket, RenderTarget
+	public abstract class SFMLWidget : RenderWindow
 	{
 		protected abstract void Redraw();
 
-		private RenderWindow window;
+		private Gtk.Socket widget;
 		private System.Timers.Timer timer;
 		private float scale;
 
-		public SFMLWidget(float scale = 1000f, int minWidth = 640, int minHeight = 480)
+		
+		public SFMLWidget(float scale): this(new ContextSettings(8, 8, 8), scale)
+		{
+		}
+
+		public SFMLWidget(): this(new ContextSettings(8, 8, 8))
+		{
+		}
+
+		public SFMLWidget(ContextSettings settings,
+		                  float scale = 1000f, uint minWidth = 640, uint minHeight = 480) :
+			base(new VideoMode(minWidth, minHeight), "SFML Window", Styles.None, settings)
 		{
 			this.scale = scale;
+
 			timer = new System.Timers.Timer(25);
 			timer.Elapsed += (o, e) => OnTimerElapsed();
 
-			SetSizeRequest(minWidth, minHeight);
+			widget = new Gtk.Socket();
+			widget.SetSizeRequest((int)minWidth, (int)minHeight);
 
-			Gtk.Application.Invoke((o, e) => CreateSFMLWindow());
+			Gtk.Application.Invoke((o, e) => ShowSFMLWindow());
 		}
 
 		/// <summary>
 		/// This must be called in the main thread. Creates the SFML window and "steals" it.
 		/// </summary>
-		private void CreateSFMLWindow()
+		private void ShowSFMLWindow()
 		{
-			ContextSettings settings = new ContextSettings();
-			settings.AntialiasingLevel = 8;
-			window = new RenderWindow(new VideoMode(640, 480), "SFML Window", Styles.None, settings);
-			AddId((uint)Window.SystemHandle);
-			Window.Resized += (o, e) => OnResized(e);
+			widget.AddId((uint)SystemHandle);
+			Resized += (o, e) => OnResized(e);
 
-			Window.MouseButtonPressed += (o, e) => OnButtonPressed(o, e);
+			MouseButtonPressed += (o, e) => OnButtonPressed(o, e);
 
 			// use a timer to periodically redraw the window
 			timer.Enabled = true;
-			Show();
+			widget.Show();
 		}
 
 		public void SetSize(float w, float h)
 		{
 			float sW = (w > h ? w / h : 1f) * scale;
 			float sH = (h > w ? h / w : 1f) * scale;
-			Window.SetView(new View(new Vector2f(), new Vector2f(sW, sH)));
+			SetView(new View(new Vector2f(), new Vector2f(sW, sH)));
 		}
 
 		/// <summary>
@@ -81,10 +91,10 @@ namespace <Your Namespace Here>
 		{
 			Gtk.Application.Invoke(
 				delegate
-				{
-				Window.DispatchEvents();
+			{
+				DispatchEvents();
 				Redraw();
-				window.Display();
+				Display();
 			});
 		}
 
@@ -105,119 +115,10 @@ namespace <Your Namespace Here>
 			                      pixel.X, pixel.Y, coords.X, coords.Y);
 		}
 
-
-		/// Some convenience casts, the first might be unnecessary.
-		public static implicit operator RenderWindow(SFMLWidget w)
+		public static implicit operator Gtk.Widget(SFMLWidget w)
 		{
-			return w.window;
-		}
-
-		public RenderWindow Window
-		{
-			get { return window; }
-		}
-
-		///// Trivial RenderTarget implementation below
-		public View GetView()
-		{
-			return Window.GetView();
-		}
-
-		public void SetView(View view)
-		{
-			Window.SetView(view);
-		}
-
-		public IntRect GetViewport(View view)
-		{
-			return Window.GetViewport(view);
-		}
-
-		public SFML.Window.Vector2f MapPixelToCoords(SFML.Window.Vector2i point)
-		{
-			return Window.MapPixelToCoords(point);
-		}
-
-		public SFML.Window.Vector2f MapPixelToCoords(SFML.Window.Vector2i point, View view)
-		{
-			return Window.MapPixelToCoords(point, view);
-		}
-
-		public SFML.Window.Vector2i MapCoordsToPixel(SFML.Window.Vector2f point)
-		{
-			return Window.MapCoordsToPixel(point);
-		}
-
-		public SFML.Window.Vector2i MapCoordsToPixel(SFML.Window.Vector2f point, View view)
-		{
-			return Window.MapCoordsToPixel(point, view);
-		}
-
-		public void Clear()
-		{
-			Window.Clear();
-		}
-
-		public void Clear(Color color)
-		{
-			Window.Clear(color);
-		}
-
-		public void Draw(Drawable drawable)
-		{
-			Window.Draw(drawable);
-		}
-
-		public void Draw(Drawable drawable, RenderStates states)
-		{
-			Window.Draw(drawable, states);
-		}
-
-		public void Draw(Vertex[] vertices, PrimitiveType type)
-		{
-			Window.Draw(vertices, type);
-		}
-
-		public void Draw(Vertex[] vertices, PrimitiveType type, RenderStates states)
-		{
-			Window.Draw(vertices, type, states);
-		}
-
-		public void Draw(Vertex[] vertices, uint start, uint count, PrimitiveType type)
-		{
-			Window.Draw(vertices, start, count, type);
-		}
-
-		public void Draw(Vertex[] vertices, uint start, uint count, PrimitiveType type, RenderStates states)
-		{
-			Window.Draw(vertices, start, count, type, states);
-		}
-
-		public void PushGLStates()
-		{
-			Window.PushGLStates();
-		}
-
-		public void PopGLStates()
-		{
-			Window.PopGLStates();
-		}
-
-		public void ResetGLStates()
-		{
-			Window.ResetGLStates();
-		}
-
-		public SFML.Window.Vector2u Size
-		{
-			get	{ return Window.Size; }
-		}
-
-		public View DefaultView
-		{
-			get	{ return Window.DefaultView; }
+			return w.widget;
 		}
 	}
 }
-
 ```

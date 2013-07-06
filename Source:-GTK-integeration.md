@@ -25,7 +25,7 @@ using System;
 using SFML.Graphics;
 using SFML.Window;
 
-namespace Pax.Client
+namespace <Your Namespace Here>
 {
 	public abstract class SFMLWidget : Gtk.Socket, RenderTarget
 	{

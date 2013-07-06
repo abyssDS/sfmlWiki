@@ -1,4 +1,6 @@
-Note that there are other ways to use SFML with Gtk (e.g passing a DrawingArea's Handle to the SFML Window constructor), but this is the best, IMO, and the only one that I have found that works with AA under Linux. (Since SFML 2.1)
+This class works as a "bridge" between GTK and SFML: It acts both as a GTK Widget, i.e. it can be put into TopLevelWindows or other containers, and as a SFML RenderTarget, that is, you can draw to it. I find it easiest to derive a class from this for each game scene. Use SFML's event system to handle clicks and key presses.
+
+Note that there are other ways to use SFML with GTK (e.g passing a DrawingArea's Handle to the SFML Window constructor), but this is the best, IMO, and the only one that I have found that works with AA under Linux. (Since SFML 2.1)
 
 ```c#
 //
@@ -21,6 +23,7 @@ Note that there are other ways to use SFML with Gtk (e.g passing a DrawingArea's
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 using System;
 using SFML.Graphics;
 using SFML.Window;

@@ -105,7 +105,7 @@ public:
 	void Set(std :: string param, float value);
 };
 
-#endif SETTINGS_H
+#endif // SETTINGS_H
 ```
 
 ### SettingsParser.cpp

@@ -5,6 +5,7 @@ This is an adaptation of the [[Simple Collision Detection|Source:-Simple-Collisi
 * The alpha values of a texture are now stored in a bitmask, since SFML no longer uses sf::Images for rendering. Creating this bitmask for an already existing texture takes time (because of a call to sf::Texture::copyToImage) so use Collision::CreateTextureAndBitmask to load an image file into a texture and create the bitmask at the same time.
 * The helper functions of the original version are omitted. sf::Sprite::getGlobalBounds now does what Collision::GetAABB did before.
 * sf::Sprite now longer returns its size so a couple of extra calculations are needed to take scaling into account.
+* The BoundingBoxTest was rewritten completely. It now uses the Seperating Axis Theorem.
 
 ## Code
 
@@ -81,10 +82,8 @@ namespace Collision {
 	bool CircleTest(const sf::Sprite& Object1, const sf::Sprite& Object2);
  
 	//////
-	/// Test for bounding box collision using Oriented Bounding Box
+	/// Test for bounding box collision using the Seperating Axis Theorem
 	/// Supports scaling and rotation
-	/// Code is from Rotated Rectangles Collision Detection, Oren Becker, 2001
-	/// http://www.ragestorm.net/tutorial?id=22
 	//////
 	bool BoundingBoxTest(const sf::Sprite& Object1, const sf::Sprite& Object2);
 }
@@ -222,119 +221,67 @@ namespace Collision
 		return (Distance.x * Distance.x + Distance.y * Distance.y <= (Radius1 + Radius2) * (Radius1 + Radius2));
 	}
 
-	bool BoundingBoxTest(const sf::Sprite& Object1, const sf::Sprite& Object2) {
-		sf::Vector2f A, B, C, BL, TR;
-		sf::Vector2f HalfSize1 = GetSpriteSize(Object1)/2.f;
-		sf::Vector2f HalfSize2 = GetSpriteSize(Object2)/2.f;
+	class OrientedBoundingBox // Used in the BoundingBoxTest
+	{
+	public:
+		OrientedBoundingBox (const sf::Sprite& Object) // Calculate the four points of the OBB from a transformed (scaled, rotated...) sprite
+		{
+			sf::Transform trans = Object.getTransform();
+			sf::IntRect local = Object.getTextureRect();
+			Points[0] = trans.transformPoint(0.f, 0.f);
+			Points[1] = trans.transformPoint(local.width, 0.f);
+			Points[2] = trans.transformPoint(local.width, local.height);
+			Points[3] = trans.transformPoint(0.f, local.height);
+		}
 
-		//Get the Angle we're working on
-		const double RadToDeg = 3.14159265358979323846/180.0;
-		float Angle = Object1.getRotation() - Object2.getRotation();
-		float CosA = cos(Angle * RadToDeg);
-		float SinA = sin(Angle * RadToDeg);
- 
-		float t, x, a, dx, ext1, ext2;
- 
-		//Normalise the Center of Object2 so its axis aligned an represented in
-		//relation to Object 1
-		C = GetSpriteCenter(Object2) - GetSpriteCenter(Object1);
- 
-		float O2Rot = Object2.getRotation() * RadToDeg;
-		float temp = C.x;
-		C.x = temp * cos(O2Rot) + C.y * sin(O2Rot);
-		C.y = -temp * sin(O2Rot) + C.y * cos(O2Rot);
- 
-		//Get the Corners
-		BL = TR = C;
-		BL -= HalfSize2;
-		TR += HalfSize2;
- 
-		//Calculate the vertices of the rotate Rect
-		A.x = -HalfSize1.y*SinA;
-		B.x = A.x;
-		t = HalfSize1.x*CosA;
-		A.x += t;
-		B.x -= t;
- 
-		A.y = HalfSize1.y*CosA;
-		B.y = A.y;
-		t = HalfSize1.x*SinA;
-		A.y += t;
-		B.y -= t;
- 
-		t = SinA * CosA;
- 
-		// verify that A is vertical min/max, B is horizontal min/max
-		if (t < 0) {
-			t = A.x;
-			A.x = B.x;
-			B.x = t;
-			t = A.y;
-			A.y = B.y;
-			B.y = t;
-		}
- 
-		// verify that B is horizontal minimum (leftest-vertex)
-		if (SinA < 0) {
-			B.x = -B.x;
-			B.y = -B.y;
-		}
- 
-		// if rr2(ma) isn't in the horizontal range of
-		// colliding with rr1(r), collision is impossible
-		if (B.x > TR.x || B.x > -BL.x) return false;
- 
-		// if rr1(r) is axis-aligned, vertical min/max are easy to get
-		if (t == 0) {
-			ext1 = A.y;
-			ext2 = -ext1;
-		}// else, find vertical min/max in the range [BL.x, TR.x]
-		else {
-			x = BL.x - A.x;
-			a = TR.x - A.x;
-			ext1 = A.y;
-			// if the first vertical min/max isn't in (BL.x, TR.x), then
-			// find the vertical min/max on BL.x or on TR.x
-			if (a * x > 0) {
-				dx = A.x;
-				if (x < 0) {
-					dx -= B.x;
-					ext1 -= B.y;
-					x = a;
-				} else {
-					dx += B.x;
-					ext1 += B.y;
-				}
-				ext1 *= x;
-				ext1 /= dx;
-				ext1 += A.y;
-			}
- 
-			x = BL.x + A.x;
-			a = TR.x + A.x;
-			ext2 = -A.y;
-			// if the second vertical min/max isn't in (BL.x, TR.x), then
-			// find the local vertical min/max on BL.x or on TR.x
-			if (a * x > 0) {
-				dx = -A.x;
-				if (x < 0) {
-					dx -= B.x;
-					ext2 -= B.y;
-					x = a;
-				} else {
-					dx += B.x;
-					ext2 += B.y;
-				}
-				ext2 *= x;
-				ext2 /= dx;
-				ext2 -= A.y;
+		sf::Vector2f Points[4];
+
+		void ProjectOntoAxis (const sf::Vector2f& Axis, float& Min, float& Max) // Project all four points of the OBB onto the given axis and return the dotproducts of the two outermost points
+		{
+			Min = (Points[0].x*Axis.x+Points[0].y*Axis.y);
+			Max = Min;
+			for (int j = 1; j<4; j++)
+			{
+				float Projection = (Points[j].x*Axis.x+Points[j].y*Axis.y);
+
+				if (Projection<Min)
+					Min=Projection;
+				if (Projection>Max)
+					Max=Projection;
 			}
 		}
- 
-		// check whether rr2(ma) is in the vertical range of colliding with rr1(r)
-		// (for the horizontal range of rr2)
-		return !((ext1 < BL.y && ext2 < BL.y) ||
-				(ext1 > TR.y && ext2 > TR.y));
+	};
+
+	bool BoundingBoxTest(const sf::Sprite& Object1, const sf::Sprite& Object2) {
+		OrientedBoundingBox OBB1 (Object1);
+		OrientedBoundingBox OBB2 (Object2);
+
+		// Create the four distinct axes that are perpendicular to the edges of the two rectangles
+		sf::Vector2f Axes[4] = {
+			sf::Vector2f (OBB1.Points[1].x-OBB1.Points[0].x,
+			OBB1.Points[1].y-OBB1.Points[0].y),
+			sf::Vector2f (OBB1.Points[1].x-OBB1.Points[2].x,
+			OBB1.Points[1].y-OBB1.Points[2].y),
+			sf::Vector2f (OBB2.Points[0].x-OBB2.Points[3].x,
+			OBB2.Points[0].y-OBB2.Points[3].y),
+			sf::Vector2f (OBB2.Points[0].x-OBB2.Points[1].x,
+			OBB2.Points[0].y-OBB2.Points[1].y)
+		};
+
+		for (int i = 0; i<4; i++) // For each axis...
+		{
+			float MinOBB1, MaxOBB1, MinOBB2, MaxOBB2;
+
+			// ... project the points of both OBBs onto the axis ...
+			OBB1.ProjectOntoAxis(Axes[i], MinOBB1, MaxOBB1);
+			OBB2.ProjectOntoAxis(Axes[i], MinOBB2, MaxOBB2);
+
+			// ... and check whether the outermost projected points of both OBBs overlap.
+			// If this is not the case, the Seperating Axis Theorem states that there can be no collision between the rectangles
+			if (!((MinOBB2<=MaxOBB1)&&(MaxOBB2>=MinOBB1)))
+				return false;
+		}
+		return true;
 	}
 }
 ```

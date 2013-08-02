@@ -12,7 +12,13 @@ The number of segments to be drawn. This has to be a number bigger than or equal
 
 ## Code
 ```
-std::vector<sf::Vector2f> CalcCubicBezier(const sf::Vector2f &start, const sf::Vector2f &end, const sf::Vector2f &startControl, const sf::Vector2f &endControl, const size_t numSegments) {
+std::vector<sf::Vector2f> CalcCubicBezier(
+        const sf::Vector2f &start,
+        const sf::Vector2f &end,
+        const sf::Vector2f &startControl,
+        const sf::Vector2f &endControl,
+        const size_t numSegments)
+{
     std::vector<sf::Vector2f> ret;
     if (!numSegments) // Any points at all?
         return ret;

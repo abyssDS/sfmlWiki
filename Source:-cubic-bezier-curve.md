@@ -44,7 +44,13 @@ The easiest way to draw such a curve would be adding the points to a `sf::Vertex
 sf::VertexArray vertices(sf::LinesStrip, 0);
 
 // Calculate the points on the curve (10 segments)
-std::vector<sf::Vector2f> points = CalcCubicBezier(sf::Vector2f(0, 100), sf::Vector2f(300, 200), sf::Vector2f(0, 150), sf::Vector2f(300, 150), 10);
+std::vector<sf::Vector2f> points =
+    CalcCubicBezier(
+        sf::Vector2f(0, 100),
+        sf::Vector2f(300, 200),
+        sf::Vector2f(0, 150),
+        sf::Vector2f(300, 150),
+        10);
 
 // Append the points as vertices to the vertex array
 for (std::vector<sf::Vector2f>::const_iterator a = points.begin(); a != points.end(); ++a)

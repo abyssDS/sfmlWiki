@@ -1,4 +1,4 @@
-# Link SFML with Qt Creator
+# Link SFML with Qt Creator 2.7+ and Qt5
 #### Step 1
 Download the latest stable version of SFML from http://www.sfml-dev.org/download.php
 
@@ -49,3 +49,12 @@ SFML
 ~~~
 
 You may need to adjust the file permissions.  The .pro file should be the same as OSX.
+
+## C++11
+If you are using a C++11 version of SFML then you need to add the following to your .pro file:
+
+~~~
+CONFIG += c++11
+~~~
+
+If you are having problems compiling try, Build->Clean All or Build->Clean Project and then try to build or run again.

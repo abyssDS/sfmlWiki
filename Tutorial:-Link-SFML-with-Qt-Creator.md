@@ -37,7 +37,7 @@ DEPENDPATH += "/usr/local/include"
 ~~~
 
 ## Linux
-Due to differing depedencies I was unable to link the pre-built linux libraries.
+Due to differing dependencies I was unable to link the pre-built linux libraries.
 Refer to [[Build and Link SFML with Qt Creator|Tutorial:-Compile-and-Link-SFML-with-Qt-Creator]] for linux.
 
 

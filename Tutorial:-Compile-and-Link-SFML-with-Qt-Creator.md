@@ -116,7 +116,8 @@ libfreetype6-dev \
 libGLEW-dev \
 libxrandr-dev \ 
 libopenal-dev \
-libsndfile-dev
+libsndfile-dev \
+libgl1-mesa-dev
 ~~~
 
 This is what I had to install on my system.  The build process may have additional requirements depending on your system.

@@ -37,18 +37,9 @@ DEPENDPATH += "/usr/local/include"
 ~~~
 
 ## Linux
-I have not tested on linux, but it should be very similar to Mac OSX.  Download SFML for linux and copy the files to /usr/local.  From inside the include and lib folder run the following commands:
-~~~
-SFML
-|
-|-include
-|-- cp -R * /usr/local/include
-|
-|-lib
-|-- cp -R * /usr/local/lib
-~~~
+Due to differing depedencies I was unable to link the pre-built linux libraries.
+Refer to [[Build and Link SFML with Qt Creator|Tutorial:-Compile-and-Link-SFML-with-Qt-Creator]] for linux.
 
-You may need to adjust the file permissions.  The .pro file should be the same as OSX.
 
 ## C++11
 If you are using a C++11 version of SFML then you need to add the following to your .pro file:

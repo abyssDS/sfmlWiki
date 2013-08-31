@@ -406,8 +406,8 @@ void AnimatedSprite::update(sf::Time deltaTime)
         // if current time is bigger then the frame time advance one frame
         if(m_currentTime >= m_frameTime)
         {
-            // reset time
-            m_currentTime = sf::Time::Zero;
+            // reset time, but keep the remainder
+            m_currentTime = sf::microseconds(m_currentTime.asMicroseconds() % m_frameTime.asMicroseconds());
 
             // get next Frame index
             if(m_currentFrame + 1 < m_animation->getSize())

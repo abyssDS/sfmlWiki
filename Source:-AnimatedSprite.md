@@ -304,11 +304,7 @@ void AnimatedSprite::setFrameTime(sf::Time time)
 
 void AnimatedSprite::play()
 {
-    if(m_isPaused)
-    {
-        m_currentTime = sf::Time::Zero;
-        m_isPaused = false;
-    }
+    m_isPaused = false;
 }
 
 void AnimatedSprite::pause()
@@ -320,6 +316,7 @@ void AnimatedSprite::stop()
 {
     m_isPaused = true;
     m_currentFrame = 0;
+    setFrame(m_currentFrame);
 }
 
 void AnimatedSprite::setLooped(bool looped)

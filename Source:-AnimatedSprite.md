@@ -24,7 +24,8 @@ int main()
 
     // load texture
     sf::Texture texture;
-    texture.loadFromFile("Gnome.png");
+    if(!texture.loadFromFile("Gnome.png"))
+        return EXIT_FAILURE;
 
     // push frames
     Animation walkingAnimation;

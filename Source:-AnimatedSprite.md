@@ -296,6 +296,11 @@ void AnimatedSprite::setAnimation(const Animation& animation)
     setFrame(m_currentFrame);
 }
 
+void AnimatedSprite::setFrameTime(sf::Time time)
+{
+    m_frameTime = time;
+}
+
 void AnimatedSprite::play()
 {
     if(m_isPaused)

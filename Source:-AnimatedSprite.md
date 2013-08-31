@@ -231,6 +231,7 @@ public:
     void stop();
     void setLooped(bool looped);
     void setColor(const sf::Color& color);
+    const Animation* getAnimation() const;
     sf::FloatRect getLocalBounds() const;
     sf::FloatRect getGlobalBounds() const;
     bool isLooped() const;
@@ -333,6 +334,11 @@ void AnimatedSprite::setColor(const sf::Color& color)
     m_vertices[1].color = color;
     m_vertices[2].color = color;
     m_vertices[3].color = color;
+}
+
+const Animation* AnimatedSprite::getAnimation() const
+{
+    return m_animation;
 }
 
 sf::FloatRect AnimatedSprite::getLocalBounds() const

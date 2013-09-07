@@ -9,6 +9,7 @@ Welcome to the section dedicated to projects using/for SFML.
 
 ### UI (User Interface)
 * [C++] [SFGUI](http://sfgui.sfml-dev.de/): A C++ library for adding graphical user interfaces to games and programs.
+* [C++ or C#] [TGUI](http://tgui.eu/): An easy to use cross-platform GUI based on SFML 2 and written in C++.
 
 ### Other extensions
 * [C++] [[Zoost & Zoom libraries|Project:-Zoost-and-Zoom]]: Geometric objects, customizable shapes, animation tools & light rendering.

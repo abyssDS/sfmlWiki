@@ -26,6 +26,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Tile Map with VertexArrays|Source:-TileMap]]: Load, cull, texture and display quads as tiles
 * [C#/C++] [[TileMap renderer|Source:-TileMap-Render]]: efficient tilemap drawing
 * [C++] [[Shader Tile Map|Source:-ShaderTileMap]]: tile map drawing using one texture as data and other as graphics and swapping data pixels for graphic pixels using glsl fragment shader
+* [C++11] [[Vertex Vector|Source:-VertexVector]]: drawable alternative to VertexArray that supports emplacement and foreach loops
 
 ## Network
 * [C++] [[Simple chat example using sf::TcpSocket|Source:-Network-Chat-Example]]

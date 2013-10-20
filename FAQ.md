@@ -360,7 +360,7 @@ while( window.isOpen() ) {
 	// Event handling
 
 	// Update sprite position
-	sprite.move( 1, 0 );
+	sprite.move( 1.f, 0.f );
 
 	// Draw everything
 	window.clear();
@@ -403,7 +403,7 @@ while( window.isOpen() ) {
 	float delta = clock.restart().asSeconds();
 	
 	// Update sprite position
-	sprite.move( speed * delta, 0 );
+	sprite.move( speed * delta, 0.f );
 
 	// Draw everything
 	window.clear();

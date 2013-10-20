@@ -41,6 +41,7 @@
 **[SFML Window](#window)**
 - [How do I make my window transparent?](#window-transparent-window)
 - [What happened to getFrameTime()?](#window-get-frame-time)
+- [Why doesn't setFramerateLimit() always set the frame rate to the specified limit?](#window-set-framerate-limit)
 
 **[SFML System](#system)**
 - [Does SFML support Unicode?](#system-unicode)
@@ -445,6 +446,10 @@ Users have to create an sf::Clock object now and keep time themselves. This has 
 * Correct time reporting (getFrameTime() reported the time spent **during the last frame**)
 * More control over between which points in your code the time is to be measured
 * More control over the precision required
+
+### <a name="window-set-framerate-limit"/>Why doesn't setFramerateLimit() always set the frame rate to the specified limit?
+
+setFramerateLimit() is implemented using a call to sf::sleep every frame. The intricacies of sf::sleep are explained [here](#system-sleep).
 
 ## <a name="system"/>SFML System
 

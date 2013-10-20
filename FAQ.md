@@ -28,6 +28,7 @@
 - [What is the difference between LocalBounds and GlobalBounds?](#graphics-bounds)
 - [My FPS is very low when running my application.](#graphics-low-fps)
 - [RenderTextures don't work on my computer!](#graphics-broken-rendertexture)
+- [My animations/movements aren't smooth or exhibit stuttering!](#graphics-smooth-animation)
 
 **[SFML Audio](#audio)**
 - [What audio formats does SFML support?](#audio-formats)
@@ -348,6 +349,73 @@ You can also try to perform rudimentary culling. Culling consists of not drawing
 ### <a name="graphics-low-fps"/>My FPS is very low when running my application.
 
 ### <a name="graphics-broken-rendertexture"/>RenderTextures don't work on my computer!
+
+### <a name="graphics-smooth-animation"/>My animations/movements aren't smooth or exhibit stuttering!
+
+The most common cause of this is because you are directly or indirectly relying on your application running at a fixed frame rate. Frame rates cannot be reliably locked to a certain value without a lot of effort and knowledge of lower level operating system aspects. The reasons for this are given [here](#window-set-framerate-limit) and [here](#system-sleep). Using vertical synchronization is out of the question because this might result in different frame rates on different systems.
+
+Suppose you have a simple loop as such:
+```cpp
+while( window.isOpen() ) {
+	// Event handling
+
+	// Update sprite position
+	sprite.move( 1, 0 );
+
+	// Draw everything
+	window.clear();
+	window.draw( sprite );
+	window.display();
+}
+```
+This loop simply moves the sprite by 1 unit (be it raster position, pixel etc.) in the positive direction along the x-axis every frame and displays it.
+
+The problem with this loop is that the change in position is made using a **fixed amount per frame**. This means that the more frames pass, the more the sprite will move. Assuming that the same number of frames pass in the same amount of time, this leads to the sprite moving at a constant velocity (keeping the same speed). However, remembering what was said above, we cannot assume this to be the case. **Frame rates will always vary**, and hence if the sprite moved a constant amount every frame, its apparent speed is based entirely on the frame rate of the system running the application. The faster a frame completes, the more frames will pass in a given amount of time and the more the sprite will move in a given amount of time, hence the faster the apparent movement.
+
+The solution to this problem is simply to make the movement of the sprite independent of the frame rate. 
+
+To implement this solution, one has to consider the **speed or velocity** of the sprite. Speed is conventionally measured in m/s or km/h. In any case, it is distance travelled divided by elapsed time. What we have with the problematic implementation is a velocity specified in terms of pixels/frame and (considering a pixel as a distance in this simplification) a frame is not a unit of time.
+
+The first step would be to specify the speed of the sprite, e.g. 100 pixels per second.
+
+The next step would be to translate that speed into movement every frame. We know that speed is distance travelled divided by time elapsed, so using simple mathematics we can translate 100 pixels per second and an elapsed time back into a distance travelled.
+
+distance travelled = speed * elapsed time
+
+This is considered as a simplification of integration in scientific contexts.
+
+We have our speed, but how do we get the amount of time elapsed? Simple, with an sf::Clock. If you don't know how to use an sf::Clock, it is suggested you refer to the SFML tutorials and documentation.
+
+The first step of each new frame would be to determine how much time has passed since the same line of code was executed during the previous frame. This gives us a fairly accurate estimation of the true elapsed time which is more than enough for our intents. Using this time, we simply multiply with the speed of the sprite to get the value by which it moved during the frame.
+
+In code this would look like this:
+```cpp
+// Our speed in pixels per second
+float speed = 100.f;
+
+// Our clock to time frames
+sf::Clock clock;
+
+while( window.isOpen() ) {
+	// Event handling
+
+	// Get elapsed time
+	float delta = clock.restart().asSeconds();
+	
+	// Update sprite position
+	sprite.move( speed * delta, 0 );
+
+	// Draw everything
+	window.clear();
+	window.draw( sprite );
+	window.display();
+}
+```
+This code will move the sprite at 100 pixels per second regardless of frame rate.
+
+One thing to remember is that the physical units (pixels, metres, seconds, kilograms, etc.) you use in your code should be consistent. This means that if you use pixels per second in your speed definitions, you should use the elapsed time in seconds as well. If you don't match these up, you will get effects much more prominent or subtle than what you might expect, resulting in things disappearing out of sight because they move really fast as an example.
+
+This is just one way out of many to deal with this issue. It was presented here because it is the simplest to implement and explain in this FAQ.
 
 ## <a name="audio"/>SFML Audio
 

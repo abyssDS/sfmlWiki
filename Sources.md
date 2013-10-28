@@ -52,6 +52,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Loading resources using PhysFS|Source:-PhysicsFS-Input-Stream]]
 * [C++] [[Calculating points of a Cubic Bézier Curve|Source:-Cubic-Bezier-Curve]] Allows drawing of a smooth curve approximation based on four points.
 * [C++] [[KeyValues|Source:-KeyValues]] Simple parser class
+* [C++] [[2D Vector Manipulation|Source:-2D-Vector-Manipulation]] A more advanced class for manipulating and transforming 2D vectors.
 
 ## Audio
 * [C++] [[MP3 Player|Source:-MP3-Player]]: Class inspired sf:: Music for playing mp3 file using the library mpg123

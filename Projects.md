@@ -35,6 +35,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [Java] *JSFML*: http://jsfml.org/
 * [OCaml] *ocaml-sfml*: hosted on the ocaml forge: http://ocaml-sfml.forge.ocamlcore.org/
 * [OCaml] *Ocsfml*: hosted on github: https://github.com/JoeDralliam/Ocsfml
+* [Rust] *Rust-SFML*: available on [github](https://github.com/JeremyLetang/rust-sfml) and its [webpage](http://rust-sfml.org)
 
 ## Video Games
 ### Closed Source

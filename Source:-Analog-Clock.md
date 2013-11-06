@@ -68,7 +68,6 @@ int main()
 
     clockCircle.setPointCount(100);
     clockCircle.setOutlineThickness(clockCircleThickness);
-    clockCircle.setFillColor(sf::Color(220, 220, 220));
     clockCircle.setOutlineColor(sf::Color::Black);
     clockCircle.setOrigin(clockCircle.getGlobalBounds().width / 2, clockCircle.getGlobalBounds().height / 2);
     clockCircle.setPosition(window.getSize().x / 2 + clockCircleThickness, window.getSize().y / 2 + clockCircleThickness);
@@ -119,6 +118,7 @@ int main()
 
     clockBrandSprite.setPosition(window.getSize().x/2, window.getSize().y -100);
 
+
     // Create clock background
     sf::Texture clockImage;
     if (!clockImage.loadFromFile("resources/clock-image.png"))
@@ -126,12 +126,8 @@ int main()
         return EXIT_FAILURE;
     }
 
-    sf::Sprite clockImageSprite;
-    clockImageSprite.setTexture(clockImage);
-    clockImageSprite.setOrigin(clockImageSprite.getTextureRect().left + clockImageSprite.getTextureRect().width/2.0f,
-                             clockImageSprite.getTextureRect().top + clockImageSprite.getTextureRect().height/2.0f);
-
-    clockImageSprite.setPosition(window.getSize().x/2, window.getSize().y/2);
+    clockCircle.setTexture(&clockImage);
+    clockCircle.setTextureRect(sf::IntRect(40, 0, 500, 500));
 
     while (window.isOpen())
     {
@@ -158,7 +154,6 @@ int main()
 
         // Draw all parts of clock
         window.draw(clockCircle);
-        window.draw(clockImageSprite);
 
         for (int i=0; i<60; i++)
         {

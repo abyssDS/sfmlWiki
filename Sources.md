@@ -53,6 +53,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Calculating points of a Cubic Bézier Curve|Source:-Cubic-Bezier-Curve]] Allows drawing of a smooth curve approximation based on four points.
 * [C++] [[KeyValues|Source:-KeyValues]] Simple parser class
 * [C++] [[2D Vector Manipulation|Source:-2D-Vector-Manipulation]] A more advanced class for manipulating and transforming 2D vectors.
+* [C++] [[Analog Clock|Source:-Analog-Clock]] A simple program to draw a basic 2d analog clock.
 
 ## Audio
 * [C++] [[MP3 Player|Source:-MP3-Player]]: Class inspired sf:: Music for playing mp3 file using the library mpg123

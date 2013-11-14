@@ -146,12 +146,9 @@ void Settings :: Read()
 		return;
 	}
 	std :: string line, param, value;
-	char* tmp;
 	while(!in.eof())
 	{
-		tmp = new char[max_width];
-		in.getline(tmp, max_width);
-		line.assign(tmp);
+		std::getline(in, line);
 		if(line.size() > 0 && line[0] != '#')
 		{
 			size_t j = 0;

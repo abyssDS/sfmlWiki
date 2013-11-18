@@ -81,10 +81,9 @@ protected:
 	bool isChanged;
 	std :: string filename;
 	std :: vector < std :: pair < std :: string, std :: string> > data;
-	size_t size, max_width;
+	size_t size;
 public:
 	Settings(std :: string file);
-	Settings(std :: string file, size_t width);
 	~Settings();
 		
 	void Read();
@@ -115,18 +114,9 @@ public:
 Settings :: Settings(std :: string file)
 {
 	filename = file;
-	max_width = 100;
 	size = 0;
 	Read();
 	isChanged = false;
-}
-
-Settings :: Settings(std :: string file, size_t width)
-{
-	filename = file;
-	max_width = width;
-	size = 0;
-	Read();
 }
 
 Settings :: ~Settings()

@@ -543,3 +543,8 @@ Peter: It appears you pasted the same block for both examples, I've adjusted it 
 The Basic Game Engine has been progressing and this tutorial needed a little more updating. Please come download the engine for yourself and give it a try.
 
 //Ryan Lindeman//
+
+I have a question about the game logic and renderer: Would it make sense to put these into seperate threads, so you don't have to wait on the graphics card and vice versa and make them more independent of each other? 
+Are there problems with this, that I am not seeing?
+
+// RebelMoogle //

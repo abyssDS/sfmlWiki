@@ -243,6 +243,21 @@ void Settings :: Get(std :: string param, int* value)
 	}
 }
 
+void SettingsParser::Get(std::string param, float* value)
+{
+    for(size_t i = 0; i < m_size; ++i)
+    {
+		if(m_data[i].first[0] == '#')
+			continue;
+		if(m_data[i].first == param)
+		{
+			std::stringstream ss(m_data[i].second);
+			ss >> *value;
+			return;
+		}
+    }
+}
+
 void Settings :: Set(std :: string param, std :: string value)
 {
 	isChanged = true;

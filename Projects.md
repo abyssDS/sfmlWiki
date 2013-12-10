@@ -43,7 +43,7 @@ Welcome to the section dedicated to projects using/for SFML.
 
 ### Open Source
 * [C++] [Metroid Prime : Némésis](http://metroidprime4.xooit.fr/index.php): 2D fangame following the famous Metroid Prime 3.
-* [C++] [Kroniax](https://github.com/AlexAUT/Kroniax): a sidescroller, steer the ship without touching the walls
 * [C#] [Pax: A Wargame](http://paxgame.sourceforge.net): A grand strategy game around the topics of war, diplomacy, exploration and trade, set during the Middle Ages and Renaissance. In early development, C#-coded, Python-scriptable.
+* [C++11] [Kroniax](https://github.com/AlexAUT/Kroniax): a sidescroller, steer the ship without touching the walls
 * [C++11] [Open Hexagon](http://vittorioromeo.info/projects.html) ([GitHub](https://github.com/SuperV1234/SSVOpenHexagon)): C++11 open source clone of "Super Hexagon". Features JSON/LUA customizable game files, a soundtrack by BOSSFIGHT, pseudo-3D effects.
 * [C++11] [operation bloodshed](https://github.com/SuperV1234/SSVBloodshed): arcade game, spiritual successor to "Operation Carnage" - similar to Smash TV or Robotron

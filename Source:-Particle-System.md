@@ -12,7 +12,7 @@ Particle systems are great fun to play around with! Using this class one can eas
 #include <SFML\Graphics\Color.hpp>
 #include <SFML\Graphics\Image.hpp>
 #include <SFML\Graphics\Sprite.hpp>
-#include <list>
+#include <vector>
 
 namespace Shape { enum { CIRCLE, SQUARE }; }
 
@@ -60,7 +60,7 @@ private:
 	unsigned char	m_dissolutionRate;
 	unsigned char	m_shape;
 
-	std::list<Particle*> m_particles;
+	std::vector<Particle*> m_particles;
 };
 
 #endif

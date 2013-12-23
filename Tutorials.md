@@ -23,7 +23,6 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 
 ### Game Engines
 * [C++] [[Basic Game Engine|Tutorial:-Basic-Game-Engine]]
-* [C++] [[Basic Inventory System|Tutorial:-Basic-Inventory-System]]
 
 ### Game Objects
 * [C++] [[Object Properties|Tutorial:-Object-Properties]]

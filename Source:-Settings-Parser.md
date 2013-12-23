@@ -34,7 +34,7 @@ int main()
 {
 	//....
 	
-	SettingsParser settings("settings.dat");
+	Settings settings("settings.dat");
 	
 	int width, height;
 	settings.Get("width", &width);
@@ -109,7 +109,7 @@ public:
 
 ### SettingsParser.cpp
 ```cpp
-#include "Settings.h"
+#include "SettingsParser.h"
 
 Settings :: Settings(std :: string file)
 {
@@ -245,13 +245,13 @@ void Settings :: Get(std :: string param, int* value)
 
 void SettingsParser::Get(std::string param, float* value)
 {
-    for(size_t i = 0; i < m_size; ++i)
+    for(size_t i = 0; i < size; ++i)
     {
-		if(m_data[i].first[0] == '#')
+		if(data[i].first[0] == '#')
 			continue;
-		if(m_data[i].first == param)
+		if(data[i].first == param)
 		{
-			std::stringstream ss(m_data[i].second);
+			std::stringstream ss(data[i].second);
 			ss >> *value;
 			return;
 		}

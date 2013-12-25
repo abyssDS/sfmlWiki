@@ -32,36 +32,35 @@ Here is a demo app using the cScreen object :
 \- A simple main function
 
 ```cpp
-#include <fstream>
 #include <iostream>
-#include <sfml/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "screens.hpp"
 
 int main(int argc, char** argv)
 {
-    //Applications variables
-    std::vector<cScreen*> Screens;
-    int screen = 0;
+	//Applications variables
+	std::vector<cScreen*> Screens;
+	int screen = 0;
 
-    //Window creation
-    sf::RenderWindow App(sf::VideoMode(640, 480, 32), "SFML Demo 3");
+	//Window creation
+	sf::RenderWindow App(sf::VideoMode(640, 480, 32), "SFML Demo 3");
 
-    //Mouse cursor no more visible
-    App.ShowMouseCursor(false);
+	//Mouse cursor no more visible
+	App.setMouseCursorVisible(false);
 
-    //Screens preparations
-    screen_0 s0;
-    Screens.push_back (&s0);
-    screen_1 s1;
-    Screens.push_back (&s1);
+	//Screens preparations
+	screen_0 s0;
+	Screens.push_back(&s0);
+	screen_1 s1;
+	Screens.push_back(&s1);
 
-    //Main loop
-    while (screen >= 0)
-    {
-        screen = Screens[screen]->Run(App);
-    }
+	//Main loop
+	while (screen >= 0)
+	{
+		screen = Screens[screen]->Run(App);
+	}
 
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }
 ```
 
@@ -89,150 +88,150 @@ int main(int argc, char** argv)
 #include <iostream>
 #include "screen.hpp"
 
+#include <SFML/Graphics.hpp>
+
 class screen_0 : public cScreen
 {
 private:
-    int alpha_max;
-    int alpha_div;
-    bool playing;
+	int alpha_max;
+	int alpha_div;
+	bool playing;
 public:
-    screen_0 (void);
-    virtual int Run (sf::RenderWindow &App);
+	screen_0(void);
+	virtual int Run(sf::RenderWindow &App);
 };
 
-screen_0::screen_0 (void)
+screen_0::screen_0(void)
 {
-    alpha_max = 3*255;
-    alpha_div = 3;
-    playing = false;
+	alpha_max = 3 * 255;
+	alpha_div = 3;
+	playing = false;
 }
 
-int screen_0::Run (sf::RenderWindow &App)
+int screen_0::Run(sf::RenderWindow &App)
 {
-    sf::Event Event;
-    bool Running = true;
-    sf::Image Image;
-    sf::Sprite Sprite;
-    int alpha = 0;
-    sf::Font Font;
-    sf::String Menu1;
-    sf::String Menu2;
-    sf::String Menu3;
-    int menu = 0;
+	sf::Event Event;
+	bool Running = true;
+	sf::Texture Texture;
+	sf::Sprite Sprite;
+	int alpha = 0;
+	sf::Font Font;
+	sf::Text Menu1;
+	sf::Text Menu2;
+	sf::Text Menu3;
+	int menu = 0;
 
-    if (!Image.LoadFromFile("presentation.png"))
-    {
-        std::cerr<<"Error loading presentation.gif"<<std::endl;
-        return (-1);
-    }
-    Sprite.SetImage(Image);
-    Sprite.SetColor(sf::Color(255, 255, 255, alpha));
-    if (!Font.LoadFromFile("verdanab.ttf"))
-    {
-        std::cerr<<"Error loading verdanab.ttf"<<std::endl;
-        return (-1);
-    }
-    Menu1.SetFont(Font);
-    Menu1.SetSize(20);
-    Menu1.SetText("Play");
-    Menu1.SetX(280);
-    Menu1.SetY(160);
-    Menu2.SetFont(Font);
-    Menu2.SetSize(20);
-    Menu2.SetText("Exit");
-    Menu2.SetX(280);
-    Menu2.SetY(220);
-    Menu3.SetFont(Font);
-    Menu3.SetSize(20);
-    Menu3.SetText("Continue");
-    Menu3.SetX(280);
-    Menu3.SetY(160);
+	if (!Texture.loadFromFile("presentation.png"))
+	{
+		std::cerr << "Error loading presentation.gif" << std::endl;
+		return (-1);
+	}
+	Sprite.setTexture(Texture);
+	Sprite.setColor(sf::Color(255, 255, 255, alpha));
+	if (!Font.loadFromFile("verdanab.ttf"))
+	{
+		std::cerr << "Error loading verdanab.ttf" << std::endl;
+		return (-1);
+	}
+	Menu1.setFont(Font);
+	Menu1.setCharacterSize(20);
+	Menu1.setString("Play");
+	Menu1.setPosition({ 280.f, 160.f });
 
-    //Clearing screen
-    App.SetBackgroundColor(sf::Color(0, 0, 0, 0));
+	Menu2.setFont(Font);
+	Menu2.setCharacterSize(20);
+	Menu2.setString("Exit");
+	Menu2.setPosition({ 280.f, 220.f });
 
-    if (playing)
-    {
-        alpha = alpha_max;
-    }
+	Menu3.setFont(Font);
+	Menu3.setCharacterSize(20);
+	Menu3.setString("Continue");
+	Menu3.setPosition({ 280.f, 160.f });
 
-    while (Running)
-    {
-        //Verifying events
-        while (App.GetEvent(Event))
-        {
-            // Window closed
-            if (Event.Type == sf::Event::Closed)
-            {
-                return (-1);
-            }
-            //Key pressed
-            if (Event.Type == sf::Event::KeyPressed)
-            {
-                switch (Event.Key.Code)
-                {
-                    case sf::Key::Up:
-                        menu = 0;
-                        break;
-                    case sf::Key::Down:
-                        menu = 1;
-                        break;
-                    case sf::Key::Return:
-                        if (menu==0)
-                        {
-                            //Let's get play !
-                            playing = true;
-                            return (1);
-                        }
-                        else
-                        {
-                            //Let's get work...
-                            return (-1);
-                        }
-                        break;
-                    default :
-                        break;
-                }
-            }
-        }
-        //When getting at alpha_max, we stop modifying the sprite
-        if (alpha<alpha_max)
-        {
-            alpha++;
-        }
-        Sprite.SetColor(sf::Color(255, 255, 255, alpha/alpha_div));
-        if (menu==0)
-        {
-            Menu1.SetColor(sf::Color(255, 0, 0, 255));
-            Menu2.SetColor(sf::Color(255, 255, 255, 255));
-            Menu3.SetColor(sf::Color(255, 0, 0, 255));
-        }
-        else
-        {
-            Menu1.SetColor(sf::Color(255, 255, 255, 255));
-            Menu2.SetColor(sf::Color(255, 0, 0, 255));
-            Menu3.SetColor(sf::Color(255, 255, 255, 255));
-        }
+	if (playing)
+	{
+		alpha = alpha_max;
+	}
 
-        //Drawing
-        App.Draw(Sprite);
-        if (alpha==alpha_max)
-        {
-            if (playing)
-            {
-                App.Draw(Menu3);
-            }
-            else
-            {
-                App.Draw(Menu1);
-            }
-            App.Draw(Menu2);
-        }
-        App.Display();
-    }
+	while (Running)
+	{
+		//Verifying events
+		while (App.pollEvent(Event))
+		{
+			// Window closed
+			if (Event.type == sf::Event::Closed)
+			{
+				return (-1);
+			}
+			//Key pressed
+			if (Event.type == sf::Event::KeyPressed)
+			{
+				switch (Event.key.code)
+				{
+				case sf::Keyboard::Up:
+					menu = 0;
+					break;
+				case sf::Keyboard::Down:
+					menu = 1;
+					break;
+				case sf::Keyboard::Return:
+					if (menu == 0)
+					{
+						//Let's get play !
+						playing = true;
+						return (1);
+					}
+					else
+					{
+						//Let's get work...
+						return (-1);
+					}
+					break;
+				default:
+					break;
+				}
+			}
+		}
+		//When getting at alpha_max, we stop modifying the sprite
+		if (alpha<alpha_max)
+		{
+			alpha++;
+		}
+		Sprite.setColor(sf::Color(255, 255, 255, alpha / alpha_div));
+		if (menu == 0)
+		{
+			Menu1.setColor(sf::Color(255, 0, 0, 255));
+			Menu2.setColor(sf::Color(255, 255, 255, 255));
+			Menu3.setColor(sf::Color(255, 0, 0, 255));
+		}
+		else
+		{
+			Menu1.setColor(sf::Color(255, 255, 255, 255));
+			Menu2.setColor(sf::Color(255, 0, 0, 255));
+			Menu3.setColor(sf::Color(255, 255, 255, 255));
+		}
 
-    //Never reaching this point normally, but just in case, exit the application
-    return (-1);
+		//Clearing screen
+		App.clear();
+		//Drawing
+		App.draw(Sprite);
+		if (alpha == alpha_max)
+		{
+			if (playing)
+			{
+				App.draw(Menu3);
+			}
+			else
+			{
+				App.draw(Menu1);
+			}
+			App.draw(Menu2);
+		}
+		App.display();
+	}
+
+	//Never reaching this point normally, but just in case, exit the application
+	return (-1);
 }
 ```
 
@@ -242,91 +241,91 @@ int screen_0::Run (sf::RenderWindow &App)
 #include <iostream>
 #include "screen.hpp"
 
+#include <SFML/Graphics.hpp>
+
 class screen_1 : public cScreen
 {
 private:
-    int movement_step;
-    int posx;
-    int posy;
-    sf::Sprite Sprite;
+	float movement_step;
+	float posx;
+	float posy;
+	sf::RectangleShape Rectangle;
 public:
-    screen_1 (void);
-    virtual int Run (sf::RenderWindow &App);
+	screen_1(void);
+	virtual int Run(sf::RenderWindow &App);
 };
 
-screen_1::screen_1 (void)
+screen_1::screen_1(void)
 {
-    movement_step = 5;
-    posx = 320;
-    posy = 240;
-    //Setting sprite
-    Sprite.SetColor(sf::Color(255, 255, 255, 150));
-    Sprite.SetSubRect(sf::IntRect(0, 0, 10, 10));
+	movement_step = 5;
+	posx = 320;
+	posy = 240;
+	//Setting sprite
+	Rectangle.setFillColor(sf::Color(255, 255, 255, 150));
+	Rectangle.setSize({ 10.f, 10.f });
 }
 
-int screen_1::Run (sf::RenderWindow &App)
+int screen_1::Run(sf::RenderWindow &App)
 {
-    sf::Event Event;
-    bool Running = true;
+	sf::Event Event;
+	bool Running = true;
 
+	while (Running)
+	{
+		//Verifying events
+		while (App.pollEvent(Event))
+		{
+			// Window closed
+			if (Event.type == sf::Event::Closed)
+			{
+				return (-1);
+			}
+			//Key pressed
+			if (Event.type == sf::Event::KeyPressed)
+			{
+				switch (Event.key.code)
+				{
+				case sf::Keyboard::Escape:
+					return (0);
+					break;
+				case sf::Keyboard::Up:
+					posy -= movement_step;
+					break;
+				case sf::Keyboard::Down:
+					posy += movement_step;
+					break;
+				case sf::Keyboard::Left:
+					posx -= movement_step;
+					break;
+				case sf::Keyboard::Right:
+					posx += movement_step;
+					break;
+				default:
+					break;
+				}
+			}
+		}
 
-    //Clearing screen
-    App.SetBackgroundColor(sf::Color(0, 0, 0, 0));
+		//Updating
+		if (posx>630)
+			posx = 630;
+		if (posx<0)
+			posx = 0;
+		if (posy>470)
+			posy = 470;
+		if (posy<0)
+			posy = 0;
+		Rectangle.setPosition({ posx, posy });
 
-    while (Running)
-    {
-        //Verifying events
-        while (App.GetEvent(Event))
-        {
-            // Window closed
-            if (Event.Type == sf::Event::Closed)
-            {
-                return (-1);
-            }
-            //Key pressed
-            if (Event.Type == sf::Event::KeyPressed)
-            {
-                switch (Event.Key.Code)
-                {
-                    case sf::Key::Escape:
-                        return (0);
-                        break;
-                    case sf::Key::Up:
-                        posy -= movement_step;
-                        break;
-                    case sf::Key::Down:
-                        posy += movement_step;
-                        break;
-                    case sf::Key::Left:
-                        posx -= movement_step;
-                        break;
-                    case sf::Key::Right:
-                        posx += movement_step;
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+		//Clearing screen
+		App.clear(sf::Color(0, 0, 0, 0));
+		//Drawing
+		App.draw(Rectangle);
+		App.display();
+	}
 
-        //Updating
-        if (posx>630)
-            posx = 630;
-        if (posx<0)
-            posx = 0;
-        if (posy>470)
-            posy = 470;
-        if (posy<0)
-            posy = 0;
-        Sprite.SetPosition(posx, posy);
-
-        //Drawing
-        App.Draw(Sprite);
-        App.Display();
-    }
-
-    //Never reaching this point normally, but just in case, exit the application
-    return -1;
+	//Never reaching this point normally, but just in case, exit the application
+	return -1;
 }
 ```
 

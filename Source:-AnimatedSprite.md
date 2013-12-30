@@ -48,11 +48,13 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
+            // close window
             if (event.type == sf::Event::Closed)
                 window.close();
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+            if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Escape)
                 window.close();
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::P)
+            // toggle play/pause
+            if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::P)
             {
                 if(animatedSprite.isPlaying())
                     animatedSprite.pause();
@@ -64,6 +66,7 @@ int main()
         // update AnimatedSprite
         animatedSprite.update(frameClock.restart());
 
+        // draw AnimatedSprite
         window.clear();
         window.draw(animatedSprite);
         window.display();
@@ -380,7 +383,7 @@ void AnimatedSprite::setFrame(std::size_t newFrame, bool resetTime)
     if(m_animation)
     {
         //calculate new vertex positions and texture coordiantes
-        sf::IntRect rect = m_animation->getFrame(m_currentFrame);
+        sf::IntRect rect = m_animation->getFrame(newFrame);
 
         m_vertices[0].position = sf::Vector2f(0.f, 0.f);
         m_vertices[1].position = sf::Vector2f(0.f, static_cast<float>(rect.height));

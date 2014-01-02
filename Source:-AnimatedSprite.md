@@ -1,72 +1,127 @@
 # AnimatedSprite class
 
 ## Summary 
-This is a class for SFML 2 that provides a easy interface to animate Sprites. The design closely follows the design of the sf::Sprite class.
+This is a class for SFML 2 that provides an easy interface to animate Sprites. The design closely follows the design of the `sf::Sprite` class.
 
-Both classes are written by Foaly. They are under the zlib/libpng license (the same that SFML uses). I would be nice if you name in the credits of your project :)
+Both classes are written by Foaly. They are under the zlib/libpng license (the same that SFML uses). I'd love to hear about your project on the forum and it would be nice if you name me in the credits :)
 
 ##Usage
-The usage is quiet simple. First you create a Animation. The Animation class is essentially a std::vector of sf::IntRect and a sf::Texture reference. So you have to provide a Spritesheet and push back your intrects. Then you create a AnimatedSprite object and provide it with a Animation. The AnimatedSprite class inherits from both sf::Drawable and sf::Transfomable, so it behaves much like a regular sprite. The only thing you have to do is to call the update(sf::Time deltaTime) member on every iteration with the time passed since the last iteration (this also allows you to do effects like slow motion without changing the frame time). Of course the AnimatedSprite class also provides members to pause, stop and play the Animation.
+The usage is quiet simple. First you create a Animation. The Animation class is essentially a std::vector of sf::IntRect and a sf::Texture reference. So you have to provide a Spritesheet and push back your intrects. Then you create a AnimatedSprite object and provide it with a Animation. The AnimatedSprite class inherits from both sf::Drawable and sf::Transfomable, so it behaves much like a regular sprite. The only thing you have to do is to call the update(sf::Time deltaTime) method on every iteration with the time passed since the last iteration (this also allows you to do effects like slow motion without changing the frame time). Of course the AnimatedSprite class also provides methods to pause, stop and play the Animation.
 Note that both classes work with references, so you have to keep the sf::Texture and the Animation alive as long as you need AnimatedSprite.
 If all of this to confusing to you then take a look at the example and play with it.
 
 ## Example
-Here is a short example of how to use the classes. 
+Here is an example of how to use the classes. 
 
-Spritesheet: ![Spritesheet](http://i.imgur.com/355uI.png)
+Spritesheet: ![Spritesheet](http://i.imgur.com/EZ057DJ.png)
 ```cpp
 #include <SFML/Graphics.hpp>
 #include "AnimatedSprite.hpp"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "Animations!");
+    // setup window
+    sf::Vector2i screenDimensions(800,600);
+    sf::RenderWindow window(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Animations!");
+    window.setFramerateLimit(60);
 
-    // load texture
+    // load texture (spritesheet)
     sf::Texture texture;
-    if(!texture.loadFromFile("Gnome.png"))
-        return EXIT_FAILURE;
+    texture.loadFromFile("Player.png");
 
-    // push frames
-    Animation walkingAnimation;
-    walkingAnimation.setSpriteSheet(texture);
-    walkingAnimation.addFrame(sf::IntRect(0, 0, 53, 95));
-    walkingAnimation.addFrame(sf::IntRect(53, 0, 57, 97));
-    walkingAnimation.addFrame(sf::IntRect(0, 0, 53, 95));
-    walkingAnimation.addFrame(sf::IntRect(110, 0, 57, 97));
+    // set up the animations for all four directions (set spritesheet and push frames)
+    Animation walkingAnimationDown;
+    walkingAnimationDown.setSpriteSheet(texture);
+    walkingAnimationDown.addFrame(sf::IntRect(32, 0, 32, 32));
+    walkingAnimationDown.addFrame(sf::IntRect(64, 0, 32, 32));
+    walkingAnimationDown.addFrame(sf::IntRect(32, 0, 32, 32));
+    walkingAnimationDown.addFrame(sf::IntRect(0, 0, 32, 32));
 
-    // set up AnimatesSprite
-    AnimatedSprite animatedSprite(sf::seconds(0.2));
-    animatedSprite.setAnimation(walkingAnimation);
-//    animatedSprite.setColor(sf::Color::Red);
-    animatedSprite.setPosition(100, 100);
+    Animation walkingAnimationLeft;
+    walkingAnimationLeft.setSpriteSheet(texture);
+    walkingAnimationLeft.addFrame(sf::IntRect(32, 32, 32, 32));
+    walkingAnimationLeft.addFrame(sf::IntRect(64, 32, 32, 32));
+    walkingAnimationLeft.addFrame(sf::IntRect(32, 32, 32, 32));
+    walkingAnimationLeft.addFrame(sf::IntRect(0, 32, 32, 32));
+
+    Animation walkingAnimationRight;
+    walkingAnimationRight.setSpriteSheet(texture);
+    walkingAnimationRight.addFrame(sf::IntRect(32, 64, 32, 32));
+    walkingAnimationRight.addFrame(sf::IntRect(64, 64, 32, 32));
+    walkingAnimationRight.addFrame(sf::IntRect(32, 64, 32, 32));
+    walkingAnimationRight.addFrame(sf::IntRect(0, 64, 32, 32));
+
+    Animation walkingAnimationUp;
+    walkingAnimationUp.setSpriteSheet(texture);
+    walkingAnimationUp.addFrame(sf::IntRect(32, 96, 32, 32));
+    walkingAnimationUp.addFrame(sf::IntRect(64, 96, 32, 32));
+    walkingAnimationUp.addFrame(sf::IntRect(32, 96, 32, 32));
+    walkingAnimationUp.addFrame(sf::IntRect(0, 96, 32, 32));
+
+    Animation* currentAnimation = &walkingAnimationDown;
+
+    // set up AnimatedSprite
+    AnimatedSprite animatedSprite(sf::seconds(0.2), true, false);
+    animatedSprite.setPosition(sf::Vector2f(screenDimensions / 2));
 
     sf::Clock frameClock;
+
+    float speed = 80.f;
+    bool noKeyWasPressed = true;
 
     while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
         {
-            // close window
             if (event.type == sf::Event::Closed)
                 window.close();
-            if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Escape)
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
                 window.close();
-            // toggle play/pause
-            if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::P)
-            {
-                if(animatedSprite.isPlaying())
-                    animatedSprite.pause();
-                else
-                    animatedSprite.play();
-            }
         }
 
-        // update AnimatedSprite
-        animatedSprite.update(frameClock.restart());
+        sf::Time frameTime = frameClock.restart();
 
-        // draw AnimatedSprite
+        // if a key was pressed set the correct animation and move correctly
+        sf::Vector2f movement(0.f, 0.f);
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        {
+            currentAnimation = &walkingAnimationUp;
+            movement.y -= speed;
+            noKeyWasPressed = false;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        {
+            currentAnimation = &walkingAnimationDown;
+            movement.y += speed;
+            noKeyWasPressed = false;
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            currentAnimation = &walkingAnimationLeft;
+            movement.x -= speed;
+            noKeyWasPressed = false;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            currentAnimation = &walkingAnimationRight;
+            movement.x += speed;
+            noKeyWasPressed = false;
+        }
+        animatedSprite.play(*currentAnimation);
+        animatedSprite.move(movement * frameTime.asSeconds());
+
+        // if no key was pressed stop the animation
+        if (noKeyWasPressed)
+        {
+            animatedSprite.stop();
+        }
+        noKeyWasPressed = true;
+
+        // update AnimatedSprite
+        animatedSprite.update(frameTime);
+
+        // draw
         window.clear();
         window.draw(animatedSprite);
         window.display();
@@ -74,6 +129,7 @@ int main()
 
     return 0;
 }
+
 ```
 
 ##Source

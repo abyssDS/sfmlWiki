@@ -6,9 +6,9 @@ This is a class for SFML 2 that provides an easy interface to animate Sprites. T
 Both classes are written by Foaly. They are under the zlib/libpng license (the same that SFML uses). I'd love to hear about your project on the forum and it would be nice if you name me in the credits :)
 
 ##Usage
-The usage is quiet simple. First you create a Animation. The Animation class is essentially a std::vector of sf::IntRect and a sf::Texture reference. So you have to provide a Spritesheet and push back your intrects. Then you create a AnimatedSprite object and provide it with a Animation. The AnimatedSprite class inherits from both sf::Drawable and sf::Transfomable, so it behaves much like a regular sprite. The only thing you have to do is to call the update(sf::Time deltaTime) method on every iteration with the time passed since the last iteration (this also allows you to do effects like slow motion without changing the frame time). Of course the AnimatedSprite class also provides methods to pause, stop and play the Animation.
-Note that both classes work with references, so you have to keep the sf::Texture and the Animation alive as long as you need AnimatedSprite.
-If all of this to confusing to you then take a look at the example and play with it.
+The usage is quiet simple. First you create an `Animation` object. The `Animation` class is essentially a `std::vector` of texture rectangles (`sf::IntRect`) and a `sf::Texture` reference. So you have to provide a spritesheet and push back your texture reactangles. Then you create a `AnimatedSprite` object and provide it with an `Animation`. The `AnimatedSprite` class inherits from both `sf::Drawable` and `sf::Transfomable`, so it behaves much like a regular sprite. The only thing you have to do is to call the `update(sf::Time deltaTime)` method on every iteration with the time passed since the last iteration (this also allows you to do effects like slow motion without changing the frame time). Of course the `AnimatedSprite` class also provides methods to pause, stop and play the animation.
+Note that both classes work with references, so you have to keep the `sf::Texture` and the `Animation` alive as long as you use `AnimatedSprite`.
+If you find all of this to confusing, then take a look at the example and play with it.
 
 ## Example
 Here is an example of how to use the classes. 
@@ -142,7 +142,7 @@ int main()
 ```cpp
 ////////////////////////////////////////////////////////////
 //
-// Copyright (C) 2013 Maximilian Wagenbach (aka. Foaly) (foaly.f@web.de)
+// Copyright (C) 2014 Maximilian Wagenbach (aka. Foaly) (foaly.f@web.de)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -192,7 +192,7 @@ private:
 ```cpp
 ////////////////////////////////////////////////////////////
 //
-// Copyright (C) 2013 Maximilian Wagenbach (aka. Foaly) (foaly.f@web.de)
+// Copyright (C) 2014 Maximilian Wagenbach (aka. Foaly) (foaly.f@web.de)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -250,7 +250,7 @@ const sf::IntRect& Animation::getFrame(std::size_t n) const
 ```cpp
 ////////////////////////////////////////////////////////////
 //
-// Copyright (C) 2013 Maximilian Wagenbach (aka. Foaly) (foaly.f@web.de)
+// Copyright (C) 2014 Maximilian Wagenbach (aka. Foaly) (foaly.f@web.de)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -325,7 +325,7 @@ private:
 ```cpp
 ////////////////////////////////////////////////////////////
 //
-// Copyright (C) 2013 Maximilian Wagenbach (aka. Foaly) (foaly.f@web.de)
+// Copyright (C) 2014 Maximilian Wagenbach (aka. Foaly) (foaly.f@web.de)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.

@@ -315,6 +315,7 @@ void AnimatedSprite::play(const Animation& animation)
 {
     if (getAnimation() != &animation)
         setAnimation(animation);
+    play();
 }
 
 void AnimatedSprite::pause()
@@ -380,7 +381,7 @@ sf::Time AnimatedSprite::getFrameTime() const
 
 void AnimatedSprite::setFrame(std::size_t newFrame, bool resetTime)
 {
-    if(m_animation)
+    if (m_animation)
     {
         //calculate new vertex positions and texture coordiantes
         sf::IntRect rect = m_animation->getFrame(newFrame);
@@ -401,33 +402,33 @@ void AnimatedSprite::setFrame(std::size_t newFrame, bool resetTime)
         m_vertices[3].texCoords = sf::Vector2f(right, top);
     }
 
-    if(resetTime)
+    if (resetTime)
         m_currentTime = sf::Time::Zero;
 }
 
 void AnimatedSprite::update(sf::Time deltaTime)
 {
     // if not paused and we have a valid animation
-    if(!m_isPaused && m_animation)
+    if (!m_isPaused && m_animation)
     {
         // add delta time
         m_currentTime += deltaTime;
 
         // if current time is bigger then the frame time advance one frame
-        if(m_currentTime >= m_frameTime)
+        if (m_currentTime >= m_frameTime)
         {
             // reset time, but keep the remainder
             m_currentTime = sf::microseconds(m_currentTime.asMicroseconds() % m_frameTime.asMicroseconds());
 
             // get next Frame index
-            if(m_currentFrame + 1 < m_animation->getSize())
+            if (m_currentFrame + 1 < m_animation->getSize())
                 m_currentFrame++;
             else
             {
                 // animation has ended
                 m_currentFrame = 0; // reset to start
 
-                if(!m_isLooped)
+                if (!m_isLooped)
                 {
                     m_isPaused = true;
                 }

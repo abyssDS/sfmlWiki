@@ -17,6 +17,7 @@
 - [How do I setup my development environment to work with SFML?](#build-environment)
 - [I want to fuse the libraries into one. (Not recommended)](#build-fuse)
 - [What and how do I link to use SFML?](#build-link)
+- [How do I link SFML statically?](#build-link-static)
 
 **[SFML Graphics](#graphics)**
 - [What image formats does SFML support?](#graphics-image-formats)

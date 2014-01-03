@@ -301,6 +301,53 @@ This is explained as well in [this forum post](http://en.sfml-dev.org/forums/ind
 
 In Code::Blocks, you would have to make sure the dependees are under the dependers in the list of libraries to link against.
 
+### <a name="build-link-static"/>How do I link SFML statically?
+
+In order to link SFML statically you'll need to setup your build environment to link against the static libraries of SFML. Static libraries are the ones with a `-s` suffix, for example `sfml-graphics-s`. Next you need to add `SFML_STATIC` to the preprocessor option. And as always you'll need to make sure to link the debug libraries (`-d` suffix) in debug mode and the release libraries (no `-d` suffix) in release mode.
+
+In the past SFML included on Windows all its dependencies into the SFML libraries. However this was changed to eliminate multiple issues and get a commonly expected behavior ([full discussion](http://en.sfml-dev.org/forums/index.php?topic=9362.0)). Now SFML behaves the same on Linux as well as on Windows, which however means, that one needs to link SFML's dependencies on your own. Since the dependcies aren't obvious to everyone here's a listing:
+
+**Windows**
+
+* sfml-system
+    * winmm
+* sfml-network
+    * ws2_32
+    * sfml-system
+* sfml-audio
+    * openal32
+    * sndfile
+    * sfml-system
+* sfml-window
+    * opengl32
+    * winmm
+    * gdi32
+    * sfml-system
+* sfml-graphics
+    * freetype
+    * glew
+    * jpeg
+    * opengl32
+    * sfml-window
+    * sfml-system
+
+_Note:_ For Windows all dependencies can be found in the [extlibs](https://github.com/LaurentGomila/SFML/tree/master/extlibs) directory.
+
+**Example**
+
+Here's a diagram showing how the static linking should look like.
+```
+sfml-system-s  sfml-window-s  winmm  gdi32  opengl
+         |         |           |       |      |
+         | +-------+           |       |      |
+         | | +-----------------+       |      |
+         | | | +-----------------------+      |
+         | | | | +----------------------------+
+         | | | | |
+         v v v v v
+        example.exe
+```
+
 ## <a name="graphics"/>SFML Graphics
 
 ### <a name="graphics-image-formats"/>What image formats does SFML support?

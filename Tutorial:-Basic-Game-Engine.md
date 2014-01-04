@@ -548,3 +548,7 @@ I have a question about the game logic and renderer: Would it make sense to put 
 Are there problems with this, that I am not seeing?
 
 // RebelMoogle //
+
+Nice article, although I have a question regarding your Forward Declaration section. Can't you just use a preprocessor directive like #pragma once or #ifndef #define to avoid the header file loop?
+
+//Kevin Kung//

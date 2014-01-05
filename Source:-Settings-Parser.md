@@ -3,7 +3,7 @@
 ## Overview
 This is simple class for reading and writing settings in text format. It allows you to store std::string, bool, char, int and float in a file.
 
-The original author is unknown, but was completely refractored and improved by Foaly.
+The original author is cristaloleg, but the class was completely refractored and improved by Foaly.
 
 ### Simple settings file
 

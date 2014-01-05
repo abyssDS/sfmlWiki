@@ -140,6 +140,8 @@ SettingsParser::~SettingsParser()
 
 bool SettingsParser::loadFile(const std::string& filename)
 {
+    m_data.clear();
+    m_size = 0;
     m_filename = filename;
     return read();
 }

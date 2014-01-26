@@ -197,14 +197,14 @@ RoundedRectangleShape::RoundedRectangleShape(const Vector2f& size, float radius,
     mySize = size;
     myRadius = radius;
     myCornerPointCount = cornerPointCount;
-    Update();
+    update();
 }
 
 ////////////////////////////////////////////////////////////
 void RoundedRectangleShape::setSize(const Vector2f& size)
 {
     mySize = size;
-    Update();
+    update();
 }
 
 ////////////////////////////////////////////////////////////
@@ -217,7 +217,7 @@ const Vector2f& RoundedRectangleShape::getSize() const
 void RoundedRectangleShape::setCornersRadius(float radius)
 {
     myRadius = radius;
-    Update();
+    update();
 }
 
 ////////////////////////////////////////////////////////////
@@ -230,7 +230,7 @@ const float RoundedRectangleShape::getCornersRadius() const
 void RoundedRectangleShape::setCornerPointCount(unsigned int count)
 {
     myCornerPointCount = count;
-    Update();
+    update();
 }
 
 ////////////////////////////////////////////////////////////

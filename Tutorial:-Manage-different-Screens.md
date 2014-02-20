@@ -72,7 +72,7 @@ int main(int argc, char** argv)
 #define SCREENS_HPP_INCLUDED
 
 //Basic Screen Class
-#include "screen.hpp"
+#include "cScreen.hpp"
 
 //Including each screen of application
 #include "screen_0.hpp"
@@ -86,7 +86,7 @@ int main(int argc, char** argv)
 
 ```cpp
 #include <iostream>
-#include "screen.hpp"
+#include "cScreen.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -239,7 +239,7 @@ int screen_0::Run(sf::RenderWindow &App)
 
 ```cpp
 #include <iostream>
-#include "screen.hpp"
+#include "cScreen.hpp"
 
 #include <SFML/Graphics.hpp>
 

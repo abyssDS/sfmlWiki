@@ -110,7 +110,7 @@ You can find a more specific presentation of its features on [this page](http://
 
 ### <a name="grl-platforms"/>On which platforms is SFML currently available?
 
-SFML is currently available and fully functional in Windows (8, 7, Vista, XP, 2000, 98), Linux and Mac OS X. SFML works on both 32 and 64 bit systems.
+SFML 2.1 and newer is currently available and fully functional in Windows (8, 7, Vista, XP), Linux and Mac OS X. SFML works on both 32 and 64 bit systems. If older Windows versions need to be support, it should be possible to use SFML 2.0 instead (see [the commit](https://github.com/LaurentGomila/SFML/commit/cd68d662043c2305990d1b6b559b0138bd77af14) for removal of Windows 9x and similar).
 
 ### <a name="grl-languages"/>Which programming languages are supported by SFML?
 

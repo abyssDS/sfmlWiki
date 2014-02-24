@@ -32,7 +32,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Simple chat example using sf::TcpSocket|Source:-Network-Chat-Example]]
 
 ## GUI
-* [C++] [[RichText|Source:-RichText]]: Class to handle rich text. (by Panithadrum)
+* [C++] [RichText](https://github.com/Skyrpex/RichText#readme): Class to handle rich text. (by Panithadrum)
 * [C++] [[Fader|Source:-Fader]]: Class to facilitate fading. (by cire)
 * [C#] [[GTK Integration|Source:-GTK-Integeration]]: Using a Gtk# socket to render SFML inside GTK.
 

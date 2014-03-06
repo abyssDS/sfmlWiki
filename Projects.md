@@ -5,7 +5,7 @@ Welcome to the section dedicated to projects using/for SFML.
 ## For SFML
 
 ### Video
-* [C++] [sfeMovie](http://lucas.soltic.etu.p.luminy.univmed.fr/sfeMovie/): A C++ library that lets you play movies in SFML based applications.
+* [C++] [sfeMovie](http://lucas.soltic.etu.p.luminy.univ-amu.fr/sfeMovie/): A C++ library that lets you play movies in SFML based applications.
 
 ### UI (User Interface)
 * [C++] [SFGUI](http://sfgui.sfml-dev.de/): A C++ library for adding graphical user interfaces to games and programs.

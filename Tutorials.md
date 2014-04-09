@@ -5,8 +5,6 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 ### Online Video Tutorials
 * [Dive into C++11 - [1] - Arkanoid clone in 160~ lines of code](http://www.youtube.com/watch?v=_4K3tsKa1Uc)
 * [Dive into C++11 - [2] - Frametime, FPS, constexpr, uniform initialization](http://www.youtube.com/watch?v=tPbrWAbzyTE)
-* [CodingMadeEasy beginners SFML youtube series](http://www.youtube.com/playlist?list=PLHJE4y54mpC5j_x90UkuoMZOdmmL9-_rg)
-* [CodingMadeEasy SFML platformer youtube series](http://www.youtube.com/playlist?list=PLCB3138ADCE90F2EC)
 
 ### Configuration
 

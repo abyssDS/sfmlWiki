@@ -165,7 +165,7 @@ Direct questions to this article can be made in the [forum](http://en.sfml-dev.o
 
 * Assumes a fresh SFML v2 Project Template within Xcode with the PNGs from [Full Package](http://dev.my-gate.net/wp-content/uploads/2012/06/complete.zip) (1.16 MB) copied into the project's Resources folder
 
-```
+```cpp
 #include <iostream>
 #include <sstream>
 #include <SFML/Graphics.hpp>

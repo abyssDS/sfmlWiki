@@ -32,6 +32,9 @@ This very simple class will read in a list of all available audio files from the
 #ifndef JUKEBOX_HH_INCLUDED
 #define JUKEBOX_HH_INCLUDED
 
+#include <cstddef>
+#include <algorithm>
+#include <random>
 #include <memory>
 #include <string>
 #include <deque>
@@ -44,7 +47,7 @@ public:
     // directory. It will attempt to add all files in the directory
     // using sf::Music::loadFromFile(), so for best performance make
     // sure the directory does not contain any non-music files.
-    Jukebox(const std::string& dir);
+    explicit Jukebox(const std::string& dir);
 
     // Start (or resume) playing current song in the playlist.
     void play();
@@ -53,8 +56,8 @@ public:
     // returns false.
     bool playing() const;
 
-    // Stop playing. If play() is called later then the next song in
-    // the queue will play, just as if skip(1) had been called.
+    // Stop playing. If play() is called later then the current song
+    // in the queue will play, just as if skip(0) had been called.
     void stop();
 
     // Returns true if the Jukebox is currently stopped, otherwise
@@ -68,6 +71,10 @@ public:
     // playback as if the last song had just played.
     // Skipping forward 0 songs has the effect of skipping to the
     // start of the current song.
+    // If the Jukebox was playing at the time of the skip it will
+    // start playing the skipped-to song at once. If it was paused or
+    // stopped it will be stopped at the start of the skipped-to song
+    // when this function returns.
     void skip(int n);
 
     // Rewinds the playlist to the start of the first song.
@@ -114,14 +121,14 @@ public:
 
     // Returns the total number of songs available in this Jukebox's
     // catalog.
-    int songsAvailable() const;
+    std::size_t songsAvailable() const;
 
     // Returns the current number of songs in the playlist.
-    int songsInPlaylist() const;
+    std::size_t songsInPlaylist() const;
 
     // Returns the number of songs remaining in the playlist including
     // the one currently playing or queued to be played.
-    int songsRemaining() const;
+    std::size_t songsRemaining() const;
 
     // Returns the filenames of the songs in this Jukebox's catalog.
     std::vector<std::string> catalog() const;
@@ -153,12 +160,20 @@ public:
     void update();
 
 private:
-    sf::SoundSource::Status m_status = sf::SoundSource::Stopped;
+    template <typename ITER>
+    void shuffle_range(ITER first, ITER last)
+    {
+        std::random_device rd;
+        auto g = std::mt19937(rd());
+        std::shuffle(first, last, g);
+    }
+
     std::map<std::string, std::unique_ptr<sf::Music>> m_catalog;
     std::deque<std::pair<std::string, sf::Music*>> m_playlist;
-    std::deque<std::pair<std::string, sf::Music*>>::size_type m_current = 0;
-    bool m_looping = true;
+    sf::SoundSource::Status m_status = sf::SoundSource::Stopped;
     float m_volume = 100.f;
+    std::size_t m_current = 0;
+    bool m_looping = true;
 };
 
 #endif
@@ -192,10 +207,10 @@ private:
 #include <string.h>
 #include <dirent.h>
 #include <cassert>
+#include <cstddef>
 #include <stdexcept>
 #include <iostream>
 #include <memory>
-#include <random>
 #include <cstdlib>
 
 extern "C" typedef int(*DIRDel)(DIR*);
@@ -221,7 +236,7 @@ Jukebox::Jukebox(const std::string& dir)
             std::cerr << "Jukebox failed to add '" << path << "'" << std::endl;
             continue;
         }
-        auto inserted = m_catalog.emplace(std::make_pair(filename, std::move(music)));
+        auto inserted = m_catalog.emplace(filename, std::move(music));
         assert(inserted.second);
     }
 }
@@ -272,11 +287,8 @@ void Jukebox::skip(int n)
     assert(m_current >= 0);
     assert(m_current < m_playlist.size());
 
+    const bool was_playing = playing();
     stop();
-
-    if (!n) {
-        return;
-    }
 
     if (m_looping) {
         if (n > 0) {
@@ -284,8 +296,6 @@ void Jukebox::skip(int n)
         } else {
             m_current = m_playlist.size() + ((m_current + n) % m_playlist.size());
         }
-
-        play();
     } else {
         if (n > 0) {
             if (m_current + n >= m_playlist.size()) {
@@ -294,12 +304,15 @@ void Jukebox::skip(int n)
                 m_current += n;
             }
         } else {
-            if (m_current < static_cast<std::deque<std::pair<std::string, sf::Music *>>::size_type>(std::labs(n))) {
+            if (m_current < static_cast<std::size_t>(std::labs(n))) {
                 m_current = 0;
             } else {
                 m_current += n;
             }
         }
+    }
+    if (was_playing) {
+        play();
     }
 }
 
@@ -371,9 +384,7 @@ void Jukebox::shuffle()
         m_playlist.erase(it);
     }
 
-    std::random_device rd;
-    auto g = std::mt19937(rd());
-    std::shuffle(begin(m_playlist), end(m_playlist), g);
+    shuffle_range(begin(m_playlist), end(m_playlist));
 
     if (m_status != sf::SoundSource::Stopped) {
         m_playlist.emplace_front(current);
@@ -398,9 +409,7 @@ void Jukebox::shuffleRemaining()
         std::advance(first, m_current + 1);
     }
 
-    std::random_device rd;
-    auto g = std::mt19937(rd());
-    std::shuffle(first, end(m_playlist), g);
+    shuffle_range(first, end(m_playlist));
 }
 
 void Jukebox::setLooping(const bool loop)
@@ -413,17 +422,17 @@ bool Jukebox::looping() const
     return m_looping;
 }
 
-int Jukebox::songsAvailable() const
+std::size_t Jukebox::songsAvailable() const
 {
     return m_catalog.size();
 }
 
-int Jukebox::songsInPlaylist() const
+std::size_t Jukebox::songsInPlaylist() const
 {
     return m_playlist.size();
 }
 
-int Jukebox::songsRemaining() const
+std::size_t Jukebox::songsRemaining() const
 {
     return m_playlist.size() - m_current;
 }

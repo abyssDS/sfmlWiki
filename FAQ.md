@@ -324,7 +324,6 @@ In the past SFML included on Windows all its dependencies into the SFML librarie
     * gdi32
     * sfml-system
 * sfml-graphics
-    * winmm
     * freetype
     * glew
     * jpeg

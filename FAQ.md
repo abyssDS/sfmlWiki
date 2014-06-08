@@ -310,7 +310,7 @@ In the past SFML included on Windows all its dependencies into the SFML librarie
 **Windows**
 
 * sfml-system
-    * winmm
+    * Winmm
 * sfml-network
     * ws2_32
     * sfml-system
@@ -320,7 +320,7 @@ In the past SFML included on Windows all its dependencies into the SFML librarie
     * sfml-system
 * sfml-window
     * opengl32
-    * winmm
+    * Winmm
     * gdi32
     * sfml-system
 * sfml-graphics

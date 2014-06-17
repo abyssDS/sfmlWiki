@@ -25,7 +25,7 @@ screen = Screens[screen]->Run(App);
 
 Therefore, you just have to specify the first screen and get into the loop. Each screen will returns, saying the app continues with an other screen or stops. Each Run method get the sf::RenderWindow variable in order to get events and draw sprites, etc...
 
-More, screens are objects created in the main function of the application. So, they keep their values as long as they are alive. It permits to get bak to Config menu while being in game and return to the game without being forced to save everything.
+More, screens are objects created in the main function of the application. So, they keep their values as long as they are alive. It permits to get back to Config menu while being in game and return to the game without being forced to save everything.
 
 Here is a demo app using the cScreen object :
 

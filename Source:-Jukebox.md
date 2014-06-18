@@ -358,13 +358,13 @@ void Jukebox::request(const std::string& song)
                   << "' which is not in the catalog." << std::endl;
         return;
     }
-    m_playlist.emplace_back(std::make_pair(found->first, found->second.get()));
+    m_playlist.emplace_back(found->first, found->second.get());
 }
 
 void Jukebox::requestAll()
 {
     for (const auto& song : m_catalog) {
-        m_playlist.emplace_back(std::make_pair(song.first, song.second.get()));
+        m_playlist.emplace_back(song.first, song.second.get());
     }
 }
 

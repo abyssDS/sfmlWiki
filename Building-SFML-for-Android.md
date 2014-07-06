@@ -40,7 +40,7 @@ Follow these steps to download, build and install SFML:
 * You can repeat the following steps for all available architectures. Unfortunately, you can't build all targets for SFML at once. The following lines create a `armeabi` build. If you'd like to build for any other target, just replace all occurences. Other valid targets would be `armeabi-v7a`, `mips`, and `x86`.
   * Create a sub directory and enter it:
 
-        mkdir armeabi && cd armeabi
+            mkdir armeabi && cd armeabi
 
   * Now invoke CMake. Make sure to pass all parameters:
 

@@ -27,6 +27,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C#/C++] [[TileMap renderer|Source:-TileMap-Render]]: efficient tilemap drawing
 * [C++] [[Shader Tile Map|Source:-ShaderTileMap]]: tile map drawing using one texture as data and other as graphics and swapping data pixels for graphic pixels using glsl fragment shader
 * [C++11] [[Vertex Vector|Source:-VertexVector]]: drawable alternative to VertexArray that supports emplacement and foreach loops
+* [C++] [[Simple bouncing ball example|Source:-Bouncing-ball]]: Simple example showing how you can bounce a ball around a window.
 
 ## Network
 * [C++] [[Simple chat example using sf::TcpSocket|Source:-Network-Chat-Example]]

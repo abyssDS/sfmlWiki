@@ -532,7 +532,7 @@ Obviously if you want to address an endpoint that isn't part of your local netwo
 
 3. Make sure that data transmission is not hindered by anything in the networking infrastructure (routers, firewalls etc.), if you are not sure about this, it most likely means that the port you are trying to use is either closed or not configured to be forwarded behind a NAT.
 
-4. Make sure that data is really being sent and received by the hosts independent of your application. It might occur that you try to send data within your application, SFML doesn't report an error, but the operating system refuses to transmit it. To check if this problem exists, it is recommended that you install some form of packet capturing software such as [WireShark](www.wireshark.org) on both systems.
+4. Make sure that data is really being sent and received by the hosts independent of your application. It might occur that you try to send data within your application, SFML doesn't report an error, but the operating system refuses to transmit it. To check if this problem exists, it is recommended that you install some form of packet capturing software such as [Wireshark](http://www.wireshark.org) on both systems.
 
 5. Make sure that the data leaves the local network over the router. There is a possibility that the router blocks outgoing data as well.
 

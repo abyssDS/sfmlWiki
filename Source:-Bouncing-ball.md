@@ -10,6 +10,8 @@ and then run it like so:
 
 Each time you run the program the ball will get a random direction and speed, so run it a few times to see different bounces.
 
+[Comments and criticism is of course welcome](http://en.sfml-dev.org/forums/index.php?topic=15773.0).
+
 ## <a name="1" />bounce.cc
 ```cpp
 // emacs: -*- Mode: c++; c-file-style: "stroustrup"; c-basic-offset: 4; indent-tabs-mode: nil; -*-

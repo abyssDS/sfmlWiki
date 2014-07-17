@@ -236,7 +236,7 @@ Jukebox::Jukebox(const std::string& dir)
             std::cerr << "Jukebox failed to add '" << path << "'" << std::endl;
             continue;
         }
-        auto inserted = m_catalog.emplace(filename, std::move(music));
+        const auto inserted = m_catalog.emplace(filename, std::move(music));
         assert(inserted.second);
     }
 }

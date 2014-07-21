@@ -13,7 +13,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [Ruby] [[Ruby Light Manager|Source:-Ruby-Light-Manager]]: Add lighting to your 2D game (by Groogy)
 * [C#] [[SpriteAnimated|Source:-Sprite-Animated]]: A C# version of animated sprite class.
 
-##Drawables
+## Drawables
 * [C++] [[AnimatedSprite|Source:-AnimatedSprite]]: A class that provides an easy interface to Animations and follow the design of sf::Sprite (by Foaly)
 * [C#] [[CurvedText class|Source:-CurvedText]]: Draws circularly arranged text and implements most of SFML.Graphics.Text's interface.
 * [C++] [[Higher Performance Sprite Container|Source:-High-Performance-Sprite-Container]]: Both a faster way to use many sprites with the same texture and a shortcut container to make life easier. (by masskiller)
@@ -28,6 +28,9 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Shader Tile Map|Source:-ShaderTileMap]]: tile map drawing using one texture as data and other as graphics and swapping data pixels for graphic pixels using glsl fragment shader
 * [C++11] [[Vertex Vector|Source:-VertexVector]]: drawable alternative to VertexArray that supports emplacement and foreach loops
 * [C++] [[Simple bouncing ball example|Source:-Bouncing-ball]]: Simple example showing how you can bounce a ball around a window.
+
+## Shaders
+* [C++] [[Heat Haze Shader|Source:-HeatHazeShader]]: Simple shader that produces a heat haze effect using SFML (by [binary1248](https://github.com/binary1248))
 
 ## Network
 * [C++] [[Simple chat example using sf::TcpSocket|Source:-Network-Chat-Example]]

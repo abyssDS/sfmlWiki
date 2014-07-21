@@ -1,3 +1,84 @@
+This is an example of a simple implementation of a shader that produces a heat haze effect in SFML.
+
+If you don't want to generate the distortion map image using the code, you will have to do so with an external program.
+* It has to contain coherent noise values in each channel
+* It should contain values ranging from minimum to the maximum intensity
+* It should be seamless along any axes you want to scroll by
+
+An example of such an image:
+
+![Distortion Map](http://i.imgur.com/2OXLwC3.png)
+
+This image contains coherent noise data in all channels, but we will only be using the R and G channels in our shader.
+
+The set of shaders consist of a trivial passthrough vertex shader and a self-explanatory fragment shader.
+```glsl
+// heat_shader.vs
+
+#version 130
+
+// Simple passthrough vertex shader... Nothing fancy here.
+void main()
+{
+    gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;
+    gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;
+    gl_FrontColor = gl_Color;
+}
+```
+
+```glsl
+// heat_shader.fs
+
+#version 130
+
+uniform sampler2D currentTexture; // Our render texture
+uniform sampler2D distortionMapTexture; // Our heat distortion map texture
+
+uniform float time; // Time used to scroll the distortion map
+uniform float distortionFactor; // Factor used to control severity of the effect
+uniform float riseFactor; // Factor used to control how fast air rises
+
+void main()
+{
+    vec2 distortionMapCoordinate = gl_TexCoord[0].st;
+    
+    // We use the time value to scroll our distortion texture upwards
+    // Since we enabled texture repeating, OpenGL takes care of
+    // coordinates that lie outside of [0, 1] by discarding
+    // the integer part and keeping the fractional part
+    // Basically performing a "floating point modulo 1"
+    // 1.1 = 0.1, 2.4 = 0.4, 10.3 = 0.3 etc.
+    distortionMapCoordinate.t -= time * riseFactor;
+    
+    vec4 distortionMapValue = texture2D(distortionMapTexture, distortionMapCoordinate);
+
+    // The values are normalized by OpenGL to lie in the range [0, 1]
+    // We want negative offsets too, so we subtract 0.5 and multiply by 2
+    // We end up with values in the range [-1, 1]
+    vec2 distortionPositionOffset = distortionMapValue.xy;
+    distortionPositionOffset -= vec2(0.5f, 0.5f);
+    distortionPositionOffset *= 2.f;
+
+    // The factor scales the offset and thus controls the severity
+    distortionPositionOffset *= distortionFactor;
+
+    // The latter 2 channels of the texture are unused... be creative
+    vec2 distortionUnused = distortionMapValue.zw;
+
+    // Since we all know that hot air rises and cools,
+    // the effect loses its severity the higher up we get
+    // We use the t (a.k.a. y) texture coordinate of the original texture
+    // to tell us how "high up" we are and damp accordingly
+    // Remember, OpenGL 0 is at the bottom
+    distortionPositionOffset *= (1.f - gl_TexCoord[0].t);
+    
+    vec2 distortedTextureCoordinate = gl_TexCoord[0].st + distortionPositionOffset;
+
+    gl_FragColor = gl_Color * texture2D(currentTexture, distortedTextureCoordinate);
+}
+```
+
+If you want to generate the distortion image procedurally, you will need to get [libnoise](http://libnoise.sourceforge.net/) and uncomment the marked code segment.
 ```cpp
 #include <SFML/Graphics.hpp>
 

@@ -8,8 +8,8 @@ The original author is cristaloleg, but the class was completely refractored and
 ### Simple settings file
 
 ```text
-# if line starts with # this line will be ignored
-# black lines also
+# if a line starts with a '#' the line will be ignored
+# black lines will also be ignored
 
 # screen size
 width = 1024
@@ -64,7 +64,7 @@ int main()
 
     //....
 
-    settings.set("title", "sfml tutorial");
+    settings.set("title", "SFML Settings Parser rocks!");
     settings.saveToFile(); // this is also done in the destructor
     return 0;
 }
@@ -101,11 +101,11 @@ public:
     void get(const std::string& param, int &value) const;
     void get(const std::string& param, float &value) const;
 
-    void set(const std::string& param, std::string value);
-    void set(const std::string& param, bool value);
-    void set(const std::string& param, char value);
-    void set(const std::string& param, int value);
-    void set(const std::string& param, float value);
+    void set(const std::string& param, const std::string value);
+    void set(const std::string& param, const bool value);
+    void set(const std::string& param, const char value);
+    void set(const std::string& param, const int value);
+    void set(const std::string& param, const float value);
 
 
 private:
@@ -164,9 +164,8 @@ bool SettingsParser::read()
         return false;
     }
     std::string line, param, value;
-    while(!in.eof())
+    while(std::getline(in, line))
     {
-        std::getline(in, line);
         if(line.size() > 0 && line[0] != '#')
         {
             size_t j = 0;
@@ -221,7 +220,7 @@ bool SettingsParser::isChanged() const
 
 int SettingsParser::findIndex(const std::string& param) const
 {
-    for(int i = 0; i < m_size; ++i)
+    for(unsigned int i = 0; i < m_size; ++i)
     {
         if(m_data[i].first[0] == '#')
             continue;
@@ -286,31 +285,29 @@ void SettingsParser::get(const std::string& param, float &value) const
 }
 
 
-void SettingsParser::set(const std::string& param, std::string value)
+void SettingsParser::set(const std::string& param, const std::string value)
 {
     int i = findIndex(param);
     if (i > -1)
     {
         m_data[i].second = value;
-    }
-
-    m_isChanged = true;
+        m_isChanged =  true;
+    }                                 
 }
 
 
-void SettingsParser::set(const std::string& param, bool value)
+void SettingsParser::set(const std::string& param, const bool value)
 {
     int i = findIndex(param);
     if (i > -1)
     {
         m_data[i].second = (value) ? "TRUE" : "FALSE";
+        m_isChanged =  true;
     }
-
-    m_isChanged = true;
 }
 
 
-void SettingsParser::set(const std::string& param, char value)
+void SettingsParser::set(const std::string& param, const char value)
 {
     int i = findIndex(param);
     if (i > -1)
@@ -319,12 +316,10 @@ void SettingsParser::set(const std::string& param, char value)
         tmp = value;
         m_data[i].second = tmp;
     }
-
-    m_isChanged = true;
 }
 
 
-void SettingsParser::set(const std::string& param, int value)
+void SettingsParser::set(const std::string& param, const int value)
 {
     int i = findIndex(param);
     if (i > -1)
@@ -332,13 +327,12 @@ void SettingsParser::set(const std::string& param, int value)
         std::stringstream ss;
         ss << value;
         m_data[i].second = ss.str();
+        m_isChanged =  true;
     }
-
-    m_isChanged = true;
 }
 
 
-void SettingsParser::set(const std::string& param, float value)
+void SettingsParser::set(const std::string& param, const float value)
 {
     int i = findIndex(param);
     if (i > -1)
@@ -346,8 +340,7 @@ void SettingsParser::set(const std::string& param, float value)
         std::stringstream ss;
         ss << value;
         m_data[i].second = ss.str();
+        m_isChanged =  true;
     }
-
-    m_isChanged = true;
 }
 ```

@@ -9,7 +9,7 @@ The original author is cristaloleg, but the class was completely refractored and
 
 ```text
 # if a line starts with a '#' the line will be ignored
-# black lines will also be ignored
+# blank lines will also be ignored
 
 # screen size
 width = 1024

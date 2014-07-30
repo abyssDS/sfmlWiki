@@ -101,11 +101,11 @@ public:
     void get(const std::string& param, int &value) const;
     void get(const std::string& param, float &value) const;
 
-    void set(const std::string& param, const std::string value);
-    void set(const std::string& param, const bool value);
-    void set(const std::string& param, const char value);
-    void set(const std::string& param, const int value);
-    void set(const std::string& param, const float value);
+    void set(const std::string& param, std::string value);
+    void set(const std::string& param, bool value);
+    void set(const std::string& param, char value);
+    void set(const std::string& param, int value);
+    void set(const std::string& param, float value);
 
 
 private:

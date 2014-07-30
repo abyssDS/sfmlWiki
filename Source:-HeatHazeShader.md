@@ -1,4 +1,6 @@
-This is an example of a simple implementation of a shader that produces a heat haze effect in SFML.
+This is a simple example implementation of a shader that produces a heat haze effect in SFML:
+
+![Example Output](http://i.imgur.com/FOScjL8.gif)
 
 If you don't want to generate the distortion map image using the code, you will have to do so with an external program.
 * It has to contain coherent noise values in each channel

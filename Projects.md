@@ -22,8 +22,6 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [SFML with Box2D](https://github.com/Krozark/Ekiis): A small project that let you use Box2D with SFML.
 
 ### Websites/Tools/Other
-
-* [SFMLUploads.org](http://www.sfmluploads.org): Upload your project archives & screenshots, or codesnippets for inclusion in forums, here.
 * [SimpleSprite](http://en.sfml-dev.org/forums/index.php?topic=10491.0) - A small class designed to emulate the sf::Sprite functionality, and to extend it by adding the ability to set Size directly via a setSize(..) method, and the ability to set per-vertex colors via setVertexColor(int index, sf::Color color)
 
 ## Language Bindings

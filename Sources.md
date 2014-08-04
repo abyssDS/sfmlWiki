@@ -10,6 +10,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Sprite Sheet|Source:-Sprite-Sheets]]: A class to handle sprite sheet and simple animations.
 * [C++] [[Masking using Sprites, Shapes or Strings|Source:-Masking-Alpha-Blending]]: Masking using Sprites, Shapes or Strings, and the Alpha Channel (by TurboLento)
 * [C++] [[Particle System|Source:-Particle-System]]: Enjoy colorful pixel explosions in your own home today!
+* [C++] [[Particle System for SFML 2|Source:-Particle-System-for-SFML-2]]: An updated version of Lillebror's particle system for SFML 2.
 * [Ruby] [[Ruby Light Manager|Source:-Ruby-Light-Manager]]: Add lighting to your 2D game (by Groogy)
 * [C#] [[SpriteAnimated|Source:-Sprite-Animated]]: A C# version of animated sprite class.
 

@@ -40,18 +40,18 @@ Follow these steps to download, build and install SFML:
 * You can repeat the following steps for all available architectures. Unfortunately, you can't build all targets for SFML at once. The following lines create a `armeabi` build. If you'd like to build for any other target, just replace all occurences. Other valid targets would be `armeabi-v7a`, `mips`, and `x86`.
   * Create a sub directory and enter it:
 
-            mkdir armeabi && cd armeabi
+          mkdir armeabi && cd armeabi
 
   * Now invoke CMake. Make sure to pass all parameters:
 
-            cmake -DANDROID_ABI=armeabi -DCMAKE_TOOLCHAIN_FILE=../../cmake/toolchains/android.toolchain.cmake ../..
+          cmake -DANDROID_ABI=armeabi -DCMAKE_TOOLCHAIN_FILE=../../cmake/toolchains/android.toolchain.cmake ../..
   * If you've got multiple toolsets installed, like Visual Studio and MinGW, you might want to pick the type of project or makefile to create. You can do this by adding a parameter like `-G "MinGW Makefiles"` (not the quotes).
   * Important: It can be tricky to get this process to work with Visual Studio! I'd recommend you use MinGW's make (which is essentially GNU make). See the previous step to create the proper makefiles.
   * Wait for the process to complete. There might be a few warnigns regarding the toolchain(s), but you shouldn't see any other warnings or error messages.
   * This will create a makefile or project for you, based on your current host system.
   * Use it to build and then install SFML. For example, under Linux you'd issue the following commands:
 
-        make && sudo make install
+          make && sudo make install
   * If everything went fine, this should have copied the created binaries as well as header files and dependencies to your Android NDK's `source` directory.
   * You're now ready to use SFML in the NDK together with devices understanding the compiled target files (in this example `armeabi`).
 

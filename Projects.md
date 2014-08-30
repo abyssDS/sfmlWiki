@@ -40,6 +40,7 @@ Welcome to the section dedicated to projects using/for SFML.
 ### Closed Source
 * [C++] [Harvest : Massive Encounter](http://www.oxeyegames.com/harvest/): Tower Defense Real Time strategy game
 * [C++] [Contamination: Zombie survival game](http://foxfiredev.net/portfolio/zombie-survival-game-2d/): Try to survive as long as possible in a post apocalyptic world
+* [C++] [F.I.R.E.D.](http://fired.tk/): 2D cross-platform game with elements of Action, RPG and Adventure.
 
 ### Open Source
 * [C++] [Metroid Prime : Némésis](http://metroidprime4.xooit.fr/index.php): 2D fangame following the famous Metroid Prime 3.

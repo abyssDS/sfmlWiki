@@ -916,9 +916,9 @@ As SFML is open source and has a permissive free software license, game creators
 
 ### <a name="misc-upload"/>Where can I upload my game to?
 
-There are many possible places to share your game and game related data with the world wide web and their users. For SFML someone as created a website explicitly for sharing content related to SFML: http://www.sfmluploads.org/
+There are many possible places to share your game and game related data with the world wide web and their users. [HashCookie](http://hashcookie.net/) is a simple and easy to use site. Another provider to consider is [MediaFire](http://www.mediafire.com/). Both are simple and fast file sharing hosts.
 
-Another worth mentioning provider is [MediaFire](http://www.mediafire.com/). It's a simple and fast file sharing hoster.
+Also [SFML Projects](http://sfmlprojects.org/) is currently being developed as a place to put many of the projects made with SFML.
 
 ### <a name="misc-examples"/>Are there any example projects I can learn from?
 

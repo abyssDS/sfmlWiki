@@ -6,6 +6,7 @@ Welcome to the section dedicated to projects using/for SFML.
 
 ### Video
 * [C++] [sfeMovie](http://lucas.soltic.etu.p.luminy.univ-amu.fr/sfeMovie/): A C++ library that lets you play movies in SFML based applications.
+* [C++/C#/.NET] [Motion/MotionNET](http://en.sfml-dev.org/forums/index.php?topic=16221.0): A C++ and C#/.NET library that lets you playback video and audio using SFML or the SFML.NET binding.
 
 ### UI (User Interface)
 * [C++] [SFGUI](http://sfgui.sfml-dev.de/): A C++ library for adding graphical user interfaces to games and programs.
@@ -30,7 +31,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [Python] *PySFML*: available on the [download page](http://www.sfml-dev.org/download.php) of sfml website
 * [Ruby] *RubySFML*: available on the [download page](http://www.sfml-dev.org/download.php) of sfml website
 * [D] *DSFML*: available on the [download page](http://www.sfml-dev.org/download.php) of sfml website
-* [.Net] available on the [download page](http://www.sfml-dev.org/download.php) of sfml website
+* [C#/.NET] available on the [download page](http://www.sfml-dev.org/download.php) of sfml website
 * [Java] *JSFML*: http://jsfml.org/
 * [OCaml] *ocaml-sfml*: hosted on the ocaml forge: http://ocaml-sfml.forge.ocamlcore.org/
 * [OCaml] *Ocsfml*: hosted on github: https://github.com/JoeDralliam/Ocsfml

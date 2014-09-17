@@ -303,9 +303,9 @@ In Code::Blocks, you would have to make sure the dependees are under the depende
 
 ### <a name="build-link-static"/>How do I link SFML statically?
 
-In order to link SFML statically you'll need to setup your build environment to link against the static libraries of SFML. Static libraries are the ones with a `-s` suffix, for example `sfml-graphics-s`. Next you need to add `SFML_STATIC` to the preprocessor option. And as always you'll need to make sure to link the debug libraries (`-d` suffix) in debug mode and the release libraries (no `-d` suffix) in release mode.
+In order to link SFML statically, you'll need to setup your build environment to link against the static libraries of SFML. Static libraries are the ones with a `-s` suffix, for example `sfml-graphics-s`. Next, you'll need to add `SFML_STATIC` to the preprocessor option and, as always, you'll need to make sure to link the debug libraries (`-d` suffix) in debug mode and the release libraries (no `-d` suffix) in release mode.
 
-In the past SFML included on Windows all its dependencies into the SFML libraries. However this was changed to eliminate multiple issues and get a commonly expected behavior ([full discussion](http://en.sfml-dev.org/forums/index.php?topic=9362.0)). Now SFML behaves the same on Linux as well as on Windows, which however means, that one needs to link SFML's dependencies on your own. Since the dependcies aren't obvious to everyone here's a listing:
+In the past, SFML included on Windows all its dependencies into the SFML libraries. However, this was changed to eliminate multiple issues and get a commonly expected behavior ([full discussion](http://en.sfml-dev.org/forums/index.php?topic=9362.0)). Now, SFML behaves the same on Linux as well as on Windows, which however means, that one needs to link SFML's dependencies on your own. Since the dependencies aren't obvious to everyone, here's a listing:
 
 **Windows**
 

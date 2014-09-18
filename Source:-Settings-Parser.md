@@ -1,7 +1,7 @@
 #SFML
 
 ## Overview
-This is simple class for reading and writing settings in text format. It allows you to read a std::string, bool, char, int or float from a file. You can then access these values from within your program. You may also change the values and write them back to the file. Please note that in order for this to work the name of the values have to be unique.
+This is simple class for reading and writing settings in a human readable from a text file. It allows you to read a `std::string`, `bool`, `char`, `int` or `float` from a file. You can then access these values from within your program. You may also change the values and write them back to the file. Please note that in order for this to work keys have to be unique. (If the same keys is used multiple times only the value of first occurrence will be used, the value won't be overwritten)
 
 The original author is cristaloleg, but the class was completely refractored and improved by [Foaly](https://github.com/Foaly).
 

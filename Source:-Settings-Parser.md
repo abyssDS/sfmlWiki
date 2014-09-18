@@ -1,7 +1,7 @@
 #SFML
 
 ## Overview
-This is simple class for reading and writing settings in text format. It allows you to read a std::string, bool, char, int or float from a file. You can access these values from within your program. You may also change the values and write them back to the file. Please note that in oreder for this to work the name of the values have to be unique.
+This is simple class for reading and writing settings in text format. It allows you to read a std::string, bool, char, int or float from a file. You can then access these values from within your program. You may also change the values and write them back to the file. Please note that in order for this to work the name of the values have to be unique.
 
 The original author is cristaloleg, but the class was completely refractored and improved by [Foaly](https://github.com/Foaly).
 
@@ -25,7 +25,7 @@ title = sfml tutorial
 g = 9.81
 
 # player initials
-player = x
+player = M
 
 # video mode
 use30hz = TRUE

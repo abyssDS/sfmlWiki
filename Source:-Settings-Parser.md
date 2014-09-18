@@ -1,21 +1,24 @@
 #SFML
 
 ## Overview
-This is simple class for reading and writing settings in text format. It allows you to store std::string, bool, char, int and float in a file.
+This is simple class for reading and writing settings in text format. It allows you to read a std::string, bool, char, int or float from a file. You can access these values from within your program. You may also change the values and write them back to the file. Please note that in oreder for this to work the name of the values have to be unique.
 
-The original author is cristaloleg, but the class was completely refractored and improved by Foaly.
+The original author is cristaloleg, but the class was completely refractored and improved by [Foaly](https://github.com/Foaly).
 
 ### Simple settings file
 
 ```text
-# if a line starts with a '#' the line will be ignored
+# if a line starts with a '#' the line is a comment and will be ignored
 # blank lines will also be ignored
+
+# the syntax is
+key = value
 
 # screen size
 width = 1024
 height = 768
 
-# windows title
+# window title
 title = sfml tutorial
 
 # phycics constants
@@ -29,7 +32,7 @@ use30hz = TRUE
 
 ```
 
-### Simple using example
+### Simple usage example
 
 ```cpp
 int main()
@@ -78,11 +81,8 @@ int main()
 #ifndef SETTINGSPARSER_INCLUDE
 #define SETTINGSPARSER_INCLUDE
 
-#include <fstream>
-#include <iostream>
 #include <string>
 #include <vector>
-#include <sstream>
 
 class SettingsParser 
 {
@@ -126,6 +126,11 @@ private:
 ```cpp
 #include "SettingsParser.hpp"
 
+#include <locale>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+
 SettingsParser::SettingsParser() : m_size(0), m_isChanged(false)
 {
 
@@ -164,19 +169,32 @@ bool SettingsParser::read()
         return false;
     }
     std::string line, param, value;
+    const std::locale loc;
     while(std::getline(in, line))
     {
+        // parse line
         if(line.size() > 0 && line[0] != '#')
         {
             size_t j = 0;
-            size_t length = line.size();
-            while(line[j] != ' ') j++;
-            param = line.substr(0,j);
-            while(line[j] == ' ' || line[j] == '=') j++;
-            int a = j;
-            while(j < length && (line[j] != ' ' || line[j] != '\n')) j++;
-            int b = j;
-            value = line.substr(a, b);
+            // trim leading whitespace
+            while(std::isspace(line[j], loc))
+                j++;
+            // get parameter string
+            const int beginParamString = j;
+            while(!std::isspace(line[j], loc))
+                j++;
+            param = line.substr(beginParamString, j - beginParamString);
+
+            // skip the assignment
+            while(std::isspace(line[j], loc) || line[j] == '=')
+                j++;
+            
+            // get value string
+            const int beginValueString = j;
+            const size_t length = line.size();
+            while(j < length && !std::isspace(line[j], loc))
+                j++;
+            value = line.substr(beginValueString, j - beginValueString);
         }
         else
         {
@@ -190,6 +208,7 @@ bool SettingsParser::read()
     m_isChanged = false;
     return true;
 }
+
 
 
 bool SettingsParser::write() const

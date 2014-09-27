@@ -9,7 +9,7 @@ If you're using the latest SFML version (2.1), you'll want to download the follo
 * SFML.Net - http://www.sfml-dev.org/download/sfml.net/ (64bit)
 * CSFML - http://www.sfml-dev.org/download/csfml/ (MacOSX Clang Universal)
 * SFML - http://sfml-dev.org/download.php (MacOSX Clang Universal) 
-* InstallNameTool - https://code.google.com/p/install-name-tool-gui/ (Prebuilt Binary)
+* InstallNameTool - https://code.google.com/p/install-name-tool-gui/ (Prebuilt Binary) with Command Line Tools installed.
 
 # Project Setup
 

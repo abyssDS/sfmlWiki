@@ -33,6 +33,7 @@
 
 **[SFML Audio](#audio)**
 - [What audio formats does SFML support?](#audio-formats)
+- [Why can't I hear any sound?](#audio-sound-problem)
 
 **[SFML Networking](#network)**
 - [How do I create &lt;insert popular application type here&gt;?](#network-create-network-app)
@@ -470,6 +471,10 @@ This is just one way out of many to deal with this issue. It was presented here 
 
 In addition to the formats supported by [libsndfile](http://www.mega-nerd.com/libsndfile/#Features) (wav, flac, aiff, au, raw, paf, svx, nist, voc, ircam, w64, mat4, mat5 pvf, htk, sds, avr, sd2, caf, wve, mpc2k, rf64) the Audio module is also capable of playing ogg files.
 Unfortunatly MP3 is covered by a license from Thompson Multimedia and thus support for it is not included in SFML. For more information regarding the MP3 license, see http://www.mp3licensing.com.
+
+### <a name="audio-sound-problem"/>Why can't I hear any sound?
+
+If everything compiles and seems to work correctly, but yet no sound is coming out you should check the obvious. Ensure your speakers and plugged in and working correctly before assuming something is wrong with SFML. You can do this by opening one of your audio assets in another audio player such as Windows Media Player or [VLC](http://www.videolan.org/). If audio fails to play correctly there, then check that your PC audio is not muted and that the volume control on your speakers is turned up. Once it plays correctly in an external player then the problem may be with SFML.
 
 ## <a name="network"/>SFML Networking
 

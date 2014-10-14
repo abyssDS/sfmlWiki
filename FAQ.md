@@ -474,7 +474,7 @@ Unfortunatly MP3 is covered by a license from Thompson Multimedia and thus suppo
 
 ### <a name="audio-sound-problem"/>Why can't I hear any sound?
 
-If everything compiles and seems to work correctly, but yet no sound is coming out you should check the obvious. Ensure your speakers and plugged in and working correctly before assuming something is wrong with SFML. You can do this by opening one of your audio assets in another audio player such as Windows Media Player or [VLC](http://www.videolan.org/). If audio fails to play correctly there, then check that your PC audio is not muted and that the volume control on your speakers is turned up. Once it plays correctly in an external player then the problem may be with SFML.
+If everything compiles and seems to work correctly, but yet no sound is coming out of your speakers you should check the obvious. Ensure your speakers and plugged in and working correctly before assuming something is wrong with SFML. You can do this by opening one of your audio assets in another audio player such as Windows Media Player or [VLC](http://www.videolan.org/). If audio fails to play correctly there, then check that your PC audio is not muted and that the volume control on your speakers is turned up. Once it plays correctly in an external player then the problem may be with SFML.
 
 ## <a name="network"/>SFML Networking
 

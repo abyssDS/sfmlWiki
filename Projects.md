@@ -12,7 +12,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [SFGUI](http://sfgui.sfml-dev.de/): A C++ library for adding graphical user interfaces to games and programs.
 * [C++ or C#] [TGUI](http://tgui.eu/): An easy to use cross-platform GUI based on SFML 2 and written in C++.
 * [C++] [Squeak](http://en.sfml-dev.org/forums/index.php?topic=14428.0): Simple and small add-on to use a customisable mouse cursor/pointer.
-* [C++] [LuaConsole] (http://en.sfml-dev.org/forums/index.php?topic=15962.msg114040#msg114040): Simple to use, both in code and in app, console/terminal for Lua. Works with SFML 2.0 and Lua 5.1, LuaJIT 2.0 and Lua 5.2 .
+* [C++] [LuaConsole] (http://en.sfml-dev.org/forums/index.php?topic=15962.msg114040#msg114040): Simple to use, both in code and in app, console/terminal for Lua. Works with SFML 2.1 and Lua 5.1, LuaJIT 2.0 and Lua 5.2 .
 
 ### Other extensions
 * [C++] [[Zoost & Zoom libraries|Project:-Zoost-and-Zoom]]: Geometric objects, customizable shapes, animation tools & light rendering.

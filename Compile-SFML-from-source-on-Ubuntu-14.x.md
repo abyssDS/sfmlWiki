@@ -19,6 +19,7 @@ With an open terminal, run the following commands:
     sudo apt-get update
     sudo apt-get install build-essential
     sudo apt-get install git
+    sudo apt-get install cmake
     
 This is the minimum required to build SFML.  We still need to get the dependencies, but from here we are going to learn the hard way first.
 
@@ -43,9 +44,11 @@ Now change into the `SFML_SRC` directory and list the contents.
     cd SFML_SRC
     ls 
 
-Inside this directory you should see a file named `CMakeLists.txt`
+Inside this directory you should see a file named `CMakeLists.txt`, which tells `cmake` how to check our system for SFML's dependancies.  If we try to build SFML we should get an error.
 
-
+    cmake CMakeLists.txt
+    CMake Error at /usr/share/cmake-2.8/Modules/FindX11.cmake:427 (message):
+      Could not find X11
 
 
 

@@ -85,7 +85,7 @@ For those of you who hate the hard way, here is the complete list:
 
 # Building SFML
 
-Now that we have the dependancies installed, it's time to build SFML.  We do this with the the, underwhelming, command:
+Now that we have the dependancies installed, it's time to build SFML.  We do this with the, underwhelming, command:
 
     make
 

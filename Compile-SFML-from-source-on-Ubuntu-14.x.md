@@ -16,11 +16,28 @@ Ensure the latest graphic card drives are installed.
 Before we can compile SFML we need to install the necessary dependencies.  To do this, we will use the Terminal.
 With an open terminal, run the following commands: 
 
-`sudo apt-get update`
+    sudo apt-get update
+    sudo apt-get install build-essential
+    sudo apt-get install git
+    
+This is the minimum required to build SFML.  We still need to get the dependencies, but from here we are going to learn the hard way first.
 
-`sudo apt-get install build-essential`
+## Learning the hard way
 
-`sudo`
+The terminal window should have opened to your home folder and end in `:~$`
+If not you can get back to your home folder with this command, `cd ~`
+
+From the home folder we will create a place for the SFML source.  
+
+    mkdir Projects
+    cd Projects
+    
+Now its time to get the SFML source.
+
+    git clone https://github.com/LaurentGomila/SFML.git SFML_SRC
+
+The last part of that command tells git to place the source in a folder called `SFML_SRC`. If you leave off this part of the command, the folder will be called just `SFML`.
+
 
 
 

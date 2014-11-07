@@ -38,6 +38,14 @@ Now its time to get the SFML source.
 
 The last part of that command tells git to place the source in a folder called `SFML_SRC`. If you leave off this part of the command, the folder will be called just `SFML`.
 
+Now change into the `SFML_SRC` directory and list the contents.
+
+    cd SFML_SRC
+    ls 
+
+Inside this directory you should see a file named `CMakeLists.txt`
+
+
 
 
 

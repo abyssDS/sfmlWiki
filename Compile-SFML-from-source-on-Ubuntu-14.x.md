@@ -83,4 +83,11 @@ For those of you who hate the hard way, here is the complete list:
     sudo apt-get install libopenal-dev
     sudo apt-get install libsndfile-dev
 
+# Building SFML
+
+Now that we have the dependancies installed, it's time to build SFML.  We do this with the the, underwhelming, command:
+
+   make
+
+
 

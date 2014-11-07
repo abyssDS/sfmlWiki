@@ -100,5 +100,40 @@ Running the following command, we can see `libGL.so` is actually a symbolic link
     ls -n /usr/lib/x86_64-linux-gnu/libGL.so
     lrwxrwxrwx 1 0 0 13 Oct  7 09:00 /usr/lib/x86_64-linux-gnu/libGL.so -> mesa/libGL.so
 
+If we check that file, we find it's also a symbolic link,
+
+    ls -n /usr/lib/x86_64-linux-gnu/mesa/libGL.so
+    lrwxrwxrwx 1 0 0 14 Oct  7 09:00 /usr/lib/x86_64-linux-gnu/mesa/libGL.so -> libGL.so.1.2.0
+
+However, if we list the contents of the mesa folder, we find `libGL.so.1.2.0` does not exist.
+
+    ls -n /usr/lib/x86_64-linux-gnu/mesa/
+    total 800
+    -rw-r--r-- 1 0 0     31 Oct  7 09:00 ld.so.conf
+    lrwxrwxrwx 1 0 0     14 Oct  7 09:00 libGL.so -> libGL.so.1.2.0
+    lrwxrwxrwx 1 0 0     21 Nov  6 20:18 libGL.so.1 -> libGL.so.10.1.1.28614
+    -rwxr-xr-x 1 0 0 811320 Nov  6 20:18 libGL.so.10.1.1.28614
+
+So lets fix the symbolic link.
+
+    cd /usr/lib/x86_64-linux-gnu/mesa
+    sudo rm libGL.so
+    sudo ln -s libGL.so.1 libGL.so
+
+Now, everything should be pointing to something that exists.
+
+    ls -n
+    total 800
+    -rw-r--r-- 1 0 0     31 Oct  7 09:00 ld.so.conf
+    lrwxrwxrwx 1 0 0     10 Nov  6 21:52 libGL.so -> libGL.so.1
+    lrwxrwxrwx 1 0 0     21 Nov  6 20:18 libGL.so.1 -> libGL.so.10.1.1.28614
+    -rwxr-xr-x 1 0 0 811320 Nov  6 20:18 libGL.so.10.1.1.28614
+
+    ls -n /usr/lib/x86_64-linux-gnu/libGL.so 
+    lrwxrwxrwx 1 0 0 39 Nov  6 21:48 /usr/lib/x86_64-linux-gnu/libGL.so -> /usr/lib/x86_64-linux-gnu/mesa/libGL.so
+
+
+
+
 
 

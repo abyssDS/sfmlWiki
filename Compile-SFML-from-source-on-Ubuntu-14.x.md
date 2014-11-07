@@ -153,6 +153,8 @@ The build should now reach 100%.
 
 The compiled library should now be in the `lib` folder.
 
+    ls lib
+
 ### Where to go from here
 
 Another tutorial will cover linking and building the standard minimal app from the tutorial.

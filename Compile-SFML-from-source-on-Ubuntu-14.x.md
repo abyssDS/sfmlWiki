@@ -66,5 +66,21 @@ This time we are missing OpenGL, which we can fix with:
 
     sudo apt-get install libgl1-mesa-dev
 
+From here, the name of the missing package should start with `lib` and end with `-dev`.
+For example, `UDev not found.` translates to:
+
+    sudo apt-get install libudev-dev
+
+## Impatient?
+
+For those of you who hate the hard way, here is the complete list:
+
+    sudo apt-get install xorg-dev
+    sudo apt-get install libgl1-mesa-dev
+    sudo apt-get install libudev-dev
+    sudo apt-get install libglew-dev
+    sudo apt-get install libjpeg-dev
+    sudo apt-get install libopenal-dev
+    sudo apt-get install libsndfile-dev
 
 

@@ -87,7 +87,18 @@ For those of you who hate the hard way, here is the complete list:
 
 Now that we have the dependancies installed, it's time to build SFML.  We do this with the the, underwhelming, command:
 
-   make
+    make
+
+### More Errors
+
+You might run into the following error.
+
+    make[2]: *** No rule to make target '/usr/lib/x86_64-linux-gnu/libGL.so', needed by 'lib/libsfml-window.so.2.1'. Stop.
+
+Running the following command, we can see `libGL.so` is actually a symbolic link to another file.
+
+    ls -n /usr/lib/x86_64-linux-gnu/libGL.so
+    lrwxrwxrwx 1 0 0 13 Oct  7 09:00 /usr/lib/x86_64-linux-gnu/libGL.so -> mesa/libGL.so
 
 
 

@@ -4,7 +4,7 @@ Why build from source?  SFML is under constant revision and improvement.  Bugs i
 
 ## What if I discovered a bug?
 
-When a bug is discovered it is best to check the [forums](http://en.sfml-dev.org/forums/) to either confirm the bug or ask whether what you are seeing could be a bug.  If the condition is determined to be a bug, then it's time to create a new [issue](https://github.com/LaurentGomila/SFML/issues).  Issues should only be created for confirmed bugs.  If you suspect a bug, please use the forums first.
+When a bug is discovered it is best to check the [forums](http://en.sfml-dev.org/forums/) to either confirm the bug or ask if what you are seeing could be a bug.  If the condition is determined to be a bug, then it's time to create a new [issue](https://github.com/LaurentGomila/SFML/issues).  Issues should only be created for confirmed bugs.  If you suspect a bug, please use the forums first.
 
 # Getting Started
 
@@ -21,7 +21,7 @@ With an open terminal, run the following commands:
     sudo apt-get install git
     sudo apt-get install cmake
     
-This is the minimum required to build SFML.  We still need to get the dependencies, but from here we are going to learn the hard way first.
+We still need to get the dependencies, but from here we are going to learn the hard way first.
 
 ## Learning the hard way
 

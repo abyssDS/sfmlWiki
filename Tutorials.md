@@ -8,6 +8,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 
 ### Configuration
 
+* [[Compile SFML from source on Ubuntu 14.x|Tutorial:-Compile-SFML-from-source-on-Ubuntu-14.x]]
 * [[Build your SFML project with CMake|Tutorial:-Build-your-SFML-project-with-CMake]]
 * [[Build and Link SFML with Qt Creator|Tutorial:-Compile-and-Link-SFML-with-Qt-Creator]]
 * [[Link SFML with Qt Creator|Tutorial:-Link-SFML-with-Qt-Creator]]

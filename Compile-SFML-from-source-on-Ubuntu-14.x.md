@@ -47,8 +47,24 @@ Now change into the `SFML_SRC` directory and list the contents.
 Inside this directory you should see a file named `CMakeLists.txt`, which tells `cmake` how to check our system for SFML's dependancies.  If we try to build SFML we should get an error.
 
     cmake CMakeLists.txt
+    ...
     CMake Error at /usr/share/cmake-2.8/Modules/FindX11.cmake:427 (message):
       Could not find X11
+
+This error tells us we are missing X11, which we can fix this with:
+
+    sudo apt-get install xorg-dev
+
+Now if we try again we get a different error.
+
+    cmake CMakeLists.txt
+    ...
+    CMake Error at /usr/share/cmake-2.8/Modules/FindPackageHandleStandardArgs.cmake:108 (message):
+      Could NOT find OpenGL (missing: OPENGL_gl_LIBRARY)
+
+This time we are missing OpenGL, which we can fix with:
+
+    sudo apt-get install libgl1-mesa-dev
 
 
 

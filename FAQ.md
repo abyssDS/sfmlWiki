@@ -405,6 +405,20 @@ You can also try to perform rudimentary culling. Culling consists of not drawing
 
 ### <a name="graphics-bounds"/>What is the difference between LocalBounds and GlobalBounds?
 
+To understand this, you will first need to understand the difference between the local and global coordinate systems.
+
+To make this easier to understand, consider you went for a walk in the woods. A friend calls you and and asks what you are doing. When you tell them you are walking through the woods, they suggest they join you so that you both can talk a bit as well. Obviously, a question that will eventually be asked is: "Where are you currently and where are you heading?" If you reply with: "I'm walking upstream along the river." They might tell you that they still have no idea where that is, since this woods is very large and there are multiple rivers that you could be walking along. You understand and instead tell them your current GPS coordinates and your current heading using a compass.
+
+What you initially told them is your position relative to the local coordinate system of the section of the woods you are in. In this section of the woods, there is only a single river and thus telling anyone else in the same section of the woods you are walking upstream is sufficient to let them know where you are. If you are outside of the woods, you have no choice but to use the global coordinate system, in this case, the WGS (GPS) coordinate system and heading.
+
+In SFML, drawable object coordinate systems follow the same principle. They can return their bounds both in their own local coordinate system as well as in the global coordinate system. The global coordinate system is typically the coordinate system of the RenderTarget that ends up drawing the object.
+
+Keeping this in mind, the local bounds of an object is always made up of a rectangle positioned at (0,0) _in the object's coordinate system_ and with a sufficient width and height to completely contain the object within it.
+
+Another important thing to remember is: __In SFML, the bounds of an object are always expressed as an axis-aligned bounding box (AABB).__ This is true even after rotating an object.
+
+The global bounds of an object is simply the local bounds rectangle transformed by the object's stored transformation. If the object itself is not positioned at (0,0) in the global coordinate system, its position offset will be the global bounding rectangle's position. Now for the tricky part: __Rotation__. If you want to understand how the width and height of the global bounds of a rotated object are computed, you have to imagine the local bounding rectangle as 4 points. These 4 points are rotated by the stored rotation in the object's transform. The final position of those points are then used to compute the new AABB that will contain all 4 of those rotated points. If the object is not rotated in multiples of right-angles, following what was just explained, the global bounds of the object will almost always be larger than the local bounds of the object. If this is hard to imagine, you can try drawing a rectangle on a sheet of paper, rotating it and drawing the new AABB around it after it is rotated.
+
 ### <a name="graphics-low-fps"/>My FPS is very low when running my application.
 
 First thing is first, check that the FPS value isn't constantly hovering around _certain_ special values (60, 75, 80, 144, etc.). If it does hover around those values no matter what you do, it is very likely that it is being artificially limited _somewhere_. Double check that there are no such limitations before proceeding to the next steps.

@@ -646,7 +646,28 @@ Once you have a `std::basic_string<sf::Uint32>` you can use all of the same func
 
 ### <a name="system-threads-crash"/>My program keeps crashing when I use threads!
 
+Threading is a very advanced concept, and not something you should try merely because you heard it _can_ increase performance. In fact, if used improperly, _it even decreases performance_! You should always be able to argue in favour of using threads before even writing your first line of threaded code. __If you don't fully understand why your application is going to run faster with threads, then just don't use them.__
+
+When you are sure you will benefit from using threads, you will have to be more careful with how you access memory. Almost all crashes when using threads are attributed to wrong memory access patterns. What you want to avoid are:
+
+* Multiple concurrent reads and at least one write to the same memory location
+* Multiple concurrent writes to the same memory location
+
+Concurrent reads to the same memory location are generally unproblematic.
+
+In order to protect against the above scenarios, you will need to make use of mutex objects. SFML provides a cross-platform mutex implementation. See [below](#system-mutex) for how to use them.
+
+Even after you have protected against concurrent access, you still need to be wary of the order in which statements are executed. Once you venture into threading, there is no longer an execution ordering guarantee, and it is ultimately up to you to make sure things are done in the right order across different threads.
+
+Good system designs often make threading optional and provide an option to disable them, whether for debugging or other purposes.
+
 ### <a name="system-mutex"/>How do I use sf::Mutex?
+
+sf::Mutex is used to lock (acquire) a resource for exclusive access and unlock (release) a resource when exclusive access is no longer necessary. If you try to lock a mutex that has already been locked by another thread, you will have no choice but to wait for the locking thread to release the lock in order for execution to proceed.
+
+It is good practice to not lock/unlock an sf::Mutex directly, but to rely on RAII sf::Lock objects to automatically unlock their owned mutex on destruction.
+
+For more information on sf::Mutex and sf::Lock, refer to the [official documentation](http://sfml-dev.org/tutorials/2.1/system-thread.php#protecting-shared-data).
 
 ### <a name="system-thread-container"/>Why can't I store my sf::Thread in an STL container?
 

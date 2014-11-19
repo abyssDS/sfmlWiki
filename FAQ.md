@@ -241,7 +241,7 @@ There are no official nightly builds, however there is a thread on the forum whe
 
 This is covered quite thoroughly in the tutorials section for some of the most popular IDEs.
 
-Check out the Getting Started sections of the [tutorials](http://sfml-dev.org/tutorials/).
+Check out the Getting Started sections of the [tutorials](http://sfml-dev.org/resources.php).
 
 ### <a name="build-fuse"/>I want to fuse the libraries into one. (Not recommended)
 

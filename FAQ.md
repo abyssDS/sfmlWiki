@@ -409,6 +409,14 @@ You can also try to perform rudimentary culling. Culling consists of not drawing
 
 ### <a name="graphics-broken-rendertexture"/>RenderTextures don't work on my computer!
 
+First of all, as with everything else sfml-graphics related, check if you have drivers installed that expose the hardware functionality that SFML uses. If you have a system that came with pre-installed drivers, that still doesn't mean that they were bug-free or even supported everything that the hardware would be capable of. There is never an excuse not to at least check for updated drivers and try to install them. This might not always be possible, but for the majority of cases (and almost all the time for desktop computers) it is possible.
+
+Once you are sure that your drivers are up-to-date, check if your graphics hardware supports OpenGL Framebuffer Objects (GL_EXT_framebuffer_object extension). If you are sure it does and RenderTextures still don't work, open a thread on the forum with the information you have gathered and almost all the time, you will be assisted promptly.
+
+If your graphics hardware doesn't support OpenGL Framebuffer objects, fear not, because SFML has a fallback implementation which uses an auxiliary context's framebuffer to render to. The performance ranges from marginally slower than the native implementation to much slower e.g. in software renderers.
+
+If the second variant doesn't work for you either, and you know that your hardware is somewhat capable, open a thread on the forum with the information you have gathered and a solution will be worked out most of the time.
+
 ### <a name="graphics-smooth-animation"/>My animations/movements aren't smooth or exhibit stuttering!
 
 The most common cause of this is because you are directly or indirectly relying on your application running at a fixed frame rate. Frame rates cannot be reliably locked to a certain value without a lot of effort and knowledge of lower level operating system aspects. The reasons for this are given [here](#window-set-framerate-limit) and [here](#system-sleep). Using vertical synchronization is out of the question because this might result in different frame rates on different systems.

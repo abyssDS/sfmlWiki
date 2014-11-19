@@ -2,7 +2,7 @@
 
 Put it in a file called bounce.cc and then build it (on Linux) like this:
 
- $ clang++ -std=c++11 -lsfml-window -lsfml-graphics -lsfml-system -o bounce bounce.cc
+ $ clang++ -std=c++11 -O3 -lsfml-window -lsfml-graphics -lsfml-system -o bounce bounce.cc
 
 and then run it like so:
 
@@ -62,7 +62,7 @@ int main()
     ball.setOutlineThickness(4);
     ball.setOutlineColor(sf::Color::Black);
     ball.setFillColor(sf::Color::Yellow);
-    ball.setOrigin(ball_radius / 2, ball_radius / 2);
+    ball.setOrigin(ball.getRadius(), ball.getRadius());
     ball.setPosition(window_width / 2, window_height / 2);
 
     sf::Clock clock;

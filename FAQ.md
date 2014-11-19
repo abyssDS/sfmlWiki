@@ -407,6 +407,16 @@ You can also try to perform rudimentary culling. Culling consists of not drawing
 
 ### <a name="graphics-low-fps"/>My FPS is very low when running my application.
 
+First thing is first, check that the FPS value isn't constantly hovering around _certain_ special values (60, 75, 80, 144, etc.). If it does hover around those values no matter what you do, it is very likely that it is being artificially limited _somewhere_. Double check that there are no such limitations before proceeding to the next steps.
+
+A mistake that many people make when they talk about low FPS in their application is to assume that it is caused by their graphics. It _might_ be the case, but it is not always the case. Often, the application does _much_ more CPU work than real graphics work, and the application is CPU-bound as opposed to GPU-bound. A rough way to estimate whether your application is CPU-bound is to monitor your application's CPU usage. If it is close to 100% utilization, chances are high that it is CPU-bound. In these cases, reducing the CPU load per frame will lead to shorter times per frame and accordingly more frames per given time period.
+
+Once you have a feeling that your application is CPU-bound, the best tool to find the _hotspots_ (places where the CPU spends the most time) in your application is a performance profiler. Any decent profiler will make it easy to find hotspots. From there, you can try to optimize your code in terms of CPU (not GPU).
+
+If however, you notice that your application is not CPU-bound and still have a low FPS value, you need to start assessing how you are drawing things. SFML makes use of OpenGL to render. A not so insignificant portion of the time spent drawing with OpenGL is spent in the driver and in the communication with the graphics hardware. Naturally, if the driver has "less to do" and "has to communicate less" with the hardware, you will get better graphics performance. This is the reason why one of the first optimizations is to consider batching multiple smaller objects into larger ones to be drawn at the same time. SFML doesn't help you at all with this. You will have to evaluate what the best course of action is and devise an optimized solution using the tools that SFML provides you. A general rule of thumb when it comes to optimizing in this respect is: __The less ```.draw()``` calls you have each frame, the faster it will run.__
+
+For more advanced optimization techniques, you can search the forum, or open a thread with the information you have gathered from the previous steps.
+
 ### <a name="graphics-broken-rendertexture"/>RenderTextures don't work on my computer!
 
 First of all, as with everything else sfml-graphics related, check if you have drivers installed that expose the hardware functionality that SFML uses. If you have a system that came with pre-installed drivers, that still doesn't mean that they were bug-free or even supported everything that the hardware would be capable of. There is never an excuse not to at least check for updated drivers and try to install them. This might not always be possible, but for the majority of cases (and almost all the time for desktop computers) it is possible.

@@ -229,6 +229,7 @@ Laurent has provided tutorials with each version of SFML. The first part of thes
 
 * [1.6 tutorials](http://sfml-dev.org/tutorials/1.6/)
 * [2.0 tutorials](http://sfml-dev.org/tutorials/2.0/)
+* [2.1 tutorials](http://sfml-dev.org/tutorials/2.1/)
 
 ### <a name="build-nightly"/>Are there any nightly builds?
 

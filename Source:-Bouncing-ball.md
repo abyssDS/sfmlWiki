@@ -8,6 +8,8 @@ and then run it like so:
 
  $ ./bounce
 
+If you don't have clang but only gcc, replace "clang++" with "g++" in the above.
+
 Each time you run the program the ball will get a random direction and speed, so run it a few times to see different bounces.
 
 [Comments and criticism is of course welcome](http://en.sfml-dev.org/forums/index.php?topic=15773.0).

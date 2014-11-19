@@ -339,12 +339,12 @@ _Note:_ For Windows all dependencies can be found in the [extlibs](https://githu
 
 Here's a diagram showing how the static linking should look like.
 ```
-sfml-system-s  sfml-window-s  winmm  gdi32  opengl
-         |         |           |       |      |
-         | +-------+           |       |      |
-         | | +-----------------+       |      |
-         | | | +-----------------------+      |
-         | | | | +----------------------------+
+sfml-window-s  sfml-system-s  opengl  winmm  gdi32
+         |         |            |       |      |
+         | +-------+            |       |      |
+         | | +------------------+       |      |
+         | | | +------------------------+      |
+         | | | | +-----------------------------+
          | | | | |
          v v v v v
         example.exe

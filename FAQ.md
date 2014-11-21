@@ -66,6 +66,7 @@
 - [General](#tr-grl)
  - [I'm having trouble using SFML.](#tr-grl-trouble)
  - [I keep getting "undefined reference to &lt;some strange thing that looks like an SFML function&gt;"!](#tr-grl-undefined-ref)
+ - [Why can't I use SFML as a 64-bit library on my 64-bit system?](#tr-grl-64bit)
  - [My computer crashes when I run my SFML program!](#tr-grl-crash)
  - [I found a bug!](#i-found-a-bug)
  - [What is minimal code?](#tr-grl-minimal)
@@ -74,6 +75,7 @@
  - [I'm getting linker errors.](#tr-cb-linker)
 - [Visual Studio](#tr-vs)
  - [My project crashes randomly, but I don't get any compiler or linker errors.](#tr-vs-crash)
+ - [I keep getting ```fatal error LNK1112: module machine type 'XYZ' conflicts with target machine type 'ZYX'```. Help!](#tr-vs-arch)
 - [Windows](#tr-win)
  - [Why does a console attach itself to my project?](#tr-win-console)
 - [Linux](#tr-lnx)
@@ -764,6 +766,34 @@ If you've checked all of those, and SFML still refuses to work, see [I found a b
 
 See [What and how do I link to use SFML?](#build-link)
 
+### <a name="tr-grl-64bit"/>Why can't I use SFML as a 64-bit library on my 64-bit system?
+
+First of all, you have to ask yourself: Do I really need to use SFML as a 64-bit library? There are some benefits to building 64-bit applications, but it is recommended that beginners do not try this until they are confident with the compile and linking process.
+
+Most of the confusion stems from the fact that with Windows, although modern versions make use of 64-bit processor instruction sets, they are able to run 32-bit applications as well. By default, most "standard" installations build 32-bit executables. The fact that you are running a 64-bit operating system doesn't mean that you automatically build 64-bit executables. When in doubt, download/build 32-bit executables.
+
+Let's start with the basics. The processors that you use everyday execute instructions which is what programs are essentially made of. The set of instructions that a processor understands and is able to execute properly is known as its _instruction set_. Because Intel released a family of very popular processors quite a while ago that supported at first 16-bit registers and eventually 32-bit registers whose model numbers ended with 86, the instruction set that they provided came to be known as the x86 instruction set. Nowadays, x86 is synonymous with 32-bit, and any time you see an architecture marked as x86 you should immediately tell that it is a 32-bit architecture. Because of how addresses have to be stored in registers, eventually 32-bit registers were no longer sufficient (could only address up to 4GiB of RAM) and processors had to start providing 64-bit registers. This marked the start of the x64 era. This time around, AMD was the first to come up with the instruction set for 64-bit architectures, and thus you will hear of the term AMD64 a lot. x64, x86-64 and AMD64 all tend to refer to 64-bit architectures and are often used interchangeably.
+
+When you compile your code, the compiler ends up translating your syntactically legal code into machine instructions to be executed on the _target CPU_. The compiler will always produce code that can run on a _specific architecture_. Because x64 architectures are fully backwards-compatible with x86 instructions (it is merely a superset), they can run executables compiled for x86 systems as well, however, the operating system kernel has to support this and allow it.
+
+Some systems such as Linux and OS X choose to trade executable portability for performance. You will not be able to transfer binary files between systems of different architectures, but for that they will be optimized more for their target architecture. Saying that you want to "compile for 64-bit" on these systems doesn't make much sense since you will have to do so automatically anyway. There are ways of forcing compilation for 32-bit systems in order to build _somewhat_ portable binaries, but that is beyond the scope of this FAQ. Just understand that on these systems, you will almost never have to worry about choosing an architecture type.
+
+Windows, as mentioned earlier, chose to go down a different route. They favoured portability over potential performance gains. Because Microsoft couldn't easily stop supporting legacy applications (most of them being proprietary and barely maintained) on their newer operating systems, they had to make it possible to run 32-bit applications side by side with native 64-bit applications. This technology is called _Windows on Windows_ or _Windows 32-bit on Windows 64-bit_, WoW64 in short. Every 64-bit Windows installation has a second copy of the operating system files installed as well, the 32-bit version. When running programs, the executable loader checks for the executable's architecture and loads the corresponding dynamic libraries that it needs to function. Because this information is embedded into the executable itself, it is hard to tell what architecture an executable was built for without inspecting it closer. It is perfectly normal to build for 32-bit Windows systems even though you know that all your users will be on 64-bit systems, it will simply work.
+
+This is one of the main reasons why confusion arises when building software using libraries as well. Unless the target architecture is explicitly noted in the file name, you will not know whether the library file is compatible with the architecture type your compiler is targeting. SFML does not explicitly append an architecture type to its library files, so you will simply have to remember this after building SFML or downloading a pre-built library from somewhere.
+
+When building with Microsoft Visual Studio, the linker checks the machine types (architectures) of all modules that are to be linked with each other. If it finds a mismatch, it will abort with an error.
+
+The error commonly looks like this:
+```
+fatal error LNK1112: module machine type 'X86' conflicts with target machine type 'x64'
+```
+It is possible that X86 and x64 are exchanged.
+
+To resolve this error, simply make sure that no conflicts arise. If you are targeting x64 with your executable, make sure you are only using x64 libraries as well. The same applies for x86.
+
+If you are compiling using GCC or clang, it is less obvious when architecture conflicts arise. Instead of having explicit checks as with Visual Studio, the linkers in these toolchains merely ignore all symbols with mismatching architectures. It will look like the linker accepted the library files, but in fact it didn't process any of them at all, leading to a large number of undefined references during linking. This is especially annoying because these errors can stem from many other causes as well. It is recommended to not build for x64 on Windows if using any of these toolchains. If you really must build for x64 on Windows, use Visual Studio instead.
+
 ### <a name="tr-grl-crash"/>My computer crashes when I run my SFML program!
 
 SFML was designed in a way that should not cause your computer to crash/freeze/hang/BSOD in any way. If it does exhibit such behaviour specifically when running your SFML program, it might be only indirectly because of SFML.
@@ -863,6 +893,10 @@ If you link with the DLL versions, you must copy the required DLLs beside your e
 
 * sfml-[module].dll for the Release DLL
 * sfml-[module]-d.dll for the Debug DLL
+
+### <a name="tr-vs-arch"/>I keep getting ```fatal error LNK1112: module machine type 'XYZ' conflicts with target machine type 'ZYX'```. Help!
+
+See [here](#tr-grl-64bit).
 
 ---
 

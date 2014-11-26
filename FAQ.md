@@ -202,7 +202,10 @@ Maintenance/productivity related skills, also not required but good to know:
 * Optimization techniques, compiler optimization opportunities
 * Coding conventions
 * Refactoring techniques
-* Library writing
+* Code organization: abstraction, modularity, separation of responsibilities
+* [Idioms](https://en.wikibooks.org/wiki/More_C%2B%2B_Idioms): RAII, Pimpl, Erase-Remove, Copy&Swap
+* Advanced data structures and algorithms
+* Library writing, API design
 * Cross-platform build tools
 * SCM such as git, SVN or Hg
 
@@ -211,6 +214,7 @@ Deeper understanding, good to know to understand what is happening "behind the s
 * Networking, TCP, UDP
 * Audio knowledge, sample rate, attenuation, wave characteristics
 * Operating system knowledge (not only for a single operating system)
+* Computer hardware: CPU, instructions and pipelining, RAM, caching, paging
 
 ### <a name="grl-questions"/>Where can I ask questions?
 

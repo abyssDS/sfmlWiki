@@ -1,7 +1,9 @@
 This is a small example the archieve a "letterbox effect" (if I'm using that term correctly) when the window is resized; black bars will appear horizontally or vertically if the aspect ratio of the window is not the same as the game view, and the game view will always stretch keeping the aspect ratio.
 
 ![](http://i.imgur.com/AGVNlMX.png?1)
+
 ![](http://i.imgur.com/r86WeBf.png?1)
+
 ![](http://i.imgur.com/oO7kbkz.png?1)
 
 ```cpp

@@ -6,7 +6,7 @@ This is a small function the archieve a "letterbox effect" (if I'm using that te
 
 ![](http://i.imgur.com/oO7kbkz.png?1)
 
-###The function:
+##The function
 
 ```cpp
 sf::View getLetterboxView(sf::View view, int windowWidth, int windowHeight) {
@@ -45,7 +45,7 @@ sf::View getLetterboxView(sf::View view, int windowWidth, int windowHeight) {
 }
 ```
 
-###Usage example:
+##Usage example
 
 The function should be used when the "Resized" event is triggered.
 

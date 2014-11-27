@@ -47,7 +47,7 @@ sf::View getLetterboxView(sf::View view, int windowWidth, int windowHeight) {
 
 ##Usage example
 
-The function should be used when the "Resized" event is triggered.
+The function should be used when the "Resized" event is triggered in the poll events loop.
 
 ```cpp
 #include <SFML/Graphics.hpp>

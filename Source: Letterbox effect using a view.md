@@ -2,8 +2,6 @@ This is a small example the archieve a "letterbox effect" (if I'm using that ter
 
 ```cpp
 #include <SFML/Graphics.hpp>
-#include <string>
-#include <iostream>
 
 int main() {
 

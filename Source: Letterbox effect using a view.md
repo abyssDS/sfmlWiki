@@ -15,7 +15,7 @@ sf::View getLetterboxView(sf::View view, int windowWidth, int windowHeight) {
     // and sets the view's viewport accordingly in order to archieve a letterbox effect.
     // A new view (with a new viewport set) is returned.
 
-    float visibleAreaRatio = windowWidth / (float) windowHeight;
+    float windowRatio = windowWidth / (float) windowHeight;
     float viewRatio = view.getSize().x / (float) view.getSize().y;
     float sizeX = 1;
     float sizeY = 1;
@@ -23,19 +23,19 @@ sf::View getLetterboxView(sf::View view, int windowWidth, int windowHeight) {
     float posY = 0;
 
     bool horizontalSpacing = true;
-    if (visibleAreaRatio < viewRatio)
+    if (windowRatio < viewRatio)
         horizontalSpacing = false;
 
     // If horizontalSpacing is true, the black bars will appear on the left and right side.
     // Otherwise, the black bars will appear on the top and bottom.
 
     if (horizontalSpacing) {
-        sizeX = viewRatio / visibleAreaRatio;
+        sizeX = viewRatio / windowRatio;
         posX = (1 - sizeX) / 2.0;
     }
 
     else {
-        sizeY = visibleAreaRatio / viewRatio;
+        sizeY = windowRatio / viewRatio;
         posY = (1 - sizeY) / 2.0;
     }
 

@@ -737,7 +737,11 @@ One of the most dangerous things of declaring non-POD ([plain old data](http://e
 
 Another problem with global variables is that sooner or later you are going to have so many of them that they will clog up your namespace. Unless you declare them in a separate namespace they will all be in the same giant one: the global one. If you happen to declare a local variable in one of your functions that happens to have the same name as the global one you are actually referring to, you will not notice the global variable get shadowed unless you have certain warnings switched on. Some people suggest using Hungarian notation to solve this problem but the modern demeanour tends to avoid Hungarian notation as well.
 
-There really isn't any reason to use global variables. Code using global variables can always be written without them and will never perform worse, most of the time performing better as a result of better memory usage.
+Furthermore, global variables work against code modularity. Global variables can be accessed from anywhere and thus bypass well-defined interfaces between modules. This introduces hidden dependencies in the code, which is not only an additional maintenance burden, but can lead to very difficult-to-track bugs. Simply because you are not able to control the access to global variables, as they can be changed anywhere, at any time.
+
+As if this were not enough, global variables also play very badly in multi-threaded environments. Access to global variables from different threads must be protected by mutexes. This requires additional care by the developer accessing the variable and often leads much more synchronization overhead than necessary, because variables are protected prematurely. On the other hand, unprotected global variables can silently introduce bugs if an application starts to use multiple threads.
+
+There really isn't any reason to use global variables. Code using global variables can always be written without them and will never perform worse, most of the time performing better as a result of better memory usage. Keep in mind that the same reasoning applies to static variables, the only difference is their visibility (class/function scope) and in the case of function-static variables, their construction time (at first call instead of program start). Don't use `static` to "optimize" the construction of function-local variables.
 
 ### <a name="prog-insteadof-global"/>What should I use then instead of global variables?
 

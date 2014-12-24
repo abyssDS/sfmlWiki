@@ -60,24 +60,23 @@ view.setCenter(1056, 640);
 
 (Of course you can set the view center to (0, 0) and then move to to (1056, 640) but we're trying to understand what the center of the view is.) 
 
-Since I'm assuming that you've already some knowledge with SFML, I'll also assume that you know SFML is using a Cartesian coordinate system with a flipped Y axis. So the point (0, 0) can normally be found in the top left corner and then maximum x and y value can be found in the bottom right corner. If you're working with images you'll soon get comfortable with this system. 
+SFML uses a Cartesian coordinate system with a flipped Y axis; the point (0, 0) can normally be found in the top left corner and then maximum x and y value can be found in the bottom right corner. If you're working with images you'll soon get comfortable with this system. 
 
-But now comes the center of view, which is in fact defined from the middle point of the display area. The view uses a Cartesian coordinate system too but this time the X axis gets flipped. In the end we have the point (0, 0) (also known as origin) in middle of the view, the maximum x and y values are in the top left corner and the minimal and negative x and y values are in the bottom right corner. Now you can actually set with `setCenter` where the origin of the rendering coordinate system is put in the coordinate system of the view. I hope the following images will clarify the situation a bit.
+The center of view is in fact defined from the middle point of the display area. The view uses a Cartesian coordinate system too but this time the X axis gets flipped. In the end we have the point (0, 0) (also known as origin) in middle of the view, the maximum x and y values are in the top left corner and the minimal and negative x and y values are in the bottom right corner. Now you can actually set with `setCenter` where the origin of the rendering coordinate system will be in the coordinate system of the view.
 
-The black square should represent the window and since we set the viewport to a fixed value the origin of the `sf::View` coordinate system will always be in the middle of the window. Here are the two separated coordinate systems:
+The black square should represent the window and since the viewport was set to a fixed value the origin of the `sf::View` coordinate system will always be in the center of the window.
+Here are the two separated coordinate systems:
 
 [![coord-render](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-render_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-render.png)
 [![coord-view](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-view_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-view.png)
 
-If we combine them we get for example something like:
+By combining them, something like in this example can be achieved:
 
 [![coord-comb](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb_thumb.png)
 
 Then we have our two operations `rotate()` and `zoom()`. The last picture combines the two transformation:
 
 [![coord-comb-rot](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-rot_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-rot.png) [![coord-comb-zoom](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom.png) [![coord-comb-zoom-rot](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom-rot_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom-rot.png)
-
-I think it's nearly impossible to explain this even better.
 
 Note that in the images above, I've moved the rendering coordinate system around to get a few different variations. I guess most of the time it's better to use the `move()` function since you won't need to deal with where to place the origin point. On the other hand you really need to understand how `sf::View` works to use `rotate()` and `zoom()` because it's not obvious that those transformation will happen around the `sf::View` origin i.e. the middle of the view.
 

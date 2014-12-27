@@ -1004,7 +1004,7 @@ No, SFML does not have a GUI package, but you can essentially use any OpenGL-bas
 
 * [SFGUI](http://sfgui.sfml-dev.de/)
 * [GWEN](https://github.com/garrynewman/GWEN)
-* [TGUI](http://tgui.weebly.com/)
+* [TGUI](https://tgui.eu)
 * [CEGUI](http://www.cegui.org.uk/wiki/index.php/Main_Page)
 * [Guichan](https://code.google.com/p/guichan/)
 * [libRocket](http://librocket.com/)

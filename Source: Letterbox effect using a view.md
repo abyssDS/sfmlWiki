@@ -100,3 +100,15 @@ int main() {
     return 1;
 }
 ```
+
+##Disabling the effect
+
+If you need to disable the effect for some reason, use the following function (which basically just resets the viewport of the view).
+
+```cpp
+sf::View disableLetterboxView(sf::View view) {
+
+    view.setViewport( sf::FloatRect(0, 0, 1, 1) );
+    return view;
+}
+```

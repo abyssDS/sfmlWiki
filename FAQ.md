@@ -5,13 +5,6 @@
 **[Building and Using SFML](#build-use)**
 - [I want to fuse the libraries into one. (Not recommended)](#build-fuse)
 
-**[Licensing](#licensing)**
-- [What license does SFML have?](#lic-license)
-- [Can I use SFML in commercial applications?](#lic-commercial)
-- [Can I link SFML statically?](#lic-static)
-- [Can I use the code from the example directory?](#lic-examples)
-- [Do I have to pay any license fees or royalties?](#lic-pay)
-
 **[Libraries for SFML](#libraries)**
 - [Does SFML have a GUI package?](#libraries-gui-package)
 - [Can you interface SFML with a GUI library?](#libraries-gui-lib)
@@ -50,30 +43,6 @@ Here are the commands to together the external dependencies:
     ar xv libopenal32.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s.a && rm *.o && echo 'done'
     ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s-d.a && rm *.o && echo 'done'
     ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s.a && rm *.o && echo 'done'
-
-## <a name="licensing"/>Licensing
-
-### <a name="lic-license"/>What license does SFML have?
-
-SFML is under the [zlib/png license](http://www.opensource.org/licenses/zlib-license.php). You can use SFML for both open-source and proprietary projects, including paid or commercial ones. If you use SFML in your projects, a credit or mention is appreciated, but is not required.
-
-### <a name="lic-commercial"/>Can I use SFML in commercial applications?
-
-Yes, you may use SFML in commercial applications. You don't even have to mention that you used SFML in your application, but the zlib license states that if you do mention it, you are not allowed to state that you yourself are the author of SFML. You are also not allowed to modify SFML and represent it as being the original.
-
-### <a name="lic-static"/>Can I link SFML statically?
-
-Yes, you can link SFML statically. This can be done in any operating system, although in Linux and Mac OS X it is recommended to only link dynamically unless you have special requirements.
-
-When linking statically, do not forget to specify the SFML_STATIC define on your command line.
-
-### <a name="lic-examples"/>Can I use the code from the example directory?
-
-The code from the example directory is not marked as being provided under a separate license. As such it is also governed by the zlib/png license and you are free to do anything you want with the code as long as it complies to the license.
-
-### <a name="lic-pay"/>Do I have to pay any license fees or royalties?
-
-The zlib/png license is a permissive free software license which means it has no provisions to monetize the software it covers. As such SFML can be used for free with no requirement to pay any fees or royalties to its author.
 
 ## <a name="libraries"/>Libraries for SFML
 

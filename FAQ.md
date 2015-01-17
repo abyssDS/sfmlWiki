@@ -76,7 +76,7 @@ The git repository is also hosted on [GitHub](https://github.com/Bromeon/Thor) a
 
 ### <a name="misc-projects"/>Are there any famous projects with SFML?
 
-As SFML is open source and has a permissive free software license, game creators are not forced to specify that they've used SFML in their games, thus it might well be that SFML has been used in bigger commercial projects, we don't know of. As for the known projects, there's a [dedicated page](Projects) on the SFML's wiki.
+As SFML is open source and has a permissive free software license, game creators are not forced to specify that they've used SFML in their games, thus it might well be that SFML has been used in bigger commercial projects, we don't know of. As for the known projects, there's a [dedicated page](Projects) on the SFML's wiki. Another list of known projects can be found on [SFML's Wikipedia article](http://en.wikipedia.org/wiki/Simple_and_Fast_Multimedia_Library#Video_game_examples_using_SFML).
 
 ### <a name="misc-distr"/>How can I distribute my game?
 

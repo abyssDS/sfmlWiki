@@ -15,7 +15,6 @@
 - [Are there any famous projects with SFML?](#misc-projects)
 - [How can I distribute my game?](#misc-distr)
 - [Where can I upload my game to?](#misc-upload)
-- [Are there any example projects I can learn from?](#misc-examples)
 
 ---
 
@@ -84,7 +83,3 @@ As SFML is open source and has a permissive free software license, game creators
 There are many possible places to share your game and game related data with the world wide web and their users. [HashCookie](http://hashcookie.net/) is a simple and easy to use site. Another provider to consider is [MediaFire](http://www.mediafire.com/). Both are simple and fast file sharing hosts.
 
 Also [SFML Projects](http://sfmlprojects.org/) is currently being developed as a place to put many of the projects made with SFML.
-
-### <a name="misc-examples"/>Are there any example projects I can learn from?
-
-Examples of the usage of each module are provided with SFML itself if you download the full SDK version. If you want full projects that make use of many features of SFML at the same time your best bet is to check out the [projects forum](http://en.sfml-dev.org/forums/index.php?board=10.0). People frequently showcase what they are working on there for the community to see. Often they might provide the source code as well, so if you feel brave enough you can look in there if you find a certain project interesting.

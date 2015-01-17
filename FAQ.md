@@ -5,11 +5,6 @@
 **[Building and Using SFML](#build-use)**
 - [I want to fuse the libraries into one. (Not recommended)](#build-fuse)
 
-**[SFML Window](#window)**
-- [How do I make my window transparent?](#window-transparent-window)
-- [What happened to getFrameTime()?](#window-get-frame-time)
-- [Why doesn't setFramerateLimit() always set the frame rate to the specified limit?](#window-set-framerate-limit)
-
 **[SFML System](#system)**
 - [Does SFML support Unicode?](#system-unicode)
 - [How do I convert from sf::String to &lt;type&gt; and vice-versa?](#system-string-convert)
@@ -91,28 +86,6 @@ Here are the commands to together the external dependencies:
     ar xv libopenal32.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s.a && rm *.o && echo 'done'
     ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s-d.a && rm *.o && echo 'done'
     ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s.a && rm *.o && echo 'done'
-
-## <a name="window"/>SFML Window
-
-### <a name="window-transparent-window"/>How do I make my window transparent?
-
-Unfortunately SFML can't help you with this. The style and representation of the application window within your window manager/desktop environment is specific to the environment you are currently in. Because of this SFML cannot provide a uniform interface for controlling the representation of your application window.
-
-SFML does however provide sf::Window::getSystemHandle(). Using the handle you can do a bit of research and find out how to manipulate the window representation yourself using the functions of your window manager.
-
-### <a name="window-get-frame-time"/>What happened to getFrameTime()?
-
-getFrameTime() was removed from SFML at the beginning of 2012. The reasoning for it can be found here: http://en.sfml-dev.org/forums/index.php?topic=6831.0
-
-Users have to create an sf::Clock object now and keep time themselves. This has more advantages than disadvantages including:
-
-* Correct time reporting (getFrameTime() reported the time spent **during the last frame**)
-* More control over between which points in your code the time is to be measured
-* More control over the precision required
-
-### <a name="window-set-framerate-limit"/>Why doesn't setFramerateLimit() always set the frame rate to the specified limit?
-
-setFramerateLimit() is implemented using a call to sf::sleep every frame. The intricacies of sf::sleep are explained [here](#system-sleep).
 
 ## <a name="system"/>SFML System
 

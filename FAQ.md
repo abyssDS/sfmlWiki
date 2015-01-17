@@ -1,4 +1,6 @@
-### Most FAQ entries have been moved to [the official SFML FAQ](http://www.sfml-dev.org/faq.php).
+Notice: Most FAQ entries have been moved to [the official SFML FAQ](http://www.sfml-dev.org/faq.php).
+
+The remaining entries here on the unofficial FAQ are maintained by the community.
 
 # Frequently asked questions (FAQ)
 

@@ -12,7 +12,7 @@ You are encouraged to come and share all kind of personal contributions: new pag
 
 * [[Projects]]
 
-* [[FAQ|Faq]]
+* [[Community FAQ|Faq]]
 
 ## Rules
 

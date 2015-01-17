@@ -3,12 +3,7 @@
 # Frequently asked questions (FAQ)
 
 **[Building and Using SFML](#build-use)**
-- [How do I build SFML?](#build-build)
-- [Are there any nightly builds?](#build-nightly)
-- [How do I setup my development environment to work with SFML?](#build-environment)
 - [I want to fuse the libraries into one. (Not recommended)](#build-fuse)
-- [What and how do I link to use SFML?](#build-link)
-- [How do I link SFML statically?](#build-link-static)
 
 **[SFML Graphics](#graphics)**
 - [What image formats does SFML support?](#graphics-image-formats)
@@ -96,26 +91,6 @@
 
 ## <a name="build-use"/>Building and Using SFML
 
-### <a name="build-build"/>How do I build SFML?
-
-Laurent has provided tutorials with each version of SFML. The first part of these tutorials is aimed at getting started, which includes building SFML with CMake and your build tool of choice, as well as setting up your IDE (if you use one) for use with SFML.
-
-* [1.6 tutorials](http://sfml-dev.org/tutorials/1.6/)
-* [2.0 tutorials](http://sfml-dev.org/tutorials/2.0/)
-* [2.1 tutorials](http://sfml-dev.org/tutorials/2.1/)
-
-### <a name="build-nightly"/>Are there any nightly builds?
-
-There are no official nightly builds, however there is a thread on the forum where unofficial nightly builds are provided for certain platforms.
-
-[Link to the thread](http://en.sfml-dev.org/forums/index.php?topic=9513.0)
-
-### <a name="build-environment"/>How do I setup my development environment to work with SFML?
-
-This is covered quite thoroughly in the tutorials section for some of the most popular IDEs.
-
-Check out the Getting Started sections of the [tutorials](http://sfml-dev.org/resources.php).
-
 ### <a name="build-fuse"/>I want to fuse the libraries into one. (Not recommended)
 
 To fuse two libraries, you can use the ar.exe utility provided with MinGW. You'll also need a minimal Unix environment (like [CYGWIN](http://www.cygwin.com/)). The syntax is:
@@ -138,90 +113,6 @@ Here are the commands to together the external dependencies:
     ar xv libopenal32.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s.a && rm *.o && echo 'done'
     ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s-d.a && rm *.o && echo 'done'
     ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s.a && rm *.o && echo 'done'
-
-### <a name="build-link"/>What and how do I link to use SFML?
-
-When you want to use SFML, you need to link to the library files that provide the functionality you make use of in your application.
-
-SFML is divided into 5 modules:
-
-* **System** _provided by sfml-system_
-* **Window** _provided by sfml-window_
-* **Graphics** _provided by sfml-graphics_
-* **Audio** _provided by sfml-audio_
-* **Network** _provided by sfml-network_
-
-Be aware that the modules have interdependencies on each other. For instance, if you plan on using the Graphics module, you will also have to link against the Window and System modules as well.
-
-Dependencies:
-
-* **System** does not depend on anything and can be used by itself.
-* **Window** depends on **System**.
-* **Graphics** depends on **Window** and **System**.
-* **Audio** depends on **System**.
-* **Network** depends on **System**.
-
-As you can see you will always have to link against sfml-system, no matter what you do.
-
-Be aware that some linkers are sensitive to the order in which you specify libraries to link against.
-
-GCC (which implies MinGW as well) requires that the dependees (libraries that others depend on) are specified after the dependers (libraries that depend on others).
-
-An example of a GCC command line linking all modules would be as follows:
-```
-g++ main.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-network -lsfml-system
-```
-
-This is explained as well in [this forum post](http://en.sfml-dev.org/forums/index.php?topic=8518.msg57257#msg57257).
-
-In Code::Blocks, you would have to make sure the dependees are under the dependers in the list of libraries to link against.
-
-### <a name="build-link-static"/>How do I link SFML statically?
-
-In order to link SFML statically, you'll need to setup your build environment to link against the static libraries of SFML. Static libraries are the ones with a `-s` suffix, for example `sfml-graphics-s`. Next, you'll need to add `SFML_STATIC` to the preprocessor option and, as always, you'll need to make sure to link the debug libraries (`-d` suffix) in debug mode and the release libraries (no `-d` suffix) in release mode.
-
-In the past, SFML included on Windows all its dependencies into the SFML libraries. However, this was changed to eliminate multiple issues and get a commonly expected behavior ([full discussion](http://en.sfml-dev.org/forums/index.php?topic=9362.0)). Now, SFML behaves the same on Linux as well as on Windows, which however means, that one needs to link SFML's dependencies on your own. Since the dependencies aren't obvious to everyone, here's a listing:
-
-**Windows**
-
-* sfml-system
-    * winmm
-* sfml-network
-    * ws2_32
-    * sfml-system
-* sfml-audio
-    * openal32
-    * sndfile
-    * sfml-system
-* sfml-window
-    * opengl32
-    * winmm
-    * gdi32
-    * sfml-system
-* sfml-graphics
-    * freetype
-    * glew
-    * jpeg
-    * opengl32
-    * sfml-window
-    * sfml-system
-
-_Note:_ For Windows all dependencies can be found in the [extlibs](https://github.com/LaurentGomila/SFML/tree/master/extlibs) directory.
-
-**Example**
-
-Here's a diagram showing how the static linking should look like.
-```
-sfml-window-s  sfml-system-s  opengl  winmm  gdi32
-         |         |            |       |      |
-         | +-------+            |       |      |
-         | | +------------------+       |      |
-         | | | +------------------------+      |
-         | | | | +-----------------------------+
-         | | | | |
-         v v v v v
-        example.exe
-```
 
 ## <a name="graphics"/>SFML Graphics
 

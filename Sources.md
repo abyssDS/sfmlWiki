@@ -60,6 +60,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[2D Vector Manipulation|Source:-2D-Vector-Manipulation]] A more advanced class for manipulating and transforming 2D vectors.
 * [C++] [[Analog Clock|Source:-Analog-Clock]] A simple program to draw a basic 2d analog clock.
 * [C++] [[Letterbox effect:|Source:-Letterbox-effect-using-a-view]] A small example to archieve a letterbox effect when resizing the window, having black bars appear either horizontally or vertically to keep the view's aspect ratio.
+* [C++] [[Zoom View At|Source:-Zoom-View-At-(specified-pixel)]] Free function that zooms a view at a specified pixel rather the centre of the window/view.
 
 ## Audio
 * [C++] [[MP3 Player|Source:-MP3-Player]]: Class inspired sf:: Music for playing mp3 file using the library mpg123

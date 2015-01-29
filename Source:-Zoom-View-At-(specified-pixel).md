@@ -5,30 +5,34 @@ Free function that zooms a view at a specified pixel rather than the centre of t
 Please note that C++11 is required for this exact code but it should be easy enough to adapt if you are still unwilling to upgrade ;)
 
 ## Function
-	void zoomViewAt(sf::Vector2i pixel, sf::RenderWindow& window, float zoom)
-	{
-		const sf::Vector2f beforeCoord{ window.mapPixelToCoords(pixel) };
-		sf::View view{ window.getView() };
-		view.zoom(zoom);
-		window.setView(view);
-		const sf::Vector2f afterCoord{ window.mapPixelToCoords(pixel) };
-		const sf::Vector2f offsetCoords{ beforeCoord - afterCoord };
-		view.move(offsetCoords);
-		window.setView(view);
-	}
+```c++
+void zoomViewAt(sf::Vector2i pixel, sf::RenderWindow& window, float zoom)
+{
+	const sf::Vector2f beforeCoord{ window.mapPixelToCoords(pixel) };
+	sf::View view{ window.getView() };
+	view.zoom(zoom);
+	window.setView(view);
+	const sf::Vector2f afterCoord{ window.mapPixelToCoords(pixel) };
+	const sf::Vector2f offsetCoords{ beforeCoord - afterCoord };
+	view.move(offsetCoords);
+	window.setView(view);
+}
+```
 
 Please note that the pixel is that actual pixel location of the window and not the co-ordinate of that pixel.
 
 ## Usage
 To zoom at the mouse position when the mouse wheel is scrolled (placed inside the .pollEvent(event) loop):
 
-	if (event.type == sf::Event::MouseWheelMoved)
-	{
-		if (event.mouseWheel.delta > 0)
-			zoomViewAt({ event.mouseWheel.x, event.mouseWheel.y }, window, (1.f / zoomAmount));
-		else
-			zoomViewAt({ event.mouseWheel.x, event.mouseWheel.y }, window, zoomAmount);
-	}
+```c++
+if (event.type == sf::Event::MouseWheelMoved)
+{
+	if (event.mouseWheel.delta > 0)
+		zoomViewAt({ event.mouseWheel.x, event.mouseWheel.y }, window, (1.f / zoomAmount));
+	else
+		zoomViewAt({ event.mouseWheel.x, event.mouseWheel.y }, window, zoomAmount);
+}
+```
 
 where event is of type sf::Event,  
 and zoomAmount is of type float.  
@@ -38,67 +42,69 @@ if zoomAmount is 1.3f, it will zoom in or out by 30%.
 ## Example
 Here's a full example, which also include the function:
 
-	#include <SFML/Graphics.hpp>
-	#include <iostream>
+```c++
+#include <SFML/Graphics.hpp>
+#include <iostream>
 
-	void zoomViewAt(sf::Vector2i pixel, sf::RenderWindow& window, float zoom)
+void zoomViewAt(sf::Vector2i pixel, sf::RenderWindow& window, float zoom)
+{
+	const sf::Vector2f beforeCoord{ window.mapPixelToCoords(pixel) };
+	sf::View view{ window.getView() };
+	view.zoom(zoom);
+	window.setView(view);
+	const sf::Vector2f afterCoord{ window.mapPixelToCoords(pixel) };
+	const sf::Vector2f offsetCoords{ beforeCoord - afterCoord };
+	view.move(offsetCoords);
+	window.setView(view);
+}
+
+int main()
+{
+	sf::RenderWindow window(sf::VideoMode(800, 600), "\"Zoom View At\" example", sf::Style::Default);
+	window.setFramerateLimit(60);
+	sf::View view(window.getDefaultView());
+	const float zoomAmount{ 1.1f }; // zoom by 10%
+
+	sf::Texture texture;
+	if (!texture.loadFromFile("ag80QzQ.png")) // feel free to download this image from here: http://i.imgur.com/ag80QzQ.png or just use your own
 	{
-		const sf::Vector2f beforeCoord{ window.mapPixelToCoords(pixel) };
-		sf::View view{ window.getView() };
-		view.zoom(zoom);
-		window.setView(view);
-		const sf::Vector2f afterCoord{ window.mapPixelToCoords(pixel) };
-		const sf::Vector2f offsetCoords{ beforeCoord - afterCoord };
-		view.move(offsetCoords);
-		window.setView(view);
+		std::cerr << "Could not load image.";
+		return EXIT_FAILURE;
 	}
+	sf::Sprite sprite(texture);
+	sprite.setScale({ 0.51f, 0.51f }); // fit default image into default window size. you may need to adjust this if you use a different image
 
-	int main()
+	while (window.isOpen())
 	{
-		sf::RenderWindow window(sf::VideoMode(800, 600), "\"Zoom View At\" example", sf::Style::Default);
-		window.setFramerateLimit(60);
-		sf::View view(window.getDefaultView());
-		const float zoomAmount{ 1.1f }; // zoom by 10%
-
-		sf::Texture texture;
-		if (!texture.loadFromFile("ag80QzQ.png")) // feel free to download this image from here: http://i.imgur.com/ag80QzQ.png or just use your own
+		sf::Event event;
+		while (window.pollEvent(event))
 		{
-			std::cerr << "Could not load image.";
-			return EXIT_FAILURE;
-		}
-		sf::Sprite sprite(texture);
-		sprite.setScale({ 0.51f, 0.51f }); // fit default image into default window size. you may need to adjust this if you use a different image
-
-		while (window.isOpen())
-		{
-			sf::Event event;
-			while (window.pollEvent(event))
+			if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+				window.close();
+			else if (event.type == sf::Event::KeyPressed)
 			{
-				if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
-					window.close();
-				else if (event.type == sf::Event::KeyPressed)
+				if (event.key.code == sf::Keyboard::BackSpace)
 				{
-					if (event.key.code == sf::Keyboard::BackSpace)
-					{
-						view = window.getDefaultView();
-						window.setView(view);
-					}
-				}
-				else if (event.type == sf::Event::MouseWheelMoved)
-				{
-					if (event.mouseWheel.delta > 0)
-						zoomViewAt({ event.mouseWheel.x, event.mouseWheel.y }, window, (1.f / zoomAmount));
-					else
-						zoomViewAt({ event.mouseWheel.x, event.mouseWheel.y }, window, zoomAmount);
+					view = window.getDefaultView();
+					window.setView(view);
 				}
 			}
-
-			window.clear();
-			window.draw(sprite);
-			window.display();
+			else if (event.type == sf::Event::MouseWheelMoved)
+			{
+				if (event.mouseWheel.delta > 0)
+					zoomViewAt({ event.mouseWheel.x, event.mouseWheel.y }, window, (1.f / zoomAmount));
+				else
+					zoomViewAt({ event.mouseWheel.x, event.mouseWheel.y }, window, zoomAmount);
+			}
 		}
-	
-		return EXIT_SUCCESS;
+
+		window.clear();
+		window.draw(sprite);
+		window.display();
 	}
+	
+	return EXIT_SUCCESS;
+}
+```
 
 **Written by Hapax ([Github](http://github.com/hapaxia) | [SFML forum](http://en.sfml-dev.org/forums/index.php?action=profile;u=13086))**

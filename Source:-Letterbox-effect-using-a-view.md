@@ -63,6 +63,7 @@ int main() {
     sf::View view;
     view.setSize( resX, resY );
     view.setCenter( view.getSize().x / 2, view.getSize().y / 2 );
+    view = getLetterboxView( view, resX, resY );  // Applies the lettebox effect to the view (not neccesary if the view is the same size as the window initially, but let's do this just in case)
 
     // Create a sprite. This sprite represents the whole map of a game in this example,
     // so it should be bigger than the view/window, so you can't see all of it on screen.

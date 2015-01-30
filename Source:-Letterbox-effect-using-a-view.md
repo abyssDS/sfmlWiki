@@ -1,4 +1,4 @@
-This is a small function to achieve a "letterbox effect" (if I'm using that term correctly) when the window is resized, using a view; black bars will appear horizontally or vertically if the aspect ratio of the window is not the same as the game view, and the game view will always stretch keeping the aspect ratio.
+This is a small function to achieve a "letterbox effect" (if I'm using that term correctly) when the window is resized, using a view; black bars will appear horizontally or vertically if the aspect ratio of the window is not the same as the game view, and the game view will always stretch keeping the aspect ratio. 
 
 This is achieved modifying the viewport of the view, so this will only work for views that have a default viewport; it will screw up views with different viewport values. 
 
@@ -49,7 +49,9 @@ sf::View getLetterboxView(sf::View view, int windowWidth, int windowHeight) {
 
 ##Usage example
 
-The function should be used when the "Resized" event is triggered in the poll events loop.
+The function should be used both when you create the view and also when the "Resized" event is triggered in the poll events loop.
+
+If you have more than one view, you need to apply the function to every one of them.
 
 ```cpp
 #include <SFML/Graphics.hpp>

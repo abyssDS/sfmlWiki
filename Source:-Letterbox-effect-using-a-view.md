@@ -1,5 +1,7 @@
 This is a small function to achieve a "letterbox effect" (if I'm using that term correctly) when the window is resized, using a view; black bars will appear horizontally or vertically if the aspect ratio of the window is not the same as the game view, and the game view will always stretch keeping the aspect ratio.
 
+This is achieved modifying the viewport of the view, so this will only work for views that have a default viewport; it will screw up views with different viewport values. 
+
 ![](http://i.imgur.com/AGVNlMX.png?1)
 
 ![](http://i.imgur.com/r86WeBf.png?1)
@@ -60,10 +62,12 @@ int main() {
     sf::RenderWindow window( sf::VideoMode(resX, resY), "Letterbox", (sf::Style::Resize + sf::Style::Close) );
 
     // Create a view. This can be of any size, but in this example it will be the same size as the window.
+    // After creating it, it applies the letterbox effect to it; this is not neccesary if the view
+    // is the same size as the window initially, but let's do this just in case.
     sf::View view;
     view.setSize( resX, resY );
     view.setCenter( view.getSize().x / 2, view.getSize().y / 2 );
-    view = getLetterboxView( view, resX, resY );  // Applies the lettebox effect to the view (not neccesary if the view is the same size as the window initially, but let's do this just in case)
+    view = getLetterboxView( view, resX, resY );  
 
     // Create a sprite. This sprite represents the whole map of a game in this example,
     // so it should be bigger than the view/window, so you can't see all of it on screen.

@@ -1,4 +1,4 @@
-This is a small function the achieve a "letterbox effect" (if I'm using that term correctly) when the window is resized, using a view; black bars will appear horizontally or vertically if the aspect ratio of the window is not the same as the game view, and the game view will always stretch keeping the aspect ratio.
+This is a small function to achieve a "letterbox effect" (if I'm using that term correctly) when the window is resized, using a view; black bars will appear horizontally or vertically if the aspect ratio of the window is not the same as the game view, and the game view will always stretch keeping the aspect ratio.
 
 ![](http://i.imgur.com/AGVNlMX.png?1)
 

@@ -71,8 +71,7 @@ int main() {
     view.setCenter( view.getSize().x / 2, view.getSize().y / 2 );
     view = getLetterboxView( view, resX, resY );  
 
-    // Create a sprite. This sprite represents the whole map of a game in this example,
-    // so it should be bigger than the view/window, so you can't see all of it on screen.
+    // Create a sprite. This sprite represents the whole map of a game in this example.
     sf::Texture texture;
     texture.loadFromFile("map.png");
     sf::Sprite sprite(texture);
@@ -83,12 +82,6 @@ int main() {
         // Poll events.
         sf::Event event;
         while ( window.pollEvent(event) ) {
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) )
-                event.type = sf::Event::Closed;
-
-            if (event.type == sf::Event::Closed)
-                window.close();
 
             if (event.type == sf::Event::Resized)
                 view = getLetterboxView( view, event.size.width, event.size.height );
@@ -101,7 +94,6 @@ int main() {
         window.draw(sprite);
 
         window.display();
-
     }
 
     return 1;

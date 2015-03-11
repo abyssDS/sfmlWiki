@@ -64,7 +64,7 @@ Yes, you can! See examples for Qt, wxWidgets, and the native Win32 and X11 APIs 
 
 ### <a name="libraries-video"/>Can I read video files with SFML?
 
-SFML does not have a video playback module, but one can easily connect FFMPEG or similar libraries with SFML. There even exists a couple of maintained projects from some SFML users called [sfeMovie](http://lucas.soltic.etu.p.luminy.univ-amu.fr/sfeMovie/) and [Motion](http://en.sfml-dev.org/forums/index.php?topic=16221.0).
+SFML does not have a video playback module, but one can easily connect FFMPEG or similar libraries with SFML. There even exists a couple of maintained projects from some SFML users called [sfeMovie](http://sfemovie.yalir.org/) and [Motion](http://en.sfml-dev.org/forums/index.php?topic=16221.0).
 
 ### <a name="libraries-thor"/>What exactly is Thor?
 

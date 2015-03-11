@@ -5,7 +5,7 @@ Welcome to the section dedicated to projects using/for SFML.
 ## For SFML
 
 ### Video
-* [C++] [sfeMovie](http://lucas.soltic.etu.p.luminy.univ-amu.fr/sfeMovie/): A C++ library that lets you play movies in SFML based applications.
+* [C++] [sfeMovie](http://sfemovie.yalir.org/): A C++ library that lets you play movies in SFML based applications.
 * [C++/C#/.NET] [Motion/MotionNET](http://en.sfml-dev.org/forums/index.php?topic=16221.0): A C++ and C#/.NET library that lets you playback video and audio using SFML or the SFML.NET binding.
 
 ### UI (User Interface)

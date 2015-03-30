@@ -13,7 +13,7 @@ apt-get install libxcb-randr0-dev -y
 apt-get install libxcb-util0-dev -y
 apt-get install libxcb-image0-dev -y
 apt-get install libxcb-keysyms1-dev
-apt-get install libxcb-ewmh1-dev
+apt-get install libxcb-ewmh1-dev -y
 apt-get install libfreetype6-dev -y
 apt-get install libjpeg-dev -y
 apt-get install libopenal-dev -y

@@ -4,7 +4,6 @@ Here is a simple shell script for Ubuntu that uses apt-get. Even if you use a di
 ```sh
 #!/bin/sh
 
-apt-get install libglew1.6-dev -y
 apt-get install libx11-dev -y
 apt-get install libxrandr-dev -y
 apt-get install libxcb1-dev -y
@@ -16,7 +15,6 @@ apt-get install libxcb-image0-dev -y
 apt-get install libxcb-keysyms1-dev
 apt-get install libxcb-ewmh1-dev
 apt-get install libfreetype6-dev -y
-apt-get install libsndfile-dev -y
 apt-get install libjpeg-dev -y
 apt-get install libopenal-dev -y
 ```

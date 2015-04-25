@@ -108,7 +108,7 @@ On an Ubuntu-esque system you need to prepare your system by running the followi
 
 ~~~
 sudo apt-get update
-sudo apt-get install build-essential g++ cmake libjpeg-dev libfreetype6-dev libGLEW-dev libxrandr-dev libopenal-dev libsndfile-dev libgl1-mesa-dev
+sudo apt-get install build-essential g++ cmake libjpeg-dev libfreetype6-dev libGLEW-dev libxrandr-dev libopenal-dev libsndfile-dev libgl1-mesa-dev libxcb-image0-dev libudev-dev
 ~~~
 
 This is what I had to install on my system.  The build process may have additional requirements depending on your system.

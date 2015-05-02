@@ -44,6 +44,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [Harvest : Massive Encounter](http://www.oxeyegames.com/harvest/): Tower Defense Real Time strategy game
 * [C++] [Contamination: Zombie survival game](http://foxfiredev.net/portfolio/zombie-survival-game-2d/): Try to survive as long as possible in a post apocalyptic world
 * [C++] [F.I.R.E.D.](http://fired.tk/): 2D cross-platform game with elements of Action, RPG and Adventure.
+* [C++] [Re:creation](https://eliasdaler.wordpress.com/2014/10/19/recreation-info-press-kit/): top-down action RPG inspired by The Legend of Zelda: A Link to the Past. You play as undead knight who can turn into a ghost and control dead enemies with it to get their abilities and solve various puzzles.
 
 ### Open Source
 * [C++] [Metroid Prime : Némésis](http://metroidprime4.xooit.fr/index.php): 2D fangame following the famous Metroid Prime 3.

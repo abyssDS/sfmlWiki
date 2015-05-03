@@ -1,6 +1,6 @@
 # AnimatedSprite class
 
-## Summary 
+## Summar
 This is a class for SFML 2 that provides an easy interface to animate Sprites. The design closely follows the design of the `sf::Sprite` class.
 
 Both classes are written by Foaly. They are under the zlib/libpng license (the same that SFML uses). I'd love to hear about your project on the forum and it would be nice if you name me in the credits :)

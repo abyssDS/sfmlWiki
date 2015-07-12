@@ -41,6 +41,10 @@ Welcome to the section dedicated to projects using/for SFML.
 
 ## Video Games
 ### Closed Source
+* [C++] [Pioneers](http://www.pioneersgame.com/): A turn-based exploration/adventure RPG.
+* [C++] [Crea](http://www.playcrea.com/): A 2D moddable sandbox game with a light-hearted mood, colorful art and RPG elements. 
+* [C++] [Moonman](http://moonman.io): A procedural adventure game
+* [C++] [Vagante](http://vagantegame.com/): A platformer roguelike game; imagine Spelunky with RPG elements! 
 * [C++] [Harvest : Massive Encounter](http://www.oxeyegames.com/harvest/): Tower Defense Real Time strategy game
 * [C++] [Contamination: Zombie survival game](http://foxfiredev.net/portfolio/zombie-survival-game-2d/): Try to survive as long as possible in a post apocalyptic world
 * [C++] [F.I.R.E.D.](http://fired.tk/): 2D cross-platform game with elements of Action, RPG and Adventure.

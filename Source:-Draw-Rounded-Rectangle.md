@@ -112,7 +112,7 @@ class RoundedRectangleShape : public sf::Shape
         /// \return Number of points of the rounded rectangle
         ///
         ////////////////////////////////////////////////////////////
-        virtual unsigned int getPointCount() const;
+        virtual std::size_t getPointCount() const;
 
         ////////////////////////////////////////////////////////////
         /// \brief Get a point of the rounded rectangle
@@ -124,7 +124,7 @@ class RoundedRectangleShape : public sf::Shape
         /// \return Index-th point of the shape
         ///
         ////////////////////////////////////////////////////////////
-        virtual sf::Vector2f getPoint(size_t index) const;
+        virtual sf::Vector2f getPoint(std::size_t index) const;
 
     private:
          ////////////////////////////////////////////////////////////
@@ -234,13 +234,13 @@ void RoundedRectangleShape::setCornerPointCount(unsigned int count)
 }
 
 ////////////////////////////////////////////////////////////
-unsigned int RoundedRectangleShape::getPointCount() const
+std::size_t RoundedRectangleShape::getPointCount() const
 {
     return myCornerPointCount*4;
 }
 
 ////////////////////////////////////////////////////////////
-sf::Vector2f RoundedRectangleShape::getPoint(size_t index) const
+sf::Vector2f RoundedRectangleShape::getPoint(std::size_t index) const
 {
     if(index >= myCornerPointCount*4)
         return sf::Vector2f(0,0);

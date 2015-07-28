@@ -260,7 +260,7 @@ sf::Vector2f RoundedRectangleShape::getPoint(std::size_t index) const
     }
 
     return sf::Vector2f(myRadius*cos(deltaAngle*(index-centerIndex)*pi/180)+center.x,
-                        myRadius*sin(deltaAngle*(index-centerIndex)*pi/180)-center.y);
+                        -myRadius*sin(deltaAngle*(index-centerIndex)*pi/180)+center.y);
 }
 }//namespace sf
 ```

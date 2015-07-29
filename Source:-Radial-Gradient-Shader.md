@@ -78,7 +78,7 @@ shader.setParameter("windowHeight", static_cast<float>(window.getSize().y)); // 
 which loads the shader and tells it where the gradient should be.
 In this case, the radial gradient is the size of the circle and starts from the centre of it.
 
-Here are screenshots showing the effect of the **expand** parameter, which expands the inner colour:
+Here are screenshots showing the effect of the **expand** parameter, which expands the inner colour:  
 ![expand = 0.f](http://i.imgur.com/EiBTeoJ.png) expand = 0.f  
 ![expand = 0.25f](http://i.imgur.com/8IG5FFE.png) expand = 0.25f  
 ![expand = 0.5f](http://i.imgur.com/VpFdCzL.png) expand = 0.5f  

@@ -32,6 +32,7 @@ Welcome to the section dedicated to external source codes for SFML.
 
 ## Shaders
 * [C++] [[Heat Haze Shader|Source:-HeatHazeShader]]: Simple shader that produces a heat haze effect using SFML (by [binary1248](https://github.com/binary1248))
+* [C++] [[Radial Gradient Shader|Source:-Radial-Gradient-Shader]]: Shader that adds a controllable radial gradient to an untextured graphical object (by [Hapax](https://github.com/hapaxia))
 
 ## Network
 * [C++] [[Simple chat example using sf::TcpSocket|Source:-Network-Chat-Example]]

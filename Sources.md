@@ -29,7 +29,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Shader Tile Map|Source:-ShaderTileMap]]: tile map drawing using one texture as data and other as graphics and swapping data pixels for graphic pixels using glsl fragment shader
 * [C++11] [[Vertex Vector|Source:-VertexVector]]: drawable alternative to VertexArray that supports emplacement and foreach loops
 * [C++] [[Simple bouncing ball example|Source:-Bouncing-ball]]: Simple example showing how you can bounce a ball around a window.
-* [C++] [Sprite3d (work-in-progress)](https://github.com/Hapaxia/Sprite3d): A class similar to SFML's standard sprite that also includes ability to rotate around all three axes (by [Hapax](https://github.com/hapaxia))
+* [C++] [[Sprite3d|Source:-Sprite3d]]: A class similar to SFML's standard sprite that also includes ability to rotate around all three axes (by [Hapax](https://github.com/hapaxia))
 
 ## Shaders
 * [C++] [[Heat Haze Shader|Source:-HeatHazeShader]]: Simple shader that produces a heat haze effect using SFML (by [binary1248](https://github.com/binary1248))

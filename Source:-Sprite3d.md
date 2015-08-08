@@ -5,10 +5,9 @@ This is a drawable class that works in a similar way to a standard Sprite (it ha
 Since it can rotate and show its back face, the class allows you to supply a secondary texture which it displays instead when the back is visible.
 
 Sprite3d injects itself into the same namespace as SFML to allow for an easy and seamless transition from sf::Sprite to sf::Sprite3d.
-*Sprite3d is intended to be able to used in place of a standard SFML sprite with no changes to the code.*
+*Sprite3d is intended to be used in place of a standard SFML sprite with no changes to the code.*
 
-For more information and an example, please visit the Sprite3d repository on Github
-[Sprite3d repository on Github](https://github.com/Hapaxia/Sprite3d)
+For more information and an example, please visit the [Sprite3d repository on Github](https://github.com/Hapaxia/Sprite3d).
 
 The topic on the SFML forum dedicated to this class can be found [here](http://en.sfml-dev.org/forums/index.php?topic=18698).
 

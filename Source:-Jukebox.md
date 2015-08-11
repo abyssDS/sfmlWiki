@@ -10,7 +10,7 @@ This very simple class will read in a list of all available audio files from the
 ```cpp
 // emacs: -*- Mode: c++; c-file-style: "stroustrup"; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 //
-// This file is Copyright (C) 2014 by Jesper Juhl <jj@chaosbits.net>
+// This file is Copyright (C) 2014 by Jesper Juhl <jesperjuhl76@gmail.com>
 // This file may be freely used under the terms of the zlib license (http://opensource.org/licenses/Zlib)
 //
 // This software is provided 'as-is', without any express or implied warranty.
@@ -183,7 +183,7 @@ private:
 ```cpp
 // emacs: -*- Mode: c++; c-file-style: "stroustrup"; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 //
-// This file is Copyright (C) 2014 by Jesper Juhl <jj@chaosbits.net>
+// This file is Copyright (C) 2014 by Jesper Juhl <jesperjuhl76@gmail.com>
 // This file may be freely used under the terms of the zlib license (http://opensource.org/licenses/Zlib)
 //
 // This software is provided 'as-is', without any express or implied warranty.

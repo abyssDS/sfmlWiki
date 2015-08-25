@@ -69,4 +69,4 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Audio Player|Source:-Audio-Player]]: Class inspired sf:: Music for playing audio file using the library ffmpeg
 * [C++] [[Simple Jukebox|Source:-Jukebox]]: A simple class to create, modify and play playlists from audio files in a given directory.
 * [C++] [[Looping Music|Source:-Looping-Music]]: A class that enables music to loop between 2 specific time points
-* [C++] [[Mp3 Soundfile Reader|Mp3-Soundfile-Reader]]: A class that allows the read of mp3 file using the mpg123 library
+* [C++] [[Mp3 Soundfile Reader|Source:-Mp3-Soundfile-Reader]]: A class that allows the read of mp3 file using the mpg123 library

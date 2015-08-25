@@ -213,41 +213,6 @@ protected:
 #include <sstream>
 #include <bitset>
 
-// Helper function
-std::string printBufferVerbose(unsigned char* buffer, std::size_t numBytes){
-	std::stringstream stream;
-	stream << "print buffer ========================="  << std::endl;
-	std::size_t i = 0;
-	for (; i < numBytes; i++) {
-		if(i % 4 == 0)
-			stream << std::endl << i;
-		unsigned char word = buffer[i];
-		std::bitset<8> bits{word};
-		stream << "\t" << bits;
-	}
-
-	if(numBytes)
-		stream << std::endl << std::endl << "====================================== the first " << i << " bytes" << std::endl;
-	return stream.str();
-}
-
-// Helper function
-std::string printBuffer(unsigned char* buffer, std::size_t numBytes){
-	std::stringstream stream;
-	stream << "first " << numBytes << " bytes:";
-	if(numBytes) {
-		std::size_t i = 0;
-		for (; i < numBytes; i++) {
-			unsigned char word = buffer[i];
-			std::bitset<8> bits{word};
-			stream << " " << bits;
-		}
-	} else {
-		stream << " buffer empty";
-	}
-	return stream.str();
-}
-
 namespace audio {
 
 SoundFileReaderMp3::SoundFileReaderMp3()

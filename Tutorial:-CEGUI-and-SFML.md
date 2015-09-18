@@ -334,11 +334,11 @@ bool GUIManager::Initialize(sf::RenderWindow* Win)
 		mRenderer = &CEGUI::OpenGLRenderer::bootstrapSystem();
 		mSystem = CEGUI::System::getSingletonPtr();
 
-                CEGUI::SchemeManager::getSingleton().createFromFile("TWindowsLook.scheme", "schemes");
-                //load default font
+		CEGUI::SchemeManager::getSingleton().createFromFile("TWindowsLook.scheme", "schemes");
+		//load default font
 		CEGUI::FontManager::getSingleton().createFromFile("DejaVuSans-10.font");
-                mSystem->getDefaultGUIContext().setDefaultFont("DejaVuSans-10");
-                //set cursor
+		mSystem->getDefaultGUIContext().setDefaultFont("DejaVuSans-10");
+		//set cursor
 		mSystem->getDefaultGUIContext().getMouseCursor().setDefaultImage("WindowsLook/MouseArrow");
 
 		mWindowManager = CEGUI::WindowManager::getSingletonPtr();

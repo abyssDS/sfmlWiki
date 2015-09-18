@@ -337,7 +337,7 @@ bool GUIManager::Initialize(sf::RenderWindow* Win)
                 CEGUI::SchemeManager::getSingleton().createFromFile("TWindowsLook.scheme", "schemes");
                 //load default font
 		CEGUI::FontManager::getSingleton().createFromFile("DejaVuSans-10.font");
-                mSystem->getDefaultGUIContext().setDefaultFont(DejaVuSans-10");
+                mSystem->getDefaultGUIContext().setDefaultFont("DejaVuSans-10");
                 //set cursor
 		mSystem->getDefaultGUIContext().getMouseCursor().setDefaultImage("WindowsLook/MouseArrow");
 

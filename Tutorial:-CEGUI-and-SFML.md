@@ -331,12 +331,16 @@ bool GUIManager::Initialize(sf::RenderWindow* Win)
 	initializeMaps();
 	try
 	{
-		mRenderer = new CEGUI::OpenGLRenderer(0, App::Width, App::Height);
-		mSystem = new CEGUI::System(mRenderer);
-		CEGUI::SchemeManager::getSingleton().create("WindowsLook.scheme");
-		CEGUI::FontManager::getSingleton().createFont("DejaVuSans-10.font");
+		mRenderer = &CEGUI::OpenGLRenderer::bootstrapSystem();
+		mSystem = CEGUI::System::getSingletonPtr();
 
-		mSystem->setDefaultMouseCursor("WindowsLook", "MouseArrow");
+                CEGUI::SchemeManager::getSingleton().createFromFile("TWindowsLook.scheme", "schemes");
+                //load default font
+		CEGUI::FontManager::getSingleton().createFromFile("DejaVuSans-10.font");
+                mSystem->getDefaultGUIContext().setDefaultFont(DejaVuSans-10");
+                //set cursor
+		mSystem->getDefaultGUIContext().getMouseCursor().setDefaultImage("WindowsLook/MouseArrow");
+
 		mWindowManager = CEGUI::WindowManager::getSingletonPtr();
 	}
 	catch (CEGUI::Exception& e)

@@ -48,3 +48,4 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 ### Miscellaneous
 
 * [C++] [Use SFML with GTK+](http://lalaland.github.com/gtkGuide.html)
+* [C++] [[Use SFML with Qt|Tutorial:-Integrating-SFML-into-Qt]]

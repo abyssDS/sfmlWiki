@@ -11,7 +11,7 @@ These vectors define the control points determining the slopes at the end points
 The number of segments to be drawn. This has to be a number bigger than or equal to `1` (where `1` will result in a straight line).
 
 ## Code
-```
+```C++
 std::vector<sf::Vector2f> CalcCubicBezier(
         const sf::Vector2f &start,
         const sf::Vector2f &end,
@@ -39,7 +39,7 @@ This function won't draw the resulting bezier. It will only calculate the points
 
 The easiest way to draw such a curve would be adding the points to a `sf::VertexArray`:
 
-```
+```C++
 // Create a vertex array for drawing; a line strip is perfect for this
 sf::VertexArray vertices(sf::LinesStrip, 0);
 

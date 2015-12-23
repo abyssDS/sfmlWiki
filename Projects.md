@@ -38,6 +38,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [OCaml] *Ocsfml*: hosted on github: https://github.com/JoeDralliam/Ocsfml
 * [Rust] *Rust-SFML*: available on [github](https://github.com/JeremyLetang/rust-sfml) and its [webpage](http://rust-sfml.org)
 * [Haskell] *SFML* https://hackage.haskell.org/package/SFML
+* [Julia] *SFML.jl* https://github.com/zyedidia/SFML.jl
 
 ## Video Games
 ### Closed Source

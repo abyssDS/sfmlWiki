@@ -19,6 +19,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [[Thor|Project:-Thor]]: Particle systems, animations, pausable clocks, vector functions, resource/event handling, triangulations, and much more...
 * [C++] [BZeps-SFML-Snippets](https://github.com/BarrensZeppelin/BZeps-SFML-Snippets): Particle System, Animation & Tileset support and other good stuffs. Currently in development, any help/pull requests greatly appreciated!
 * [Ruby] [[GDE|Project:-Groogy's-Development-Environment]]: An environment for rbSFML that helps out with development.
+* [C++] [Selba Ward](http://en.sfml-dev.org/forums/index.php?topic=19496): collection of generic, reusable and flexible drawable objects for SFML (by [Hapax](https://github.com/hapaxia))
 
 ### Physics
 * [C++] [SFML with Box2D](https://github.com/Krozark/Ekiis): A small project that let you use Box2D with SFML.

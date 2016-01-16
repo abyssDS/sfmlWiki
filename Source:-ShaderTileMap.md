@@ -2,13 +2,14 @@
 Posted under MIT License.
 TileMap.h
 ```cpp
-#ifndef EE_TILEMAP_H_INCLUDED
-#define EE_TILEMAP_H_INCLUDED
+#pragma once
+
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Shader.hpp>
 #include <string>
+
 namespace edy{
 	namespace video{
 		class TileMap : public sf::Drawable
@@ -26,7 +27,7 @@ namespace edy{
 		};
 	}
 }
-#endif
+
 ```
 TileMap.cpp:
 ```cpp
@@ -42,7 +43,7 @@ namespace {
 	//
 
 	//Which is not included in shader source literals below to save space in final executable -FRex
-	char const*const fragSource="#version 130\n\
+	char const fragSource[] = "#version 130\n\
 								uniform sampler2D m;\n\
 								uniform sampler2D t;\n\
 								uniform vec2 w;\n\
@@ -56,7 +57,7 @@ namespace {
 								gl_FragColor=texture2D(t,a+b/w);\n\
 								gl_FragColor.a*=c.a;\n\
 								}";
-	char const*const vertSource="#version 130\n\
+	char const vertSource[] = "#version 130\n\
 								void main()\n\
 								{\n\
 								gl_Position=gl_ModelViewProjectionMatrix*gl_Vertex;\n\

@@ -56,4 +56,15 @@ Follow these steps to download, build and install SFML:
   * You're now ready to use SFML in the NDK together with devices understanding the compiled target files (in this example `armeabi`).
 
 ## Building and Executing the Android Example
-*Not written yet.*
+Follow these steps to build and install an example SFML application that is bundled with the SFML code:
+
+        cd SFML/examples/android
+        android update project --target "android-23" --path .
+        ndk-build
+        ant debug
+
+You can substitute `android-23` above for the SDK version that you have installed on your machine. To find out which SDKs are installed run `android list target` in the terminal.
+
+The resulting package `bin/NativeActivity-debug.apk` can be copied and opened on your device or installed to a connected device/emulator:
+
+        adb install bin/NativeActivity-debug.apk

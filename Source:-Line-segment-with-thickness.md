@@ -1,4 +1,7 @@
-Two classes presented for drawing a line with thickness between two points.
+Two different ways to draw a line with thickness between two points.
+
+- Deriving from sf::Drawable
+- Deriving from sf::Shape
 
 ![Line segment](http://kojirion.github.io/images/segment.png)
 

@@ -6,7 +6,7 @@ FPacket objects are usual SFML packets, in which you can put data and send them 
 
 If you receive flagged data with another packet class (like sf::Packet) you will lose some data or your program will crash, so if you start using flagged packets, it is highly recommended that you use them everywhere in both server and client programs.
 
-The flags are an enumerated type PFlag. You can construct a packet directly with a PFlag, or set the flag later. You can easily extend the PFlag enumeration (in FPacket.hpp, line 37) to match the needs of your application.
+The flag is an enumerated type PFlag. You can construct a packet directly with a PFlag, or set the flag later. You can easily extend the PFlag enumeration (in FPacket.hpp, line 37) to match the needs of your application.
 When you receive a flagged packet, you can then easily check the flag : it will tell you what's the purpose of the received packet, what type of data it contains, so you'll know what to do with it. See usage example.
 
 FPacket is a really simple class. Feel free to correct the files if you see any mistakes.

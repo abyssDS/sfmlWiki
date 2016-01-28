@@ -4,7 +4,7 @@ Let you send and receive flagged (or you could say tagged) data across the netwo
 
 FPacket objects are usual SFML packets, in which you can put data and send them across SFML sockets as usual (they inherit from sf::Packet). The difference is that you can set a flag to the packet, in order to easily specify the use case of the packet. The flag will be sent automatically across the network when you send the packet, and automatically extracted on the other side when the packet is received, provided you use this same class to receive.
 
-If you receive flagged data with another packet class (like sf::Packet) you will lose some data or your program will crash, so if you start using flagged packets, it is highly recommended that you use them everywhere in both server and client programs.
+If you receive flagged data with another packet class (like sf::Packet), or the other way around, you will lose some data or your program will crash, so if you start using flagged packets, it is highly recommended that you use them everywhere in both server and client programs.
 
 The flag is an enumerated type PFlag. You can construct a packet directly with a PFlag, or set the flag later. You can easily extend the PFlag enumeration (in FPacket.hpp, line 37) to match the needs of your application.
 When you receive a flagged packet, you can then easily check the flag : it will tell you what's the purpose of the received packet, what type of data it contains, so you'll know what to do with it. See usage example.

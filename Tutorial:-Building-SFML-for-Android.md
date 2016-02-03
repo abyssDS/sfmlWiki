@@ -8,6 +8,7 @@ Before you can start, you'll need the proper development environment. Basically,
 * Git
 * Android SDK
 * Android NDK
+* Apache Ant
 
 ## Setup
 Before you can start, there are a few things to note, that will make the following steps easier.
@@ -17,6 +18,7 @@ Before you can start, there are a few things to note, that will make the followi
   * *[Path to SDK]*/tools
   * *[Path to SDK]*/platform-tools
   * *[Path to NDK]*
+  * *[Path to ANT]*/bin
 
   Make sure to use backslashes (`\`) for these paths on Windows.
 * Set a new environment variable `ANDROID_NDK` pointing to the directory where you've put the Android NDK. Make sure to use forward slashes (`/`) even on Windows, like `C:/Android/NDK`.

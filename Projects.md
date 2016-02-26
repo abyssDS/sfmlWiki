@@ -53,6 +53,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [Re:creation](https://eliasdaler.wordpress.com/2014/10/19/recreation-info-press-kit/): top-down action adventure game. You play as undead knight who can turn into a ghost and control dead enemies with it to get their abilities and solve various puzzles.
 * [C++] [Kronos](http://www.indiedb.com/games/kronos): An Action-RPG game with lots of combats, customization and puzzle interaction. With 30+ map areas, 50+ enemies and bosses, and tons of items to customize your play style.
 * [C++] [Hope](http://hope.glusoft.com/): point and click adventure game. 
+* [C++] [Hope](http://www.indiedb.com/games/pixzen): Simple 2D platform game with unique story.
 
 ### Open Source
 * [C++] [Metroid Prime : Némésis](http://metroidprime4.xooit.fr/index.php): 2D fangame following the famous Metroid Prime 3.

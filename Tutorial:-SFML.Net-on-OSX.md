@@ -4,11 +4,11 @@ I'm going to assume you'll be using Xamarin IDE. If you don't, it's a great tool
 
 # Resources
 
-If you're using the latest SFML version (2.1), you'll want to download the following libraries for your project.
+If you're using the latest SFML.Net version (2.2), you'll want to download the following libraries for your project.
 
-* SFML.Net - http://www.sfml-dev.org/download/sfml.net/ (64bit)
-* CSFML - http://www.sfml-dev.org/download/csfml/ (MacOSX Clang Universal)
-* SFML - http://sfml-dev.org/download.php (MacOSX Clang Universal) 
+* SFML.Net - http://www.sfml-dev.org/download/sfml.net/ (2.2 64bit)
+* CSFML - http://www.sfml-dev.org/download/csfml/ (2.2 MacOSX Clang Universal)
+* SFML - http://sfml-dev.org/download.php (2.2 MacOSX Clang Universal) 
 * InstallNameTool - https://code.google.com/p/install-name-tool-gui/ (Prebuilt Binary) with Command Line Tools installed.
 
 # Project Setup
@@ -27,9 +27,9 @@ Just select them in the lib directory, and click add.
 
 The SFML.Net binding does not use the SFML library directly. Instead, it uses the CSFML binding, so we have to add this to our binary directory. Copy the following files from the _lib_ directory inside the CSFML zip you downloaded into your _bin/Debug/_ directory.
 
-* libcsfml-audio-2.1.dll
-* libcsfml-window-2.1.dll
-* libcsfml-graphics-2.1.dll
+* libcsfml-audio.2.2.0.dylib
+* libcsfml-window.2.2.0.dylib
+* libcsfml-graphics.2.2.0.dylib
 
 ![CSFML Setup](http://jamiehoyle.com/tfg/sfmltut3.png)
 
@@ -37,9 +37,10 @@ The SFML.Net binding does not use the SFML library directly. Instead, it uses th
 
 Now that we have added the CSFML binding, all that's left to add is the actual SFML library itself.  Copy the following files from the _lib_ directory inside the SFML zip you downloaded into your _bin/Debug/_ directory.
 
-* libsfml-audio-2.1.dll
-* libsfml-window-2.1.dll
-* libsfml-graphics-2.1.dll
+* libsfml-audio.2.2.0.dylib
+* libsfml-graphics.2.2.0.dylib
+* libsfml-system.2.2.0.dylib
+* libsfml-window.2.2.0.dylib
 
 ![CSFML Setup](http://jamiehoyle.com/tfg/sfmltut4.png)
 
@@ -71,7 +72,7 @@ namespace TestSFML
 			_window = new RenderWindow(new VideoMode(800, 600), "SFML window");
 			_window.SetVisible(true);
 			_window.Closed += new EventHandler(OnClosed);
-			while (_window.IsOpen())
+			while (_window.IsOpen)
 			{
 				_window.DispatchEvents();
 				_window.Clear(Color.Red);
@@ -96,9 +97,9 @@ Create a file named _sfmlnet-graphics-2.dll.config_ inside your _bin/Debug/_ fol
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
-	<dllmap dll="csfml-graphics-2" target="libcsfml-graphics.2.1.dylib"/>
-	<dllmap dll="csfml-audio-2" target="libcsfml-audio.2.1.dylib"/>
-	<dllmap dll="csfml-window-2" target="libcsfml-window.2.1.dylib"/>
+    <dllmap dll="csfml-graphics-2" target="libcsfml-graphics.2.2.0.dylib"/>
+    <dllmap dll="csfml-audio-2" target="libcsfml-audio.2.2.0.dylib"/>
+    <dllmap dll="csfml-window-2" target="libcsfml-window.2.2.0.dylib"/>
 </configuration>
 ```
 
@@ -115,7 +116,6 @@ If you're done the previous steps, you'll notice that mapping the dlls still res
 You can now debug your setup by typing the following command, which will output a block of text which should explain why your application may not be able to find the dll. If an error occurs loading or linking the dynamic library, the error will still tell you it cannot find it. Even if it exists.
 
 ```
-> cd ~/Projects/TestSFML/TestSFML/bin/Debug
 > MONO_LOG_LEVEL=debug mono TestSFML.exe
 > ...
 ```

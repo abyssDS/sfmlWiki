@@ -46,13 +46,16 @@ Let's describe our project configuration in the `CMakeLists.txt` file:
 ```cmake
 #Change this if you need to target a specific CMake version
 cmake_minimum_required(VERSION 2.6)
-project(myproject)
+
 
 # Enable debug symbols by default
-if(CMAKE_BUILD_TYPE STREQUAL "")
-  set(CMAKE_BUILD_TYPE Debug)
+# must be done before project() statement
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build (Debug or Release)" FORCE)
 endif()
 # (you can also set it on the command line: -D CMAKE_BUILD_TYPE=Release)
+
+project(myproject)
 
 # Set version information in a config.h file
 set(myproject_VERSION_MAJOR 1)

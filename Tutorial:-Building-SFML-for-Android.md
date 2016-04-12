@@ -71,6 +71,11 @@ The resulting package `bin/NativeActivity-debug.apk` can be copied and opened on
 
         adb install bin/NativeActivity-debug.apk
 
+And run launched with:
+
+        adb shell am start -a android.intent.action.MAIN -n com.example.sfml/android.app.NativeActivity
+
+
 ## Troubleshooting
 
 ### STL clash

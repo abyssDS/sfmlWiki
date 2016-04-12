@@ -70,3 +70,13 @@ You can substitute `android-23` above for the SDK version that you have installe
 The resulting package `bin/NativeActivity-debug.apk` can be copied and opened on your device or installed to a connected device/emulator:
 
         adb install bin/NativeActivity-debug.apk
+
+## Troubleshooting
+
+### STL clash
+
+If you get a bunch of undefined reference to 'sf::String::String(char const*, std::__ndk1::locale const&)', rebuild SFML with `-DANDROID_STL=c++_shared`.
+
+### Toolchains version mismatch
+
+When building the example, if `ndk-build` complains about the toolchain version, update `jni/Application.mk` so that `NDK_TOOLCHAIN_VERSION` matches your toolset.

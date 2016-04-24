@@ -5,7 +5,6 @@ Two different ways to draw a line with thickness between two points.
 
 ![Line segment](http://kojirion.github.io/images/segment.png)
 
-
 **Deriving from sf::Drawable**
 
 A simple class that derives from sf::Drawable only.

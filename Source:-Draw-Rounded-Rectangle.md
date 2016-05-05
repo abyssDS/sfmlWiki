@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is a class for SFML 2, that provides an easy interface for rounded rectagles. It behaves like your used to from other sf::Shapes. The class was written by [Overdrivr](https://github.com/Overdrivr).
+This is a class for SFML 2, that provides an easy interface for rounded rectagles. It behaves like you're used to from other sf::Shapes. The class was written by [Overdrivr](https://github.com/Overdrivr).
 
 
 ## Source

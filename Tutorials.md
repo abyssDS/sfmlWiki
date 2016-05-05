@@ -9,6 +9,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 ### Configuration
 
 * [[Install SFML dependencies|Tutorial:-Installing-SFML-dependencies]]
+* [[Build SFML with a MinGW Compiler|Tutorial:-Build-SFML-with-a-MinGW-Compiler]]
 * [[Build your SFML project with CMake|Tutorial:-Build-your-SFML-project-with-CMake]]
 * [[Build and Link SFML with Qt Creator|Tutorial:-Compile-and-Link-SFML-with-Qt-Creator]]
 * [[Link SFML with Qt Creator|Tutorial:-Link-SFML-with-Qt-Creator]]

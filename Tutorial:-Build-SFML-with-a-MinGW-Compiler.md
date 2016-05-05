@@ -30,7 +30,7 @@ After you've changed everything you wanted to change you can click on `Generate`
 
 ![Successful configuration](http://i.imgur.com/W0Smlp0.png)
 
-### Actually Build SFML
+### Actually Building SFML
 
 CMake merely generates makefiles and project files, as such SFML as a C++ library hasn't been built yet and thus we need to this next. For that we switch back to the command prompt and change the directory to the build directory we've previously set in CMake.
 

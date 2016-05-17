@@ -56,7 +56,19 @@ myHandle    (NULL),
 myBufferSize(0),
 myBuffer    (NULL)
 {
+    int  err = MPG123_OK;
+    if ((err = mpg123_init()) != MPG123_OK)
+    {
+        std::cerr << mpg123_plain_strerror(err) << std::endl;
+        return;
+    }
 
+    myHandle = mpg123_new(NULL, &err);
+    if (!myHandle)
+    {
+        std::cerr << "Unable to create mpg123 handle: " << mpg123_plain_strerror(err) << std::endl;
+        return;
+    }
 }
 
 Mp3::~Mp3()
@@ -78,19 +90,11 @@ bool Mp3::OpenFromFile(const std::string& filename)
 {
     Stop();
 
-    int  err = MPG123_OK;
-    if ((err = mpg123_init()) != MPG123_OK)
-    {
-        std::cerr << mpg123_plain_strerror(err) << std::endl;
-        return false;
-    }
-
-    myHandle = mpg123_new(NULL, &err);
-    if (!myHandle)
-    {
-        std::cerr << "Unable to create mpg123 handle: " << mpg123_plain_strerror(err) << std::endl;
-        return false;
-    }
+    if (myBuffer)
+        delete [] myBuffer;
+  
+    if(myHandle)
+      mpg123_close(myHandle);
 
     if (mpg123_open(myHandle, filename.c_str()) != MPG123_OK)
     {

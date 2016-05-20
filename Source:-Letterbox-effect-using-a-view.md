@@ -33,12 +33,12 @@ sf::View getLetterboxView(sf::View view, int windowWidth, int windowHeight) {
 
     if (horizontalSpacing) {
         sizeX = viewRatio / windowRatio;
-        posX = (1 - sizeX) / 2.0;
+        posX = (1 - sizeX) / 2.f;
     }
 
     else {
         sizeY = windowRatio / viewRatio;
-        posY = (1 - sizeY) / 2.0;
+        posY = (1 - sizeY) / 2.f;
     }
 
     view.setViewport( sf::FloatRect(posX, posY, sizeX, sizeY) );
@@ -82,6 +82,8 @@ int main() {
         // Poll events.
         sf::Event event;
         while ( window.pollEvent(event) ) {
+            if (event.type == sf::Event::Closed)
+                window.close();
 
             if (event.type == sf::Event::Resized)
                 view = getLetterboxView( view, event.size.width, event.size.height );

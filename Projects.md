@@ -49,7 +49,6 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [Vagante](http://vagantegame.com/): A platformer roguelike game; imagine Spelunky with RPG elements! 
 * [C++] [Harvest : Massive Encounter](http://www.oxeyegames.com/harvest/): Tower Defense Real Time strategy game
 * [C++] [Contamination: Zombie survival game](http://foxfiredev.net/portfolio/zombie-survival-game-2d/): Try to survive as long as possible in a post apocalyptic world
-* [C++] [F.I.R.E.D.](http://fired.tk/): 2D cross-platform game with elements of Action, RPG and Adventure.
 * [C++] [Re:creation](https://eliasdaler.wordpress.com/2014/10/19/recreation-info-press-kit/): top-down action adventure game. You play as undead knight who can turn into a ghost and control dead enemies with it to get their abilities and solve various puzzles.
 * [C++] [Kronos](http://www.indiedb.com/games/kronos): An Action-RPG game with lots of combats, customization and puzzle interaction. With 30+ map areas, 50+ enemies and bosses, and tons of items to customize your play style.
 * [C++] [Hope](http://hope.glusoft.com/): point and click adventure game. 
@@ -60,6 +59,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C#] [Pax: A Wargame](http://paxgame.sourceforge.net): A grand strategy game around the topics of war, diplomacy, exploration and trade, set during the Middle Ages and Renaissance. In early development, C#-coded, Python-scriptable.
 * [C++11] [Kroniax](http://github.com/AlexAUT/Kroniax_Cpp): a sidescroller, steer the ship without touching the walls
 * [C++11] [Open Hexagon](http://vittorioromeo.info/projects.html) ([GitHub](https://github.com/SuperV1234/SSVOpenHexagon)): C++11 open source clone of "Super Hexagon". Features JSON/LUA customizable game files, a soundtrack by BOSSFIGHT, pseudo-3D effects.
+* [C++] [F.I.R.E.D.](https://github.com/achpile/fired/): 2D cross-platform game with elements of Action, RPG and Adventure.
 * [C++11] [operation bloodshed](https://github.com/SuperV1234/SSVBloodshed): arcade game, spiritual successor to "Operation Carnage" - similar to Smash TV or Robotron
 * [C++] [M.A.R.S. - a ridiculous shooter](http://mars-game.sourceforge.net/) ([GitHub](https://github.com/thelaui/M.A.R.S.)): is a 2D space shooter with awesome visual effects and attractive physics. Players can battle each other or computer controlled enemies in exciting game modes.
 * [C++11] [Cendric - an RPG platformer](http://cendric.ch/) ([GitHub](https://github.com/Tizian/Cendric2)): A platformer with RPG elements. Features: Lighting, Particles, Water-Simulation; Dynamic levels and spells.

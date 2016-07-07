@@ -6,8 +6,8 @@ Before you can start, you'll need the proper development environment. Basically,
 
 * CMake
 * Git
-* Android SDK
-* Android NDK
+* [Android SDK](https://developer.android.com/studio/index.html#downloads)
+* [Android NDK](https://developer.android.com/ndk/downloads/index.html)
 * Apache Ant
 
 ## Setup

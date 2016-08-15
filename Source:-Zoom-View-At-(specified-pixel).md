@@ -25,12 +25,12 @@ Please note that the pixel is that actual pixel location of the window and not t
 To zoom at the mouse position when the mouse wheel is scrolled (placed inside the .pollEvent(event) loop):
 
 ```c++
-if (event.type == sf::Event::MouseWheelMoved)
+if (event.type == sf::Event::MouseWheelScrolled)
 {
-	if (event.mouseWheel.delta > 0)
-		zoomViewAt({ event.mouseWheel.x, event.mouseWheel.y }, window, (1.f / zoomAmount));
-	else
-		zoomViewAt({ event.mouseWheel.x, event.mouseWheel.y }, window, zoomAmount);
+	if (event.mouseWheelScroll.delta > 0)
+		zoomViewAt({ event.mouseWheelScroll.x, event.mouseWheelScroll.y }, window, (1.f / zoomAmount));
+	else if (event.mouseWheelScroll.delta < 0)
+		zoomViewAt({ event.mouseWheelScroll.x, event.mouseWheelScroll.y }, window, zoomAmount);
 }
 ```
 
@@ -89,12 +89,12 @@ int main()
 					window.setView(view);
 				}
 			}
-			else if (event.type == sf::Event::MouseWheelMoved)
+			else if (event.type == sf::Event::MouseWheelScrolled)
 			{
-				if (event.mouseWheel.delta > 0)
-					zoomViewAt({ event.mouseWheel.x, event.mouseWheel.y }, window, (1.f / zoomAmount));
-				else
-					zoomViewAt({ event.mouseWheel.x, event.mouseWheel.y }, window, zoomAmount);
+				if (event.mouseWheelScroll.delta > 0)
+					zoomViewAt({ event.mouseWheelScroll.x, event.mouseWheelScroll.y }, window, (1.f / zoomAmount));
+				else if (event.mouseWheelScroll.delta < 0)
+					zoomViewAt({ event.mouseWheelScroll.x, event.mouseWheelScroll.y }, window, zoomAmount);
 			}
 		}
 

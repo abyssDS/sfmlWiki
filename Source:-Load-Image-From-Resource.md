@@ -48,3 +48,6 @@ sf::Image LoadImageFromResource(const std::string& name)
 }
 ```
 Note: The shown code may lead to an unnecessary copy if the compiler doesn't support NRVO. In such a case, it would be possible to use the image as an output parameter, or return ``std::unique_ptr<sf::Image>``.
+
+Note 2: The resources may need to be named with all capitals letters inside your resources.rc file
+``SPRITEBMP RCDATA "sprite.bmp"``

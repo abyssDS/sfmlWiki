@@ -10,7 +10,7 @@ Drawable's children cover a wide range of uses: Shapes, Sprites, Texts, etc. but
 
 ## Utility
 
-### Inheritance from std::vector
+### Use of std::vector
 
 Why are Groups useful? Basically, you can store your game objects in them so that they don't "swim" in a big "pool", and apply precise calculations on a specified part of them easily.
 * You can make a "backgrounds" Group, followed by a "Level" one, and then a "Foreground" One, for example. This, way, backgrounds will always be drawn before the level tiles which will also be drawn before the foreground elements, even if you had backgrounds, tiles, or foregrounds, which would have otherwise been on the top. Imagine you add a background without using Groups: it covers everything and you can't see behind it!
@@ -23,7 +23,7 @@ Group would behave like a simple [std::vector](http://en.cppreference.com/w/cpp/
 * simplicity: it's easier to type `Group.Draw()` than `for(int i = 0; ...) { Group[i].Draw() }`. It also makes Groups storable in other Groups, like other Drawables, which ables to process the whole very easily ;
 * sharing of properties for the membres of a Group. For example, if you want all the Sprites stored in a Group to move at the same time, you can just update the coordinates of the Group. This is very useful if you make an articulated body made of sprites. You can also separate objects around a single point: the origin of the Group, just by using `Group.SetCenter(..., ...)`!
 
-## Suggested implementation (using SFML 2.0)
+## Suggested implementation (using SFML 2.x & C++11)
 
 Here's what I use. The SFML doesn't implement a Group class for ownership reasons: should the Group destroy its elements when it is destroyed? etc.
 
@@ -33,13 +33,22 @@ Here's what I use. The SFML doesn't implement a Group class for ownership reason
 #define GROUP_INCLUDED_HPP
 
 #include <SFML/Graphics.hpp>
+#include <vector>
+#include <functional>
 
-class Group : public sf::Drawable, public std::vector<sf::Drawable*> {
-	public:
-		Group();
-		~Group();
+class Group : public sf::Drawable {
+public:
+    Group();
+    virtual ~Group() = default;
 
-		void render(sf::RenderTarget&) const;
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+    const sf::Drawable& operator[](std::size_t index);
+    std::size_t push_back(const sf::Drawable& drawable);
+    const sf::Drawable& pop_back();
+
+private:
+    std::vector<std::reference_wrapper<const sf::Drawable>> m_drawables;
 };
 
 #endif
@@ -47,24 +56,32 @@ class Group : public sf::Drawable, public std::vector<sf::Drawable*> {
 
 ### Group.cpp
 ```cpp
-#include "group.hpp"
+#include "Group.hpp"
 
-Group::Group() :
-	sf::Drawable(),
-	std::vector<sf::Drawable*>() {
-}
-Group::~Group() {
-	for(std::vector<sf::Drawable*>::iterator i = begin(); i != end(); ++i) {
-		delete *i;
-	}
+Group::Group()
+: m_drawables{} {
+
 }
 
-// This is what ables you to do Group.Draw() to draw all the Drawable inside of a Group,
-// and to apply common settings such as position, color, ... to its elements.
-void Group::render(sf::RenderTarget& Tar) const {
-	for(std::vector<sf::Drawable*>::iterator i = begin(); i != end(); ++i) {
-		Tar.draw(*i);
-	}
+void Group::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+    for(const auto& drawable : m_drawables) {
+        target.draw(drawable, states);
+    }
+}
+
+const sf::Drawable& Group::operator[](std::size_t index) {
+    return m_drawables[index];
+}
+
+std::size_t Group::push_back(const sf::Drawable& drawable) {
+    m_drawables.push_back(drawable);
+    return m_drawables.size() - 1;
+}
+
+const sf::Drawable& Group::pop_back() {
+    const auto& drawable = m_drawables.back();
+    m_drawables.pop_back();
+    return drawable;
 }
 ```
 

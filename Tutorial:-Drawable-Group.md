@@ -85,8 +85,6 @@ const sf::Drawable& Group::pop_back() {
 }
 ```
 
-You can even add `namespace sf { ... }` if you think that Group should belong to the SFML ;).
-
 ## Examples
 
 _It would be a good idea to use the "reasons" said above and make code snippets out of them_

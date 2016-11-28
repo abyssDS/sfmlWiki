@@ -92,11 +92,11 @@ void Map::addIntensity(sf::Vector2i index, char intensity, sf::Color color) {
 
 Here we are checking if the emitter is inside the map, calculating color it can give, mixing it and applying to the tile the greatest intensity (it is emitter's or the intensity tile already have).
 
-So now we have set color and intensity of the 'ambient' and of all the light emitters to the map. Next step will be a propogation of our light.
+So now we have set color and intensity of the 'ambient' and of all the light emitters to the map. Next step will be a propagation of our light.
 
 ## Initialization data structures
 
-At first we have to init all the data structures used in propogation.
+At first we have to init all the data structures used in propagation.
 
 ``` cpp
 	sf::Vector2i from(0, 0);
@@ -118,9 +118,9 @@ void Map::initIntensity(MapTile *tile) {
 
 At this step we are adding tile pointers to special arrays. This is the only reason of using fixed amount of intensity values. So we have 'MAX_INTENSITY' lists of the tiles, which intensity is equal to the list index.
 
-## Propogation
+## Propagation
 
-And now we have to propogate out light. So, let's start from the tiles with greater intensity and go to the lower.
+And now we have to propagate out light. So, let's start from the tiles with greater intensity and go to the lower.
 
 ``` cpp
 	for (int i = LIGHT_MAX_LIGHTLEVEL - 1; i >= 0; i--)

@@ -43,6 +43,7 @@ Welcome to the section dedicated to projects using/for SFML.
 
 ## Video Games
 ### Closed Source
+* [C++] [Dispersio](http://store.steampowered.com/app/563180): 2D adventure platformer game with retro-styled graphics.
 * [C++] [Pioneers](http://www.pioneersgame.com/): A turn-based exploration/adventure RPG.
 * [C++] [Crea](http://www.playcrea.com/): A 2D moddable sandbox game with a light-hearted mood, colorful art and RPG elements. 
 * [C++] [Moonman](http://moonman.io): A procedural adventure game

@@ -505,6 +505,10 @@ void Jukebox::update()
         // The jukebox should be playing but the current music is
         // stopped. This must mean that the current song is finished
         // and we should advance to the next.
+        
+        // Reset the current song's offset to start.
+        m_playlist[m_current].second->setPlayingOffset(sf::Time::Zero);
+        
         if (m_current == m_playlist.size() - 1) {
             // At last song.
             if (m_looping) {

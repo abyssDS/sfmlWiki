@@ -1,15 +1,17 @@
 # Using `sf::View`
 
 ## What can sf::View do?
-This question is not that complicated to answer and I would've already been able to do so a few weeks back but I never really understood how `sf::View` works. The answer would be a description, so here you go:
+This is a simple question which I would have been able to answer a few weeks ago. It would go something like the following description:
 
 >  A `sf::View` is basically a 2D camera i.e. you can move freely in two dimensions, you can rotate the whole scene clockwise or counterclockwise and you can zoom in and out but there's no tilting or panning. Furthermore zooming really means enlarging the existing picture rather than closing in on something. In short terms there's no 3D interaction.
+
+But the complicated part here is not *what* `sf::View` can do, but how it actually works. I hope to clear things up with this tutorial.
 
 ### Examples
 
 [![initial](http://dev.my-gate.net/wp-content/uploads/2012/06/initial_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/initial.png)
 
-So if you now want to move a sprite around without altering its coordinates but instead moving the 2D camera, you could do this easily by calling: 
+So if you now want to move a sprite around without altering its coordinates, but instead moving the 2D camera, you can easily do this by calling: 
 
 ```cpp
 view.move(360.f, 360.f);
@@ -17,7 +19,7 @@ view.move(360.f, 360.f);
 
 [![move](http://dev.my-gate.net/wp-content/uploads/2012/06/move_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/move.png)
 
-Next you maybe want to get a closer look at something, so you can use: 
+Next you may want to get a closer look at something, so you can use: 
 
 ```cpp
 view.zoom(0.1f);
@@ -37,35 +39,37 @@ Now you get the idea what the camera can do and you'd probably be even able to p
 
 ## How does `sf::View` work?
 
-So lets see what the documentation of SFML says about this:
+So lets see what the documentation of SFML says:
 
 > A view is composed of a source rectangle, which defines what part of the 2D scene is shown, and a target viewport, which defines where the contents of the source rectangle will be displayed on the render target (window or texture).
 > The viewport allows to map the scene to a custom part of the render target, and can be used for split-screen or for displaying a minimap, for example. If the source rectangle has not the same size as the viewport, its contents will be stretched to fit in.
 
-If you've understood everything then congrats! I didn't (at first) and although it's a good, short and precise description it's not very intuitive.
+If you've understood everything then congrats! I didn't and although it's a good, short and precise description, it's not very intuitive.
 
-From the text above we can extract that there are two different rectangle defining the `sf::View`: a source and a viewport. What we also have, although not 'physically', is the render coordinate system, i.e. the coordinates you use to draw sprites etc.
+From the text above we can extract that there are two different rectangle defining the `sf::View`: a source and a viewport. What we also have, although not 'physically', is the world coordinate system, i.e. the coordinates you use to draw sprites, etc.
 
-At first I'll explain how the source rectangle and the render coordinate system work together, then talk about the size and the constructor, furthermore show you how to use the viewport to create different layouts like a split-screen or a mini-map, as suggest in the description and at the end get a bit away from the direct manipulation of the `sf::View` and look at the `convertCoords(…)` function of a `sf::RenderTarget`. At the bottom of the post you'll find a ZIP file which holds a fully working example, demonstrating everything you'll learn in this post.
+First I'll explain how the source rectangle and the world coordinate system work together, then talk about the size and constructor, furthermore show you how to use the viewport to create different layouts, like a split-screen or a mini-map as suggest in the description, and at the end go a bit away from the direct manipulation of the `sf::View` and look at the `mapPixel/CoordstoCoords/Pixel(…)` functions of the `sf::RenderTarget`. At the bottom of the post you'll find a ZIP file which holds a fully working example, demonstrating everything you'll learn in this post.
 
 ## The source rectangle
 
-Since I don't want to talk about the viewport yet but I'll let it have its defaults value, which means that it will cover the whole window i.e. the whole scene will be rendered 1:1 onto the window.
+I don't want to talk about the viewport yet and thus I set the default values, which means that it will cover the whole window, i.e. the whole scene will be rendered 1:1 onto the window.
 
-In the example above I've already moved the view to the point, where I'm rendering the separate sprite of Link. Link's position in pixel is (1056, 640) but to get him centered, respectively the top left corner of him, I can't just use what might seem intuitively:
+In the example above, I've already moved the view to the position, where the additional sprite of Link (protagonist of the Zelda game series) can be seen. In order to get Link's top left corner centered on the screen, I can't just do what might seem intuitive. If you assume Link's position is at (1056, 640), this **won't** work:
 
 ```cpp
-view.setCenter(1056, 640);
+view.setCenter(1056, 640); // Doesn't center the view around point (1056, 640).
 ```
 
-(Of course you can set the view center to (0, 0) and then move to to (1056, 640) but we're trying to understand what the center of the view is.) 
+A clever read might now suggest, to set the view's center to (0, 0) and then move it to (1056, 640), which indeed will work, but we're trying to understand what the center of the view is. 
 
-SFML uses a Cartesian coordinate system with a flipped Y axis; the point (0, 0) can normally be found in the top left corner and then maximum x and y value can be found in the bottom right corner. If you're working with images you'll soon get comfortable with this system. 
+SFML uses a Cartesian coordinate system with a flipped Y-axis. With the default view you'll find the point (0, 0) in the top left corner and the maximum x/y values in the bottom right corner. If you have ever worked with coordinates on images you'll quickly get comfortable with this setup.
 
-The center of view is in fact defined from the middle point of the display area. The view uses a Cartesian coordinate system too but this time the X axis gets flipped. In the end we have the point (0, 0) (also known as origin) in middle of the view, the maximum x and y values are in the top left corner and the minimal and negative x and y values are in the bottom right corner. Now you can actually set with `setCenter` where the origin of the rendering coordinate system will be in the coordinate system of the view.
+The center of view is in fact defined from the middle point of the display area. The view uses a Cartesian coordinate system as well, but this time the X-axis gets flipped. In the end we have the point (0, 0) (also known as origin) in middle of the view, the maximum x/y values are in the top left corner, and the minimum and negative x/y values are in the bottom right corner. As such, we can conclude, that `setCenter` specifies where the origin of the world coordinate system is within the coordinate system of the view.
+
+Here are some visual aids to better understand the issue at hand.
 
 The black square should represent the window and since the viewport was set to a fixed value the origin of the `sf::View` coordinate system will always be in the center of the window.
-Here are the two separated coordinate systems:
+Here are the two separate coordinate systems:
 
 [![coord-render](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-render_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-render.png)
 [![coord-view](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-view_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-view.png)
@@ -74,13 +78,13 @@ By combining them, something like in this example can be achieved:
 
 [![coord-comb](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb_thumb.png)
 
-Then we have our two operations `rotate()` and `zoom()`. The last picture combines the two transformation:
+Then we have our two operations `rotate()` and `zoom()`, while the last image combines the two transformations:
 
 [![coord-comb-rot](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-rot_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-rot.png) [![coord-comb-zoom](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom.png) [![coord-comb-zoom-rot](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom-rot_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom-rot.png)
 
-Note that in the images above, I've moved the rendering coordinate system around to get a few different variations. I guess most of the time it's better to use the `move()` function since you won't need to deal with where to place the origin point. On the other hand you really need to understand how `sf::View` works to use `rotate()` and `zoom()` because it's not obvious that those transformation will happen around the `sf::View` origin i.e. the middle of the view.
+Note that in the images above, I have moved the world coordinate system around to get a few different variations. I guess, most of the time it's easier to use the `move()` function, because you won't need to deal with, where to place the origin point. On the other hand you really need to understand how an `sf::View` works to use `rotate()` and `zoom()`, because it's not obvious, that those transformation will happen around the `sf::View` origin, i.e. the middle of the view.
 
-You should keep in mind the introduced concept doesn't just hold for a window it'll work with any render target including `sf::RenderTexture`.
+Also keep in mind, that introduced concept doesn't just hold true for a window, but it works the same way for any render target including `sf::RenderTexture`.
 
 ## The size and the constructor
 

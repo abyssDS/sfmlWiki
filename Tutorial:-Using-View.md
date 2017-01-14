@@ -48,11 +48,11 @@ If you've understood everything then congrats! I didn't and although it's a good
 
 From the text above we can extract that there are two different rectangle defining the `sf::View`: a source and a viewport. What we also have, although not 'physically', is the world coordinate system, i.e. the coordinates you use to draw sprites, etc.
 
-First I'll explain how the source rectangle and the world coordinate system work together, then talk about the size and constructor, furthermore show you how to use the viewport to create different layouts, like a split-screen or a mini-map as suggest in the description, and at the end go a bit away from the direct manipulation of the `sf::View` and look at the `mapPixel/CoordstoCoords/Pixel(…)` functions of the `sf::RenderTarget`. At the bottom of the post you'll find a ZIP file which holds a fully working example, demonstrating everything you'll learn in this post.
+First I'll explain how the source rectangle and the world coordinate system work together, then talk about the size and constructor, furthermore show you how to use the viewport to create different layouts, like a split-screen or a mini-map as suggest in the description, and at the end go a bit away from the direct manipulation of the `sf::View` and look at the `mapPixel/CoordsToCoords/Pixel(…)` functions of the `sf::RenderTarget`. At the bottom of the post you'll find a ZIP file which holds a fully working example, demonstrating everything you'll learn in this post.
 
 ## The source rectangle
 
-I don't want to talk about the viewport yet and thus I set the default values, which means that it will cover the whole window, i.e. the whole scene will be rendered 1:1 onto the window.
+I don't want to talk about the viewport yet and thus I will set it to the default values, which means that the view will cover the whole window, i.e. the whole scene will be rendered 1:1 onto the window.
 
 In the example above, I've already moved the view to the position, where the additional sprite of Link (protagonist of the Zelda game series) can be seen. In order to get Link's top left corner centered on the screen, I can't just do what might seem intuitive. If you assume Link's position is at (1056, 640), this **won't** work:
 
@@ -82,29 +82,29 @@ Then we have our two operations `rotate()` and `zoom()`, while the last image co
 
 [![coord-comb-rot](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-rot_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-rot.png) [![coord-comb-zoom](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom.png) [![coord-comb-zoom-rot](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom-rot_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom-rot.png)
 
-Note that in the images above, I have moved the world coordinate system around to get a few different variations. I guess, most of the time it's easier to use the `move()` function, because you won't need to deal with, where to place the origin point. On the other hand you really need to understand how an `sf::View` works to use `rotate()` and `zoom()`, because it's not obvious, that those transformation will happen around the `sf::View` origin, i.e. the middle of the view.
+Note that in the images above, I have moved the world coordinate system around to get a few different variation. I guess, in many cases it's easier to use the `move()` function, because you won't need to deal with, where to place the origin point. On the other hand you really need to understand how an `sf::View` works to use `rotate()` and `zoom()`, because it's not obvious, that those transformation will happen around the `sf::View` origin, i.e. the middle of the view.
 
 Also keep in mind, that introduced concept doesn't just hold true for a window, but it works the same way for any render target including `sf::RenderTexture`.
 
 ## The size and the constructor
 
-Before we take a closer look at the viewport we need to understand what the size of the view is and which parameters the constructor takes. 
+Before we take a closer look at the viewport we need to understand what the size of the view is and which parameters the constructors take.
 
-For now we've used the same size for the view as for the render target, this gives us a 1:1 projection. But what if we'd divide the size of both sides by two? From the observer perspective such a change would equal to using `view.zoom(0.5f)` but from the programmer perspective it's something completely different. As we'll learn in the next paragraph we can use the viewport to map the rendering stuff to a certain area on the window. Now if' we'd apply the scene with the same size as before everything would get shrinked and eventually stretched if the ratio of the side isn't the same anymore. This can create some wanted effects but mostly it would defeat the purpose. With setting a specific size, we're telling the `sf::View` how big the view should get drawn while not making any visible transformations on the rendering part.
+For now we've used the same size for the view as for the render target, this gives us a 1:1 projection. But what if we'd divide the size of both sides by two? From the observer perspective such a change would equal to using `view.zoom(0.5f)` but from the programmer perspective it's something completely different. As we'll learn in the next paragraph we can use the viewport to map the rendering part to a certain area on the window. Now if we would apply the scene with the same size as before everything would get shrunken and eventually stretched if the ratio of the side isn't the same anymore. This can create some wanted effects but mostly not. By setting a specific size, we're telling the `sf::View` how big the view should get drawn, while not making any visible transformations on the rendering part.
 
-With that in mind it's now easy to understand how to use the constructor.
+With that in mind it's now easy to understand how to use one of the constructor.
 
 ```cpp
 sf::View view(origin.x, origin.y, size.width, size.height);
 ```
 
-Where origin relates to a 2D vector of the origin in the rendering coordinate system and size relates to the `sf::View` size as discussed above.
+Where origin relates to a 2D vector of the origin in the world coordinate system and size relates to the `sf::View` size as discussed above.
 
 ## The viewport rectangle
 
-After we've seen most of the things `sf::View` can do, we want to generalize this even further. For now we've assumed we were using a window and rendered 1:1 onto it's surface, but what if we wanted to display my stuff only on the lower right corner or use only the half left side? That's where the viewport comes in.
+Now that we've seen most of the `sf::View`'s functionality, we want to generalize this even further. For now we've assumed, we were using a window and rendered 1:1 onto it's surface, but what if we wanted to display my entities only on the lower right corner or use only the half of the left side? That's where the viewport comes in.
 
-The default values are `sf::FloatRect(0, 0, 1, 1)` which means the view covers 100% of the render target. So we got another rectangle which holds percentage values of the size of the render target. The first two values describe the position of the upper left corner and the last two values the lower right corner.
+The default values are `sf::FloatRect(0, 0, 1, 1)` which means the view covers 100% of the render target. So we got rectangle which holds percentage values of the size of the render target. The first two values describe the position of the upper left corner and the last two values the lower right corner.
 
 If you want to split the screen you'd need two different views for the left and the right side. Before you then draw to one side you'll have to change the view on the render target first. To draw something to the other side, just set the second view and you're good to go. This could look like this:
 
@@ -120,11 +120,11 @@ window.setView(viewRight);
 window.draw(rightSprite);
 ```
 
-With all the knowledge provided above you should now have a good understanding of why we divide the window width by two or why `viewRight` is defined with 0.5 as first argument.
+With all the knowledge provided above, you should now have a good understanding of why we divide the window width by two or why `viewRight` is defined with 0.5 as first argument.
 
 [![split](http://dev.my-gate.net/wp-content/uploads/2012/06/split_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/split.png)
 
-Another example I promised to show is how to create a mini-map i.e. a scaled down overview of the whole map. In practice it's often better to construct it's own mini-map rather than just scaling down the original one, since the quality can get fairly poor. But let us first test how it will really look like. 
+Another example I promised to show is how to create a mini-map, i.e. a scaled down overview of the whole map. Keep in mind that in practice it can be better to construct your own mini-map, rather than just scaling down the original one, since the quality can get fairly poor. But let us first test how it will really look like. 
 
 If you're working with more dynamic data you'd probably need to render everything to a `sf::RenderTexture` and then extract the texture and render it twice. In this example we ignore those facts and just assume we've got a sprite with the Zelda map texture thus we can reduce the code to a few lines.
 
@@ -143,16 +143,18 @@ window.draw(map);
 
 [![minimap](http://dev.my-gate.net/wp-content/uploads/2012/06/minimap_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/minimap.png)
 
-## The `convertCoords(…)` function
+## The `mapPixel/CoordsToCoords/Pixel(…)` function
 
-As we've seen in the paragraph with the source rectangle it's not very intuitive to work with those two coordinate system. It's also pretty hard to determine by hand at which position for instance your mouse cursor is located relative to the view underneath. But why would you want to do this by hand, since SFML has already a build in function that will do the heavy lifting for you, namely [`convertCoords(…)`](http://www.sfml-dev.org/documentation/2.0/classsf_1_1RenderTarget.php#ae5e7ba65ef73df2778b29b7fdcdb20ee)?
+As we've seen in the paragraph with the source rectangle it's not very intuitive to work with those two coordinate system. It's also pretty hard to determine by hand at which position for instance your mouse cursor is located relative to the view underneath. But why would you want to do this by hand, since SFML has already a build in functions that will do the heavy lifting for you, namely [`mapPixelToCoords(…)`](http://www.sfml-dev.org/documentation/2.4.1/classsf_1_1RenderTarget.php#a46eb08f775dd1420d6207ea87dde6e54) and [`mapCoordsToPixel(…)`](http://www.sfml-dev.org/documentation/2.4.1/classsf_1_1RenderTarget.php#a7a2d427bdb9bd8f9f456fcf82813aa60)?
 
-There are two ways to use this function:
+The functions do exactly what their name suggest:
 
-* Determine the relative position on the render target of the point P to the current view of the render target.
-* Determine the relative position on the render target of the point P to a specified view.
+* Map a point from the screen coordinate system (pixel level) to the world coordinate system.
+* Map a point from the world coordinate system to the screen coordinate system (pixel level).
 
-This function can be very useful, e.g. you've moved around your view and now the user click on a point on the window. Just call `convertCoords(…)` and you'll instantly know where on the moved view he clicked.
+Additionally there are two overloads. One will simply use the currently set view of the render target, while for the other you can pass a specific view.
+
+These functions are quite essential and very useful, e.g. you've moved your view around and now the user clicks on a point on the window. Just call `mapPixelToCoords(…)` and you'll instantly know where on the moved view they clicked.
 
 ## Complete demonstration
 
@@ -162,7 +164,7 @@ I've created a small application which packs up every introduced concept. The co
 * [Image Package](http://dev.my-gate.net/wp-content/uploads/2012/06/images.zip) (801 KB)
 * [Full Package](http://dev.my-gate.net/wp-content/uploads/2012/06/complete.zip) (1.16 MB)
 
-Direct questions to this article can be made in the [forum](http://en.sfml-dev.org/forums/index.php?topic=8334) or on my [blog](http://dev.my-gate.net/2012/06/using-sfview/). Feel free to edit/correct mistakes on this wiki entry!
+Direct questions to this article can be made on the [forum](http://en.sfml-dev.org/forums/index.php?topic=8334) or on my [blog](http://dev.my-gate.net/2012/06/using-sfview/). Feel free to edit/correct mistakes on this wiki entry!
 
 ## Full Package main.cpp Updated for SFML v2
 

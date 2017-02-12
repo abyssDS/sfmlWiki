@@ -50,6 +50,7 @@ Follow these steps to download, build and install SFML:
   * If you've got multiple toolsets installed, like Visual Studio and MinGW, you might want to pick the type of project or makefile to create. You can do this by adding a parameter like `-G "MinGW Makefiles"` (note the quotes).
   * Important: It can be tricky to get this process to work with Visual Studio! I'd recommend you use MinGW's make (which is essentially GNU make). See the previous step to create the proper makefiles.
   * Wait for the process to complete. There might be a few warnings regarding the toolchain(s), but you shouldn't see any other warnings or error messages.
+  * You might have to add this `-DANDROID_STL=stlport_shared` in the above invokation
   * This will create a makefile or project for you, based on your current host system.
   * Use it to build and then install SFML. For example, under Linux you'd issue the following commands:
 

@@ -26,7 +26,7 @@ Before you can start, you'll need to download the following software.
 * We need to add the paths of these tools to the environment path variable, so CMD may find the tools we call upon.
 * Open CMD as **administrator** from the start menu, paste the following command:
 ```
-setx /M PATH "%PATH%;C:\android\cmake\bin;C:\android\git\bin;C:\android\sdk\tools;C:\android\sdk\platform-tools;C:\android\ndk;C:\android\apache-ant\bin;C:\mingw\bin" && setx /M ANDROID_NDK "C:/android/ndk"
+setx /M PATH "%PATH%;C:\android\cmake\bin;C:\android\sdk\tools;C:\android\sdk\platform-tools;C:\android\ndk;C:\android\apache-ant\bin;C:\mingw\bin" && setx /M ANDROID_NDK "C:/android/ndk"
 ```
 
 ## Compile SFML
@@ -34,7 +34,7 @@ setx /M PATH "%PATH%;C:\android\cmake\bin;C:\android\git\bin;C:\android\sdk\tool
 * Run the following commands:
 ```
 cd c:\android
-git clone https://github.com/SFML/SFML.git SFML
+git\bin\git clone https://github.com/SFML/SFML.git SFML
 cd SFML && mkdir build && cd build
 mkdir armeabi-v7a && cd armeabi-v7a
 set PATH=%PATH:c:\android\git\bin;=%

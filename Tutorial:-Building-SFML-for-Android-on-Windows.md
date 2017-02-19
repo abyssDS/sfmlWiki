@@ -23,7 +23,7 @@ Before you can start, you'll need to download the following software.
 
 ## Configure Environment
 * Open "c:\android\sdk\SDK Manager.exe", tick "Android 5.0.1 (API 21)", remember the API version you select.
-* Open CMD as administrator from the start menu, paste the following command:
+* Open CMD as **administrator** from the start menu, paste the following command:
 ```
 setx /M PATH "%PATH%;c:\android\cmake\bin;c:\android\git\bin;c:\android\sdk\tools;c:\android\sdk\platform-tools;c:\android\ndk;c:\android\apache-ant\bin;C:\mingw\bin" && setx /M ANDROID_NDK "c:/android/ndk"
 ```

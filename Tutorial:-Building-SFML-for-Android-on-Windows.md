@@ -13,7 +13,7 @@ Before you can start, you'll need to download the following software.
 * JDK Installer - [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 ## Install Dependencies
-* Install MinGW-64 to "c:\android\temp", move and rename "c:\android\temp\mingw32" to "c:\mingw".
+* Install MinGW-64 to "c:\android\temp", move/rename "c:\android\temp\mingw32" as "c:\mingw".
 * Install Android Studio to "c:\android\Android Studio" & "c:\android\sdk".
 * Extract Android NDK into "c:\android\", rename directory to "ndk".
 * Install Git Portable to "c:\android\git".

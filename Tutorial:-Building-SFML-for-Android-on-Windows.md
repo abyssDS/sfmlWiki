@@ -29,8 +29,8 @@ setx /M PATH "%PATH%;c:\android\cmake\bin;c:\android\git\bin;c:\android\sdk\tool
 ```
 
 ## Compile SFML
-*Open CMD.
-*Run the following commands:
+* Open CMD.
+* Run the following commands:
 ```
 cd c:\android
 git clone https://github.com/SFML/SFML.git SFML
@@ -42,9 +42,9 @@ mingw32-make install
 ```
 
 ## Compile Android Example
-*Plug your phone into your computer, enable USB debugging. Google how to if you do not know.
-*Make sure you answer any prompts at any stage of running these next commands.
-*Run the following commands:
+* Plug your phone into your computer, enable USB debugging. Google how to if you do not know.
+* Make sure you answer any prompts at any stage of running these next commands.
+* Run the following commands:
 ```
 cd c:\android\SFML\examples\android && rmdir bin /s /q
 android update project --target "android-21" --path .
@@ -54,6 +54,6 @@ adb shell am start -a android.intent.action.MAIN -n com.example.sfml/android.app
 ```
 
 ## Bonus - Pong for Android
-*I've tweaked the bundled Pong game to work slightly better on Android.
-*Replace the contents of "c:\android\SFML\examples\android\jni\main.cpp" with the following:
+* I've tweaked the bundled Pong game to work slightly better on Android.
+* Replace the contents of "c:\android\SFML\examples\android\jni\main.cpp" with the following:
 http://pastebin.com/wPuANqax

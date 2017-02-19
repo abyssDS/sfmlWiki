@@ -55,5 +55,5 @@ adb shell am start -a android.intent.action.MAIN -n com.example.sfml/android.app
 
 ## Bonus - Pong for Android
 * I've tweaked the bundled Pong game to work slightly better on Android.
-* Replace the contents of "c:\android\SFML\examples\android\jni\main.cpp" with the following:
-http://pastebin.com/wPuANqax
+* Replace the contents of "c:\android\SFML\examples\android\jni\main.cpp" with the following: http://pastebin.com/wPuANqax
+* Repeat the commands in the "Compile Android Example" section.

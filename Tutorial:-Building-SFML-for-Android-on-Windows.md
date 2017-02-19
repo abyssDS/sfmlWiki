@@ -33,7 +33,7 @@ setx /M PATH "%PATH%;C:\projects\cmake\bin;C:\projects\sdk\tools;C:\projects\sdk
 * Open CMD.
 * Run the following commands:
 ```
-cd c:\android
+cd c:\projects
 git\bin\git clone https://github.com/SFML/SFML.git SFML
 cd SFML && mkdir build && cd build
 mkdir armeabi-v7a && cd armeabi-v7a
@@ -56,5 +56,5 @@ adb shell am start -a android.intent.action.MAIN -n com.example.sfml/android.app
 
 ## Bonus - Pong for Android
 * I've tweaked the bundled Pong game to work slightly better on Android.
-* Replace the contents of "c:\projects\SFML\examples\projects\jni\main.cpp" with the following: http://pastebin.com/wPuANqax
+* Replace the contents of "c:\projects\SFML\examples\android\jni\main.cpp" with the following: http://pastebin.com/wPuANqax
 * Repeat the commands in the "Compile Android Example" section.

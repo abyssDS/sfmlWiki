@@ -4,7 +4,7 @@ This guide provides comprehensive steps to install & configure the environment t
 ## Download Dependencies
 Before you can start, you'll need to download the following software.
 
-* MinGW-64 - [here](https://developer.android.com/studio/index.html#downloads)
+* MinGW-64 - [here](https://sourceforge.net/projects/mingw-w64/files/latest/download)
 * Android Studio - [here](https://developer.android.com/studio/index.html#win-bundle)
 * Android NDK **v12b** - [here](https://developer.android.com/ndk/downloads/older_releases.html)
 * Git **Portable** - [here](https://git-scm.com/download/win)

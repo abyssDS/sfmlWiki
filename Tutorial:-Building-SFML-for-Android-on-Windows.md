@@ -42,7 +42,7 @@ mingw32-make install
 ```
 
 ## Compile Android Example
-* Plug your phone into your computer, enable USB debugging. Google how to if you do not know.
+* Plug your phone into your computer, **enable USB debugging**. Google how to if you do not know.
 * Make sure you answer any prompts at any stage of running these next commands.
 * Run the following commands:
 ```

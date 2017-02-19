@@ -20,9 +20,10 @@ Before you can start, you'll need to download the following software.
 * Install CMake to "c:\android\cmake".
 * Extract Apache Ant into "c:\android\", rename directory to "apache-ant".
 * Install Java JDK.
-
-## Configure Environment
 * Open "c:\android\sdk\SDK Manager.exe", tick "Android 5.0.1 (API 21)", remember the API version you select.
+
+## Configure Environment Variables
+* We need to add the paths of these tools to the environment path variable, so CMD may find the tools we call upon.
 * Open CMD as **administrator** from the start menu, paste the following command:
 ```
 setx /M PATH "%PATH%;c:\android\cmake\bin;c:\android\git\bin;c:\android\sdk\tools;c:\android\sdk\platform-tools;c:\android\ndk;c:\android\apache-ant\bin;C:\mingw\bin" && setx /M ANDROID_NDK "c:/android/ndk"

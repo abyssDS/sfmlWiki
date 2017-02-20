@@ -50,7 +50,7 @@ mingw32-make install
 cd c:\projects\SFML\examples\android && rmdir bin /s /q
 android update project --target "android-21" --path .
 ndk-build
-ant debug install && adb install bin/NativeActivity-debug.apk
+ant debug && adb install bin/NativeActivity-debug.apk
 adb shell am start -a android.intent.action.MAIN -n com.example.sfml/android.app.NativeActivity
 ```
 

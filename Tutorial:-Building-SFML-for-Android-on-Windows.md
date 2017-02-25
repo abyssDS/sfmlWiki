@@ -37,7 +37,7 @@ cd c:\projects
 git\bin\git clone https://github.com/SFML/SFML.git SFML
 cd SFML && mkdir build && cd build
 mkdir armeabi-v7a && cd armeabi-v7a
-set PATH=%PATH:c:\projects\git\bin;=%
+set PATH=%PATH:;c:\projects\git\bin=%
 cmake -G "MinGW Makefiles" -DANDROID_ABI=armeabi-v7a -DCMAKE_TOOLCHAIN_FILE=../../cmake/toolchains/android.toolchain.cmake ../..
 mingw32-make install
 ```

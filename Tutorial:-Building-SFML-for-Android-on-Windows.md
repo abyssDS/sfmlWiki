@@ -68,15 +68,15 @@ adb shell am start -a android.intent.action.MAIN -n com.example.sfml/android.app
 * The operators ":=" are used for assignment, "+=" is sued to append subsequent values.
 * Insert any entries between "LOCAL_WHOLE_STATIC_LIBRARIES := sfml-main" and "include $(BUILD_SHARED_LIBRARY)".
 * Edit "jni\Android.mk".
-* Specify a library.
-..* Shared library (.so): LOCAL_SHARED_LIBRARIES := sfml-audio
-..* Static library (.a): LOCAL_WHOLE_STATIC_LIBRARIES := sfml-main
-* Specify an include directory.
-..* LOCAL_C_INCLUDES := ../../boost
-* Specify a source file.
-..* LOCAL_SRC_FILES := ../../main.cpp
-* Specify compiler flag.
-..* LOCAL_CFLAGS := -std=c++1y
+#### Specify a library.
+* Shared library (.so): LOCAL_SHARED_LIBRARIES := sfml-audio
+* Static library (.a): LOCAL_WHOLE_STATIC_LIBRARIES := sfml-main
+#### Specify an include directory.
+* LOCAL_C_INCLUDES := ../../boost
+#### Specify a source file.
+* LOCAL_SRC_FILES := ../../main.cpp
+#### Specify compiler flag.
+* LOCAL_CFLAGS := -std=c++1y
 ### How to validate whether your project compiled successfully?
 * Even a failed compile can result in an outputted ".apk" file.
 * Apart from reading the complete compilation output, browse to the Android "bin" directory and check whether the SFML included APK is > 1mb.

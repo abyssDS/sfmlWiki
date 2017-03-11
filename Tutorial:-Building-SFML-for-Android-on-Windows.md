@@ -58,7 +58,7 @@ adb shell am start -a android.intent.action.MAIN -n com.example.sfml/android.app
 ### Change asset directory
 * Assets are bundled into the final APK. By default the Android project has it's own unique directory.
 * Edit "project.properties".
-..* Set relative assets directory: asset.dir=assets
+** Set relative assets directory: asset.dir=assets
 ### Change project name
 * By default the package name is "com.example.sfml" (com.PUBLISHER.TITLE) and project name is "NativeActivity".
 * Edit "AndroidManifest.xml" & "build.xml".

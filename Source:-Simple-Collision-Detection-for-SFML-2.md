@@ -4,7 +4,7 @@ This is an adaptation of the [[Simple Collision Detection|Source:-Simple-Collisi
 
 * The alpha values of a texture are now stored in a bitmask, since SFML no longer uses sf::Images for rendering. Creating this bitmask for an already existing texture takes time (because of a call to sf::Texture::copyToImage) so use Collision::CreateTextureAndBitmask to load an image file into a texture and create the bitmask at the same time.
 * The helper functions of the original version are omitted. sf::Sprite::getGlobalBounds now does what Collision::GetAABB did before.
-* sf::Sprite now longer returns its size so a couple of extra calculations are needed to take scaling into account.
+* sf::Sprite no longer returns its size so a couple of extra calculations are needed to take scaling into account.
 * The BoundingBoxTest was rewritten completely. It now uses the Seperating Axis Theorem.
 
 ## Code

@@ -5,7 +5,7 @@ This is an adaptation of the [[Simple Collision Detection|Source:-Simple-Collisi
 * The alpha values of a texture are now stored in a bitmask, since SFML no longer uses sf::Images for rendering. Creating this bitmask for an already existing texture takes time (because of a call to sf::Texture::copyToImage) so use Collision::CreateTextureAndBitmask to load an image file into a texture and create the bitmask at the same time.
 * The helper functions of the original version are omitted. sf::Sprite::getGlobalBounds now does what Collision::GetAABB did before.
 * sf::Sprite no longer returns its size so a couple of extra calculations are needed to take scaling into account.
-* The BoundingBoxTest was rewritten completely. It now uses the Seperating Axis Theorem.
+* The BoundingBoxTest was rewritten completely. It now uses the Separating Axis Theorem.
 
 ## Code
 
@@ -82,7 +82,7 @@ namespace Collision {
 	bool CircleTest(const sf::Sprite& Object1, const sf::Sprite& Object2);
  
 	//////
-	/// Test for bounding box collision using the Seperating Axis Theorem
+	/// Test for bounding box collision using the Separating Axis Theorem
 	/// Supports scaling and rotation
 	//////
 	bool BoundingBoxTest(const sf::Sprite& Object1, const sf::Sprite& Object2);
@@ -277,7 +277,7 @@ namespace Collision
 			OBB2.ProjectOntoAxis(Axes[i], MinOBB2, MaxOBB2);
 
 			// ... and check whether the outermost projected points of both OBBs overlap.
-			// If this is not the case, the Seperating Axis Theorem states that there can be no collision between the rectangles
+			// If this is not the case, the Separating Axis Theorem states that there can be no collision between the rectangles
 			if (!((MinOBB2<=MaxOBB1)&&(MaxOBB2>=MinOBB1)))
 				return false;
 		}

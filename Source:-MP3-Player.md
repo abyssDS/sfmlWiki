@@ -160,7 +160,7 @@ bool Mp3::OpenFromMemory(void* data, size_t sizeInBytes)
     Mp3MemoryData* mp3Data = new Mp3MemoryData{ data, sizeInBytes, 0 };
     if (!mp3Data)
     {
-        std::cerr << "Failed to reserve memory for keeping track of memory data" << std::endl;
+        std::cerr << "Failed to reserve memory for keeping track of Memory Object" << std::endl;
     }
 
     if (mpg123_open_handle(myHandle, mp3Data) != MPG123_OK)
@@ -175,7 +175,7 @@ bool Mp3::OpenFromMemory(void* data, size_t sizeInBytes)
     int  channels = 0, encoding = 0;
     if (mpg123_getformat(myHandle, &rate, &channels, &encoding) != MPG123_OK)
     {
-        std::cerr << "Failed to get format information for \"" << filename << "\"" << std::endl;
+        std::cerr << "Failed to get format information for Memory Object" << std::endl;
         return false;
     }
 
@@ -183,7 +183,7 @@ bool Mp3::OpenFromMemory(void* data, size_t sizeInBytes)
     myBuffer = new unsigned char[myBufferSize];
     if (!myBuffer)
     {
-        std::cerr << "Failed to reserve memory for decoding one frame for \"" << filename << "\"" << std::endl;
+        std::cerr << "Failed to reserve memory for decoding one frame for Memory Object" << std::endl;
         return false;
     }
 

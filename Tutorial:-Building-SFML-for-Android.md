@@ -86,3 +86,7 @@ If you get a bunch of undefined reference to 'sf::String::String(char const*, st
 ### Toolchains version mismatch
 
 When building the example, if `ndk-build` complains about the toolchain version, update `jni/Application.mk` so that `NDK_TOOLCHAIN_VERSION` matches your toolset.
+
+### Windows 10 and Android build
+
+If you're running Windows 10, don't use the Power Shell, use the regular command line (cmd) to run the cmake and make commands.

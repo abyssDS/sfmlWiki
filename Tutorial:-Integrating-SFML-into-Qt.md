@@ -31,3 +31,12 @@ Everything should be working now.
 ### Resizing
 
 When `QWidget::resize()` is called, the RenderWindow does not match the QWidget anymore. A solution to this (but maybe not the best one) is to call `sf::RenderWindow::create((sf::WindowHandle) winId());` once again subsequently.
+
+### A better method for resizing
+
+When `QWidget::resize()` is called, it sends a `QResizeEvent` event. This event can be captured using `QWidget::resizeEvent()`. Whenever QWidget resizes, the size of the RenderWindow can be set using `setSize()` method of the `RenderWindow` class and passing `QWidget::width()` and `QWidget::height()` as the arguments . Thus the RenderWindow can now resize with QWidget.
+
+    void QSFMLCanvas::resizeEvent(QResizeEvent* event)
+    {
+    setSize(sf::Vector2u(QWidget::width(), QWidget::height()));
+    }

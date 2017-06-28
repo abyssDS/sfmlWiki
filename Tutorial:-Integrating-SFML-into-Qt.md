@@ -38,5 +38,5 @@ When `QWidget::resize()` is called, it sends a `QResizeEvent` event. This event 
 
     void QSFMLCanvas::resizeEvent(QResizeEvent* event)
     {
-    setSize(sf::Vector2u(QWidget::width(), QWidget::height()));
+        setSize(sf::Vector2u(QWidget::width(), QWidget::height()));
     }

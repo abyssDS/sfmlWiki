@@ -61,7 +61,7 @@ while (gameIsRunning)
 ```
 
 ## Code
-For convenience, the code is presented here as a single header file, 'FrameClock.h'. The only dependencies are 'sf::Clock' and 'sd::Time' from SFML 2.0.
+For convenience, the code is presented here as a single header file, 'FrameClock.h'. The only dependencies are 'sf::Clock' and 'sf::Time' from SFML 2.0.
 
 # FrameClock.h
 ```cpp

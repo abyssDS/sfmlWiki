@@ -4,6 +4,9 @@ SFML's sprites and shapes can provide you with their axis-aligned boundary boxes
 Rectangular Boundary Collision allows testing collision based on their original rectangular boundary box (getLocalBounds).
 It tests to see if and object's rectangular boundary collides with another object's rectangular boundary. This method, however, allows transformations to be taken into account - most notably, rotation.
 
+Rectangular Boundary Collision is a single, templated free-function contained within the "collision" namespace:  
+`const bool spritesAreColliding = collision::areColliding(sprite1, sprite2);`
+
 # Code
 ```cpp
 #ifndef RECTANGULAR_BOUNDARY_COLLISION_HPP
@@ -135,7 +138,8 @@ bool areColliding(const T1& object1, const T2& object2, const int collisionLevel
 ```
 
 The two objects should be provided as (the first two) parameters to the function; the two object types can be different.
-> Note that any objects can be used as long as they have these four functions: getLocalBounds (must return sf::FloatRect), getTransform and getInverseTransform (both must return sf::Transform)
+> Note that any objects can be used as long as they have these four functions: getLocalBounds (must return sf::FloatRect), getTransform and getInverseTransform (both must return sf::Transform).  
+> Also note that it uses the transformed local boundary box. This means that it also tests the rectangular boundary of a circle, not the circular region.
 
 The third parameter is optional. It specifies the required "collision level".
 
@@ -156,12 +160,6 @@ If, after any stage, the result is certain, the following stages are not calcula
 The collision level represents after which stage to leave the function, regardless of if a result is certain.
 
 If a negative value is provided for Collision Level (its default value), the maximum level (2) is used.
-
-# Namespace
-The function(s) in this code are contained within the "collision" namespace.
-
-To call the function, you can use something like:
-`const bool spritesAreColliding = collision::areColliding(sprite1, sprite2);`
 
 # License
 This code is from https://github.com/Hapaxia/SfmlSnippets/tree/master/RectangularBoundaryCollision and [provided under the zlib license](https://github.com/Hapaxia/SfmlSnippets/blob/master/RectangularBoundaryCollision/LICENSE.txt).

@@ -63,6 +63,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Analog Clock|Source:-Analog-Clock]] A simple program to draw a basic 2d analog clock.
 * [C++] [[Letterbox effect:|Source:-Letterbox-effect-using-a-view]] A small example to archieve a letterbox effect when resizing the window, having black bars appear either horizontally or vertically to keep the view's aspect ratio.
 * [C++] [[Zoom View At|Source:-Zoom-View-At-(specified-pixel)]] Free function that zooms a view at a specified pixel rather the centre of the window/view.
+* [C++11] [[Rectangular Boundary Collision|Source:-Rectangular-Boundary-Collision]] Templated free function that tests collision of any two objects using their local boundary box; this is not simply AABB collision. (by [Hapax](https://github.com/hapaxia))
 
 ## Audio
 * [C++] [[MP3 Player|Source:-MP3-Player]]: Class inspired sf:: Music for playing mp3 file using the library mpg123

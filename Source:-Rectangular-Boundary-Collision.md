@@ -163,13 +163,28 @@ The collision level represents after which stage to leave the function, regardle
 
 If a negative value is provided for Collision Level (its default value), the maximum level (2) is used.
 
+![Collision Types](http://i.imgur.com/llRqULb.png)  
+The screenshots' results are using maximum level (collision level 2).
+
+Therefore, collision results (in order) for level 2:  
+false, true, true, true, true
+> accurate results
+
+Collision results for level 1 would be:  
+false, true, false, true, true
+> the third one fails because none of the corners are inside the object - SAT (level 2) is required to clarify this result
+
+Collision results for level 0 would be:  
+true, true, true, true, true
+> the axis-aligned boundary boxes intersect in all five images resulting in the first one being considered a collision
+
 # License
 This code is from https://github.com/Hapaxia/SfmlSnippets/tree/master/RectangularBoundaryCollision and [provided under the zlib license](https://github.com/Hapaxia/SfmlSnippets/blob/master/RectangularBoundaryCollision/LICENSE.txt).
 
 It is from the GitHub repository [SfmlSnippets](https://github.com/Hapaxia/SfmlSnippets) by [Hapaxia](https://github.com/Hapaxia).
 
 # Example
-Here is a full example, showing two sprites/rectangles - one of which can be moved/rotated/scaled. The object is coloured red when they collide and coloured green when they do not.
+Here is a full example, showing two sprites/rectangles - one of which can be moved/rotated/scaled. The object is coloured red when they collide and coloured green when they do not. This example was used to create the screenshots above.
 ```cpp
 ////////////////////////////////////////////////////////////////
 //

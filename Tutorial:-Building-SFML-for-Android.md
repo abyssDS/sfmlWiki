@@ -8,7 +8,7 @@ Before you can start, you'll need the proper development environment. Basically,
 * Git
 * [Android SDK](https://developer.android.com/studio/index.html#downloads)
 * [Android NDK](https://developer.android.com/ndk/downloads/index.html)
-* Apache Ant
+* [Apache Ant](http://ant.apache.org)
 
 ## Setup
 Before you can start, there are a few things to note, that will make the following steps easier.

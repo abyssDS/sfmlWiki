@@ -16,9 +16,9 @@ Before you can start, there are a few things to note, that will make the followi
   * *[Path to CMake]*/bin
   * *[Path to Git]*/bin
   * *[Path to SDK]*/tools
-  * * * Note: On Mac, this can be found at /Users/[Username]/Library/Android/sdk/tools
+    * * Note: On Mac, this can be found at /Users/[Username]/Library/Android/sdk/tools
   * *[Path to SDK]*/platform-tools
-  * * * Note: On Mac, this can be found at /Users/[Username]/Library/Android/sdk/platform-tools
+    * * Note: On Mac, this can be found at /Users/[Username]/Library/Android/sdk/platform-tools
   * *[Path to NDK]*
   * *[Path to ANT]*/bin
 

@@ -60,7 +60,7 @@ Follow these steps to download, build and install SFML:
 
           make && sudo make install
 
-    * If you get a warning regarding an include not working, for instance, `#include <ostream>`, this is most likely because you must include `-DANDROID_STL=stlport_shared` when invoking the **`cmake`** command.
+    * If you get a warning regarding an include not working, for instance, `#include <ostream> No such file or directory`, this is most likely because you must include `-DANDROID_STL=stlport_shared` when invoking the **`cmake`** command.
   * If everything went fine, this should have copied the created binaries as well as header files and dependencies to your Android NDK's `source` directory.
   * You're now ready to use SFML in the NDK together with devices understanding the compiled target files (in this example `armeabi`).
 

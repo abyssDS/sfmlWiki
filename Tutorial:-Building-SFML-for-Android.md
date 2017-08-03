@@ -23,8 +23,8 @@ Before you can start, there are a few things to note, that will make the followi
   * *[Path to ANT]*/bin
 
   Make sure to use backslashes (`\`) for these paths on Windows.  
-  On a Unix-based system (Mac/Linux), use the command `sudo nano /etc/paths` to edit `PATH`. Make sure to escape any spaces with a backslash (`\`).  
-  Note: On Mac, you may encounter further problems if your directory paths contain spaces. It is recommended you avoid spaces in any of your directories.  
+  On Mac, use the command `sudo nano /etc/paths` to edit `PATH`. Make sure to escape any spaces with a backslash (`\`).  
+  Note: You may encounter further problems if your directory paths contain spaces. It is recommended you avoid spaces in any of your directories.  
 * Set a new environment variable `ANDROID_NDK` pointing to the directory where you've put the Android NDK. Make sure to use forward slashes (`/`) even on Windows, like `C:/Android/NDK`.
 
 ## Retrieving and Building SFML

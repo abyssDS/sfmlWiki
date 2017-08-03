@@ -54,11 +54,13 @@ Follow these steps to download, build and install SFML:
   * If you've got multiple toolsets installed, like Visual Studio and MinGW, you might want to pick the type of project or makefile to create. You can do this by adding a parameter like `-G "MinGW Makefiles"` (note the quotes).
   * Important: It can be tricky to get this process to work with Visual Studio! I'd recommend you use MinGW's make (which is essentially GNU make). See the previous step to create the proper makefiles.
   * Wait for the process to complete. There might be a few warnings regarding the toolchain(s), but you shouldn't see any other warnings or error messages.
-  * You might have to add this `-DANDROID_STL=stlport_shared` in the above invocation
+  * **You might have to add `-DANDROID_STL=stlport_shared` in the above `cmake` invocation.**
   * This will create a makefile or project for you, based on your current host system.
   * Use it to build and then install SFML. For example, under Linux you'd issue the following commands:
 
           make && sudo make install
+
+    * If you get a warning regarding an include not working, for instance, `#include <ostream>`, this is most likely because you must include `-DANDROID_STL=stlport_shared` when invoking the **`cmake`** command.
   * If everything went fine, this should have copied the created binaries as well as header files and dependencies to your Android NDK's `source` directory.
   * You're now ready to use SFML in the NDK together with devices understanding the compiled target files (in this example `armeabi`).
 
@@ -69,6 +71,8 @@ Follow these steps to build and install an example SFML application that is bund
         android update project --target "android-23" --path .
         ndk-build
         ant debug
+
+  * Note: If you get an error saying that the android command could not be found, it is because your `PATH` environment variable was not set properly as is described above. You may also need to install the JDK if you do not have it installed already.
 
 You can substitute `android-23` above for the SDK version that you have installed on your machine. To find out which SDKs are installed run `android list target` in the terminal.
 

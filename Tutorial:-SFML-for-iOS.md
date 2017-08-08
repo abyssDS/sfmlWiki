@@ -52,7 +52,7 @@ Press the "Configure" button, and in the pop-up window, choose "Xcode" as the ge
 Finally, press "Generate". This will create an Xcode project called "SFML.xcodeproj" inside `SFML/build/ios`.
 
 ## Compiling SFML with the generated Xcode project
-Open the generated Xcode project located in _~/Documents/Library/SFML/build/ios/_.
+Open the generated Xcode project located in `~/Documents/Library/SFML/build/ios/`.
 * In the top left, select the "ALL_BUILD" target.
 * Click on the arrow to compile.
 * This will install SFML's compiled libraries for iOS in `SFML/build/ios-install/lib/`.

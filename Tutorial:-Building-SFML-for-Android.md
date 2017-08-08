@@ -4,7 +4,7 @@ Crosscompiling SFML for Android can be a bit tricky at times, depending on your 
 ## Requirements
 Before you can start, you'll need the proper development environment. Basically, you'll need the following things installed (some might be installed already, e.g. to build SFML for your host machine):
 
-* CMake
+* [CMake](https://cmake.org/download/)
 * Git
 * [Android SDK](https://developer.android.com/studio/index.html#downloads)
 * [Android NDK](https://developer.android.com/ndk/downloads/index.html)

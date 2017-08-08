@@ -9,13 +9,13 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 ### Configuration
 
 * [[SFML for iOS|Tutorial:-SFML-for-iOS]]
+* [[Building SFML for Android|Tutorial:-Building-SFML-for-Android]]
+* [[SFML.Net on OSX|Tutorial:-SFML.Net-on-OSX]]
 * [[Install SFML dependencies|Tutorial:-Installing-SFML-dependencies]]
 * [[Build SFML with a MinGW Compiler|Tutorial:-Build-SFML-with-a-MinGW-Compiler]]
 * [[Build your SFML project with CMake|Tutorial:-Build-your-SFML-project-with-CMake]]
 * [[Build and Link SFML with Qt Creator|Tutorial:-Compile-and-Link-SFML-with-Qt-Creator]]
 * [[Link SFML with Qt Creator|Tutorial:-Link-SFML-with-Qt-Creator]]
-* [[Building SFML for Android|Tutorial:-Building-SFML-for-Android]]
-* [[SFML.Net on OSX|Tutorial:-SFML.Net-on-OSX]]
 * [[Build SFML's dependencies|Tutorial:-Build-SFML's-dependencies]]
 
 ### Events

@@ -157,7 +157,7 @@ To share resources and have them properly found by the application during runtim
 ## Editing the last files
 You're almost there!  
 * In main.cpp
-  * Change `int main(int, char const**)` to `int main()` (Otherwise, this causes a the application to hang on startup)
+  * Change `int main(int, char const**)` to `int main()` (Otherwise, this causes the application to hang on startup)
   * Add the following line to the top of the file:  
 ```
 #ifdef __APPLE__  

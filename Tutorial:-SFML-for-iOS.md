@@ -15,7 +15,7 @@ This tutorial will teach you how to develop iOS applications with SFML in C++. C
 Before being able to build SFML for iOS, you will need to install SFML's libraries to your computer. You can do this by following the [tutorial on the SFML website](https://www.sfml-dev.org/tutorials/2.4/start-osx.php) for installing SFML for use with Xcode to make a Mac application. In the later steps of this tutorial, we will assume you are starting from SFML's Xcode template project.
 
 ## Building SFML with CMake
-In order to to use SFML with iOS, we need to use CMake to build our own static libs. To do this, download the most recent SFML source files in the folder of your choice. Keep in mind that you will later have to link to this directory from Xcode, so choose its location carefully. In this tutorial, we will use ~/Documents/Libraries/ as our directory.
+In order to to use SFML with iOS, we need to use CMake to build our own static libs. To do this, download the most recent SFML source files in the folder of your choice. Keep in mind that you will later have to link to this directory from Xcode, so choose its location carefully. In this tutorial, we will use `~/Documents/Libraries/` as our directory.
 * To create this directory, open the Terminal and execute the following command:
 ``
 cd ~/Documents && mkdir Libraries  

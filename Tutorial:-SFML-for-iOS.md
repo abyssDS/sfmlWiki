@@ -138,20 +138,20 @@ Your project should now look like this:
 
 ## Enabling shared resources between targets
 To share resources and have them properly found by the application during runtime, we need to export the resources outside of the main project folder, so that once the app is compiled, they end up in the appropriate "Resources" folder inside of the application.
-  * Quit Xcode.
-  * Open Finder, and navigate to where the Xcode project is located. It should look something like this:  
+* Quit Xcode.
+* Open Finder, and navigate to where the Xcode project is located. It should look something like this:  
 ![Finder 1](http://i.imgur.com/xKXYJk6.png)
-  * Create a new folder called "Assets"
-    * You could name this folder whatever you want, because we won't even see the name of this folder inside. However, **do not** name it "resources" or "Resources", or the name of any folder within it. If you do so, Xcode will fail to compile or to open your application in the simulator.
-    * Drag-and-drop all the resources (images, sounds and fonts) from the main project folder (in this case, "Tutorial") into the newly created "Assets" folder.
-  * It should now look like this:  
+* Create a new folder called "Assets"
+  * You could name this folder whatever you want, because we won't even see the name of this folder inside. However, **do not** name it "resources" or "Resources", or the name of any folder within it. If you do so, Xcode will fail to compile or to open your application in the simulator.
+  * Drag-and-drop all the resources (images, sounds and fonts) from the main project folder (in this case, "Tutorial") into the newly created "Assets" folder.
+* It should now look like this:  
 ![Finder 2](http://i.imgur.com/ofvH5sm.png)
-  * Reopen Xcode, and deleted the "Resources" folder from the project navigator. At the pop-up, choose "Remove References".
-  * Right-click on the **project file**, and select "New Group".
-    * Name this group "Resources"
-    * Open a Finder window, open the "Assets" folder, and drag-and-drop its **contents** (not the folder itself) into the "Resources" group in the Xcode project navigator.
-    * At the pop-up, select "Create folder references" and select both targets.
-  * Your Xcode project navigator should now look like this:  
+* Reopen Xcode, and deleted the "Resources" folder from the project navigator. At the pop-up, choose "Remove References".
+* Right-click on the **project file**, and select "New Group".
+  * Name this group "Resources"
+  * Open a Finder window, open the "Assets" folder, and drag-and-drop its **contents** (not the folder itself) into the "Resources" group in the Xcode project navigator.
+  * At the pop-up, select "Create folder references" and select both targets.
+* Your Xcode project navigator should now look like this:  
 ![Xcode 8](http://i.imgur.com/mpE1DqQ.png)
 
 ## Editing the last files

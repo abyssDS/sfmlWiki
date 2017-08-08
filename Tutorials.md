@@ -8,6 +8,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 
 ### Configuration
 
+* [[SFML for iOS|Tutorial:-SFML-for-iOS]]
 * [[Install SFML dependencies|Tutorial:-Installing-SFML-dependencies]]
 * [[Build SFML with a MinGW Compiler|Tutorial:-Build-SFML-with-a-MinGW-Compiler]]
 * [[Build your SFML project with CMake|Tutorial:-Build-your-SFML-project-with-CMake]]

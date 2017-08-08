@@ -15,7 +15,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 * [[Link SFML with Qt Creator|Tutorial:-Link-SFML-with-Qt-Creator]]
 * [[Building SFML for Android|Tutorial:-Building-SFML-for-Android]]
 * [[SFML.Net on OSX|Tutorial:-SFML.Net-on-OSX]]
-* [[Build SFML's depedencies|Tutorial:-Build-SFML's-dependencies]]
+* [[Build SFML's dependencies|Tutorial:-Build-SFML's-dependencies]]
 
 ### Events
 

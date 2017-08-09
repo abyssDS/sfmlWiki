@@ -145,7 +145,7 @@ To share resources and have them properly found by the application during runtim
   * Drag-and-drop all the resources (images, sounds and fonts) from the main project folder (in this case, "Tutorial") into the newly created "Assets" folder.
 * It should now look like this:  
 ![Finder 2](http://i.imgur.com/ofvH5sm.png)
-* Reopen Xcode, and deleted the "Resources" folder from the project navigator. At the pop-up, choose "Remove References".
+* Reopen Xcode, and delete the "Resources" folder from the project navigator. At the pop-up, choose "Remove References".
 * Right-click on the **project file**, and select "New Group".
   * Name this group "Resources"
   * Open a Finder window, open the "Assets" folder, and drag-and-drop its **contents** (not the folder itself) into the "Resources" group in the Xcode project navigator.

@@ -3,7 +3,7 @@ This tutorial will teach you how to develop iOS applications with SFML in C++. C
 
 # Requirements
 * Xcode, available on the Mac App Store
-  * Important: If Xcode is not installed in a directory that contain spaces (with the exception of your normal boot drive, `Macintosh HD` or `Macintosh SSD`), you will later encounter errors when using CMake. Its standard installation directory (`/Applications`) will work fine.
+  * Important: If Xcode is installed in a directory that contains spaces (with the exception of your normal boot drive, `Macintosh HD` or `Macintosh SSD`), you will later encounter errors when using CMake. Its standard installation directory (`/Applications`) will work fine.
 * Xcode command line tools installed
   * To do this, open the Terminal and write `xcode-select --install` and follow the on-screen instructions.
   * Then, open Xcode, go to `Xcode > Preferences > Locations` and choose the available version of the Xcode command line tools from the `Command Line Tools` drop-down menu.

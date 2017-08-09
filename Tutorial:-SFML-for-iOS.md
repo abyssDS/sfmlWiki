@@ -80,7 +80,7 @@ You should now have a working Xcode project which compiles for Mac. Test that it
 Your project should now look like this:  
 ![Xcode 4](http://i.imgur.com/0fdMkVE.png)
 **Notes:**
-* The "Tutorial" target will compile for Mac, and the "iOS" target for iOS. If you want to rename the "Tutorial" target to "macOS" for clarity, you can do so by double left-clicking slowly on its name and entering a new name. For consistency, you'll probably want to edit the name of the scheme for mac too. To keep this simple, we'll be keeping things as they are for this tutorial.
+* The "Tutorial" target will compile for Mac, and the "iOS" target for iOS. If you want to rename the "Tutorial" target to "macOS" for clarity, you can do so by double left-clicking slowly on its name and entering a new name. For consistency, you'll probably want to edit the name of the scheme for Mac too. To keep this simple, we'll be keeping things as they are for this tutorial.
 * If you want to change the iOS target's compiled application name, you can change its "Display Name" value in the "General tab" shown in the screenshot.
 
 ## Setting up the iOS target

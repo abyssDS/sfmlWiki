@@ -41,7 +41,6 @@ Now, open the CMake application. You should see a GUI which looks like this:
 * Set the second line, "Where to build the binaries:", to `/Users/[username]/Documents/Libraries/SFML/build/ios/`
 
 Next, click on the "Add Entry" button, and add a BOOL named `IOS` and set it to true (check the "Value" textbox). Press OK.  
-![CMake 2](http://i.imgur.com/shrUNlt.png)
 
 Click the "Configure" button, and in the pop-up window, choose "Xcode" as the generator for this project. Use the default native compilers. You should now have a window that looks like this:  
 ![CMake 3](http://i.imgur.com/F6Pgxcm.png)

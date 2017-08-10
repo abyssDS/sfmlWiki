@@ -72,8 +72,6 @@ Follow these steps to build and install an example SFML application that is bund
         ndk-build
         ant debug
 
-  * Note: If you get an error saying that the android command could not be found, it is because your `PATH` environment variable was not set properly as is described above. You may also need to install the JDK if you do not have it installed already.
-
 You can substitute `android-23` above for the SDK version that you have installed on your machine. To find out which SDKs are installed run `android list target` in the terminal.
 
 The resulting package `bin/NativeActivity-debug.apk` can be copied and opened on your device or installed to a connected device/emulator:

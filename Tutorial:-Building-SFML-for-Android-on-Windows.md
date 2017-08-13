@@ -64,6 +64,7 @@ adb shell am start -a android.intent.action.MAIN -n com.example.sfml/android.app
 * By default the package name is "com.example.sfml" (com.PUBLISHER.TITLE) and project name is "NativeActivity".
 * Edit "AndroidManifest.xml" & "build.xml".
 * Replace any instances of "com.example.sfml", "NativeActivity".
+  * Important: in "AndroidManifest.xml", do **not** however rename the "NativeActivity" in "android.app.NativeActivity"
 
 ### Compiler entries
 * We need to provide the compiler with all libraries, include directories, source files and flags.

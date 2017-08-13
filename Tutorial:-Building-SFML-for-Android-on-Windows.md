@@ -71,15 +71,14 @@ adb shell am start -a android.intent.action.MAIN -n com.example.sfml/android.app
 * The operators ":=" are used for assignment, "+=" is sued to append subsequent values.
 * Insert any entries between `LOCAL_WHOLE_STATIC_LIBRARIES := sfml-main` and `include $(BUILD_SHARED_LIBRARY)`.
 * Edit "jni\Android.mk".
-
-#### Specifics
-* Specify a shared library (.so) `LOCAL_SHARED_LIBRARIES := sfml-audio`
-* Specify a static library (.a) `LOCAL_WHOLE_STATIC_LIBRARIES := sfml-main`
-* Specify an include directory `LOCAL_C_INCLUDES := ../../boost`
-* Specify a source file `LOCAL_SRC_FILES := ../../main.cpp`
-* Specify C compiler flags `LOCAL_CFLAGS := -std=c++1y`
-* Specify C++ compiler flags `LOCAL_CPPFLAGS`
-* Specify C++ compiler "features" `LOCAL_CPP_FEATURES := rtti`
+    #### Specifics
+    * Specify a shared library (.so) `LOCAL_SHARED_LIBRARIES := sfml-audio`
+    * Specify a static library (.a) `LOCAL_WHOLE_STATIC_LIBRARIES := sfml-main`
+    * Specify an include directory `LOCAL_C_INCLUDES := ../../boost`
+    * Specify a source file `LOCAL_SRC_FILES := ../../main.cpp`
+    * Specify C compiler flags `LOCAL_CFLAGS := -std=c++1y`
+    * Specify C++ compiler flags `LOCAL_CPPFLAGS`
+    * Specify C++ compiler "features" `LOCAL_CPP_FEATURES := rtti`
 
 ### How to validate whether your project compiled successfully?
 * Even a failed compile may output an ".apk" file.

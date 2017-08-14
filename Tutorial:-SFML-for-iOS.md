@@ -132,6 +132,8 @@ Your project should now look like this:
     * Add two lines to "Library Search Paths": `/Users/[username]/Documents/Libraries/SFML/build/ios-install/lib/` and `/Users/[username]/Documents/Libraries/SFML/extlibs/libs-ios/`
     * Note: You can also simply drag-and-drop the folder into the pop-up window and Xcode will add a relative path for you.
     * Note 2: Make sure to escape any spaces with a backslash (`\`) or by including the entire path in quotations marks (but not both)
+  * Under "User-Defined"
+    * Delete the value for each line starting with "SFML_***" if it is in the "iOS" target (second column).
   * Open the "General" tab for the iOS target.
     * Under "Deployment Info", delete the value `Main` from the "Main Interface" line and leave it empty.
 

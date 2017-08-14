@@ -147,7 +147,7 @@ To share resources and have them properly found by the application during runtim
   * Drag-and-drop all the resources (images, sounds and fonts) from the main project folder (in this case, "Tutorial") into the newly created "Assets" folder.
 * It should now look like this:  
 ![Finder 2](http://i.imgur.com/ofvH5sm.png)
-  * Note: For a more clear organization format, you could move all source and header files into their own folder, instead of having them reside in the "[project name]" folder which contains the Info.plist for the macOS target. You could then have a "macOS" folder with the Info.plist for Mac, similar to the "iOS" folder, and a folder containing all files shared between the two targets. You would have to recreate the groups in Xcode after doing so for this to work properly.
+  * Note: For a more clear organization format, you **could** move all source and header files into their own folder, instead of having them reside in the "[project name]" folder which contains the Info.plist for the macOS target. You could then have a "macOS" folder with the Info.plist for Mac, similar to the "iOS" folder, and a folder containing all files shared between the two targets. You would have to recreate the groups in Xcode after doing so for this to work properly.
 * Reopen Xcode, and delete the "Resources" folder from the project navigator. At the pop-up, choose "Remove References".
 * Right-click on the **project file**, and select "New Group".
   * Name this group "Resources"

@@ -168,22 +168,16 @@ You're almost there!
 ```
 * In ResourcePath.hpp, replace this line `std::string resourcePath(void);` with this:  
 ```
-#ifdef __APPLE__  
-    #include "TargetConditionals.h"  
-    #if TARGET_OS_MAC && !TARGET_OS_IPHONE  
-        std::string resourcePath(void);  
-    #else  
-        inline std::string resourcePath()  
-        {  
-            return "";  
-        }  
-    #endif  
-#else  
-    inline std::string resourcePath()  
-    {  
-        return "";  
-    }  
-#endif  
+#include <SFML/Config.hpp>
+
+#ifdef SFML_SYSTEM_MACOS
+    std::string ResourcePath(void);
+#else
+    inline std::string ResourcePath()
+    {
+        return "";
+    }
+#endif
 ```
 * Edit the "Info.plist" in the "iOS" folder
   * Due to a bug with Xcode (8.3.3) it seems that for the project to compile successfully you need to set "Bundle Name" to `$(TARGET_NAME)` instead of `$(PRODUCT_NAME)`

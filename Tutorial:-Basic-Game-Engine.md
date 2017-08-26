@@ -2,7 +2,7 @@
 <a name="top" />
 At the core of every good game is a game engine. But as a beginner, building your first game engine can be pretty daunting. There are lots of things to consider when designing a solid game engine. Managing all the graphics, sounds, music, and game objects takes a lot of effort and is not as fun as designing what the game will actually do. Most people interested in game programming start with a game idea and don't know where to start in bringing their game idea into reality. And quite frankly, many of these game ideas suck. Many are just minor variations of existing games that people have already played. But this should not stop people from trying to create games, because with every half finished game comes experience and sometimes you discover that the joy of game programming comes in the process of seeing your game (good or bad) come to life at your hands. For me, that is what I seek, the *journey* of seeing my game creations come to life. For this purpose, I have decided to create a basic game engine that I can use for future game ideas, so I can more easily get to the fun part of game creation: the Game Mechanics. But before I share with you the features of my basic game engine, I want to share with you a few hard lessons I have learned over the years starting with an explanation of Namespaces.
 
-###Quick Links###
+### Quick Links ###
 
 1. [Namespaces](#namespaces)
 2. [Forward Declarations](#declarations)

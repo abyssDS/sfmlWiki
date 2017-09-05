@@ -1,8 +1,8 @@
 ## Welcome
 
-This wiki is written by SFML users, for SFML users. It gathers all the external contributions about SFML: tutorials, source code, projects, tips and tricks, etc.
+This wiki is written by SFML users, for SFML users. All SFML user provided contributions, e.g., tutorials, source code, projects, tips and tricks, can be found here.
 
-You are encouraged to come and share all kind of personal contributions: new pages, improvements to existing pages, or even simple corrections.
+You may contribute by improving existing pages, making new ones, or make simple corrections.
 
 ## Main categories
 
@@ -18,8 +18,7 @@ You are encouraged to come and share all kind of personal contributions: new pag
 
 If you want to edit the wiki, you should first have a look at the [[rules|Rules]] page containing the few guidelines to follow.
 
-Have a nice reading, and thank you for your contribution!
-
+Enjoy the read, and, if you decide to contrbute, thank you.
 ## Licensing
 
 After a community poll decision all source code on this wiki is under the [Public Domain License](https://en.wikipedia.org/wiki/Public_domain_software), unless the author of the source code specified a different license. In that case, the source code is under the license the author specified.

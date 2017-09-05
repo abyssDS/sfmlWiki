@@ -18,7 +18,7 @@ You may contribute by improving existing pages, making new ones, or make simple 
 
 If you want to edit the wiki, you should first have a look at the [[rules|Rules]] page containing the few guidelines to follow.
 
-Enjoy the read, and, if you decide to contrbute, thank you.
+Enjoy the read, and, if you decide to contribute, thank you.
 ## Licensing
 
 After a community poll decision all source code on this wiki is under the [Public Domain License](https://en.wikipedia.org/wiki/Public_domain_software), unless the author of the source code specified a different license. In that case, the source code is under the license the author specified.

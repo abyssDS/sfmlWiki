@@ -64,7 +64,7 @@ void GetInput(void)
 {
 	std::string s;
 	std::cout << "\nEnter \"exit\" to quit or message to send: ";
-	std::cin >> s;
+	getline(std::cin,s);
 	if(s == "exit")
 		quit = true;
 	globalMutex.lock();

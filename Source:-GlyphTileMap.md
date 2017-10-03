@@ -14,7 +14,7 @@ the information pane.)
 Note that GlyphTileMap is meant to be a thin render layer, and does not maintain a container
 of the GlyphTileMap::Tile(s) that it displays. Hence the lack of a `getTile(...)` method, etc.
 
-[Hope you enjoy! Comments and criticism are welcome.](#)
+[Hope you enjoy! Comments and criticism are welcome.](https://en.sfml-dev.org/forums/index.php?topic=22595.0)
 
 
 [Source Repo](https://github.com/jpadkins/SFML_GlyphTileMap)

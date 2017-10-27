@@ -15,7 +15,7 @@ It is capable generating six different sound waves:
 
 In addition to clean waves it allows stacking different types of waves on each other to generate more interesting and complex sound effects.
 
-[Image]
+![Envelope Image](https://github.com/Dooshco/Synthesizer/blob/master/Envelope.gif)
 
 ## Usage
 Library is contained in single Synth.hpp file and only needs to be included where we generate sounds. Sounds effects are defined in two structs and one function call:

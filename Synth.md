@@ -1,6 +1,6 @@
 # Synthesizer
 ## Introduction
-Synthesizer is a simple tool to enable creating sound effect programatically. It does not replace advanced sound creation tools and is therefore most appropriate for retro style games and sound effects. It uses standard SFML Sound and SoundBuffer classes for manipulating sounds later in the code, just generation is done with code and not by uploading sound files.
+Synthesizer is a simple tool to enable creating sound effects programmatically. It does not replace advanced sound creation tools and is therefore most appropriate for retro style games and sound effects. It uses standard SFML Sound and SoundBuffer classes for manipulating sounds later in the code, just generation is done with code and not by uploading sound files.
 
 Inspired by the source code of the Sound Synthesizer tutorial series by One Lone Coder http://onelonecoder.com/
 

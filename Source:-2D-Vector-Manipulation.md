@@ -1,10 +1,10 @@
-#2D Vector Manipulation and Transformation
+# 2D Vector Manipulation and Transformation
 
-###Overview
+### Overview
 
 This is a vector class that includes more advanced functions for manipulating and transforming two-dimensional vectors.
 
-####vector2.h
+#### vector2.h
 
 Note: the modulo operator (`%`) has been repurposed for rotating the vector. 
 
@@ -173,7 +173,7 @@ public:
 };
 ```
 
-####vector2.cpp
+#### vector2.cpp
 
 ```cpp
 #include "vector2.h"

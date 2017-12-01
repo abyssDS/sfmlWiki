@@ -12,6 +12,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 * [[Building SFML for Android|Tutorial:-Building-SFML-for-Android]]
 * [[Building SFML for Android on Windows|Tutorial:-Building-SFML-for-Android-on-Windows]]
 * [[SFML.Net on OSX|Tutorial:-SFML.Net-on-OSX]]
+* [[SFML.Net on Windows|Tutorial:-SFML.Net-on-Windows]]
 * [[Install SFML dependencies|Tutorial:-Installing-SFML-dependencies]]
 * [[Build SFML with a MinGW Compiler|Tutorial:-Build-SFML-with-a-MinGW-Compiler]]
 * [[Build your SFML project with CMake|Tutorial:-Build-your-SFML-project-with-CMake]]

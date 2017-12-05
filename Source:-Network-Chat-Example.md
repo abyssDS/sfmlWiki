@@ -3,8 +3,6 @@
 This is a very simple chat example to get your feet wet.
 
 ```cpp
-#pragma comment(lib, "sfml-network.lib")
-
 #include <iostream>
 #include <SFML/Network.hpp>
 

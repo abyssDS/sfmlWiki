@@ -33,17 +33,14 @@ void DoStuff(void)
 		sf::Packet packetReceive;
 		
 		socket.receive(packetReceive);		
-		if(packetReceive >> msg)
+		if ((packetReceive >> msg) && oldMsg != msg && !msg.empty())
 		{
-			if(oldMsg != msg)
-				if(!msg.empty())
-				{
-					std::cout << msg << std::endl;
-					oldMsg = msg;
-				}
+			std::cout << msg << std::endl;
+			oldMsg = msg;
 		}
 	}
 }
+
 void Server(void)
 {
 	sf::TcpListener listener;
@@ -51,6 +48,7 @@ void Server(void)
 	listener.accept(socket);
 	std::cout << "New client connected: " << socket.getRemoteAddress() << std::endl;
 }
+
 bool Client(void)
 {
 	if(socket.connect(IPADDRESS, PORT) == sf::Socket::Done)
@@ -60,6 +58,7 @@ bool Client(void)
 	}
 	return false;
 }
+
 void GetInput(void)
 {
 	std::string s;
@@ -71,15 +70,17 @@ void GetInput(void)
 	msgSend = s;
 	globalMutex.unlock();
 }
+
+
 int main(int argc, char* argv[])
 {
 	sf::Thread* thread = 0;
 		
 	char who;
-    std::cout << "Do you want to be a server (s) or a client (c) ? ";
-    std::cin  >> who;
+	std::cout << "Do you want to be a server (s) or a client (c) ? ";
+	std::cin  >> who;
 
-    if(who == 's')
+	if (who == 's')
 		Server();
 	else
 		Client();
@@ -91,6 +92,7 @@ int main(int argc, char* argv[])
 	{
 		GetInput();
 	}
+
 	if(thread)
 	{
 		thread->wait();

@@ -1,4 +1,4 @@
-CMake allows your project to be built in various environments, including command-line make, Code::Blocks project files, Eclipse project files, etc.  It's used in SFML 2.0.
+CMake allows your project to be built in various environments, including most popular Makefiles and IDE's. It is available from SFML 2.0.
 
 In this tutorial we'll write a simple CMake configuration file with centralized version numbering, and see how to integrate SFML in it.  This example is not for compiling SFML using CMake but for creating an example project that utilizes an existing build of SFML.
 
@@ -143,40 +143,23 @@ target_link_libraries(${EXECUTABLE_NAME} ${yaml-cpp_LIBRARIES})
 ```
 Note: because `link_directories` needs to be called before a target is created, if you use the pkg-config snippet, you need to move your `add_executable` and `target_link_libraries` calls _after_ the call to `link_directories`.
 
+# Configuration
+
+To configure a CMake project, execute `cmake ..` (where `..` is the relative path to your CMakeLists.txt created above).
+
+At this point you may also specify a specific Generator by adding the `-G` flag to the cmake command, e.g. `cmake .. -G"Xcode"`. For a full list of generators run `cmake --help`
+
+At this point your project may complain that SFML is not found. If you have installed SFML to a non-standard place, then you will need to set the SFML_ROOT variable so it can be found, e.g. `cmake .. -G"Xcode" -DSFML_ROOT=/path/to/sfml`
+ 
 # Compilation
 
-If you installed SFML to a nonstandard place and CMake cannot find it, you'll need to add the location of the libraries manually.  To do this, add an entry called `CMAKE_PREFIX_PATH`.  These are locations that CMake searches in addition to the usual directories.  Specify the type as `PATH` and for the value, put the path to the `lib` directory of SFML.  This will then pull the necessary libraries in.
-
-In addition, CMake may complain that it cannot find the include files for the `SFML_INCLUDE_DIR` entry.  You will have to set this manually to the `include` directory.
-
-To build with Make and the GCC compiler on the command-line:
-```bash
-cd build/  # a separate directory so we can easily remove all the CMake work files
-cmake ..  # generate Makefile's
-make
-# or, if you want a more traditional output with the commands run:
-make VERBOSE=1
-```
-
-To create Code::Blocks project files:
-```bash
-cmake .. -G "CodeBlocks - Unix Makefiles"
-```
-and open `project.cbp` with Code::Blocks.
-
+At this point you should have generated project files in the folder you executed cmake from. You can use these directly as you normally would, or you can use cmake's build command: `cmake --build .`
+ 
 # Installation
 
-CMake supports the classic:
-```bash
-make install
-```
+To install your project, build the install target. If you're using the cmake build command, you can add `--target install`
 
-It also supports DESTDIR, useful in packaging:
-```bash
-make install DESTDIR=`pwd`/myworkdir
-```
-
-You can also define `CMAKE_INSTALL_PREFIX` when invoking `cmake` to change the default install path (`/usr/local` under Unix).  DESTDIR would still override this setting.
+You can also define `CMAKE_INSTALL_PREFIX` when invoking `cmake` to change the default install path (`/usr/local` under Unix).  
 ```bash
 cmake -D CMAKE_INSTALL_PREFIX=/usr ..
 ```
@@ -185,14 +168,13 @@ If you want to check a variable's value, open `CMakeCache.txt`, they are all the
 
 # Packaging
 
-You then can use `cpack` to make a project release:
+To package your project into an archive/installer, just build the package target
+
 ```bash
-# Binary package:
-cpack -C CPackConfig.cmake
-# Source package:
-cpack -C CPackSourceConfig.cmake
+cmake --build . --target package
 ```
-You will get a nice `myproject-1.0.tar.gz`, among others.
+
+By default this usually just creates a compressed archive with your installed files, but it is highly configurable. See CMake/CPack documentation for more info
 
 # Further information
 

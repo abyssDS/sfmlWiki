@@ -4,7 +4,7 @@ In this tutorial we'll write a simple CMake configuration file with centralized 
 
 # The source files
 
-First, create a `cmake_modules` directory and copy [FindSFML.cmake](https://github.com/LaurentGomila/SFML/blob/master/cmake/Modules/FindSFML.cmake) in it.  FindXXXX is automatically searched by CMake's `find_package` command.
+First, create a `cmake_modules` directory and copy [FindSFML.cmake](https://github.com/SFML/SFML/blob/master/cmake/Modules/FindSFML.cmake) in it.  FindXXXX is automatically searched by CMake's `find_package` command.
 
 Then create a main.cpp, for instance:
 ```c++
@@ -15,7 +15,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-  /* Code adapted from the SFML 2 "Window" example */
+  // Code adapted from the SFML 2 "Window" example.
 
   cout << "Version " << myproject_VERSION_MAJOR << "." << myproject_VERSION_MINOR << endl;
 
@@ -38,7 +38,7 @@ We use a `config.h` file that is built by CMake, let's also create a `config.h.i
 #define myproject_VERSION_MINOR @myproject_VERSION_MINOR@
 ```
 
-And place your project license (such as the [GNU GPL](http://www.gnu.org/copyleft/gpl.html)) in a file named `COPYING`.
+And place your project license (such as the [zlib license](https://www.zlib.net/zlib_license.html)) in a file named `COPYING`.
 
 # CMake configuration
 
@@ -193,3 +193,5 @@ cmake version 2.8.5
 * [CMake reference for version 2.8](http://www.cmake.org/cmake/help/cmake-2-8-docs.html)
 * [CMake Tutorial](http://www.cmake.org/cmake/help/cmake_tutorial.html)
 * [CMake tutorial en français](http://geenux.wordpress.com/2009/12/27/utilisation-de-cmake/)
+
+-- [Beuc](http://www.beuc.net/) & the other members of the SFML community

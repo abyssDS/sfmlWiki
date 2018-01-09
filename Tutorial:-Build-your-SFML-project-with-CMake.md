@@ -193,6 +193,3 @@ cmake version 2.8.5
 * [CMake reference for version 2.8](http://www.cmake.org/cmake/help/cmake-2-8-docs.html)
 * [CMake Tutorial](http://www.cmake.org/cmake/help/cmake_tutorial.html)
 * [CMake tutorial en français](http://geenux.wordpress.com/2009/12/27/utilisation-de-cmake/)
-
-
--- [Beuc](http://www.beuc.net/)

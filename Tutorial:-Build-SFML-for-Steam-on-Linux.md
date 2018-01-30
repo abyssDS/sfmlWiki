@@ -48,7 +48,7 @@ First, check that the build works in your normal environment. Then, you're ready
 
 * Install schroot
 ```bash
-sudo apt-get install chroot
+sudo apt-get install schroot
 ```
 * Navigate to the folder you installed your runtime. 
 * Install the runtime, we recommend to install both 32 and 64bit versions, which then result in the respective builds. You may reach more people with your game ;)

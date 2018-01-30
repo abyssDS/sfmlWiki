@@ -46,7 +46,7 @@ First, check that the build works in your normal environment. Then, you're ready
 
 # Install the runtime
 
-* Install chroot
+* Install schroot
 ```bash
 sudo apt-get install chroot
 ```

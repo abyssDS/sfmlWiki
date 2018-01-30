@@ -53,8 +53,8 @@ sudo apt-get install chroot
 * Navigate to the folder you installed your runtime. 
 * Install the runtime, we recommend to install both 32 and 64bit versions, which then result in the respective builds. You may reach more people with your game ;)
 ```bash
-.\setup_shroot.sh --amd64
-.\setup_shroot.sh --i386
+./setup_shroot.sh --amd64
+./setup_shroot.sh --i386
 ```
 
 # Switch to the runtime

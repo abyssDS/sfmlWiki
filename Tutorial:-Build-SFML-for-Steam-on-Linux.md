@@ -76,6 +76,6 @@ cmake ..
 make
 ```
 * Et voilà! Your game should have built and linked everything inside the sandbox. Steam will use the same runtime when  executing on a player's computer, which means that it will use exactly the same SFML version and other libraries you used.
+* Be aware that you will have to copy the libsteam_api.so from the linux folder to your executable. The SFML .so files will be built inside the _ext/sfml/lib_ folder if you used the suggested configuration.
 * You cannot run this version directly, but after upload via the Steam pipe, you should be ready to go.
 
--- Ironbell & Achpile

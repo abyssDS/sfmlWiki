@@ -68,10 +68,71 @@ order to include the libraries.
 After creating a new project in Qt edit the .pro file in the and paste the following lines:
 
     LIBS += -LC:/SFML/qtcreator-build/lib
+    LIBS += -LC:/SFML/extlibs/libs-mingw/x86 #If using 64-bit MinGW, replace x86 with x64
 
-    CONFIG(release, debug|release): LIBS += -lsfml-audio -lsfml-graphics -lsfml-main -lsfml-network -lsfml-window -lsfml-system
-    CONFIG(debug, debug|release): LIBS += -lsfml-audio-d -lsfml-graphics-d -lsfml-main-d -lsfml-network-d -lsfml-window-d -lsfml-system-d
+    #Release Configuration
+    CONFIG(release, debug|release):
+    {
+    #Audio Related Libs
+    LIBS += -lsfml-audio-s          #SFML Static Module
+    LIBS += -lopenal32              #Dependency
+    LIBS += -lFLAC                  #Dependency
+    LIBS += -lvorbisenc             #Dependency
+    LIBS += -lvorbisfile            #Dependency
+    LIBS += -lvorbis                #Dependency
+    LIBS += -logg                   #Dependency
 
+    #SFML-Graphics Libs
+    LIBS += -lsfml-graphics-s       #SFML Static Module
+    LIBS += -lfreetype              #Dependency
+    LIBS += -ljpeg                  #Dependency
+
+    #SFML-Network Libs
+    LIBS += -lsfml-network-s        #SFML Static Module
+    LIBS += -lws2_32                #Dependency
+
+    #SFML-Window Libs
+    LIBS += -lsfml-window-s         #SFML Static Module
+    LIBS += -lopengl32              #Dependency
+    LIBS += -lgdi32                 #Dependency
+
+    #SFML-System Libs
+    LIBS += -lsfml-system-s         #SFML Static Module
+    LIBS += -lwinmm                 #Dependency
+    }
+
+    #Debug Configuration
+    CONFIG(debug, debug|release):
+    {
+    #Audio Related Libs
+    LIBS += -lsfml-audio-s-d        #SFML Static Module
+    LIBS += -lopenal32              #Dependency
+    LIBS += -lFLAC                  #Dependency
+    LIBS += -lvorbisenc             #Dependency
+    LIBS += -lvorbisfile            #Dependency
+    LIBS += -lvorbis                #Dependency
+    LIBS += -logg                   #Dependency
+
+    #SFML-Graphics Libs
+    LIBS += -lsfml-graphics-s-d     #SFML Static Module
+    LIBS += -lfreetype              #Dependency
+    LIBS += -ljpeg                  #Dependency
+
+    #SFML-Network Libs
+    LIBS += -lsfml-network-s-d      #SFML Static Module
+    LIBS += -lws2_32                #Dependency
+
+    #SFML-Window Libs
+    LIBS += -lsfml-window-s-d       #SFML Static Module
+    LIBS += -lopengl32              #Dependency
+    LIBS += -lgdi32                 #Dependency
+
+    #SFML-System Libs
+    LIBS += -lsfml-system-s-d       #SFML Static Module
+    LIBS += -lwinmm                 #Dependency
+    }
+
+If you are using Dynamic Linking, remove any "-s" from the SFML Modules.
 The above system path applies to a windows OS and you have to change the `C:\SFML\qtcreator-build\lib\` with the path where you created the SFML libraries.
 Mac users can follow a similar process which I have not tested but should work the same way. 
 The last two lines you should include in the .pro file are:
@@ -84,6 +145,7 @@ Which are self explanatory...
 Gotchas:
 * If you want your executables in the same folder as your project you have to turn off __Shadow Build__ from the build options.
 * If the executable runs but does not show anything it's not an error...Copy the SFML dlls in the same directory as the executable __plus `libgcc_s_dw2-1.dll` and `mingwm10.dll`__ which are located in the `C:\QtSDK\mingw\bin` folder.
+* If you are using Static Linking, there is a third last line for the .pro file: `DEFINES += SFML_STATIC`
 
 ## Linux
 ### Step 1

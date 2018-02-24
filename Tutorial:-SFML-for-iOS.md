@@ -26,7 +26,7 @@ Once in your desired SFML library directory, run the following command to downlo
 ```
 git clone https://github.com/SFML/SFML.git SFML  
 ```
-This will create a folder named _SFML_ containing all the files we need for CMake.
+This will create a folder named "SFML" containing all the files we need for CMake.
 
 Use these commands to create folders we will use:  
 ```
@@ -40,12 +40,18 @@ Now, open the CMake application. You should see a GUI which looks like this:
 * Set the first line, "Where is the source code:", to `/Users/[username]/Documents/Libraries/SFML`
 * Set the second line, "Where to build the binaries:", to `/Users/[username]/Documents/Libraries/SFML/build/ios/`
 
-Next, click on the "Add Entry" button, and add a BOOL named `IOS` and set it to true (check the "Value" textbox). Press OK.  
-
-Click the "Configure" button, and in the pop-up window, choose "Xcode" as the generator for this project. Use the default native compilers. You should now have a window that looks like this:  
+* **For SFML 2.4.2 and earlier:**
+  * Click on the "Add Entry" button, and add a BOOL named `IOS` and set it to true (check the "Value" textbox). Press OK.  
+  * Click the "Configure" button.
+  * In the pop-up window, choose "Xcode" as the generator for this project. Select "Use the default native compilers".
+* **For SFML 2.5.0 and later:**
+  * Click the "Configure" button.
+  * In the pop-up window, choose "Xcode" as the generator for this project. Select "Specify toolchain file for cross-compiling". Press Continue.
+  * Set the "Specify the Toolchain file" line to `/Users/[username]/Documents/Libraries/SFML/cmake/toolchains/iOS.toolchain.cmake`
+* You should now have a window that looks like this:  
 ![CMake 3](http://i.imgur.com/F6Pgxcm.png)
 * Expand the `CMAKE` option and set `CMAKE_INSTALL_PREFIX` to `/Users/[username]/Documents/Libraries/SFML/build/ios-install`
-  * Note: The reason we specify this instead of keeping the default `/usr/local/` is because, as of writing this, it seems that for some people CMake will fail because of a lack of proper writing permissions to that folder.
+  * Note: The reason we specify this instead of keeping the default `/usr/local/` is because, as of writing this, it seems that CMake will fail for some people because of a lack of proper writing permissions to that folder.
 * Click "Configure" a second time.
 
 Finally, press "Generate". This will create an Xcode project called "SFML.xcodeproj" inside `SFML/build/ios`.

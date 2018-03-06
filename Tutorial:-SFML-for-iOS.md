@@ -61,6 +61,7 @@ Open the generated Xcode project located in `~/Documents/Library/SFML/build/ios/
 * In the top left, select the "ALL_BUILD" target.
 * Click on the arrow to compile.
 * This will install SFML's compiled libraries for iOS in `SFML/build/ios-install/lib/`.
+  * **For SFML 2.5.0 and later**, they will be installed in `SFML/build/ios/lib/` instead.
 
 # Xcode project
 
@@ -129,9 +130,14 @@ Your project should now look like this:
     * "QuartzCore.framework"
     * "OpenGLES.framework"
     * "UIKit.framework"
+    * **For SFML 2.5.0 and later:**
+      * "libz.tbd"
+      * "libbz2.tbd"
 * Open the "Build Settings" tab for the iOS target.
   * **Make sure to select the "All" and "Levels" views**. When adding the following values, we will be editing the second column, titled "iOS".
-  * Under "Architectures", set "Architectures" to "Other..." and edit the value to `$(ARCHS_STANDARD_32_BIT)`
+  * Under "Architectures", set "Architectures" to "Other..." and edit the value to
+    * **For SFML 2.4.2 and earlier:** `$(ARCHS_STANDARD_32_BIT)`
+    * **For SFML 2.5.0 and later:** `x86_64` and `arm64`
   * Under "Search Paths"
     * If you see `/Library/Frameworks/` in "Framework Search Paths", delete that line.
     * Add one line to "Header Search Paths": `/Users/[username]/Documents/Libraries/SFML/include/`

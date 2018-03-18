@@ -29,16 +29,15 @@ public:
 
     void setWidth(const float width);
 
-    virtual unsigned int getPointCount() const;
+    virtual size_t getPointCount() const;
 
-    virtual sf::Vector2f getPoint(unsigned int index) const;
+    virtual sf::Vector2f getPoint(size_t index) const;
 
 private :
 
     sf::Vector2f m_endPoint;
     float m_Width;
 };
-
 #endif //ROUNDENDEDLINE_H
 
 ```
@@ -48,7 +47,7 @@ private :
 #include "RoundendedLine.h"
 
 CRoundendedLine::CRoundendedLine(const sf::Vector2f& endPoint, const float width)
-  : m_endPoint (endPoint), m_Width (width)
+        : m_endPoint (endPoint), m_Width (width)
 {
     update();
 }
@@ -65,12 +64,12 @@ void CRoundendedLine::setWidth(const float width)
     update();
 }
 
-unsigned int CRoundendedLine::getPointCount() const
+size_t CRoundendedLine::getPointCount() const
 {
     return 30;
 }
 
-sf::Vector2f CRoundendedLine::getPoint(unsigned int index) const
+sf::Vector2f CRoundendedLine::getPoint(size_t index) const
 {
     sf::Vector2f P1(1.0, 0.0);
     sf::Vector2f P2(m_endPoint + sf::Vector2f(1.0, 0.0) - getPosition());

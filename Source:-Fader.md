@@ -6,6 +6,7 @@ Feel free to use the code for whatever you care to.
 ## Source
 
 ### Fader.h
+```cpp
     #ifndef FADER_H_
     #define FADER_H_
 
@@ -56,8 +57,9 @@ Feel free to use the code for whatever you care to.
     };
 
     #endif
-
+```
 ### Fader.cpp
+```cpp
     #include "Fader.h"
 
     namespace{  // utility functions:
@@ -127,10 +129,10 @@ Feel free to use the code for whatever you care to.
             }
         }
     }
-
+```
 # FaderDemo.cpp
 This is a bit of a mess, but it should give you an idea of how you can use the class.  Yes, the fade durations are ridiculously long.
-
+```cpp
     #include <vector>
     #include <cstdlib>
     #include <ctime>
@@ -240,3 +242,4 @@ This is a bit of a mess, but it should give you an idea of how you can use the c
         while ( window.isOpen() )
             updater.ProcessEvents() ;
     }
+```

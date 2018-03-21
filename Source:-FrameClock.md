@@ -1,10 +1,13 @@
 <p align="center">
   <img src="http://i.imgur.com/08iroFJ.png" alt="Frame statistics."/>
 </p>
+
 ## Overview
+
 'FrameClock' is a utility class designed to keep track of various fame-rate related statistics. At its most basic, FrameClock could be used as an 'sf::Clock' replacement for measuring the elapsed time during some specified unit of execution (typically a frame). However, the real utility of FrameClock lies in its ability to track statistics such as the average frame rate over a user specified number of frames.
 
 ## Features
+
 Over successive calls to matched `FrameClock::beginFrame/endFrame` pairs, FrameClock keeps track of:
  * total number of frames;
  * total frame time;

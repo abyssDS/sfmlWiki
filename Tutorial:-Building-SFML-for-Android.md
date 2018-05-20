@@ -1,6 +1,10 @@
 ## Introduction
 Crosscompiling SFML for Android can be a bit tricky at times, depending on your host system. Unfortunately it's not as straightforward as compiling SFML for the actual host machine. This guide is meant to help you getting started. It won't go too far into detail. You'll sill have to attain at least some knowledge on your own on how to properly utilize the Android SDK/NDK.
 
+## Tried with SFML 2.5 
+
+**Doesn't work anymore**
+
 ## Requirements
 Before you can start, you'll need the proper development environment. Basically, you'll need the following things installed (some might be installed already, e.g. to build SFML for your host machine):
 

@@ -20,6 +20,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 * [[Link SFML with Qt Creator|Tutorial:-Link-SFML-with-Qt-Creator]]
 * [[Build SFML's dependencies|Tutorial:-Build-SFML's-dependencies]]
 * [[Build SFML for Steam on Linux|Tutorial:-Build-SFML-for-Steam-on-Linux]]
+* [[Create an empty project using premake5|Tutorial:-Create-an-empty-project-using-premake5]]
 
 ### Events
 

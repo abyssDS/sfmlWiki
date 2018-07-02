@@ -1,4 +1,4 @@
-This guide aims to help you to easily build an empty SFML project using premake5.
+This guide aims to help you easily create an empty SFML project using premake5.
 
 ## Prerequisites:
 * [premake5 portable executable](https://premake.github.io/)

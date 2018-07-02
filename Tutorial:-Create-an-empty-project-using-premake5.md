@@ -17,7 +17,7 @@ Put a symbolic _main.cpp_ under **src** directory ( Use [this](https://www.sfml-
 
 Now just:
 
-`premake5 vs2017` ( if you are using visual studio 2017, if you aren't the complete list is [here](https://github.com/premake/premake-core/wiki/Using-Premake))
+`premake5 vs2017` ( if you are using visual studio 2017, otherwise the complete list is [here](https://github.com/premake/premake-core/wiki/Using-Premake))
 
 And under the new generated folder **build** you will find your project ready to go.
 

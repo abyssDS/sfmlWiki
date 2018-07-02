@@ -22,7 +22,7 @@ Now just:
 And under the new generated folder **build** you will find your project ready to go.
 
 ## FAQ
-* ### Getting stranges link errors on visual studio 2017
+* ### Getting strange link errors on visual studio 2017
 
 It happens that it will take the wrong version of the Windows' SDK, simply select the latest under Project's Properties ->
 **Configuration Properties/General**

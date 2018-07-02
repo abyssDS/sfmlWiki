@@ -2,7 +2,7 @@ This guide aims to help you easily create an empty SFML project using premake5.
 
 ## Prerequisites:
 * [premake5 portable executable](https://premake.github.io/)
-* SFML already built ( or [prebuilt](https://www.sfml-dev.org/download.php))
+* SFML already built (or [prebuilt](https://www.sfml-dev.org/download.php)) statically
 * [SFML's premake script](https://gist.github.com/gale93/b37fe2b3194a150dca09d122f9ef6c3d)
 
 ## How to

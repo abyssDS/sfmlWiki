@@ -125,7 +125,7 @@ Now, see what happens in the GameObject.hpp file
 class Level; // Notice there is no include for the Level.hpp file, this will be done in the cpp file
  
 class GameObject {
-  public
+  public:
     Level& mParent;
 }
 ```

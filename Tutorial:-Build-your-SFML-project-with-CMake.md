@@ -1,6 +1,6 @@
 CMake allows your project to be built in various environments, including most popular Makefiles and IDE's. It is available from SFML 2.0.
 
-# !!! This tutorial doesn't work for SFML 2.5 anymore !!!
+# !!! This tutorial doesn't work for SFML 2.5 anymore !!! See [this forum post](https://en.sfml-dev.org/forums/index.php?topic=24070.0).
 
 In this tutorial we'll write a simple CMake configuration file with centralized version numbering, and see how to integrate SFML in it.  This example is not for compiling SFML using CMake but for creating an example project that utilizes an existing build of SFML.
 

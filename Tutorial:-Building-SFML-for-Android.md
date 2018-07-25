@@ -1,9 +1,7 @@
 ## Introduction
-Crosscompiling SFML for Android can be a bit tricky at times, depending on your host system. Unfortunately it's not as straightforward as compiling SFML for the actual host machine. This guide is meant to help you getting started. It won't go too far into detail. You'll sill have to attain at least some knowledge on your own on how to properly utilize the Android SDK/NDK.
+Crosscompiling SFML for Android can be a bit tricky at times, depending on your host system. Unfortunately it's not as straightforward as compiling SFML for the actual host machine. This guide is meant to help you getting started. It won't go too far into detail. You'll still have to attain at least some knowledge on your own on how to properly utilize the Android SDK/NDK.
 
-## Tried with SFML 2.5 
-
-**Doesn't work anymore**
+These steps are experimental, feel free to edit this page and make improvements.
 
 ## Requirements
 Before you can start, you'll need the proper development environment. Basically, you'll need the following things installed (some might be installed already, e.g. to build SFML for your host machine):
@@ -12,7 +10,7 @@ Before you can start, you'll need the proper development environment. Basically,
 * Git
 * [Android SDK](https://developer.android.com/studio/index.html#downloads)
 * [Android NDK](https://developer.android.com/ndk/downloads/index.html)
-* [Apache Ant](http://ant.apache.org)
+* [Gradle](https://gradle.org)
 
 ## Setup
 Before you can start, there are a few things to note, that will make the following steps easier.
@@ -24,12 +22,10 @@ Before you can start, there are a few things to note, that will make the followi
   * *[Path to SDK]*/platform-tools
     * Note: On Mac, this can be found at /Users/[Username]/Library/Android/sdk/platform-tools
   * *[Path to NDK]*
-  * *[Path to ANT]*/bin
 
   Make sure to use backslashes (`\`) for these paths on Windows.  
   On Mac, use the command `sudo nano /etc/paths` to edit `PATH`. Make sure to escape any spaces with a backslash (`\`).  
   Note: You may encounter further problems if your directory paths contain spaces. It is recommended you avoid spaces in any of your directories.  
-* Set a new environment variable `ANDROID_NDK` pointing to the directory where you've put the Android NDK. Make sure to use forward slashes (`/`) even on Windows, like `C:/Android/NDK`.
 
 ## Retrieving and Building SFML
 Follow these steps to download, build and install SFML:
@@ -54,48 +50,42 @@ Follow these steps to download, build and install SFML:
 
   * Now invoke CMake. Make sure to pass all parameters:
 
-          cmake -DANDROID_ABI=armeabi -DCMAKE_TOOLCHAIN_FILE=../../cmake/toolchains/android.toolchain.cmake ../..
+          cmake -DCMAKE_SYSTEM_NAME=Android -DCMAKE_ANDROID_NDK=/path/to/ndk -DCMAKE_ANDROID_ARCH_ABI=armeabi -DCMAKE_ANDROID_STL_TYPE=c++_static ../..
+
   * If you've got multiple toolsets installed, like Visual Studio and MinGW, you might want to pick the type of project or makefile to create. You can do this by adding a parameter like `-G "MinGW Makefiles"` (note the quotes).
   * Important: It can be tricky to get this process to work with Visual Studio! I'd recommend you use MinGW's make (which is essentially GNU make). See the previous step to create the proper makefiles.
   * Wait for the process to complete. There might be a few warnings regarding the toolchain(s), but you shouldn't see any other warnings or error messages.
-  * **You might have to add `-DANDROID_STL=stlport_shared` in the above `cmake` invocation.**
   * This will create a makefile or project for you, based on your current host system.
   * Use it to build and then install SFML. For example, under Linux you'd issue the following commands:
 
           make && sudo make install
 
-    * If you get a warning regarding an include not working, for instance, `#include <ostream> No such file or directory`, this is most likely because you must include `-DANDROID_STL=stlport_shared` when invoking the **`cmake`** command.
   * If everything went fine, this should have copied the created binaries as well as header files and dependencies to your Android NDK's `source` directory.
   * You're now ready to use SFML in the NDK together with devices understanding the compiled target files (in this example `armeabi`).
 
 ## Building and Executing the Android Example
-Follow these steps to build and install an example SFML application that is bundled with the SFML code:
+Go into the example directory:
 
         cd SFML/examples/android
-        android update project --target "android-23" --path .
-        ndk-build
-        ant debug
 
-You can substitute `android-23` above for the SDK version that you have installed on your machine. To find out which SDKs are installed run `android list target` in the terminal.
+Add a "local.properties" file with the following contents, specifying the android SDK and NDK paths:
 
-The resulting package `bin/NativeActivity-debug.apk` can be copied and opened on your device or installed to a connected device/emulator:
+        sdk.dir=/path/to/android-sdk
+        ndk.dir=/path/to/android-ndk
 
-        adb install bin/NativeActivity-debug.apk
+Edit the `app/build.gradle` file and set the `abiFilters` property to the chosen abi architecture (`armeabi` in this example). You must also change the `APP_ABI` property in the `app/src/main/Application.mk`.
 
-And run launched with:
+Now you should be able to build project with gradle:
 
-        adb shell am start -a android.intent.action.MAIN -n com.example.sfml/android.app.NativeActivity
+        gradle build
 
+If this results in an error stating "Could not open terminal for stdout: could not get termcap entry" then set the `TERM` variable to `dumb` (e.g. run `TERM=dumb gradle build` on linux).
+
+If all goes well then you can now install the apk to a device or emulator by running
+
+        gradle installDebug
 
 ## Troubleshooting
-
-### STL clash
-
-If you get a bunch of undefined reference to 'sf::String::String(char const*, std::__ndk1::locale const&)', rebuild SFML with `-DANDROID_STL=c++_shared`.
-
-### Toolchains version mismatch
-
-When building the example, if `ndk-build` complains about the toolchain version, update `jni/Application.mk` so that `NDK_TOOLCHAIN_VERSION` matches your toolset.
 
 ### Windows 10 and Android build
 

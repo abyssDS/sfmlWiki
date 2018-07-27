@@ -39,6 +39,8 @@ Follow these steps to download, build and install SFML:
 
         cd SFML
 
+* Before continuing, edit `src/SFML/Main` and add `JNIEXPORT` in front of the `void ANativeActivity_onCreate(ANativeActivity* activity, void* savedState, size_t savedStateSize)` line so that it becomes `JNIEXPORT void ANativeActivity_onCreate(ANativeActivity* activity, void* savedState, size_t savedStateSize)`. Otherwise your apk won't run (see [#1457](https://github.com/SFML/SFML/issues/1457)).
+
 * Create a build directory and enter it:
 
         mkdir build && cd build
@@ -50,7 +52,7 @@ Follow these steps to download, build and install SFML:
 
   * Now invoke CMake. Make sure to pass all parameters:
 
-          cmake -DCMAKE_SYSTEM_NAME=Android -DCMAKE_ANDROID_NDK=/path/to/ndk -DCMAKE_ANDROID_ARCH_ABI=armeabi -DCMAKE_ANDROID_STL_TYPE=c++_static ../..
+          cmake -DCMAKE_SYSTEM_NAME=Android -DCMAKE_ANDROID_NDK=/path/to/ndk -DCMAKE_ANDROID_ARCH_ABI=armeabi -DCMAKE_ANDROID_STL_TYPE=c++_static -DCMAKE_BUILD_TYPE=Debug ../..
 
   * If you've got multiple toolsets installed, like Visual Studio and MinGW, you might want to pick the type of project or makefile to create. You can do this by adding a parameter like `-G "MinGW Makefiles"` (note the quotes).
   * Important: It can be tricky to get this process to work with Visual Studio! I'd recommend you use MinGW's make (which is essentially GNU make). See the previous step to create the proper makefiles.

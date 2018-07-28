@@ -39,8 +39,6 @@ Follow these steps to download, build and install SFML:
 
         cd SFML
 
-* Before continuing, edit `src/SFML/Main` and add `JNIEXPORT` in front of the `void ANativeActivity_onCreate(ANativeActivity* activity, void* savedState, size_t savedStateSize)` line so that it becomes `JNIEXPORT void ANativeActivity_onCreate(ANativeActivity* activity, void* savedState, size_t savedStateSize)`. Otherwise your apk won't run (see [#1457](https://github.com/SFML/SFML/issues/1457)).
-
 * Create a build directory and enter it:
 
         mkdir build && cd build

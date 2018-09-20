@@ -8,8 +8,6 @@ You may contribute by improving existing pages, making new ones, or make simple 
 
 * [[Tutorials]]
 
-test
-
 * [[Source code|Sources]]
 
 * [[Projects]]

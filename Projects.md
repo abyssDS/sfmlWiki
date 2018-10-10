@@ -56,7 +56,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [PixZen](http://www.indiedb.com/games/pixzen): Simple 2D platform game with unique story.
 
 ### Open Source
-* [C++] [Metroid Prime : Némésis](http://metroidprime4.xooit.fr/index.php): 2D fangame following the famous Metroid Prime 3.
+* [C++] [Megaman Battle Network](https://github.com/TheMaverickProgrammer/battlenetwork): A full working battle engine replica of the gameboy advanced series. Includes customization for enemies, chips, navis, and the wiki has documentation.
 * [C#] [Pax: A Wargame](http://paxgame.sourceforge.net): A grand strategy game around the topics of war, diplomacy, exploration and trade, set during the Middle Ages and Renaissance. In early development, C#-coded, Python-scriptable.
 * [C++11] [Kroniax](http://github.com/AlexAUT/Kroniax_Cpp): a sidescroller, steer the ship without touching the walls
 * [C++11] [Open Hexagon](http://vittorioromeo.info/projects.html) ([GitHub](https://github.com/SuperV1234/SSVOpenHexagon)): C++11 open source clone of "Super Hexagon". Features JSON/LUA customizable game files, a soundtrack by BOSSFIGHT, pseudo-3D effects.

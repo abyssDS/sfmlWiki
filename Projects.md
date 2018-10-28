@@ -15,6 +15,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [LuaConsole] (http://en.sfml-dev.org/forums/index.php?topic=15962.msg114040#msg114040): Simple to use, both in code and in app, console/terminal for Lua. Works with SFML 2.1 and Lua 5.1, LuaJIT 2.0 and Lua 5.2 .
 
 ### Other extensions
+* [C++] [Swoosh](https://github.com/TheMaverickProgrammer/Swoosh): Header-only mini library for activity management and segues. Create complex transitions with easein functions, timers, and shaders with minimal code all while being human-readable friendly. Comes with extra utility functions specific to but not limited to games.
 * [C++] [[Zoost & Zoom libraries|Project:-Zoost-and-Zoom]]: Geometric objects, customizable shapes, animation tools & light rendering.
 * [C++] [[Thor|Project:-Thor]]: Particle systems, animations, pausable clocks, vector functions, resource/event handling, triangulations, and much more...
 * [C++] [BZeps-SFML-Snippets](https://github.com/BarrensZeppelin/BZeps-SFML-Snippets): Particle System, Animation & Tileset support and other good stuffs. Currently in development, any help/pull requests greatly appreciated!

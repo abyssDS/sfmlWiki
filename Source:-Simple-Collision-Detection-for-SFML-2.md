@@ -52,7 +52,7 @@ it freely, subject to the following restrictions:
 #ifndef COLLISION_H
 #define COLLISION_H
 
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 namespace Collision {
 	//////
@@ -100,7 +100,7 @@ namespace Collision {
  * File:   collision.cpp
  * Author: Nick (original version), ahnonay (SFML2 compatibility)
  */
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <map>
 #include "Collision.h"
 

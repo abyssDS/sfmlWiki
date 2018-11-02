@@ -1,6 +1,6 @@
 C++ version: https://pastebin.com/aTmTe79G
 
-Optimized SFML.Net tilemap renderer(based on vertex array). Check MinimalTest class below to see how to use it with your game.
+Optimized SFML.Net tilemap renderer(based on vertex array). Check MinimalTest class below to see how to use it with your game. 
 
 ```csharp
 using System;

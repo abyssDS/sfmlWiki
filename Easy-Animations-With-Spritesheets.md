@@ -44,7 +44,8 @@ class Animation {
    Animation(sf::Sprite &target);
    virtual ~Animation();
    void addFrame(Frame&& frame);
-   void update(double elapsed);
+   void update(double elapsed); 
+   const double getLength() const { return totalLength; }
 };
 ```
 

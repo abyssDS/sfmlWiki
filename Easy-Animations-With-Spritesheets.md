@@ -7,7 +7,7 @@ This becomes increasingly difficult to manage and this is where spritesheets tak
 ![klyde frog](https://img.itch.zone/aW1hZ2UvMTI5NzM4LzU5NjExMC5wbmc=/347x500/FhexJa.png)
 
 # The Design
-But how do we animate a sprite like this? SFML sprites have a component called the [https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Sprite.php#a3492896fe7b63f58ae022c5b8bec5c98](TextureRect) of type [https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Rect.php](sf::IntRect) that defines the rendering portion of its texture; similar to how the `sf::View` determines what part of your window is drawn.
+But how do we animate a sprite like this? SFML sprites have a component called the [TextureRect](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Sprite.php#a3492896fe7b63f58ae022c5b8bec5c98) of type [sf::IntRect](https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Rect.php) that defines the rendering portion of its texture; similar to how the `sf::View` determines what part of your window is drawn.
 
 What we'll do is write an **Animation ** class that takes in a sprite as its target. Every update frame, it will step through each rectangle and apply it to its target. We can still draw and transform the sprite the normal SFML way. Our class will only be responsible for 
 

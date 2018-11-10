@@ -65,8 +65,8 @@ Our add frame _moves_ the new frame into the list and updates the total length o
 
 ```c++
      void Animation::addFrame(Frame&& frame) {
-       frames.push_back(std::move(frame)); 
        totalLength += frame.duration; 
+       frames.push_back(std::move(frame)); 
      }
 ```
 

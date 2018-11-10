@@ -37,6 +37,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 
 ### Graphics
 
+* [C++] [https://github.com/SFML/SFML/wiki/Easy-Animations-With-Spritesheets](Easy Animations With Spritesheets)
 * [C++] [[Using sf::View|Tutorial:-Using-View]]
 * [C++] [[Manage different screens in a game|Tutorial:-Manage-different-Screens]]
 * [C++] [[Using CEGUI in SFML|Tutorial:-CEGUI-and-SFML]]

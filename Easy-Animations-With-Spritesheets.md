@@ -111,11 +111,11 @@ animation.addFrame({sf::IntRect(x,y,w,h), 0.1});
 animation.addFrame({sf::IntRect(x,y,w,h), 0.4});
 animation.addFrame({sf::IntRect(x,y,w,h), 0.1});
 // do this for as many frames as you need
-`
+```
 
 Finally in your main loop:
 
-`
+```c++
 animation.update(elapsed);
 window.draw(myCharacter);
 ```

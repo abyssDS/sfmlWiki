@@ -15,7 +15,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [LuaConsole] (http://en.sfml-dev.org/forums/index.php?topic=15962.msg114040#msg114040): Simple to use, both in code and in app, console/terminal for Lua. Works with SFML 2.1 and Lua 5.1, LuaJIT 2.0 and Lua 5.2 .
 
 ### Other extensions
-* [C++] [Swoosh](https://github.com/TheMaverickProgrammer/Swoosh): Header-only mini library for activity management and segues. Create complex transitions with easein functions, timers, and shaders with minimal code all while being human-readable friendly. Comes with extra utility functions specific to but not limited to games.
+* [C++] [Swoosh](https://github.com/TheMaverickProgrammer/Swoosh): Header-only mini library for activity management and segues. Create complex transitions with easein functions, timers, action lists, and shaders with minimal code all while being human-readable friendly. Comes with extra utility functions specific to but not limited to games.
 * [C++] [[Zoost & Zoom libraries|Project:-Zoost-and-Zoom]]: Geometric objects, customizable shapes, animation tools & light rendering.
 * [C++] [[Thor|Project:-Thor]]: Particle systems, animations, pausable clocks, vector functions, resource/event handling, triangulations, and much more...
 * [C++] [BZeps-SFML-Snippets](https://github.com/BarrensZeppelin/BZeps-SFML-Snippets): Particle System, Animation & Tileset support and other good stuffs. Currently in development, any help/pull requests greatly appreciated!
@@ -57,6 +57,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [PixZen](http://www.indiedb.com/games/pixzen): Simple 2D platform game with unique story.
 
 ### Open Source
+* [C++] [Small Pokemon Engine](https://github.com/TheMaverickProgrammer/PokemonHeartGold-Swoosh): A small yet solid foundation for making pokemon-like games with a feature-rich battle engine that is easy to mod and add more content.
 * [C++] [Megaman Battle Network](https://github.com/TheMaverickProgrammer/battlenetwork): A full working battle engine replica of the gameboy advanced series. Includes customization for enemies, chips, navis, and the wiki has documentation.
 * [C#] [Pax: A Wargame](http://paxgame.sourceforge.net): A grand strategy game around the topics of war, diplomacy, exploration and trade, set during the Middle Ages and Renaissance. In early development, C#-coded, Python-scriptable.
 * [C++11] [Kroniax](http://github.com/AlexAUT/Kroniax_Cpp): a sidescroller, steer the ship without touching the walls

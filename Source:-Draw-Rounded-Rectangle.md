@@ -249,7 +249,7 @@ sf::Vector2f RoundedRectangleShape::getPoint(std::size_t index) const
     sf::Vector2f center;
     unsigned int centerIndex = index/myCornerPointCount;
     unsigned int offset = 0;
-    static const double pi = 3.141592654f;
+    static const float pi = 3.141592654f;
 
     switch(centerIndex)
     {

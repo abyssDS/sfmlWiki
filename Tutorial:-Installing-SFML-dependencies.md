@@ -12,6 +12,7 @@ apt-get install libxcb-randr0-dev -y
 apt-get install libxcb-image0-dev -y
 apt-get install libgl1-mesa-dev -y
 apt-get install libudev-dev -y
+apt-get install libxrandr-dev -y
 
 # sfml-graphics
 apt-get install libfreetype6-dev -y

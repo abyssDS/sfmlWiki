@@ -43,16 +43,17 @@ Follow these steps to download, build and install SFML:
 
         mkdir build && cd build
 
-* You can repeat the following steps for all available architectures. Unfortunately, you can't build all targets for SFML at once. The following lines create a `armeabi` build. If you'd like to build for any other target, just replace all occurences. Other valid targets would be `armeabi-v7a`, `mips`, and `x86`.
+* You can repeat the following steps for all available architectures. Unfortunately, you can't build all targets for SFML at once. The following lines create a `armeabi-v7a` build. If you'd like to build for any other target, just replace all occurences. Other valid targets would be `mips`, and `x86`.
   * Create a sub directory and enter it:
 
-          mkdir armeabi && cd armeabi
+          mkdir armeabi-v7a && cd armeabi-v7a
 
   * Now invoke CMake. Make sure to pass all parameters:
 
-          cmake -DCMAKE_SYSTEM_NAME=Android -DCMAKE_ANDROID_NDK=/path/to/ndk -DCMAKE_ANDROID_ARCH_ABI=armeabi -DCMAKE_ANDROID_STL_TYPE=c++_static -DCMAKE_BUILD_TYPE=Debug ../..
+          cmake -DCMAKE_SYSTEM_NAME=Android -DCMAKE_ANDROID_NDK=/path/to/ndk -DCMAKE_ANDROID_ARCH_ABI=armeabi-v7a -DCMAKE_ANDROID_STL_TYPE=c++_static -DCMAKE_BUILD_TYPE=Debug ../..
 
   * If you've got multiple toolsets installed, like Visual Studio and MinGW, you might want to pick the type of project or makefile to create. You can do this by adding a parameter like `-G "MinGW Makefiles"` (note the quotes).
+  * If building process fails due to error 'No toolchain for ABI 'armeabi' found in the NDK_PATH' then you need to update your CMake.
   * Important: It can be tricky to get this process to work with Visual Studio! I'd recommend you use MinGW's make (which is essentially GNU make). See the previous step to create the proper makefiles.
   * Wait for the process to complete. There might be a few warnings regarding the toolchain(s), but you shouldn't see any other warnings or error messages.
   * This will create a makefile or project for you, based on your current host system.
@@ -72,8 +73,6 @@ Add a "local.properties" file with the following contents, specifying the androi
 
         sdk.dir=/path/to/android-sdk
         ndk.dir=/path/to/android-ndk
-
-Edit the `app/build.gradle` file and set the `abiFilters` property to the chosen abi architecture (`armeabi` in this example). You must also change the `APP_ABI` property in the `app/src/main/jni/Application.mk`.
 
 Now you should be able to build project with gradle:
 

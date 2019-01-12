@@ -62,7 +62,7 @@ Follow these steps to download, build and install SFML:
           make && sudo make install
 
   * If everything went fine, this should have copied the created binaries as well as header files and dependencies to your Android NDK's `source` directory.
-  * You're now ready to use SFML in the NDK together with devices understanding the compiled target files (in this example `armeabi`).
+  * You're now ready to use SFML in the NDK together with devices understanding the compiled target files (in this example `armeabi-v7a`).
 
 ## Building and Executing the Android Example
 Go into the example directory:

@@ -74,6 +74,8 @@ Add a "local.properties" file with the following contents, specifying the androi
         sdk.dir=/path/to/android-sdk
         ndk.dir=/path/to/android-ndk
 
+If you aren't using `armeabi-v7a` as ABI then you must also change the `abiFilters` property in `app/build.gradle` and the `APP_ABI` property in `app/src/main/jni/Application.mk`.
+
 Now you should be able to build project with gradle:
 
         gradle build

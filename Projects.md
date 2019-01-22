@@ -13,6 +13,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++ or C#] [TGUI](http://tgui.eu/): An easy to use cross-platform GUI based on SFML 2 and written in C++.
 * [C++] [Squeak](http://en.sfml-dev.org/forums/index.php?topic=14428.0): Simple and small add-on to use a customisable mouse cursor/pointer.
 * [C++] [LuaConsole] (http://en.sfml-dev.org/forums/index.php?topic=15962.msg114040#msg114040): Simple to use, both in code and in app, console/terminal for Lua. Works with SFML 2.1 and Lua 5.1, LuaJIT 2.0 and Lua 5.2 .
+* [C++11] [SFMLApp](https://github.com/wagnrd/SFMLMath): A light C++ framework which allows you to easily create more complex GUIs and still let's you use the full SFML features. You can create your own capsulated views and simply let SFMLApp switch between them (by [wagnrd](https://github.com/wagnrd))
 
 ### Other extensions
 * [C++] [Swoosh](https://github.com/TheMaverickProgrammer/Swoosh): Header-only mini library for activity management and segues. Create complex transitions with easein functions, timers, action lists, and shaders with minimal code all while being human-readable friendly. Comes with extra utility functions specific to but not limited to games.
@@ -21,6 +22,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [BZeps-SFML-Snippets](https://github.com/BarrensZeppelin/BZeps-SFML-Snippets): Particle System, Animation & Tileset support and other good stuffs. Currently in development, any help/pull requests greatly appreciated!
 * [Ruby] [[GDE|Project:-Groogy's-Development-Environment]]: An environment for rbSFML that helps out with development.
 * [C++] [Selba Ward](http://en.sfml-dev.org/forums/index.php?topic=19496): collection of generic, reusable and flexible drawable objects for SFML (by [Hapax](https://github.com/hapaxia))
+* [C++] [SFMLMath](https://github.com/wagnrd/SFMLMath): Simple header-only vector math library for SFML. It uses the built-in vector types to keep the usage as natural and SFML-like as possible (by [wagnrd](https://github.com/wagnrd))
 
 ### Physics
 * [C++] [SFML with Box2D](https://github.com/Krozark/Ekiis): A small project that let you use Box2D with SFML.
@@ -68,3 +70,4 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++11] [Cendric - an RPG platformer](http://cendric.ch/) ([GitHub](https://github.com/Tizian/Cendric2)): A platformer with RPG elements. Features: Lighting, Particles, Water-Simulation; Dynamic levels and spells.
 * [C++11] [EmptyEpsilon - a cooperative multiplayer spaceship bridge simulator](http://emptyepsilon.org) ([GitHub](https://github.com/daid/EmptyEpsilon)): 1-6 players work together on the bridge stations (helms, weapons, engineering, science, relay, captain) of a spaceship. Multi-ship play, internet, scriptable scenarios, Lua scripting, HTTP API, multiple 3D viewscreens, Game Master mode.
 * [C++11] [CubePuzzle](https://github.com/Dandarawy/OpenGLPuzzleGame): A simple 3d puzzle game, the source code and commits are organized to teach how to use SFML and OpenGL to create 3d games.
+* [C++11] [Pong](https://github.com/wagnrd/Pong): An implementation of the game Pong with a coop mode on a single computer (by [wagnrd](https://github.com/wagnrd))

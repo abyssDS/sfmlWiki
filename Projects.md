@@ -13,7 +13,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++ or C#] [TGUI](http://tgui.eu/): An easy to use cross-platform GUI based on SFML 2 and written in C++.
 * [C++] [Squeak](http://en.sfml-dev.org/forums/index.php?topic=14428.0): Simple and small add-on to use a customisable mouse cursor/pointer.
 * [C++] [LuaConsole](http://en.sfml-dev.org/forums/index.php?topic=15962.msg114040#msg114040): Simple to use, both in code and in app, console/terminal for Lua. Works with SFML 2.1 and Lua 5.1, LuaJIT 2.0 and Lua 5.2 .
-* [C++11] [SFMLApp](https://github.com/wagnrd/SFMLMath): A light C++ framework which allows you to easily create more complex GUIs and still let's you use the full SFML features. You can create your own capsulated views and simply let SFMLApp switch between them (by [wagnrd](https://github.com/wagnrd))
+* [C++11] [SFMLApp](https://github.com/wagnrd/SFMLMath): A light C++ framework to easily manage multiple views of your SFML application (by [wagnrd](https://github.com/wagnrd))
 
 ### Other extensions
 * [C++] [Swoosh](https://github.com/TheMaverickProgrammer/Swoosh): Header-only mini library for activity management and segues. Create complex transitions with easein functions, timers, action lists, and shaders with minimal code all while being human-readable friendly. Comes with extra utility functions specific to but not limited to games.

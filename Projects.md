@@ -71,4 +71,6 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++11] [EmptyEpsilon - a cooperative multiplayer spaceship bridge simulator](http://emptyepsilon.org) ([GitHub](https://github.com/daid/EmptyEpsilon)): 1-6 players work together on the bridge stations (helms, weapons, engineering, science, relay, captain) of a spaceship. Multi-ship play, internet, scriptable scenarios, Lua scripting, HTTP API, multiple 3D viewscreens, Game Master mode.
 * [C++11] [CubePuzzle](https://github.com/Dandarawy/OpenGLPuzzleGame): A simple 3d puzzle game, the source code and commits are organized to teach how to use SFML and OpenGL to create 3d games.
 * [C++11] [Pong](https://github.com/wagnrd/Pong): An implementation of the game Pong in its unique arcade look (by [wagnrd](https://github.com/wagnrd))
-* [C++] [Tao's Adventure](https://github.com/shaswata56/Taos-Adventure): It is a simple 2D adventure platformer game. Build from scratch using C++ and SFML .
+* [C++] [Tao's Adventure](https://github.com/shaswata56/Taos-Adventure): It is a simple 2D adventure platformer game. Build from scratch using C++ and SFML . (by [shaswata56](https://github.com/shaswata56) and [KhanShaheb34](https://github.com/KhanShaheb34))
+* [C++] [Andropple](https://github.com/shaswata56/Andropple): A basic SFML and C++ game, where droid bot eats apple ;) (by [shaswata56](https://github.com/shaswata56))
+* [C++] [Snake](https://github.com/shaswata56/Snake): Simple snake game in C++ (by [shaswata56](https://github.com/shaswata56))

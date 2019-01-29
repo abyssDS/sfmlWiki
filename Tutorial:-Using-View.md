@@ -9,7 +9,7 @@ But the complicated part here is not *what* `sf::View` can do, but how it actual
 
 ### Examples
 
-[![initial](http://dev.my-gate.net/wp-content/uploads/2012/06/initial_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/initial.png)
+[![initial](https://dev.my-gate.net/wp-content/uploads/2012/06/initial_thumb.png)](https://dev.my-gate.net/wp-content/uploads/2012/06/initial.png)
 
 So if you now want to move a sprite around without altering its coordinates, but instead moving the 2D camera, you can easily do this by calling: 
 
@@ -17,7 +17,7 @@ So if you now want to move a sprite around without altering its coordinates, but
 view.move(360.f, 360.f);
 ```
 
-[![move](http://dev.my-gate.net/wp-content/uploads/2012/06/move_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/move.png)
+[![move](https://dev.my-gate.net/wp-content/uploads/2012/06/move_thumb.png)](https://dev.my-gate.net/wp-content/uploads/2012/06/move.png)
 
 Next you may want to get a closer look at something, so you can use: 
 
@@ -25,7 +25,7 @@ Next you may want to get a closer look at something, so you can use:
 view.zoom(0.1f);
 ```
 
-[![zoom](http://dev.my-gate.net/wp-content/uploads/2012/06/zoom_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/zoom.png)
+[![zoom](https://dev.my-gate.net/wp-content/uploads/2012/06/zoom_thumb.png)](https://dev.my-gate.net/wp-content/uploads/2012/06/zoom.png)
 
 Or you want to rotate everything:
 
@@ -33,7 +33,7 @@ Or you want to rotate everything:
 view.rotate(20.f);
 ```
 
-[![rotate](http://dev.my-gate.net/wp-content/uploads/2012/06/rotate_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/rotate.png)
+[![rotate](https://dev.my-gate.net/wp-content/uploads/2012/06/rotate_thumb.png)](https://dev.my-gate.net/wp-content/uploads/2012/06/rotate.png)
 
 Now you get the idea what the camera can do and you'd probably be even able to program something with it, but do you understand how it works? Do you know what the center of the `sf::View` is? So let's get a bit more technical.
 
@@ -71,16 +71,16 @@ Here are some visual aids to better understand the issue at hand.
 The black square should represent the window and since the viewport was set to a fixed value the origin of the `sf::View` coordinate system will always be in the center of the window.
 Here are the two separate coordinate systems:
 
-[![coord-render](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-render_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-render.png)
-[![coord-view](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-view_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-view.png)
+[![coord-render](https://dev.my-gate.net/wp-content/uploads/2012/06/coord-render_thumb.png)](https://dev.my-gate.net/wp-content/uploads/2012/06/coord-render.png)
+[![coord-view](https://dev.my-gate.net/wp-content/uploads/2012/06/coord-view_thumb.png)](https://dev.my-gate.net/wp-content/uploads/2012/06/coord-view.png)
 
 By combining them, something like in this example can be achieved:
 
-[![coord-comb](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb_thumb.png)
+[![coord-comb](https://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb_thumb.png)](https://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb_thumb.png)
 
 Then we have our two operations `rotate()` and `zoom()`, while the last image combines the two transformations:
 
-[![coord-comb-rot](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-rot_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-rot.png) [![coord-comb-zoom](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom.png) [![coord-comb-zoom-rot](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom-rot_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom-rot.png)
+[![coord-comb-rot](https://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-rot_thumb.png)](https://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-rot.png) [![coord-comb-zoom](https://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom_thumb.png)](https://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom.png) [![coord-comb-zoom-rot](https://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom-rot_thumb.png)](https://dev.my-gate.net/wp-content/uploads/2012/06/coord-comb-zoom-rot.png)
 
 Note that in the images above, I have moved the world coordinate system around to get a few different variation. I guess, in many cases it's easier to use the `move()` function, because you won't need to deal with, where to place the origin point. On the other hand you really need to understand how an `sf::View` works to use `rotate()` and `zoom()`, because it's not obvious, that those transformation will happen around the `sf::View` origin, i.e. the middle of the view.
 
@@ -122,7 +122,7 @@ window.draw(rightSprite);
 
 With all the knowledge provided above, you should now have a good understanding of why we divide the window width by two or why `viewRight` is defined with 0.5 as first argument.
 
-[![split](http://dev.my-gate.net/wp-content/uploads/2012/06/split_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/split.png)
+[![split](https://dev.my-gate.net/wp-content/uploads/2012/06/split_thumb.png)](https://dev.my-gate.net/wp-content/uploads/2012/06/split.png)
 
 Another example I promised to show is how to create a mini-map, i.e. a scaled down overview of the whole map. Keep in mind that in practice it can be better to construct your own mini-map, rather than just scaling down the original one, since the quality can get fairly poor. But let us first test how it will really look like. 
 
@@ -141,11 +141,11 @@ window.setView(minimap);
 window.draw(map);
 ```
 
-[![minimap](http://dev.my-gate.net/wp-content/uploads/2012/06/minimap_thumb.png)](http://dev.my-gate.net/wp-content/uploads/2012/06/minimap.png)
+[![minimap](https://dev.my-gate.net/wp-content/uploads/2012/06/minimap_thumb.png)](https://dev.my-gate.net/wp-content/uploads/2012/06/minimap.png)
 
 ## The `mapPixel/CoordsToCoords/Pixel(…)` function
 
-As we've seen in the paragraph with the source rectangle it's not very intuitive to work with those two coordinate system. It's also pretty hard to determine by hand at which position for instance your mouse cursor is located relative to the view underneath. But why would you want to do this by hand, since SFML has already a build in functions that will do the heavy lifting for you, namely [`mapPixelToCoords(…)`](http://www.sfml-dev.org/documentation/2.4.1/classsf_1_1RenderTarget.php#a46eb08f775dd1420d6207ea87dde6e54) and [`mapCoordsToPixel(…)`](http://www.sfml-dev.org/documentation/2.4.1/classsf_1_1RenderTarget.php#a7a2d427bdb9bd8f9f456fcf82813aa60)?
+As we've seen in the paragraph with the source rectangle it's not very intuitive to work with those two coordinate system. It's also pretty hard to determine by hand at which position for instance your mouse cursor is located relative to the view underneath. But why would you want to do this by hand, since SFML has already a build in functions that will do the heavy lifting for you, namely [`mapPixelToCoords(…)`](https://www.sfml-dev.org/documentation/2.4.1/classsf_1_1RenderTarget.php#a46eb08f775dd1420d6207ea87dde6e54) and [`mapCoordsToPixel(…)`](https://www.sfml-dev.org/documentation/2.4.1/classsf_1_1RenderTarget.php#a7a2d427bdb9bd8f9f456fcf82813aa60)?
 
 The functions do exactly what their name suggest:
 
@@ -160,15 +160,15 @@ These functions are quite essential and very useful, e.g. you've moved your view
 
 I've created a small application which packs up every introduced concept. The code isn't the prettiest but contains a lot of more or less useful comments. I also provide a package that contains just the images presented in this blog post and since maybe some people want both, I've created one that contains everything.
 
-* [Code Package](http://dev.my-gate.net/wp-content/uploads/2012/06/code.zip) (392 KB)
-* [Image Package](http://dev.my-gate.net/wp-content/uploads/2012/06/images.zip) (801 KB)
-* [Full Package](http://dev.my-gate.net/wp-content/uploads/2012/06/complete.zip) (1.16 MB)
+* [Code Package](https://dev.my-gate.net/wp-content/uploads/2012/06/code.zip) (392 KB)
+* [Image Package](https://dev.my-gate.net/wp-content/uploads/2012/06/images.zip) (801 KB)
+* [Full Package](https://dev.my-gate.net/wp-content/uploads/2012/06/complete.zip) (1.16 MB)
 
-Direct questions to this article can be made on the [forum](http://en.sfml-dev.org/forums/index.php?topic=8334) or on my [blog](http://dev.my-gate.net/2012/06/using-sfview/). Feel free to edit/correct mistakes on this wiki entry!
+Direct questions to this article can be made on the [forum](https://en.sfml-dev.org/forums/index.php?topic=8334) or on my [blog](https://dev.my-gate.net/2012/06/using-sfview/). Feel free to edit/correct mistakes on this wiki entry!
 
 ## Full Package main.cpp Updated for SFML v2
 
-* Assumes a fresh SFML v2 Project Template within Xcode with the PNGs from [Full Package](http://dev.my-gate.net/wp-content/uploads/2012/06/complete.zip) (1.16 MB) copied into the project's Resources folder
+* Assumes a fresh SFML v2 Project Template within Xcode with the PNGs from [Full Package](https://dev.my-gate.net/wp-content/uploads/2012/06/complete.zip) (1.16 MB) copied into the project's Resources folder
 
 ```cpp
 #include <iostream>

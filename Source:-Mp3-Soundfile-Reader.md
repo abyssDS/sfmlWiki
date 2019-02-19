@@ -604,3 +604,51 @@ SoundFileReaderMp3.o: SoundFileReaderMp3.cpp SoundFileReaderMp3.hpp
 clean:
 	rm $(AUDIOEXE) *.o
 ```
+
+## <a name="4" />Bonus: A possible seek implementation (by tschumacher) [ [Top] ](#top)
+```cpp
+void SoundFileReaderMp3::seek(sf::Uint64 sampleOffset) {
+		// tschumacher: Based on this example: https://github.com/gypified/libmpg123/blob/master/doc/examples/feedseek.c
+		// tschumacher: Spent a lot of time to figure out how to make that working with SFML
+		// tschumacher: This implementation does not protect you from going out of bounds (seeking beyond music duration), seek() itself does never fail, but when you go out of bounds, the read() will fail.
+
+		// Helper variables
+		sf::Int64 read; // How many units were read?
+		int status; // mpg123 status
+		off_t inputOffset; // Input offset from mpg123
+		off_t seekOffset; // Seek offset from SFML
+
+		// Calculate seek offset from sfml offset by removing the channel count
+		// tschumacher: Important, SFML multiplies the channel count in
+		seekOffset = static_cast<off_t>(sampleOffset) / m_outputFormat.m_channels; // tschumacher: You need to make m_channels accessible
+
+		// Feed seek to sample offset
+		while ((status = mpg123_feedseek(handle_, seekOffset, SEEK_SET, &inputOffset)) == MPG123_NEED_MORE)
+		{
+
+			// Read one unit
+			read = m_stream->read(buffer_, sizeof(unsigned char));
+
+			// Nothing to read
+			if (read <= 0)
+				break;
+
+			// Try to feed buffer into mpg123
+			if (mpg123_feed(handle_, buffer_, static_cast<size_t>(read)) == MPG123_ERR)
+			{
+				std::cerr << "seek() @mpg123_feed(): " << mpg123_strerror(handle_) << std::endl;
+				return;
+			}
+		}
+
+		// Feedseek failed
+		if (status == MPG123_ERR)
+		{
+			std::cerr << "seek() @mpg123_feedseek(): " << mpg123_strerror(handle_) << std::endl;
+			return;
+		}
+
+		// Set correct position in stream
+		m_stream->seek(inputOffset);
+}
+```

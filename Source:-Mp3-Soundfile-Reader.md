@@ -623,20 +623,20 @@ void SoundFileReaderMp3::seek(sf::Uint64 sampleOffset) {
 	seekOffset = static_cast<off_t>(sampleOffset) / m_outputFormat.m_channels; // tschumacher: You need to make m_channels accessible
 
 	// Feed seek to sample offset
-	while ((status = mpg123_feedseek(handle_, seekOffset, SEEK_SET, &inputOffset)) == MPG123_NEED_MORE)
+	while ((status = mpg123_feedseek(m_handle, seekOffset, SEEK_SET, &inputOffset)) == MPG123_NEED_MORE)
 	{
 
 		// Read one unit
-		read = m_stream->read(buffer_, sizeof(unsigned char));
+		read = m_stream->read(m_streambuffer, sizeof(unsigned char));
 
 		// Nothing to read
 		if (read <= 0)
 			break;
 
 		// Try to feed buffer into mpg123
-		if (mpg123_feed(handle_, buffer_, static_cast<size_t>(read)) == MPG123_ERR)
+		if (mpg123_feed(handle_, m_streambuffer, static_cast<size_t>(read)) == MPG123_ERR)
 		{
-			std::cerr << "seek() @mpg123_feed(): " << mpg123_strerror(handle_) << std::endl;
+			std::cerr << "seek() @mpg123_feed(): " << mpg123_strerror(m_handle) << std::endl;
 			return;
 		}
 	}
@@ -644,7 +644,7 @@ void SoundFileReaderMp3::seek(sf::Uint64 sampleOffset) {
 	// Feedseek failed
 	if (status == MPG123_ERR)
 	{
-		std::cerr << "seek() @mpg123_feedseek(): " << mpg123_strerror(handle_) << std::endl;
+		std::cerr << "seek() @mpg123_feedseek(): " << mpg123_strerror(m_handle) << std::endl;
 		return;
 	}
 

@@ -3,7 +3,6 @@
 By MickaGL
 
 OpenFromMemory by trigger_death
-
 OnSeek correction by tschumacher
 
 Works exclusively with the latest revision of SFML 2. Later versions may require you change most SFML names to start with a lowercase letter.
@@ -222,7 +221,7 @@ void Mp3::OnSeek(sf::Time timeOffset)
     
     // tschumacher: sampleoff must be (seconds * samplingRate) to make this working correctly
     if (myHandle)
-        mpg123_seek(myHandle, static_cast<off_t>(timeOffset.AsSeconds() * mySamplingRate), 0);
+        mpg123_seek(myHandle, static_cast<off_t>(timeOffset.AsSeconds() * mySamplingRate), SEEK_SET);
 }
 
 ssize_t MemoryDataRead(void* rawMp3Data, void* buffer, size_t nbyte)

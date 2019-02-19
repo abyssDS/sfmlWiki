@@ -3,6 +3,7 @@
 By MickaGL
 
 OpenFromMemory by trigger_death
+
 OnSeek correction by tschumacher
 
 Works exclusively with the latest revision of SFML 2. Later versions may require you change most SFML names to start with a lowercase letter.

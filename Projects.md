@@ -74,3 +74,4 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [Tao's Adventure](https://github.com/shaswata56/Taos-Adventure): It is a simple 2D adventure platformer game. Build from scratch using C++ and SFML . (by [shaswata56](https://github.com/shaswata56) and [KhanShaheb34](https://github.com/KhanShaheb34))
 * [C++] [Andropple](https://github.com/shaswata56/Andropple): A basic SFML and C++ game, where droid bot eats apple ;) (by [shaswata56](https://github.com/shaswata56))
 * [C++] [Snake](https://github.com/shaswata56/Snake): Simple snake game in C++ (by [shaswata56](https://github.com/shaswata56))
+* [C++] [Randballs](https://github.com/gale93/randballs): simple SFML and EnTT playground.

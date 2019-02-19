@@ -4,6 +4,8 @@ By MickaGL
 
 OpenFromMemory by trigger_death
 
+OnSeek correction by tschumacher
+
 Works exclusively with the latest revision of SFML 2. Later versions may require you change most SFML names to start with a lowercase letter.
 
 Here is a class using the library [mpg123](http://www.mpg123.de/index.shtml) which allows playback of MP3 files and memory objects.  
@@ -40,6 +42,7 @@ private :
     size_t              myBufferSize;
     unsigned char*      myBuffer;
     sf::Mutex           myMutex;
+    long                mySamplingRate;
 };
 
 } // namespace sfe
@@ -70,7 +73,8 @@ void MemoryDataCleanup(void* rawMp3Data);
 Mp3::Mp3() :
 myHandle    (NULL),
 myBufferSize(0),
-myBuffer    (NULL)
+myBuffer    (NULL),
+mySamplingRate(0)
 {
     int  err = MPG123_OK;
     if ((err = mpg123_init()) != MPG123_OK)
@@ -130,6 +134,7 @@ bool Mp3::OpenFromFile(const std::string& filename)
         std::cerr << "Failed to get format information for \"" << filename << "\"" << std::endl;
         return false;
     }
+    mySamplingRate = rate;
 
     myBufferSize = mpg123_outblock(myHandle);
     myBuffer = new unsigned char[myBufferSize];
@@ -178,6 +183,7 @@ bool Mp3::OpenFromMemory(void* data, size_t sizeInBytes)
         std::cerr << "Failed to get format information for Memory Object" << std::endl;
         return false;
     }
+    mySamplingRate = rate;
 
     myBufferSize = mpg123_outblock(myHandle);
     myBuffer = new unsigned char[myBufferSize];
@@ -213,9 +219,10 @@ bool Mp3::OnGetData(Chunk& data)
 void Mp3::OnSeek(sf::Time timeOffset)
 {
     sf::Lock lock(myMutex);
-
+    
+    // tschumacher: sampleoff must be (seconds * samplingRate) to make this working correctly
     if (myHandle)
-        mpg123_seek(myHandle, (off_t)timeOffset.AsSeconds(), 0);
+        mpg123_seek(myHandle, static_cast<off_t>(timeOffset.AsSeconds() * mySamplingRate), 0);
 }
 
 ssize_t MemoryDataRead(void* rawMp3Data, void* buffer, size_t nbyte)

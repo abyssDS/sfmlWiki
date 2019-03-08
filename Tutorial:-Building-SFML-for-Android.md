@@ -3,6 +3,9 @@ Crosscompiling SFML for Android can be a bit tricky at times, depending on your 
 
 These steps are experimental, feel free to edit this page and make improvements.
 
+## Windows
+If you're using Windows, feel free to check out [the scripts here](https://github.com/acsbendi/Build-SFML-For-Android-On-Windows), these will build SFML for you.
+
 ## Requirements
 Before you can start, you'll need the proper development environment. Basically, you'll need the following things installed (some might be installed already, e.g. to build SFML for your host machine):
 

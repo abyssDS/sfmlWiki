@@ -2,7 +2,7 @@
 <a name="top" />
 At the core of every game engine is the inevitable Game Object or Game Entity. Many game developers find that each Game Object/Entity need special properties (e.g. hit points, speed, velocity, bullets, etc.). Some of these properties are unique for a specific Game Object/Entity and others are used for each Game Objects/Entity. The challenge is creating code that can deal with both situations without causing too much complexity in your Game Mechanics (or rules that define game interactions between each Game Object/Entity). For the [[GQE Project|http://code.google.com/p/gqe/]] we have developed a simple but powerful PropertyManager class and IProperty and TProperty holder classes. By using only these three classes we can customize each Game Object/Entity easily without resorting to messy Inheritance or complex compositions. This way the game rules can simply detect if a specific property is available in the interacting entity and tweak its value as necessary.
 
-###Quick Links###
+### Quick Links ###
 
 1. [PropertyManager](#manager)
 2. [IProperty](#iproperty)

@@ -44,6 +44,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 * [C++] [[Create and use SetIcon|Tutorial:-Create-and-Use-SetIcon]]
 * [C++] [[Correctly display accents|Tutorial:-Correctly-Display-Accents]]
 * [C++] [[Grouping your Drawables in a Group class|Tutorial:-Drawable-Group]]
+* [C++] [[How to take a screenshot?|Tutorial:-How-to-take-a-screenshot?]]
 
 ### Audio
 * [C++] [[Playing a sine wave|Tutorial:-Play-Sine-Wave]] / [[(same in OCaml)|Tutorial:-Play-Sine-Wave-(OCaml)]]

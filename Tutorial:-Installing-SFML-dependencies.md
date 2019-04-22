@@ -1,26 +1,20 @@
-In order to build SFML on Linux, several libraries need to be installed first.
+In order to build SFML on Linux, several libraries and their development headers need to be installed first. There is an exhaustive list available at the [SFML website](https://www.sfml-dev.org/tutorials/2.4/compile-with-cmake.php#installing-dependencies).
 
-Here is a simple shell script for Ubuntu that uses apt-get. Even if you use a different package manager, the package names may still be useful for you.
-```sh
-#!/bin/sh
-
-# sfml-window
-apt-get install libx11-dev -y
-apt-get install libxcb1-dev -y
-apt-get install libx11-xcb-dev -y
-apt-get install libxcb-randr0-dev -y
-apt-get install libxcb-image0-dev -y
-apt-get install libxrandr-dev -y
-apt-get install libgl1-mesa-dev -y
-apt-get install libudev-dev -y
-apt-get install libxrandr-dev -y
-
-# sfml-graphics
-apt-get install libfreetype6-dev -y
-apt-get install libjpeg-dev -y
-
-# sfml-audio
-apt-get install libopenal-dev -y
-apt-get install libflac-dev -y
-apt-get install libvorbis-dev -y
+But you are using Ubuntu, this simple script should install all the dependencies through Ubuntu's APT (Advanced Packaging Tool) library.
+```bash
+#!/usr/bin/env bash
+apt-get install         \
+    libfreetype6-dev    \
+    libjpeg-dev         \
+    libx11-dev          \
+    libxrandr-dev       \
+    libx11-xcb-dev      \
+    libxcb-randr0-dev   \
+    libxcb-image0-dev   \
+    libxcb1-dev         \
+    libgl1-mesa-dev     \
+    libudev-dev         \
+    libopenal-dev       \
+    libflac-dev         \
+    libvorbis-dev -y
 ```

@@ -2,7 +2,7 @@
 SFML's sprites and shapes can provide you with their axis-aligned boundary boxes (getGlobalBounds) and you can easily use these rectangles to test if they intersect. Unfortunately, this _only_ allows axis-aligned collision detection.
 
 Rectangular Boundary Collision allows testing collision based on their original rectangular boundary box (getLocalBounds).
-It tests to see if and object's rectangular boundary collides with another object's rectangular boundary. This method, however, allows transformations to be taken into account - most notably, rotation.
+It tests to see if an object's rectangular boundary collides with another object's rectangular boundary. This method, however, allows transformations to be taken into account - most notably, rotation.
 
 Rectangular Boundary Collision is a single, templated free-function contained within the "collision" namespace:  
 ```cpp

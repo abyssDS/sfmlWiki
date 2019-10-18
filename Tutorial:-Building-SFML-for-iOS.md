@@ -1,67 +1,35 @@
 # Introduction
-This tutorial will teach you how to develop iOS applications with SFML in C++. Compiling for iOS can be a daring endeavour filled with exciting bugs and errors, but if you follow these steps exactly, you should have your iOS app up in no time. This tutorial will also let you build an application which you can compile for both Mac and iOS.
+Building SFML for iOS is mostly the same as [building with cmake](https://www.sfml-dev.org/tutorials/latest/compile-with-cmake.php) for any other platform, just with the iOS specific toolchain
 
-# Requirements
-* Xcode, available on the Mac App Store
-  * Important: if Xcode is installed in a directory that contains spaces (with the exception of your normal boot drive, `Macintosh HD` or `Macintosh SSD`), you will later encounter errors when using CMake. Its standard installation directory (`/Applications`) will work fine.
-* Xcode command line tools installed
-  * To do this, open the Terminal and write `xcode-select --install` and follow the on-screen instructions.
-  * Then, open Xcode, go to `Xcode > Preferences > Locations` and choose the available version of the Xcode command line tools from the `Command Line Tools` drop-down menu.
-* [CMake](https://cmake.org/download/)
+## Requirements
+* Xcode (with command line tools)
+* CMake
+* SFML 2.5.0 or later
 
-# Setup
+### Dependencies
+All iOS dependencies are provided with the SFML source code, so you should not need anything else
 
-## Installing SFML's frameworks for Mac
-Before being able to build SFML for iOS, you will need to install SFML's libraries to your computer. You can do this by following the [tutorial on the SFML website](https://www.sfml-dev.org/tutorials/2.4/start-osx.php) for installing SFML for use with Xcode to make a Mac application. In the later steps of this tutorial, we will assume you are starting from SFML's Xcode template project.
 
-## Building SFML with CMake
-In order to to use SFML with iOS, we need to use CMake to build our own static libs. To do this, download the most recent SFML source files in the folder of your choice. Keep in mind that you will later have to link to this directory from Xcode, so choose its location carefully. In this tutorial, we will use `~/Documents/Libraries/` as our directory.
-* To create this directory, open the Terminal and execute the following command:
-``
-cd ~/Documents && mkdir Libraries  
-``
-* Make sure to set your current directory to its location by using `cd ~/Documents/Libraries`  
+# Configuring your build
+To build for iOS, you need to set `CMAKE_TOOLCHAIN_FILE` to the one provided with the SFML source code at `./cmake/toolchains/iOS.toolchain.cmake`. You'll also need to make sure to use the Xcode generator:
 
-Once in your desired SFML library directory, run the following command to download SFML from GitHub:  
-```
-git clone https://github.com/SFML/SFML.git SFML  
-```
-This will create a folder named "SFML" containing all the files we need for CMake.
-
-Use these commands to create folders we will use:  
+## Configuring with the command line
 ```
 cd SFML  
 mkdir build && cd build  
-mkdir ios  
-mkdir ios-install  
+cmake .. -GXcode -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/iOS.toolchain.cmake
 ```
-Now, open the CMake application. You should see a GUI which looks like this:  
-![CMake 1](http://i.imgur.com/Bdi4JQu.png)
-* Set the first line, "Where is the source code:", to `/Users/[username]/Documents/Libraries/SFML`
-* Set the second line, "Where to build the binaries:", to `/Users/[username]/Documents/Libraries/SFML/build/ios/`
 
-* **For SFML 2.4.2 and earlier:**
-  * Click on the "Add Entry" button, and add a BOOL named `IOS` and set it to true (check the "Value" textbox). Press OK.  
-  * Click the "Configure" button.
-  * In the pop-up window, choose "Xcode" as the generator for this project. Select "Use the default native compilers".
-* **For SFML 2.5.0 and later:**
+## Configuring with CMake GUI
   * Click the "Configure" button.
   * In the pop-up window, choose "Xcode" as the generator for this project. Select "Specify toolchain file for cross-compiling". Press Continue.
-  * Set the "Specify the Toolchain file" line to `/Users/[username]/Documents/Libraries/SFML/cmake/toolchains/iOS.toolchain.cmake`
-* You should now have a window that looks like this:  
-![CMake 3](http://i.imgur.com/F6Pgxcm.png)
-* Expand the `CMAKE` option and set `CMAKE_INSTALL_PREFIX` to `/Users/[username]/Documents/Libraries/SFML/build/ios-install`
-  * Note: The reason we specify this instead of keeping the default `/usr/local/` is because, as of writing this, it seems that CMake will fail for some people because of a lack of proper writing permissions to that folder.
-* Click "Configure" a second time.
+  * Set the "Specify the Toolchain file" line to `[YOUR_SFML_SOURCE_PATH]/cmake/toolchains/iOS.toolchain.cmake`
 
-Finally, press "Generate". This will create an Xcode project called "SFML.xcodeproj" inside `SFML/build/ios`.
+Finally, press "Generate". This will create an Xcode project called "SFML.xcodeproj" inside your chosen build directory.
 
-## Compiling SFML with the generated Xcode project
-Open the generated Xcode project located in `~/Documents/Library/SFML/build/ios/`.
-* In the top left, select the "ALL_BUILD" target.
-* Click on the arrow to compile.
-* This will install SFML's compiled libraries for iOS in `SFML/build/ios-install/lib/`.
-  * **For SFML 2.5.0 and later**, they will be installed in `SFML/build/ios/lib/` instead.
+## Compiling SFML
+Like any other platform you can build with the `cmake --build` command, or if you open the xcode project you can build normally from there
+
 
 # Xcode project
 

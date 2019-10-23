@@ -65,6 +65,7 @@ Welcome to the section dedicated to projects using/for SFML.
 
 * [C++] [Andropple](https://github.com/shaswata56/Andropple): A basic SFML and C++ game, where droid bot eats apple ;) (by [shaswata56](https://github.com/shaswata56))
 * [C++] [Cendric - an RPG platformer](http://cendric.ch/) ([GitHub](https://github.com/Tizian/Cendric2)): A platformer with RPG elements. Features: Lighting, Particles, Water-Simulation; Dynamic levels and spells.
+* [C++] [Cosmoscroll](https://github.com/abodelot/cosmoscroll): Space-based shoot'em up game. Inspired by games such as R-Type and Gradius, it features side-scrolling, retro-looking graphics and chiptune music.
 * [C++] [CubePuzzle](https://github.com/Dandarawy/OpenGLPuzzleGame): A simple 3d puzzle game, the source code and commits are organized to teach how to use SFML and OpenGL to create 3d games.
 * [C++] [EmptyEpsilon - a cooperative multiplayer spaceship bridge simulator](http://emptyepsilon.org) ([GitHub](https://github.com/daid/EmptyEpsilon)): 1-6 players work together on the bridge stations (helms, weapons, engineering, science, relay, captain) of a spaceship. Multi-ship play, internet, scriptable scenarios, Lua scripting, HTTP API, multiple 3D viewscreens, Game Master mode.
 * [C++] [F.I.R.E.D.](https://github.com/achpile/fired/): 2D cross-platform game with elements of Action, RPG and Adventure.
@@ -74,8 +75,9 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [Open Hexagon](http://vittorioromeo.info/projects.html) ([GitHub](https://github.com/SuperV1234/SSVOpenHexagon)): C++11 open source clone of "Super Hexagon". Features JSON/LUA customizable game files, a soundtrack by BOSSFIGHT, pseudo-3D effects.
 * [C++] [Operation bloodshed](https://github.com/SuperV1234/SSVBloodshed): arcade game, spiritual successor to "Operation Carnage" - similar to Smash TV or Robotron
 * [C#] [Pax: A Wargame](http://paxgame.sourceforge.net): A grand strategy game around the topics of war, diplomacy, exploration and trade, set during the Middle Ages and Renaissance. In early development, C#-coded, Python-scriptable.
+* [C++] [Pong](https://github.com/wagnrd/Pong): An implementation of the game Pong in its unique arcade look (by [wagnrd](https://github.com/wagnrd))
 * [C++] [Randballs](https://github.com/gale93/randballs): simple SFML and EnTT playground.
 * [C++] [Small Pokemon Engine](https://github.com/TheMaverickProgrammer/PokemonHeartGold-Swoosh): A small yet solid foundation for making pokemon-like games with a feature-rich battle engine that is easy to mod and add more content.
 * [C++] [Snake](https://github.com/shaswata56/Snake): Simple snake game in C++ (by [shaswata56](https://github.com/shaswata56))
 * [C++] [Tao's Adventure](https://github.com/shaswata56/Taos-Adventure): It is a simple 2D adventure platformer game. Build from scratch using C++ and SFML . (by [shaswata56](https://github.com/shaswata56) and [KhanShaheb34](https://github.com/KhanShaheb34))
-* [C++] [Pong](https://github.com/wagnrd/Pong): An implementation of the game Pong in its unique arcade look (by [wagnrd](https://github.com/wagnrd))
+* [C++] [Wallbreaker](https://github.com/abodelot/wallbreaker): A Breakout clone. Includes a level editor.

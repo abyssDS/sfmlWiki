@@ -8,7 +8,7 @@ Welcome to the section dedicated to external tutorials about SFML. Don't forget 
 
 ### Configuration
 
-* [[Building SFML for iOS|Tutorial:-SFML-for-iOS]]
+* [[Building SFML for iOS|Tutorial:-Building-SFML-for-iOS]]
 * [[Building SFML for Android|Tutorial:-Building-SFML-for-Android]]
 * [[SFML.Net on OSX|Tutorial:-SFML.Net-on-OSX]]
 * [[SFML.Net on Windows|Tutorial:-SFML.Net-on-Windows]]

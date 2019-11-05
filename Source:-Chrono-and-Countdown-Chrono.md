@@ -84,7 +84,6 @@ public:
 		exp.: with SDL libs. *(unsigned int get_ticks()) would implements *(Uint32 SDL_GetTicks()) API.
 
 	Any code improvement will be very appreciated.
-	Yassir KENNY - tayssirdev@gmail.com
 */
 
 #include "Chrono.h"
@@ -258,8 +257,6 @@ unsigned int Chrono::get_ticks() const
 		exp.: with SDL libs. *(unsigned int get_ticks()) would implements *(Uint32 SDL_GetTicks()) API.
 
 	Any code improvement will be very appreciated.
-
-	Yassir KENNY - tayssirdev@gmail.com
 */
 
 #include <SFML/System.hpp>

@@ -61,7 +61,7 @@ class RoundedRectangleShape : public sf::Shape
         ///
         /// \param size New size of the rounded rectangle
         ///
-        /// \see GetSize
+        /// \see getSize
         ///
         ////////////////////////////////////////////////////////////
         void setSize(const Vector2f& size);
@@ -71,7 +71,7 @@ class RoundedRectangleShape : public sf::Shape
         ///
         /// \return Size of the rounded rectangle
         ///
-        /// \see SetSize
+        /// \see setSize
         ///
         ////////////////////////////////////////////////////////////
         const Vector2f& getSize() const;
@@ -81,7 +81,7 @@ class RoundedRectangleShape : public sf::Shape
         ///
         /// \param radius Radius of the rounded corners
         ///
-        /// \see GetRadius
+        /// \see getCornersRadius
         ///
         ////////////////////////////////////////////////////////////
         void setCornersRadius(float radius);
@@ -91,7 +91,7 @@ class RoundedRectangleShape : public sf::Shape
         ///
         /// \return Radius of the rounded corners
         ///
-        /// \see SetRadius
+        /// \see setCornersRadius
         ///
         ////////////////////////////////////////////////////////////
         float getCornersRadius() const;
@@ -101,7 +101,7 @@ class RoundedRectangleShape : public sf::Shape
         ///
         /// \param count New number of points of the rounded rectangle
         ///
-        /// \see GetPointCount
+        /// \see getPointCount
         ///
         ////////////////////////////////////////////////////////////
         void setCornerPointCount(unsigned int count);

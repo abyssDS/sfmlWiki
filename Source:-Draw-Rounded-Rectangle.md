@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is a class for SFML 2, that provides an easy interface for rounded rectagles. It behaves like you're used to from other sf::Shapes. The class was written by [Overdrivr](https://github.com/Overdrivr).
+This is a class for SFML 2 that provides an easy interface for rounded rectangles. It behaves like what you're used to from other sf::Shapes. This class was written by [Overdrivr](https://github.com/Overdrivr).
 
 
 ## Source
@@ -261,5 +261,5 @@ sf::Vector2f RoundedRectangleShape::getPoint(std::size_t index) const
     return sf::Vector2f(myRadius*cos(deltaAngle*(index-centerIndex)*pi/180)+center.x,
                         -myRadius*sin(deltaAngle*(index-centerIndex)*pi/180)+center.y);
 }
-}//namespace sf
+} // namespace sf
 ```

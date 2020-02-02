@@ -14,8 +14,8 @@
 |---------|---------------------|-----------------------------|
 | Windows | GetAsyncKeyState    | WM_SYSKEYDOWN / WM_SYSKEYUP |
 | Linux   | XKeysymToKeycode    | KeyPress / KeyRelease       |
-| macOS   | IOHIDDeviceGetValue |                             |
-| Android |                     |                             |
+| macOS   | IOHIDDeviceGetValue | [delegate]                  |
+| Android | N/A                 | AKeyEvent_getKeyCode        |
 
 ## Key Mapping
 

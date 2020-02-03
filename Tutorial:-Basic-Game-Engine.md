@@ -113,7 +113,7 @@ class GameObject; // Notice there is no definition of what the class looks like,
  
 class Level {
   public:
-    GameObjects* mObjects; // Notice how GameObjects is a pointer now, not a full object
+    GameObject* mObjects; // Notice how GameObjects is a pointer now, not a full object
 };
 ```
 

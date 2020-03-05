@@ -4,86 +4,57 @@ The remaining entries here on the unofficial FAQ are maintained by the community
 
 # Frequently asked questions (FAQ)
 
-**[Building and Using SFML](#build-use)**
-- [I want to fuse the libraries into one. (Not recommended)](#build-fuse)
-
 **[Libraries for SFML](#libraries)**
 - [Does SFML have a GUI package?](#libraries-gui-package)
-- [Can you interface SFML with a GUI library?](#libraries-gui-lib)
+- [Can you interface SFML with a non-SFML GUI library?](#libraries-gui-lib)
 - [Can I read video files with SFML?](#libraries-video)
 - [What exactly is Thor?](#libraries-thor)
 
 **[Miscellaneous](#misc)**
-- [Are there any famous projects with SFML?](#misc-projects)
-- [How can I distribute my game?](#misc-distr)
-- [Where can I upload my game to?](#misc-upload)
+- [Are there any famous projects that use SFML?](#misc-projects)
+- [Where can I share my SFML project(s)?](#misc-share)
 
 ---
-
-## <a name="build-use"/>Building and Using SFML
-
-### <a name="build-fuse"/>I want to fuse the libraries into one. (Not recommended)
-
-To fuse two libraries, you can use the ar.exe utility provided with MinGW. You'll also need a minimal Unix environment (like [CYGWIN](http://www.cygwin.com/)). The syntax is:
-
-    ar xv lib1.a | cut -f3 -d ' ' | xargs ar rvs lib2.a
-
-Here are the commands to together the external dependencies:
-
-    ar xv libgdi32.a | cut -f3 -d ' ' | xargs ar rvs libsfml-window-s-d.a && rm *.o && echo 'done'
-    ar xv libgdi32.a | cut -f3 -d ' ' | xargs ar rvs libsfml-window-s.a && rm *.o && echo 'done'
-    ar xv libopengl32.a | cut -f3 -d ' ' | xargs ar rvs libsfml-window-s-d.a && rm *.o && echo 'done'
-    ar xv libopengl32.a | cut -f3 -d ' ' | xargs ar rvs libsfml-window-s.a && rm *.o && echo 'done'
-    ar xv libwinmm.a | cut -f3 -d ' ' | xargs ar rvs libsfml-window-s-d.a && rm *.o && echo 'done'
-    ar xv libwinmm.a | cut -f3 -d ' ' | xargs ar rvs libsfml-window-s.a && rm *.o && echo 'done'
-    ar xv libws2_32.a | cut -f3 -d ' ' | xargs ar rvs libsfml-network-s-d.a && rm *.o && echo 'done'
-    ar xv libws2_32.a | cut -f3 -d ' ' | xargs ar rvs libsfml-network-s.a && rm *.o && echo 'done'
-    ar xv libfreetype.a | cut -f3 -d ' ' | xargs ar rvs libsfml-graphics-s-d.a && rm *.o && echo 'done'
-    ar xv libfreetype.a | cut -f3 -d ' ' | xargs ar rvs libsfml-graphics-s.a && rm *.o && echo 'done'
-    ar xv libopenal32.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s-d.a && rm *.o && echo 'done'
-    ar xv libopenal32.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s.a && rm *.o && echo 'done'
-    ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s-d.a && rm *.o && echo 'done'
-    ar xv libsndfile.a | cut -f3 -d ' ' | xargs ar rvs libsfml-audio-s.a && rm *.o && echo 'done'
 
 ## <a name="libraries"/>Libraries for SFML
 
 ### <a name="libraries-gui-package"/>Does SFML have a GUI package?
 
-No, SFML does not have a GUI package, but you can essentially use any OpenGL-based GUI library. Here's a obviously incomplete list:
+No, SFML does not have with a GUI module integrated into it, nor does it have an official GUI package; however, [you can use nearly any OpenGL-based GUI library with SFML](#libraries-gui-lib). Here is a (incomplete) list of commonly used GUI libraries:
 
-* [CEGUI](http://www.cegui.org.uk/wiki/index.php/Main_Page)
-* [dear imgui,](https://github.com/ocornut/imgui)
+* [CEGUI](http://cegui.org.uk/content/getting-started)
+* [dear imgui](https://github.com/ocornut/imgui) and it's SFML-intended counterpart [imgui-sfml](https://github.com/eliasdaler/imgui-sfml)
 * [Guichan](https://code.google.com/p/guichan/)
-* [GWEN](https://github.com/garrynewman/GWEN)
-* [libRocket](http://librocket.com/)
-* [Nuklear](https://github.com/vurtun/nuklear)
-* [SFGUI](http://sfgui.sfml-dev.de/)
+* [libRocket](https://github.com/libRocket/libRocket)
+* [Nuklear](https://github.com/Immediate-Mode-UI/Nuklear)
+* [SFGUI](https://github.com/TankOs/SFGUI)
 * [TGUI](https://tgui.eu)
 
-### <a name="libraries-gui-lib"/>Can you interface SFML with a GUI library?
+Some of these are intended for SFML use, and are seamlessly incorporated into existing SFML projects (namely [imgui-sfml](https://github.com/eliasdaler/imgui-sfml), [SFGUI](https://github.com/TankOs/SFGUI), and [TGUI](https://tgui.eu)). [The others can be interfaced as well](#libraries-gui-lib).
 
-Yes, you can! See examples for Qt, wxWidgets, and the native Win32 and X11 APIs in the [official tutorials](http://www.sfml-dev.org/tutorials/).
+### <a name="libraries-gui-lib"/>Can you interface SFML with a non-SFML GUI library?
+
+Yes, you can! See example interfaces for Qt, wxWidgets, and the native Win32 and X11 APIs in the [official tutorials](http://www.sfml-dev.org/tutorials/).
 
 ### <a name="libraries-video"/>Can I read video files with SFML?
 
-SFML does not have a video playback module, but one can easily connect FFMPEG or similar libraries with SFML. There even exists a couple of maintained projects from some SFML users called [sfeMovie](http://sfemovie.yalir.org/) and [Motion](http://en.sfml-dev.org/forums/index.php?topic=16221.0).
+SFML does not have a video playback module, but one can easily connect [FFmpeg](https://www.ffmpeg.org/) or similar libraries with SFML. There are even a couple of maintained projects from SFML users. One is [sfeMovie](http://sfemovie.yalir.org/) and another is [Motion](http://en.sfml-dev.org/forums/index.php?topic=16221.0).
 
 ### <a name="libraries-thor"/>What exactly is Thor?
 
-Thor is an open-source and cross-platform library written in the programming language C++. It is an extension to SFML and comes with high-level features that base on SFML and that are supposed to help in daily C++ routine, especially with respect to graphics and game programming.
+Thor is an open-source and cross-platform library written in the programming language C++. It is an extension to SFML and comes with high-level features that base on SFML and that are intended to help in daily C++ routine, especially with respect to graphics and game programming.
 
-The git repository is also hosted on [GitHub](https://github.com/Bromeon/Thor) and the official website can be found at: http://www.bromeon.ch/libraries/thor/
+The git repository for it is hosted on [GitHub](https://github.com/Bromeon/Thor) and the official website can be found [here](http://www.bromeon.ch/libraries/thor/).
 
 ## <a name="misc"/>Miscellaneous
 
-### <a name="misc-projects"/>Are there any famous projects with SFML?
+### <a name="misc-projects"/>Are there any famous projects with made with SFML?
 
-As SFML is open source and has a permissive free software license, game creators are not forced to specify that they've used SFML in their games, thus it might well be that SFML has been used in bigger commercial projects, we don't know of. As for the known projects, there's a [dedicated page](Projects) on the SFML's wiki. Another list of known projects can be found on [SFML's Wikipedia article](http://en.wikipedia.org/wiki/Simple_and_Fast_Multimedia_Library#Video_game_examples_using_SFML).
+As SFML is open source and has a permissive free software license, game creators are not forced to specify that they've used SFML in their games, thus it might well be that SFML has been used in bigger commercial projects. We don't know. As for the known projects, there's a [dedicated page](Projects) on the SFML's wiki. A list of known projects can also be found on [SFML's Wikipedia page](http://en.wikipedia.org/wiki/Simple_and_Fast_Multimedia_Library#Video_game_examples_using_SFML). One other place is [SFML Projects](#sfml-projects-org).
 
-### <a name="misc-distr"/>How can I distribute my game?
+### <a name="misc-share"/>Where can I share my SFML project(s)?
 
-### <a name="misc-upload"/>Where can I upload my game to?
+<a name="sfml-projects-org"/>[SFML Projects](http://sfmlprojects.org/) is currently being developed as a place to put many of the projects made with SFML.
 
-There are many possible places to share your game and game related data with the world wide web and their users. [HashCookie](http://hashcookie.net/) is a simple and easy to use site. Another provider to consider is [MediaFire](http://www.mediafire.com/). Both are simple and fast file sharing hosts.
-
-Also [SFML Projects](http://sfmlprojects.org/) is currently being developed as a place to put many of the projects made with SFML.
+Their project's intent can be found on their [About](https://sfmlprojects.org/about) page:
+> While the SFML forum provides a section for [projects](https://en.sfml-dev.org/forums/index.php?board=10.0), it happens too often that nice projects get lost in the depth of that sub-forum or that the archive with the game gets deleted. With the SFML Projects website we want to provide a platform to host, share and archive projects that were made with or for [SFML](https://sfml-dev.org)

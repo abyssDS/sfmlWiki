@@ -58,6 +58,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C++] [Moonman](http://moonman.io): A procedural adventure game
 * [C++] [Pioneers](http://www.pioneersgame.com/): A turn-based exploration/adventure RPG.
 * [C++] [PixZen](http://www.indiedb.com/games/pixzen): Simple 2D platform game with unique story.
+* [C++] [Remnants of Naezith](https://store.steampowered.com/app/590590): A fast-paced grappling hook platformer
 * [C++] [Re:creation](https://eliasdaler.wordpress.com/2014/10/19/recreation-info-press-kit/): top-down action adventure game. You play as undead knight who can turn into a ghost and control dead enemies with it to get their abilities and solve various puzzles.
 * [C++] [Vagante](http://vagantegame.com/): A platformer roguelike game; imagine Spelunky with RPG elements! 
 

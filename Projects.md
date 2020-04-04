@@ -78,6 +78,7 @@ Welcome to the section dedicated to projects using/for SFML.
 * [C#] [Pax: A Wargame](http://paxgame.sourceforge.net): A grand strategy game around the topics of war, diplomacy, exploration and trade, set during the Middle Ages and Renaissance. In early development, C#-coded, Python-scriptable.
 * [C++] [Pong](https://github.com/wagnrd/Pong): An implementation of the game Pong in its unique arcade look (by [wagnrd](https://github.com/wagnrd))
 * [C++] [Randballs](https://github.com/gale93/randballs): simple SFML and EnTT playground.
+* [C++] [slitherling](https://slitherling.gitlab.io): simple snake game
 * [C++] [Small Pokemon Engine](https://github.com/TheMaverickProgrammer/PokemonHeartGold-Swoosh): A small yet solid foundation for making pokemon-like games with a feature-rich battle engine that is easy to mod and add more content.
 * [C++] [Snake](https://github.com/shaswata56/Snake): Simple snake game in C++ (by [shaswata56](https://github.com/shaswata56))
 * [C++] [Tao's Adventure](https://github.com/shaswata56/Taos-Adventure): It is a simple 2D adventure platformer game. Build from scratch using C++ and SFML . (by [shaswata56](https://github.com/shaswata56) and [KhanShaheb34](https://github.com/KhanShaheb34))

@@ -8,7 +8,7 @@ This is achieved modifying the viewport of the view, so this will only work for 
 
 ![](http://i.imgur.com/oO7kbkz.png?1)
 
-##The function
+## The function
 
 ```cpp
 sf::View getLetterboxView(sf::View view, int windowWidth, int windowHeight) {
@@ -47,7 +47,7 @@ sf::View getLetterboxView(sf::View view, int windowWidth, int windowHeight) {
 }
 ```
 
-##Usage example
+## Usage example
 
 The function should be used both when you create the view and also when the "Resized" event is triggered in the poll events loop.
 
@@ -102,7 +102,7 @@ int main() {
 }
 ```
 
-##Disabling the effect
+## Disabling the effect
 
 If you need to disable the effect for some reason, use the following function (which basically just resets the viewport of the view).
 

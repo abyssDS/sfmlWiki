@@ -15,6 +15,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C#] [[SpriteAnimated|Source:-Sprite-Animated]]: A C# version of animated sprite class.
 
 ## Drawables
+* [C++] [[AnimatedGif|Source:-Animated-GIF]]: Enjoy animated GIFs in SFML!
 * [C++] [[AnimatedSprite|Source:-AnimatedSprite]]: A class that provides an easy interface to Animations and follow the design of sf::Sprite (by Foaly)
 * [C#] [[CurvedText class|Source:-CurvedText]]: Draws circularly arranged text and implements most of SFML.Graphics.Text's interface.
 * [C++] [[Higher Performance Sprite Container|Source:-High-Performance-Sprite-Container]]: Both a faster way to use many sprites with the same texture and a shortcut container to make life easier. (by masskiller)

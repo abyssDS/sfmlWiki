@@ -34,8 +34,8 @@ class AnimatedGIF
 #include "AnimatedGIF.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include <stb/stb_image.h>
 #define STBI_GIF_ONLY
+#include <stb/stb_image.h>
 
 AnimatedGIF::AnimatedGIF(const char* filename)
 {

@@ -32,7 +32,7 @@
 
 ## Key Mapping
 
-| Key       | Enum Code | Windows Mapping | Linux Mapping   | macOS Mapping                  | Android Mapping        |
+| Scancode  | Enum Code | Windows Mapping | Linux Mapping   | macOS Mapping                  | Android Mapping        |
 |-----------|-----------|-----------------|-----------------|--------------------------------|------------------------|
 | Unknown   |        -1 |                 |                 |                                |                        |
 | A         |         0 | 'A'             | XK_a            |                                | AKEYCODE_A             |
@@ -148,18 +148,29 @@
 ## SFML API
 
 - `sf::Keyboard::Key`
-- `sf::Keyboard::Scancode`
+- ✨ `sf::Keyboard::Scancode`
 - `static bool sf::Keyboard::isKeyPressed(sf::Keyboard::Key))`
-- `static bool sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode))`
-- `static sf::Keyboard::Key localize(sf::Keyboard::Scancode code)`
-- `static sf::Keyboard::Scancode unlocalize(sf::Keyboard::Key key)`
-- `static sf::String getDescription(sf::Keyboard::Scancode code)`
+- ✨ `static bool sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode))`
+- ✨ `static sf::Keyboard::Key localize(sf::Keyboard::Scancode code)`
+- ✨ `static sf::Keyboard::Scancode unlocalize(sf::Keyboard::Key key)`
+- ✨ `static sf::String getDescription(sf::Keyboard::Scancode code)`
 - `sf::Event::KeyEvent`
     - `sf::Keyboard::Key code`
-    - `sf::Keyboard::Scancode scancode`
+    - ✨ `sf::Keyboard::Scancode scancode`
     - `bool alt`
     - `bool control`
     - `bool shift`
     - `bool system`
 - `sf::Event::TextEvent`
     - `sf::Uint32 unicode`
+
+## Scancode API
+
+| OS      | Real-Time           | Event                       |
+|---------|---------------------|-----------------------------|
+| Windows |                     |                             |
+| Linux   |                     |                             |
+| macOS   |                     |                             |
+| Android |                     |                             |
+
+## Scancode Mapping

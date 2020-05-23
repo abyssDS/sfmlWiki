@@ -67,7 +67,7 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++11] [[Rectangular Boundary Collision|Source:-Rectangular-Boundary-Collision]] Templated free function that tests collision of any two objects using their local boundary box; this is not simply AABB collision. (by [Hapax](https://github.com/hapaxia))
 * [C++] [[Rotate View At|Source:-Rotate-View-At-(specified-co‐ordinate)]] Free function that rotates a view at any specified co-ordinate rather the center of the view/window.
 * [C++] [[Convert Point Of View|Source:-Convert-Point-Of-View]] Free function that directly converts a co-ordinate from one view's co-ordinate system to another. Can either take viewports into account or ignore them.
-* [C++] [[Redirect SFML Errors to Custom Logger|Source:-Redirect-SFML-Errors-to-Custom-Logger]] Class to redirect `sf::err()` to `spdlo::logger`
+* [C++] [[Redirect SFML Errors to Custom Logger|Source:-Redirect-SFML-Errors-to-Custom-Logger]] Class to redirect `sf::err()` to `spdlog::logger`
 
 ## Audio
 * [C++] [[MP3 Player|Source:-MP3-Player]]: Class inspired `sf::Music` for playing mp3 file using the library mpg123

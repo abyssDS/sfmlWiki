@@ -65,12 +65,13 @@ Welcome to the section dedicated to external source codes for SFML.
 * [C++] [[Letterbox effect:|Source:-Letterbox-effect-using-a-view]] A small example to archieve a letterbox effect when resizing the window, having black bars appear either horizontally or vertically to keep the view's aspect ratio.
 * [C++] [[Zoom View At|Source:-Zoom-View-At-(specified-pixel)]] Free function that zooms a view at a specified pixel rather the centre of the window/view.
 * [C++11] [[Rectangular Boundary Collision|Source:-Rectangular-Boundary-Collision]] Templated free function that tests collision of any two objects using their local boundary box; this is not simply AABB collision. (by [Hapax](https://github.com/hapaxia))
-* [C++] [[Rotate View At|Source:-Rotate-View-At-(specified-co‐ordinate)]] Free function that rotates a view at any specified co-ordinate rather the centre of the view/window.
+* [C++] [[Rotate View At|Source:-Rotate-View-At-(specified-co‐ordinate)]] Free function that rotates a view at any specified co-ordinate rather the center of the view/window.
 * [C++] [[Convert Point Of View|Source:-Convert-Point-Of-View]] Free function that directly converts a co-ordinate from one view's co-ordinate system to another. Can either take viewports into account or ignore them.
+* [C++] [[Redirect SFML Errors to Custom Logger|Source:-Redirect-SFML-Errors-to-Custom-Logger]] Class to redirect `sf::err()` to `spdlo::logger`
 
 ## Audio
-* [C++] [[MP3 Player|Source:-MP3-Player]]: Class inspired sf:: Music for playing mp3 file using the library mpg123
-* [C++] [[Audio Player|Source:-Audio-Player]]: Class inspired sf:: Music for playing audio file using the library ffmpeg
+* [C++] [[MP3 Player|Source:-MP3-Player]]: Class inspired `sf::Music` for playing mp3 file using the library mpg123
+* [C++] [[Audio Player|Source:-Audio-Player]]: Class inspired `sf::Music` for playing audio file using the library ffmpeg
 * [C++] [[Simple Jukebox|Source:-Jukebox]]: A simple class to create, modify and play playlists from audio files in a given directory.
 * [C++] [[Looping Music|Source:-Looping-Music]]: A class that enables music to loop between 2 specific time points
 * [C++] [[Mp3 Soundfile Reader|Source:-Mp3-Soundfile-Reader]]: A class that allows the read of mp3 file using the mpg123 library

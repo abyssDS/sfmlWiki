@@ -1,0 +1,1 @@
+This is the tutorial page for SFML for iOS.

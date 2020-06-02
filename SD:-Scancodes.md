@@ -191,3 +191,4 @@ Once the scancode value has been extracted, it's a simple matter of mapping the 
 | Android |                     |                             |
 
 ## Scancode Mapping
+

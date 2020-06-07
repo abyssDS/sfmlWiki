@@ -26,3 +26,34 @@ The limitations of this design are:
 
 ## Target Situation
 
+### API
+
+- Constructor / `create(...)` function that takes a bit field of `sf::Style`
+  - `sf::Style::None` - Borderless window
+  - `sf::Style::Titlebar`- Window with titlebar
+  - `sf::Style::Resize` - Resizable window
+  - `sf::Style::Close` - Window with close button
+  - `sf::Style::Fullscreen` - **(deprecated)** Fullscreen mode
+  - `sf::Style::Default` - Combination of Titlebar, Resize and Close
+  - `sf::Style::Hidden` - **new** Create window hidden initially
+- `setState(sf::State)` - **new** Change window state
+  - `sf::State::Minimized` - Minimize the window
+  - `sf::State::Maximized` - Maximize the window
+  - `sf::State::Floating` (or `sf::State::Windowed`) - "Normal" window mode
+  - `sf::State::Fullscreen` - Fullscreen mode
+- `setVisible(bool)` - Hide or show window
+
+### OS Support
+
+| Feature                           | Windows | Unix | macOS |
+|-----------------------------------|---------|------|-------|
+| Initially hidden window           |         |      |       |
+| Minimize                          |         |      |       |
+| Maximize                          |         |      |       |
+| Mode switching without recreation |         |      |       |
+| Titlebar                          | x       | x    | x     |
+| Borderless                        | x       | x    | x     |
+| Resizable                         | x       | x    | x     |
+| Close button                      | x       | x    | x     |
+| Minimize button                   |         |      |       |
+| Maximize button                   |         |      |       |

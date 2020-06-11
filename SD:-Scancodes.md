@@ -177,7 +177,7 @@ There are three scancode sets, plus USB keyboard have their own set:
 
 Windows requires PS/2 keyboards to use Set 2, but will provide Set 1 key codes on their API for backwards compatibility. USB keyboards will also be provided as Set 1 key codes. As such our API needs to handle Set 1 scancodes.
 
-The [WM_KEYDOWN](https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-keydown), [WM_SYSKEYDOWN](https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-syskeydown), [WM_KEYUP](https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-keyup) and [WM_SYSKEYUP](https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-syskeyup) events provide the scancode values on the 16-23 bits of the lParam argument. which can be extracted with the following bit shifting: `(lParam & (0xFF << 16)) >> 16`
+The [WM_KEYDOWN](https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-keydown), [WM_SYSKEYDOWN](https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-syskeydown), [WM_KEYUP](https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-keyup) and [WM_SYSKEYUP](https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-syskeyup) events provide the scancode values on the 16-23 bits of the lParam argument ([lParam explained](https://docs.microsoft.com/en-us/windows/win32/inputdev/about-keyboard-input#keystroke-message-flags)). which can be extracted with the following bit shifting: `(lParam & (0xFF << 16)) >> 16`
 
 Once the scancode value has been extracted, it's a simple matter of mapping the values according to the Set 1 to the custom SFML scancode enum.
 
